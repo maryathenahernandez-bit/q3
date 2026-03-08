@@ -495,7 +495,7 @@
   <div class="subjects-grid">
 
     <!-- BIOTECHNOLOGY -->
-    <div class="subject-card">
+    <div class="subject-card" onclick="goTo('biotech.html','home','')">
       <span class="subject-icon">🧬</span>
       <h2>Biotechnology</h2>
       <p>Introduction to Biotech, Recombinant DNA Technology, and Microbial Biotechnology.</p>
@@ -505,10 +505,10 @@
         <span class="module-pill">🦠 Module 3</span>
       </div>
       <div class="card-actions">
-        <button class="card-btn primary" onclick="goTo('biotech.html','home','')">📖 Reviewer</button>
-        <button class="card-btn secondary" onclick="goTo('biotech.html','flashcards','mod1')">🃏 Flashcards</button>
-        <button class="card-btn secondary" onclick="startQuizFor('biotech', 'module')">📝 Module Quiz</button>
-        <button class="card-btn secondary" onclick="startQuizFor('biotech', 'mixed')">🎲 Mixed Quiz</button>
+        <button class="card-btn primary" onclick="event.stopPropagation(); goTo('biotech.html','home','')">📖 Reviewer</button>
+        <button class="card-btn secondary" onclick="event.stopPropagation(); goTo('biotech.html','flashcards','mod1')">🃏 Flashcards</button>
+        <button class="card-btn secondary" onclick="event.stopPropagation(); startQuizFor('biotech', 'module')">📝 Module Quiz</button>
+        <button class="card-btn secondary" onclick="event.stopPropagation(); startQuizFor('biotech', 'mixed')">🎲 Mixed Quiz</button>
       </div>
     </div>
 
