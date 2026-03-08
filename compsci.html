@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Computer Science 12 Reviewer</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Blue Ocean Palette */
+    --rosarian: #C4C7F2;        /* Vodka — lightest, page bg tint */
+    --harmonious-rose: #1D97F1; /* Button Blue — accents, borders */
+    --solarized: #1D97F1;       /* Button Blue — highlights */
+    --testosterose: #0841C9;    /* Absolute Zero — card borders */
+    --purple-seduction: #032C7D;/* Catalina Blue — primary nav/headings */
+    --wet-charcoal: #020D2F;    /* Cetacean Blue — darkest text/bg */
+    
+    --white: #ffffff;
+    --card-bg: #eef0fc;
+    --text-dark: #020D2F;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #C4C7F2 0%, #d8daf5 50%, #e8eafa 100%);
+    min-height: 100vh;
+    color: var(--text-dark);
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    background: var(--purple-seduction);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: white;
+    margin-right: 1.5rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  }
+
+  .nav-logo span { color: var(--solarized); }
+
+  .nav-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .nav-btn:hover, .nav-btn.active { background: rgba(255,255,255,0.2); }
+
+  .dropdown { position: relative; }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    min-width: 260px;
+    overflow: hidden;
+    z-index: 200;
+  }
+
+  .dropdown:hover .dropdown-menu { display: block; }
+
+  .dropdown-item {
+    display: block;
+    padding: 0.8rem 1.2rem;
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+    border-left: 4px solid transparent;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+  }
+
+  .dropdown-item:hover {
+    background: rgba(29, 151, 241, 0.15);
+    border-left-color: var(--purple-seduction);
+  }
+
+  /* ===== PAGES ===== */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ===== HOME PAGE ===== */
+  .home-hero {
+    background: var(--purple-seduction);
+    color: white;
+    padding: 3.5rem 2rem 2.5rem;
+    text-align: center;
+  }
+  .home-hero h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+  }
+  .home-hero p {
+    font-size: 1.05rem;
+    opacity: 0.95;
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .modules-section {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 2rem 2rem;
+  }
+
+  .section-heading {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--purple-seduction);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--harmonious-rose);
+  }
+
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .module-card { background: linear-gradient(135deg, var(--testosterose) 0%, var(--purple-seduction) 100%); border-radius: 18px; padding: 2rem 1.5rem; box-shadow: 0 8px 30px rgba(0,0,0,0.25); border: none; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; }
+  .module-card::before { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.06); border-radius: 18px; pointer-events: none; }
+  .module-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.35); filter: brightness(1.1); }
+  .module-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .module-icon { font-size: 2.5rem; line-height: 1; }
+  .module-card h2 { font-family: 'Baloo 2', cursive; font-size: 1.3rem; font-weight: 800; color: #ffffff; text-shadow: 0 1px 4px rgba(0,0,0,0.4); }
+  .module-subtitle { font-size: 0.88rem; color: rgba(255,255,255,0.82); margin-top: 0.2rem; font-weight: 600; }
+  .module-desc { font-size: 0.88rem; line-height: 1.6; color: rgba(255,255,255,0.88); margin-bottom: 1rem; }
+  .module-topics { background: rgba(0,0,0,0.18); border-left: 3px solid rgba(255,255,255,0.55); padding: 0.8rem 1rem 0.8rem 1.8rem; margin-bottom: 1.2rem; border-radius: 0 6px 6px 0; }
+  .module-topics li { font-size: 0.83rem; margin-bottom: 0.3rem; color: rgba(255,255,255,0.88); }
+  .module-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .action-btn { flex: 1; min-width: 80px; padding: 0.5rem 0.8rem; border-radius: 10px; border: none; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; text-align: center; }
+  .action-btn.primary { background: rgba(255,255,255,0.22); color: #fff; border: 2px solid rgba(255,255,255,0.55); }
+  .action-btn.primary:hover { background: rgba(255,255,255,0.38); transform: scale(1.03); }
+  .action-btn.secondary { background: rgba(0,0,0,0.18); color: rgba(255,255,255,0.92); border: 2px solid rgba(255,255,255,0.3); }
+  .action-btn.secondary:hover { background: rgba(0,0,0,0.28); border-color: rgba(255,255,255,0.65); }
+
+  /* ===== REVIEWER PAGE ===== */
+  .reviewer-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .content-header {
+    background: var(--purple-seduction);
+    color: white;
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 25px rgba(3, 44, 125, 0.2);
+  }
+
+  .content-header h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+  }
+
+  .content-subtitle {
+    font-size: 1.05rem;
+    opacity: 0.95;
+    line-height: 1.5;
+  }
+
+  .content-body {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 2px solid var(--testosterose);
+  }
+
+  .content-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .content-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .content-section h2 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--purple-seduction);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--harmonious-rose);
+  }
+
+  .content-section h3 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--purple-seduction);
+    margin: 1.5rem 0 0.8rem;
+  }
+
+  .content-section p {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    color: #444;
+  }
+
+  .definition-box {
+    background: rgba(29, 151, 241, 0.1);
+    border-left: 4px solid var(--purple-seduction);
+    padding: 1.2rem 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+  }
+
+  .definition-box h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+  }
+
+  .content-list {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .content-list li {
+    margin-bottom: 0.8rem;
+    line-height: 1.7;
+    color: #444;
+  }
+
+  .content-list strong {
+    color: var(--purple-seduction);
+  }
+
+  .info-table {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+
+  thead {
+    background: var(--purple-seduction);
+    color: white;
+  }
+
+  th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  th {
+    font-weight: 700;
+  }
+
+  tbody tr:hover {
+    background: rgba(221, 170, 255, 0.05);
+  }
+
+  .timeline-item {
+    padding-left: 1.5rem;
+    border-left: 3px solid var(--testosterose);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .timeline-year {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--purple-seduction);
+    margin-bottom: 0.5rem;
+  }
+
+  /* ===== FLASHCARDS PAGE ===== */
+  .flashcard-header { text-align: center; margin-bottom: 2rem; }
+  .flashcard-header h1 { font-family: 'Baloo 2', cursive; font-size: 2rem; color: var(--purple-seduction); font-weight: 800; }
+  .flashcard-header p { color: #555; margin-top: 0.3rem; }
+
+  .flashcard-module-select { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+
+  .module-select-btn {
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    border: 2px solid var(--testosterose);
+    background: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--text-dark);
+  }
+  .module-select-btn.active { background: var(--purple-seduction); color: white; border-color: var(--purple-seduction); }
+
+  .flashcard-counter { text-align: center; color: #555; font-weight: 700; margin-bottom: 1rem; font-size: 0.9rem; }
+
+  .card-scene { perspective: 1200px; height: 280px; cursor: pointer; margin-bottom: 1.5rem; }
+  .card-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+  .card-inner.flipped { transform: rotateY(180deg); }
+  .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; text-align: center; box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+
+  .card-front { background: linear-gradient(135deg, var(--testosterose), var(--purple-seduction)); color: white; }
+  .card-front .card-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8; margin-bottom: 1rem; font-weight: 700; }
+  .card-front .card-term { font-family: 'Baloo 2', cursive; font-size: 1.6rem; font-weight: 800; line-height: 1.3; }
+
+  .card-back { background: white; border: 3px solid var(--testosterose); transform: rotateY(180deg); color: var(--text-dark); }
+  .card-back .card-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--purple-seduction); margin-bottom: 1rem; font-weight: 700; }
+  .card-back .card-def { font-size: 0.95rem; line-height: 1.7; color: #333; }
+
+  .card-hint { text-align: center; color: #888; font-size: 0.82rem; margin-bottom: 1.5rem; }
+
+  .flashcard-nav { display: flex; gap: 1rem; justify-content: center; align-items: center; }
+
+  .fc-btn { background: white; border: 2px solid var(--testosterose); color: var(--text-dark); font-family: 'Nunito', sans-serif; font-weight: 700; padding: 0.6rem 1.5rem; border-radius: 10px; cursor: pointer; transition: all 0.2s; font-size: 0.9rem; }
+  .fc-btn:hover { background: var(--purple-seduction); color: white; border-color: var(--purple-seduction); }
+  .fc-btn.primary { background: var(--purple-seduction); color: white; border-color: var(--purple-seduction); }
+  .fc-btn.primary:hover { background: var(--wet-charcoal); border-color: var(--wet-charcoal); }
+
+  .progress-bar-wrap { background: rgba(3,44,125,0.15); border-radius: 100px; height: 6px; margin-bottom: 1.5rem; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--testosterose), var(--harmonious-rose)); border-radius: 100px; transition: width 0.3s; }
+
+  /* ===== QUIZ PAGE ===== */
+  /* ===== QUIZ ===== */
+  .quiz-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .quiz-header h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 2rem;
+    color: var(--purple-seduction);
+    font-weight: 800;
+  }
+
+  .quiz-module-select {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .quiz-start {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    border: 2px solid var(--testosterose);
+  }
+
+  .quiz-start .icon { font-size: 4rem; margin-bottom: 1rem; }
+  .quiz-start h2 { font-family: 'Baloo 2', cursive; font-size: 1.6rem; color: var(--purple-seduction); margin-bottom: 0.5rem; }
+  .quiz-start p { color: #666; margin-bottom: 1.5rem; }
+
+  .start-btn {
+    background: linear-gradient(135deg, var(--testosterose), var(--purple-seduction));
+    color: white;
+    border: none;
+    padding: 0.9rem 2.5rem;
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(8,65,201,0.3);
+  }
+
+  .start-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(8,65,201,0.4); }
+
+  .quiz-question-wrap { display: none; }
+  .quiz-question-wrap.active { display: block; }
+
+  .quiz-progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: #555;
+  }
+
+  .quiz-score-badge {
+    background: var(--testosterose);
+    color: white;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+  }
+
+  .question-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.8rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    border: 2px solid var(--testosterose);
+    margin-bottom: 1rem;
+  }
+
+  .question-type-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.8rem;
+  }
+
+  .type-mc { background: #d4eefb; color: #1a5a8e; }
+  .type-tf { background: #d4f0e8; color: #1a5a3c; }
+  .type-id { background: #fef3d4; color: #8a6a00; }
+
+  .set-select-btn {
+    background: rgba(196,199,242,0.2);
+    border: 2px solid var(--testosterose);
+    border-radius: 20px;
+    padding: 0.4rem 1.2rem;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    color: var(--wet-charcoal);
+    transition: all 0.2s;
+  }
+  .set-select-btn:hover { border-color: var(--purple-seduction); color: var(--purple-seduction); }
+  .set-select-btn.active { background: var(--testosterose); color: white; border-color: var(--testosterose); }
+
+  /* PDF Viewer */
+  .pdf-mod-btn {
+    background: rgba(196,199,242,0.2);
+    border: 2px solid var(--testosterose);
+    border-radius: 20px;
+    padding: 0.45rem 1.3rem;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
+    color: var(--wet-charcoal);
+    transition: all 0.2s;
+  }
+  .pdf-mod-btn:hover { border-color: var(--purple-seduction); color: var(--purple-seduction); }
+  .pdf-mod-btn.active { background: var(--testosterose); color: white; border-color: var(--testosterose); }
+  .pdf-label {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--purple-seduction);
+    margin-bottom: 0.6rem;
+  }
+  .pdf-frame-wrap {
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    background: #f5f5f5;
+    margin-bottom: 1rem;
+  }
+  .pdf-frame {
+    width: 100%;
+    height: 80vh;
+    min-height: 500px;
+    border: none;
+    display: block;
+  }
+  .pdf-links { text-align: center; }
+  .pdf-direct-btn {
+    display: inline-block;
+    background: var(--testosterose);
+    color: white;
+    text-decoration: none;
+    padding: 0.55rem 1.4rem;
+    border-radius: 25px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    transition: background 0.2s;
+  }
+  .pdf-direct-btn:hover { background: var(--purple-seduction); }
+
+  .question-text {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+    color: var(--wet-charcoal);
+  }
+
+  .options-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+
+  .option-btn {
+    background: rgba(196,199,242,0.15);
+    border: 2px solid var(--rosarian);
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    text-align: left;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    width: 100%;
+    color: var(--wet-charcoal);
+  }
+
+  .option-btn:hover:not(:disabled) { background: rgba(196,199,242,0.4); border-color: var(--testosterose); }
+  .option-btn.correct { background: #d4f0dc; border-color: #1a7a3c; color: #1a5a2c; }
+  .option-btn.wrong { background: #fde8e8; border-color: #e55; color: #c00; }
+  .option-btn:disabled { cursor: not-allowed; }
+
+  .option-letter {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--rosarian);
+    color: var(--purple-seduction);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+
+  .option-btn.correct .option-letter { background: #1a7a3c; color: white; }
+  .option-btn.wrong .option-letter { background: #e55; color: white; }
+
+  .feedback-box {
+    display: none;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-top: 0.8rem;
+  }
+
+  .feedback-box.correct { background: #d4f0dc; color: #1a5a2c; display: block; }
+  .feedback-box.wrong { background: #fde8e8; color: #c00; display: block; }
+
+  .next-btn {
+    background: linear-gradient(135deg, var(--testosterose), var(--purple-seduction));
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.95rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    display: none;
+    transition: transform 0.2s;
+    width: 100%;
+  }
+
+  .next-btn:hover { transform: translateY(-2px); }
+  .next-btn.visible { display: block; }
+
+  /* Results */
+  .quiz-results {
+    display: none;
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    border: 2px solid var(--testosterose);
+  }
+
+  .quiz-results.active { display: block; }
+
+  .result-score {
+    font-family: 'Baloo 2', cursive;
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--testosterose);
+    margin: 0.5rem 0;
+  }
+
+  .result-label { font-size: 1rem; color: #666; margin-bottom: 1rem; }
+
+  .result-message {
+    background: rgba(196,199,242,0.2);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: var(--wet-charcoal);
+    border: 2px solid var(--testosterose);
+  }
+
+  .review-list { text-align: left; margin-bottom: 1.5rem; }
+
+  .review-item {
+    border-radius: 10px;
+    padding: 0.8rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.88rem;
+    border: 1px solid var(--testosterose);
+  }
+
+  .review-item.correct { background: #d4f0dc; border-color: #1a7a3c; }
+  .review-item.wrong { background: #fde8e8; border-color: #e55; }
+
+  /* ===== FOOTER ===== */
+  .page-footer {
+    text-align: center;
+    padding: 2rem;
+    color: #999;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 768px) {
+    .modules-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .content-body {
+      padding: 1.5rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-logo">💻 Computer <span>Science 12</span></div>
+
+  <div class="dropdown">
+    <button class="nav-btn">📚 Modules ▾</button>
+    <div class="dropdown-menu">
+      <button class="dropdown-item" onclick="showPage('mod1')">
+        🤖 Module 1: Introduction to AI
+      </button>
+      <button class="dropdown-item" onclick="showPage('mod2')">
+        🔧 Module 2: AI Ethics, Types & Tools
+      </button>
+      <button class="dropdown-item" onclick="showPage('mod3')">
+        🧠 Module 3: Intelligent Agents
+      </button>
+    </div>
+  </div>
+
+  <button class="nav-btn" onclick="showPage('flashcards')">🃏 Flashcards</button>
+  <button class="nav-btn" onclick="showPage('quiz')">📝 Quiz</button>
+  <button class="nav-btn" onclick="showPage('slides')">📄 Slides</button>
+  <button class="nav-btn" onclick="window.location.href='index.html'" style="margin-left:auto;">🏠 Back to Hub</button>
+</nav>
+
+<!-- ===== HOME PAGE ===== -->
+<div id="home" class="page active">
+  <div class="home-hero">
+    <h1>💻 Computer Science 12</h1>
+    <p>Explore the world of Artificial Intelligence: from foundational concepts to intelligent agents, ethics, and real-world applications.</p>
+  </div>
+
+  <div class="modules-section">
+    <h2 class="section-heading">📖 Course Modules</h2>
+    <div class="modules-grid">
+
+      <!-- MODULE 1 -->
+      <div class="module-card" onclick="showPage('mod1')">
+        <div class="module-header">
+          <span class="module-icon">🤖</span>
+          <div>
+            <h2>Module 1</h2>
+            <p class="module-subtitle">Introduction to Artificial Intelligence</p>
+          </div>
+        </div>
+        <p class="module-desc">Understanding AI concepts, applications, principles, and components. Learn why AI is important and how it's changing our lives.</p>
+        <ul class="module-topics">
+          <li>History of Artificial Intelligence</li>
+          <li>Why AI is Important</li>
+          <li>How AI Works & Components</li>
+          <li>Applications & Real-world Uses</li>
+          <li>Advantages & Limitations</li>
+        </ul>
+        <div class="module-actions">
+          <button class="action-btn primary" onclick="event.stopPropagation(); showPage('mod1')">📖 Study</button>
+          <button class="action-btn secondary" onclick="event.stopPropagation(); showPage('flashcards'); setFlashcardModuleBtn('mod1')">🃏 Cards</button>
+          <button class="action-btn secondary" onclick="event.stopPropagation(); showPage('quiz')">📝 Quiz</button>
+        </div>
+      </div>
+
+      <!-- MODULE 2 -->
+      <div class="module-card" onclick="showPage('mod2')">
+        <div class="module-header">
+          <span class="module-icon">🔧</span>
+          <div>
+            <h2>Module 2</h2>
+            <p class="module-subtitle">AI Ethics, Types & Tools</p>
+          </div>
+        </div>
+        <p class="module-desc">Explore ethical considerations in AI, different types of AI systems, and the frameworks and software tools used in AI development.</p>
+        <ul class="module-topics">
+          <li>AI Ethics & Principles</li>
+          <li>Types of AI (Narrow, General, Super)</li>
+          <li>AI Frameworks & Tools</li>
+          <li>AI Software Applications</li>
+          <li>Industry Use Cases</li>
+        </ul>
+        <div class="module-actions">
+          <button class="action-btn primary" onclick="event.stopPropagation(); showPage('mod2')">📖 Study</button>
+          <button class="action-btn secondary" onclick="event.stopPropagation(); showPage('flashcards'); setFlashcardModuleBtn('mod2')">🃏 Cards</button>
+          <button class="action-btn secondary" onclick="event.stopPropagation(); showPage('quiz')">📝 Quiz</button>
+        </div>
+      </div>
+
+      <!-- MODULE 3 -->
+      <div class="module-card" onclick="showPage('mod3')">
+        <div class="module-header">
+          <span class="module-icon">🧠</span>
+          <div>
+            <h2>Module 3</h2>
+            <p class="module-subtitle">Intelligent Agents</p>
+          </div>
+        </div>
+        <p class="module-desc">Understand AI agents, how they interact with environments, and the different types of intelligent agents used in AI systems.</p>
+        <ul class="module-topics">
+          <li>What are AI Agents?</li>
+          <li>Agent Environment Interaction</li>
+          <li>Types of Intelligent Agents</li>
+          <li>PEAS Representation</li>
+          <li>Agent Structure & Function</li>
+        </ul>
+        <div class="module-actions">
+          <button class="action-btn primary" onclick="event.stopPropagation(); showPage('mod3')">📖 Study</button>
+          <button class="action-btn secondary" onclick="event.stopPropagation(); showPage('flashcards'); setFlashcardModuleBtn('mod3')">🃏 Cards</button>
+          <button class="action-btn secondary" onclick="event.stopPropagation(); showPage('quiz')">📝 Quiz</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="page-footer">Computer Science 12: Artificial Intelligence • Grade 12</div>
+</div>
+
+<!-- ===== MODULE 1 PAGE ===== -->
+<div id="mod1" class="page reviewer-page">
+  <div style="background:white;border-bottom:2px solid var(--testosterose);padding:0.8rem 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:60px;z-index:50;">
+    <button onclick="showPage('home')" style="background:var(--purple-seduction);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
+    <span style="font-weight:800;color:var(--purple-seduction);">🤖 Module 1: Introduction to Artificial Intelligence</span>
+    <div style="margin-left:auto;display:flex;gap:0.5rem;">
+      <button onclick="showPage('flashcards')" style="background:transparent;border:2px solid var(--testosterose);color:var(--purple-seduction);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">🃏 Flashcards</button>
+      <button onclick="showPage('quiz')" style="background:transparent;border:2px solid var(--testosterose);color:var(--purple-seduction);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">📝 Quiz</button>
+    </div>
+  </div>
+  <div class="content-header">
+    <h1>🤖 Module 1: Introduction to Artificial Intelligence</h1>
+    <p class="content-subtitle">Understanding AI concepts, its applications, principles, and components</p>
+  </div>
+
+  <div class="content-body">
+    
+    <section class="content-section">
+      <h2>What is Artificial Intelligence?</h2>
+      <p>Artificial intelligence (AI) is a wide-ranging branch of computer science concerned with building smart machines capable of performing tasks that typically require human intelligence. It is the study of ideas that enable computers to do things that make people seem intelligent.</p>
+      
+      <div class="definition-box">
+        <h3>📌 Key Principles of AI</h3>
+        <p>The central principles of AI include reasoning, knowledge, planning, learning, communication, perception, and the ability to move and manipulate objects. It is the science and engineering of making intelligent machines, especially intelligent computer programs.</p>
+      </div>
+
+      <p>Many AI systems are powered by <strong>machine learning</strong> and <strong>deep learning</strong>, which allow computers to learn from data and improve over time without being explicitly programmed for every task.</p>
+    </section>
+
+    <section class="content-section">
+      <h2>History of Artificial Intelligence</h2>
+      <p>The term 'Artificial Intelligence' was coined by <strong>John McCarthy</strong> in 1956 at Dartmouth College during the first-ever AI conference. Although the idea of a "machine that thinks" dates back to ancient civilizations, the modern era of AI began with electronic computers.</p>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1943-1952: Maturation of AI</div>
+        <p>Walter Pitts and Warren McCulloch published work on the behavior of human neurons using logical functions. Alan Turing created the <strong>Turing Test</strong> to check a machine's ability to exhibit intelligent behavior.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1952-1956: Birth of AI</div>
+        <p>The first AI program, <strong>Logic Theorist</strong>, was created by Allen Newell and Herbert Simon. It proved mathematical theorems. John McCarthy coined the term "Artificial Intelligence" at the Dartmouth conference.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1956-1974: Golden Years</div>
+        <p>Development of high-level languages like LISP, COBOL, and FORTRAN. Joseph Weizenbaum created <strong>ELIZA</strong>, the first chatbot. Japan built <strong>WABOT-1</strong>, the first intelligent humanoid robot in 1972.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1980-1987: AI Boom</div>
+        <p>Expert systems and software simulated human decision-making. Backpropagation algorithms emerged, using neural networks to solve problems efficiently.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1987-1993: AI Winter</div>
+        <p>IBM successfully translated bilingual sentences. Yann LeCun applied backpropagation to recognize handwritten ZIP codes, marking progress despite hardware limitations.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1993-2011: Intelligent Agents Era</div>
+        <p>IBM's <strong>Deep Blue</strong> defeated chess champion Garry Kasparov. AI entered homes with products like <strong>Roomba</strong>. Tech giants like Facebook, Google, and Microsoft started using AI for customer insights.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2011-Present: Deep Learning & Big Data</div>
+        <p>Powerful computing enables processing of large amounts of data. AI solves complex problems through neural networks. Recent innovations include brain-machine interfaces like Neuralink.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Why is Artificial Intelligence Important?</h2>
+      
+      <ul class="content-list">
+        <li><strong>Automates Repetitive Learning:</strong> AI performs frequent, high-volume, computerized tasks reliably and without fatigue through data-driven discovery.</li>
+        <li><strong>Adds Intelligence to Products:</strong> Many existing products are improved with AI capabilities, like Siri in Apple products, smart home devices, and investment analysis tools.</li>
+        <li><strong>Adapts Through Learning:</strong> AI finds structure in data so algorithms can acquire skills, like teaching itself to play chess or recommend products online.</li>
+        <li><strong>Analyzes Deeper Data:</strong> Using neural networks with many hidden layers, AI can now pinpoint cancer on medical images with improved accuracy.</li>
+        <li><strong>Achieves Incredible Accuracy:</strong> Products like Alexa and Google Assistant keep getting more accurate through deep learning the more they're used.</li>
+        <li><strong>Gets the Most Out of Data:</strong> When algorithms are self-learning, data becomes a competitive advantage. The best data wins in competitive industries.</li>
+      </ul>
+    </section>
+
+    <section class="content-section">
+      <h2>How Artificial Intelligence Works</h2>
+      <p>AI works by combining large amounts of data with fast, iterative processing and intelligent algorithms, allowing software to learn automatically from patterns in data. Major subfields include:</p>
+
+      <ul class="content-list">
+        <li><strong>Machine Learning:</strong> Automates analytical model building using methods from neural networks, statistics, and physics to find hidden insights without explicit programming.</li>
+        <li><strong>Neural Networks:</strong> Made up of interconnected units (like neurons) that process information by responding to external inputs and relaying between units.</li>
+        <li><strong>Deep Learning:</strong> Uses huge neural networks with many layers, taking advantage of computing power to learn complex patterns in large amounts of data.</li>
+        <li><strong>Cognitive Computing:</strong> Aims to imitate human thought processes using self-learning algorithms, pattern recognition, and natural language processing.</li>
+        <li><strong>Computer Vision:</strong> Uses pattern recognition and deep learning to recognize what's in pictures or videos and interpret surroundings in real-time.</li>
+        <li><strong>Natural Language Processing (NLP):</strong> The ability to analyze, understand, and generate human language, including speech and text.</li>
+      </ul>
+
+      <h3>Supporting Technologies</h3>
+      <ul class="content-list">
+        <li><strong>Graphical Processing Units (GPUs):</strong> Provide heavy compute power for iterative processing and training neural networks.</li>
+        <li><strong>Internet of Things (IoT):</strong> Generates massive data from connected devices that AI can analyze and automate.</li>
+        <li><strong>Advanced Algorithms:</strong> Developed to analyze more data faster at multiple levels, predicting rare events and optimizing scenarios.</li>
+        <li><strong>APIs:</strong> Portable code packages that add AI functionality to existing products like image recognition and Q&A capabilities.</li>
+      </ul>
+    </section>
+
+    <section class="content-section">
+      <h2>Advantages of Artificial Intelligence</h2>
+      <ul class="content-list">
+        <li><strong>Reduced Human Error:</strong> Properly programmed machines perform repetitive tasks without making errors.</li>
+        <li><strong>Risk Avoidance:</strong> AI robots replace humans in dangerous environments like coal mines, deep ocean exploration, and nuclear power plants.</li>
+        <li><strong>Replaces Repetitive Jobs:</strong> Machines handle mundane tasks so humans can focus on creative work.</li>
+        <li><strong>Digital Assistance:</strong> Organizations use chatbots and virtual assistants to deliver 24/7 service to customers efficiently.</li>
+      </ul>
+
+      <h3>Limitations of Artificial Intelligence</h3>
+      <ul class="content-list">
+        <li><strong>High Cost:</strong> AI systems require constant upgrades, repairs, and maintenance, demanding significant resources.</li>
+        <li><strong>No Emotions:</strong> Machines cannot build emotional connections, which is crucial for team management and human interaction.</li>
+        <li><strong>Box Thinking:</strong> Machines produce ambiguous results when encountering scenarios outside their programming constraints.</li>
+        <li><strong>Can't Think Independently:</strong> Current AI can only do tasks it's programmed for and cannot make decisions based on emotions, compassion, or empathy.</li>
+      </ul>
+    </section>
+
+    <section class="content-section">
+      <h2>Applications of AI</h2>
+      <p>AI is being used across numerous industries to solve real-world problems:</p>
+
+      <ul class="content-list">
+        <li><strong>Healthcare:</strong> Personalized medicine, X-ray readings, health coaching, and early disease detection.</li>
+        <li><strong>Retail:</strong> Virtual shopping, personalized recommendations, inventory management, and site optimization.</li>
+        <li><strong>Manufacturing:</strong> Analyzing IoT data from factory equipment to forecast demand and optimize production.</li>
+        <li><strong>Banking:</strong> Fraud detection, credit scoring, and automating data management tasks.</li>
+        <li><strong>Transportation:</strong> Self-driving cars, route optimization, and traffic management.</li>
+        <li><strong>Public Sector:</strong> Smart cities, national defense, predictive maintenance, and program efficiency.</li>
+        <li><strong>Gaming:</strong> Chess-playing computers and intelligent game opponents.</li>
+        <li><strong>Speech Recognition:</strong> Voice-activated systems like airline information services and voice assistants.</li>
+        <li><strong>Computer Vision:</strong> Medical imaging, autonomous vehicles, and security systems.</li>
+        <li><strong>Expert Systems:</strong> Medical diagnosis tools like MYCIN, credit card purchase advisors, and specialized decision-making systems.</li>
+      </ul>
+    </section>
+
+  </div>
+</div>
+
+<!-- ===== MODULE 2 PAGE ===== -->
+<div id="mod2" class="page reviewer-page">
+  <div style="background:white;border-bottom:2px solid var(--testosterose);padding:0.8rem 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:60px;z-index:50;">
+    <button onclick="showPage('home')" style="background:var(--purple-seduction);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
+    <span style="font-weight:800;color:var(--purple-seduction);">🔧 Module 2: AI Ethics, Types &amp; Tools</span>
+    <div style="margin-left:auto;display:flex;gap:0.5rem;">
+      <button onclick="showPage('flashcards')" style="background:transparent;border:2px solid var(--testosterose);color:var(--purple-seduction);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">🃏 Flashcards</button>
+      <button onclick="showPage('quiz')" style="background:transparent;border:2px solid var(--testosterose);color:var(--purple-seduction);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">📝 Quiz</button>
+    </div>
+  </div>
+  <div class="content-header">
+    <h1>🔧 Module 2: AI Ethics, Types & Tools</h1>
+    <p class="content-subtitle">Understanding ethical AI, different AI types, and the tools used in AI development</p>
+  </div>
+
+  <div class="content-body">
+    
+    <section class="content-section">
+      <h2>Artificial Intelligence Ethics</h2>
+      <p>Artificial Intelligence ethics is a system of moral principles and techniques intended to inform the development and responsible use of AI technology. As AI becomes integral to products and services, organizations are developing AI codes of ethics.</p>
+
+      <div class="definition-box">
+        <h3>📌 AI Code of Ethics</h3>
+        <p>An AI code of ethics (also called an AI value platform) is a policy statement that formally defines the role of artificial intelligence as it applies to the continued development of the human race. It provides stakeholders with guidance when faced with ethical decisions regarding AI use.</p>
+      </div>
+
+      <h3>Isaac Asimov's Three Laws of Robotics</h3>
+      <ul class="content-list">
+        <li><strong>First Law:</strong> Robots must not actively harm humans or allow harm to come to humans by refusing to act.</li>
+        <li><strong>Second Law:</strong> Robots must obey humans unless orders conflict with the first law.</li>
+        <li><strong>Third Law:</strong> Robots must protect themselves as long as doing so aligns with the first two laws.</li>
+      </ul>
+
+      <h3>Why are AI Ethics Important?</h3>
+      <p>AI is designed to replicate, augment, or replace human intelligence. Poorly designed projects built on faulty, inadequate, or biased data can have unintended, harmful consequences. The rapid advancement in algorithmic systems means we sometimes can't explain how AI reaches conclusions, yet we rely on these systems for decisions affecting society.</p>
+
+      <p>An AI ethics framework shines a light on risks and benefits, establishing guidelines for responsible use. Key considerations include:</p>
+      <ul class="content-list">
+        <li>Guarding against unintended bias in machine-learning algorithms</li>
+        <li>Continuously detecting drift in data and algorithms</li>
+        <li>Tracking data provenance and algorithm trainers' identities</li>
+        <li>Ensuring transparency and explainability</li>
+      </ul>
+    </section>
+
+    <section class="content-section">
+      <h2>Types of Artificial Intelligence</h2>
+      <p>AI can be categorized in two main ways: based on capabilities and based on functionality.</p>
+
+      <h3>Type 1: Based on Capabilities</h3>
+
+      <div class="definition-box">
+        <h3>Weak AI (Narrow AI)</h3>
+        <p>Able to perform dedicated tasks with intelligence. Most common and currently available AI. Cannot perform beyond its field or limitations. Examples: chess-playing programs, e-commerce recommendations, self-driving cars, speech and image recognition.</p>
+      </div>
+
+      <div class="definition-box">
+        <h3>General AI</h3>
+        <p>Could perform any intellectual task with human-like efficiency. Aims to create systems that can think and reason like humans independently. Still largely theoretical.</p>
+      </div>
+
+      <div class="definition-box">
+        <h3>Super AI</h3>
+        <p>Systems that could surpass human intelligence and perform any task better than humans with cognitive properties. Can think, reason, solve puzzles, make judgments, plan, learn, and communicate independently. Currently hypothetical.</p>
+      </div>
+
+      <h3>Type 2: Based on Functionality</h3>
+
+      <div class="definition-box">
+        <h3>Reactive Machines</h3>
+        <p>Most basic type of AI. Do not store memories or past experiences. Only focus on current scenarios and react with the best possible action. Examples: IBM's Deep Blue, Google's AlphaGo.</p>
+      </div>
+
+      <div class="definition-box">
+        <h3>Limited Memory</h3>
+        <p>Can store past experiences or data for a short period. Can use stored data temporarily. Example: Self-driving cars store recent speeds of nearby cars, distances, speed limits, and other information to navigate roads.</p>
+      </div>
+
+      <div class="definition-box">
+        <h3>Theory of Mind</h3>
+        <p>Should understand human emotions, people, beliefs, and interact socially like humans. Still not developed, but researchers are making efforts toward this type of AI machine.</p>
+      </div>
+
+      <div class="definition-box">
+        <h3>Self-Awareness</h3>
+        <p>Future of AI. These machines will be super intelligent with their own consciousness, sentiments, and self-awareness. Will be smarter than the human mind. Currently hypothetical.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>AI Tools and Frameworks</h2>
+      <p>Major tech companies have developed frameworks and tools, contributing them as open-source AI tools:</p>
+
+      <ul class="content-list">
+        <li><strong>Caffe:</strong> Developed by Berkeley Vision and Learning Centre. Deep learning framework popular for its speed—can process 50+ million images daily. Used in research, speech, multimedia, and vision projects.</li>
+        
+        <li><strong>TensorFlow:</strong> Open-source framework by Google for numerical computation. Uses data flow graphs. Supports CPUs, TPUs, GPUs, mobile phones, and desktops. Extensive tutorials available at tensorflow.org.</li>
+        
+        <li><strong>Theano:</strong> Open-source library from University of Montreal. Similar to TensorFlow but supports a wider range of operations. Better at specific computational tasks.</li>
+        
+        <li><strong>Keras:</strong> Open-source neural network library in Python. Runs on top of TensorFlow and Theano. Handles high-level APIs while using other libraries for low-level computation. Easy-to-use interface.</li>
+        
+        <li><strong>Scikit-Learn:</strong> Open-source machine learning library in Python. Provides supervised and unsupervised ML algorithms. Based on Scientific Python (SciPy).</li>
+        
+        <li><strong>PyTorch:</strong> Scientific package based on Python using GPU power. Offers easy-to-use API and dynamic computational graphs that can change during runtime.</li>
+      </ul>
+    </section>
+
+    <section class="content-section">
+      <h2>AI Software</h2>
+      <p>AI software is "software capable of intelligent behavior." It simulates capabilities including reasoning, learning, problem-solving, perception, and knowledge representation.</p>
+
+      <h3>Types of AI Software</h3>
+
+      <ul class="content-list">
+        <li><strong>Google Cloud Machine Learning:</strong> Trains user systems with Google Cloud Platform Console, gcloud, and REST API. Analyzes, trains, modifies, and deploys on user infrastructure.</li>
+        
+        <li><strong>Azure Machine Learning Studio:</strong> Browser-based tool for deploying designs as web applications. Works on independent platforms. Scalable, simple, easy to use. No programming skills needed.</li>
+        
+        <li><strong>TensorFlow:</strong> Numeric computational tool for ML research and development. Open-source system deployable on CPUs, TPUs, GPUs, and mobile devices.</li>
+        
+        <li><strong>H2O AI:</strong> Used in banking, healthcare, insurance, marketing. Open-source with AutoML features. Supports gradient boosted machines and deep learning.</li>
+        
+        <li><strong>Cortana:</strong> Microsoft's virtual assistant. Runs multiple tasks simultaneously. Operates on Windows, iOS, Android, Xbox OS. Uses Bing search engine. Voice-controlled.</li>
+        
+        <li><strong>IBM Watson:</strong> Q&A session-based system for SUSE Linux Servers on Apache Hadoop. Gathers knowledge from small information. Uses API for application development.</li>
+        
+        <li><strong>Salesforce Einstein:</strong> Smart CRM system for marketing, sales, commerce, analytics. Provides awareness about opportunities. Processes data by adding entities. Uses historical data for prioritization.</li>
+        
+        <li><strong>Amazon Alexa:</strong> Cloud-based virtual assistant. Understands English, German, French, Italian, Japanese. Integrates with devices via Alexa Voice Service. Connects to millions of devices and Bluetooth systems.</li>
+        
+        <li><strong>Google Assistant:</strong> Virtual assistant for smart devices and mobiles. Supports Android, iOS, KaiOS. Available in multiple languages. Dual-way conversation capable. Controls alarms, schedules, hardware settings.</li>
+      </ul>
+    </section>
+
+  </div>
+</div>
+
+<!-- ===== MODULE 3 PAGE ===== -->
+<div id="mod3" class="page reviewer-page">
+  <div style="background:white;border-bottom:2px solid var(--testosterose);padding:0.8rem 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:60px;z-index:50;">
+    <button onclick="showPage('home')" style="background:var(--purple-seduction);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
+    <span style="font-weight:800;color:var(--purple-seduction);">🧠 Module 3: Intelligent Agents</span>
+    <div style="margin-left:auto;display:flex;gap:0.5rem;">
+      <button onclick="showPage('flashcards')" style="background:transparent;border:2px solid var(--testosterose);color:var(--purple-seduction);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">🃏 Flashcards</button>
+      <button onclick="showPage('quiz')" style="background:transparent;border:2px solid var(--testosterose);color:var(--purple-seduction);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">📝 Quiz</button>
+    </div>
+  </div>
+  <div class="content-header">
+    <h1>🧠 Module 3: Intelligent Agents</h1>
+    <p class="content-subtitle">Understanding how AI agents interact with environments and make decisions</p>
+  </div>
+
+  <div class="content-body">
+    
+    <section class="content-section">
+      <h2>What is an Agent?</h2>
+      <p>An agent is anything that can perceive its environment through <strong>sensors</strong> and act upon that environment through <strong>actuators</strong>. An agent runs in the cycle of perceiving, thinking, and acting.</p>
+
+      <div class="definition-box">
+        <h3>📌 Intelligent Agent (IA)</h3>
+        <p>An intelligent agent is an entity that makes decisions enabling AI to be put into action. It's a software entity conducting operations in place of users or programs after sensing the environment, using actuators to initiate action.</p>
+      </div>
+
+      <p>AI is defined as the study of <strong>rational agents</strong>. A rational agent could be anything making decisions—a person, firm, machine, or software. It acts with the best outcome after considering past and current percepts (perceptual inputs at a given instance).</p>
+
+      <h3>Forms of Agents</h3>
+      <ul class="content-list">
+        <li><strong>Human Agent:</strong> Sensors include eyes, ears, skin, taste buds. Actuators include hands, fingers, legs, mouth.</li>
+        <li><strong>Robot Agent:</strong> Sensors include cameras, infrared, bumpers. Actuators include grippers, wheels, lights, speakers.</li>
+        <li><strong>Software Agent:</strong> Receives keystrokes and file contents as sensory input. Acts on inputs and displays output on screen.</li>
+      </ul>
+    </section>
+
+    <section class="content-section">
+      <h2>Components of Intelligent Agents</h2>
+
+      <div class="definition-box">
+        <h3>Sensor</h3>
+        <p>Device that detects changes in the environment and sends information to other electronic devices. An agent observes its environment through sensors.</p>
+      </div>
+
+      <div class="definition-box">
+        <h3>Actuators</h3>
+        <p>Components of machines that convert energy into motion. Responsible for moving and controlling a system. Can be electric motors, gears, rails, etc.</p>
+      </div>
+
+      <div class="definition-box">
+        <h3>Effectors</h3>
+        <p>Devices that affect the environment. Can be legs, wheels, arms, fingers, wings, fins, display screens.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Process of Intelligent Agent in AI</h2>
+      <p>An AI agent perceives the environment using sensors, makes decisions with artificial intelligence, and performs actions via actuators:</p>
+
+      <ul class="content-list">
+        <li><strong>Step 1:</strong> Agent takes inputs from the environment using sensors.</li>
+        <li><strong>Step 2:</strong> Observations are considered for making decisions using AI.</li>
+        <li><strong>Step 3:</strong> Decision triggers action from agents through actuators.</li>
+        <li><strong>Step 4:</strong> Agent keeps history of past actions and uses feedback for future decisions.</li>
+      </ul>
+
+      <p>An AI agent is a combination of <strong>architecture</strong> (the machinery part) and an <strong>agent program</strong> (functions and conditions).</p>
+    </section>
+
+    <section class="content-section">
+      <h2>Types of AI Agents</h2>
+      <p>Agents can be grouped into five classes based on their degree of perceived intelligence and capability:</p>
+
+      <div class="definition-box">
+        <h3>1. Simple Reflex Agent</h3>
+        <p>Simplest agents. Make decisions based on current percepts, ignoring percept history. Only succeed in fully observable environments. Very limited intelligence with no knowledge of non-perceptual parts of current state.</p>
+      </div>
+
+      <div class="definition-box">
+        <h3>2. Model-Based Reflex Agent</h3>
+        <p>Can work in partially observable environments and track situations. Has two important factors:</p>
+        <ul class="content-list">
+          <li><strong>Model:</strong> Knowledge about "how things happen in the world"</li>
+          <li><strong>Internal State:</strong> Representation of current state based on percept history</li>
+        </ul>
+        <p>Requires information about how the world evolves and how agent's actions affect the world.</p>
+      </div>
+
+      <div class="definition-box">
+        <h3>3. Goal-Based Agents</h3>
+        <p>Knowledge of current state isn't always sufficient. Agent needs to know its <strong>goal</strong>—describing desirable situations. Expands model-based agent capabilities by having goal information. May consider long sequences of possible actions before deciding if goal is achieved. Uses searching and planning to be proactive.</p>
+      </div>
+
+      <div class="definition-box">
+        <h3>4. Utility-Based Agents</h3>
+        <p>Similar to goal-based but provides extra component of <strong>utility measurement</strong>—measuring success at given states. Acts based not only on goals but also on the best way to achieve goals. Useful when multiple alternatives exist. Utility function maps each state to real number to check how efficiently each action achieves goals.</p>
+      </div>
+
+      <div class="definition-box">
+        <h3>5. Learning Agents</h3>
+        <p>Can learn from past experiences with learning capabilities. Starts with basic knowledge, then acts and adapts through learning. Has four conceptual components:</p>
+        <ul class="content-list">
+          <li><strong>Learning Element:</strong> Responsible for making improvements by learning from environment</li>
+          <li><strong>Critic:</strong> Provides feedback describing agent performance for fixed standard</li>
+          <li><strong>Performance Element:</strong> Responsible for selecting external action</li>
+          <li><strong>Problem Generator:</strong> Suggests actions leading to new, informative experiences</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Rules of AI Agent</h2>
+      <ul class="content-list">
+        <li><strong>Rule 1:</strong> AI agent must have ability to perceive the environment.</li>
+        <li><strong>Rule 2:</strong> Observation must be used to make decisions.</li>
+        <li><strong>Rule 3:</strong> Decision should result in an action.</li>
+        <li><strong>Rule 4:</strong> Action taken by AI agent must be rational.</li>
+      </ul>
+    </section>
+
+    <section class="content-section">
+      <h2>The Structure of Intelligent Agents</h2>
+      <p>The task of AI is to design an agent program that implements the agent function:</p>
+      
+      <div class="definition-box">
+        <h3>Agent = Architecture + Agent Program</h3>
+        <p>The IA structure consists of three main parts:</p>
+        <ul class="content-list">
+          <li><strong>Architecture:</strong> Machinery or devices with actuators and sensors (e.g., PC, car, camera)</li>
+          <li><strong>Agent Function:</strong> Function mapping actions from percept sequences (history of what agent perceived)</li>
+          <li><strong>Agent Program:</strong> Implementation/execution of the agent function</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>PEAS Representation</h2>
+      <p>PEAS is a model defining AI agent properties:</p>
+
+      <ul class="content-list">
+        <li><strong>P:</strong> Performance measure (objective for success of agent's behavior)</li>
+        <li><strong>E:</strong> Environment</li>
+        <li><strong>A:</strong> Actuators</li>
+        <li><strong>S:</strong> Sensors</li>
+      </ul>
+
+      <div class="definition-box">
+        <h3>Example: Self-Driving Car PEAS</h3>
+        <ul class="content-list">
+          <li><strong>Performance:</strong> Safety, time, legal drive, comfort</li>
+          <li><strong>Environment:</strong> Roads, other vehicles, road signs, pedestrians</li>
+          <li><strong>Actuators:</strong> Steering, accelerator, brake, signal, horn</li>
+          <li><strong>Sensors:</strong> Camera, GPS, speedometer, odometer, accelerometer, sonar</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Benefits of Using Intelligent Agents</h2>
+      <ul class="content-list">
+        <li>Performs actions based on decisions made by AI—converts ideas into action</li>
+        <li>Can work on simple commands like human voice (e.g., Alexa, Siri)</li>
+        <li>Evolves with time, unlike classic agents with predefined actions</li>
+        <li>Can take utility measurements into account, making them more realistic</li>
+      </ul>
+    </section>
+
+  </div>
+</div>
+
+<!-- ===== FLASHCARDS PAGE ===== -->
+<div id="flashcards" class="page">
+  <div id="flashcards-content" style="max-width:750px;margin:0 auto;padding:2rem;">
+    <div class="flashcard-header">
+      <h1>🃏 Flashcards</h1>
+      <p>Click a card to reveal the answer. Use arrows to navigate.</p>
+    </div>
+
+    <div class="flashcard-module-select">
+      <button class="module-select-btn active" onclick="setFlashcardModuleBtn('mod1', this)">🤖 Module 1</button>
+      <button class="module-select-btn" onclick="setFlashcardModuleBtn('mod2', this)">🔧 Module 2</button>
+      <button class="module-select-btn" onclick="setFlashcardModuleBtn('mod3', this)">🧠 Module 3</button>
+    </div>
+
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="fcProgress" style="width:0%"></div>
+    </div>
+
+    <div class="flashcard-counter" id="fcCounter">Card 1 of 10</div>
+
+    <div class="card-scene" onclick="flipCard()">
+      <div class="card-inner" id="cardInner">
+        <div class="card-face card-front">
+          <div class="card-label">TERM</div>
+          <div class="card-term" id="cardTerm">Loading...</div>
+        </div>
+        <div class="card-face card-back">
+          <div class="card-label">DEFINITION / ANSWER</div>
+          <div class="card-def" id="cardDef">Loading...</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-hint">👆 Click the card to flip it</div>
+
+    <div class="flashcard-nav">
+      <button class="fc-btn" onclick="prevCard()">← Previous</button>
+      <button class="fc-btn primary" onclick="flipCard()">Flip Card</button>
+      <button class="fc-btn" onclick="nextCard()">Next →</button>
+    </div>
+    <div style="text-align:center;margin-top:1rem;">
+      <button class="fc-btn" onclick="shuffleCards()">🔀 Shuffle</button>
+      <button class="fc-btn" onclick="resetCards()" style="margin-left:0.5rem;">↩ Reset</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== QUIZ PAGE ===== -->
+<!-- ===== QUIZ PAGE ===== -->
+<div id="quiz" class="page">
+  <div style="max-width:750px;margin:0 auto;padding:2rem;">
+    <div class="quiz-header">
+      <h1>📝 Quiz</h1>
+      <p style="color:#555;">Test your knowledge on Computer Science 12</p>
+    </div>
+
+    <div class="quiz-module-select">
+      <button class="module-select-btn active" id="quizModBtn1" onclick="setQuizModule('mod1', this)">🤖 Module 1</button>
+      <button class="module-select-btn" id="quizModBtn2" onclick="setQuizModule('mod2', this)">🔧 Module 2</button>
+      <button class="module-select-btn" id="quizModBtn3" onclick="setQuizModule('mod3', this)">🧠 Module 3</button>
+    </div>
+
+    <!-- Start Screen -->
+    <div id="quizStart" class="quiz-start">
+      <div class="icon">💻</div>
+      <h2 id="quizModTitle">🤖 Module 1: Introduction to AI</h2>
+      <p>10 questions per set — Multiple Choice.</p>
+      <div style="display:flex;gap:0.6rem;justify-content:center;flex-wrap:wrap;margin-bottom:0.8rem;">
+        <span style="background:#d4eefb;color:#1a5a8e;padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Multiple Choice</span>
+      </div>
+      <div style="display:flex;gap:0.5rem;justify-content:center;margin-bottom:1.2rem;">
+        <button id="setBtn1" class="set-select-btn active" onclick="selectSet(1)">📋 Set 1</button>
+        <button id="setBtn2" class="set-select-btn" onclick="selectSet(2)">📋 Set 2</button>
+        <button id="setBtn3" class="set-select-btn" onclick="selectSet(3)">📋 Set 3</button>
+      </div>
+      <button class="start-btn" onclick="startQuiz()">Start Quiz →</button>
+    </div>
+
+    <!-- Question Area -->
+    <div id="quizQuestion" class="quiz-question-wrap">
+      <div class="quiz-progress-info">
+        <span id="qProgress">Question 1 of 10</span>
+        <span class="quiz-score-badge" id="qScore">Score: 0</span>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="quizProgressBar" style="width:10%"></div>
+      </div>
+
+      <div class="question-card">
+        <span class="question-type-badge type-mc" id="qTypeBadge">Multiple Choice</span>
+        <div class="question-text" id="qText"></div>
+        <ul class="options-list" id="qOptions"></ul>
+        <div class="feedback-box" id="qFeedback"></div>
+      </div>
+
+      <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Question →</button>
+    </div>
+
+    <!-- Results -->
+    <div id="quizResults" class="quiz-results">
+      <div style="font-size:3rem">🎉</div>
+      <h2 style="font-family:'Baloo 2',cursive;color:var(--purple-seduction);">Quiz Complete!</h2>
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-label" id="resultLabel">out of 10 questions</div>
+      <div class="result-message" id="resultMessage"></div>
+      <h3 style="text-align:left;color:var(--purple-seduction);margin-bottom:0.8rem;font-size:1rem;">Review Your Answers:</h3>
+      <div class="review-list scrollable" id="reviewList"></div>
+      <button class="start-btn" onclick="restartQuiz()">Try Again 🔄</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SLIDES PAGE ===== -->
+<div id="slides" class="page">
+  <div style="background:white;border-bottom:2px solid var(--testosterose);padding:0.8rem 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:60px;z-index:50;">
+    <button onclick="showPage('home')" style="background:var(--testosterose);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
+    <span style="font-weight:800;color:var(--testosterose);">📄 PDF Slides</span>
+  </div>
+  <div class="reviewer-module">
+    <div class="module-header" style="background:linear-gradient(135deg,var(--testosterose),var(--purple-seduction));">
+      <div class="module-icon">📄</div>
+      <div>
+        <h1>PDF Slides</h1>
+        <p>View the original slide decks for each module</p>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:1.2rem;">
+        <button class="pdf-mod-btn active" id="pdfBtn1" onclick="showPDF(1)">🤖 Module 1</button>
+        <button class="pdf-mod-btn" id="pdfBtn2" onclick="showPDF(2)">🔧 Module 2</button>
+        <button class="pdf-mod-btn" id="pdfBtn3" onclick="showPDF(3)">🧠 Module 3</button>
+      </div>
+
+      <!-- PDF labels -->
+      <div id="pdfLabel1" class="pdf-label">📘 Module 1: Introduction to Artificial Intelligence</div>
+      <div id="pdfLabel2" class="pdf-label" style="display:none;">📗 Module 2: AI Ethics, Types &amp; Tools</div>
+      <div id="pdfLabel3" class="pdf-label" style="display:none;">📙 Module 3: Intelligent Agents</div>
+
+      <!-- PDF iframes -->
+      <div class="pdf-frame-wrap">
+        <iframe id="pdfFrame1" class="pdf-frame"
+          src="pdfs/Computer_Science_12-Module_1.pdf"
+          allowfullscreen></iframe>
+        <iframe id="pdfFrame2" class="pdf-frame" style="display:none;"
+          src="pdfs/Computer_Science_12-Module_2__2_.pdf"
+          allowfullscreen></iframe>
+        <iframe id="pdfFrame3" class="pdf-frame" style="display:none;"
+          src="pdfs/Computer_Science_12-Module_3__1_.pdf"
+          allowfullscreen></iframe>
+      </div>
+
+      <div class="pdf-links">
+        <p style="color:#666;font-size:0.85rem;margin-bottom:0.6rem;">If the viewer doesn't load, open the PDF directly:</p>
+        <a class="pdf-direct-btn" href="pdfs/Computer_Science_12-Module_1.pdf" target="_blank" id="pdfDirect1">⬇️ Open Module 1 PDF</a>
+        <a class="pdf-direct-btn" href="pdfs/Computer_Science_12-Module_2__2_.pdf" target="_blank" id="pdfDirect2" style="display:none;">⬇️ Open Module 2 PDF</a>
+        <a class="pdf-direct-btn" href="pdfs/Computer_Science_12-Module_3__1_.pdf" target="_blank" id="pdfDirect3" style="display:none;">⬇️ Open Module 3 PDF</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== NAVIGATION =====
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+
+  if (id === 'quiz') {
+    backToSetup();
+  }
+  if (id === 'flashcards') renderFlashcard();
+  window.scrollTo(0, 0);
+}
+
+// ===== FLASHCARDS DATA =====
+const flashcards = {
+  mod1: [
+    { term: "Artificial Intelligence", definition: "A branch of computer science concerned with building smart machines capable of performing tasks that typically require human intelligence." },
+    { term: "Machine Learning", definition: "Automates analytical model building using methods from neural networks, statistics, and physics to find hidden insights in data." },
+    { term: "Deep Learning", definition: "Uses huge neural networks with many layers of processing units to learn complex patterns in large amounts of data." },
+    { term: "Neural Network", definition: "A type of machine learning made up of interconnected units (like neurons) that process information by responding to external inputs." },
+    { term: "Turing Test", definition: "A test created by Alan Turing to check a machine's ability to exhibit intelligent behavior equivalent to human intelligence." },
+    { term: "Natural Language Processing", definition: "The ability of computers to analyze, understand, and generate human language, including speech." },
+    { term: "Computer Vision", definition: "Uses pattern recognition and deep learning to recognize what's in pictures or videos and interpret surroundings." },
+    { term: "Cognitive Computing", definition: "Aims to imitate the human thought process using self-learning algorithms, pattern recognition, and NLP." },
+    { term: "Expert Systems", definition: "AI programs that simulate human expert decision-making in specific domains, like medical diagnosis." },
+    { term: "GPU", definition: "Graphical Processing Unit - provides heavy compute power required for training neural networks and iterative processing." }
+  ],
+  mod2: [
+    { term: "AI Ethics", definition: "A system of moral principles and techniques intended to inform the development and responsible use of AI technology." },
+    { term: "Narrow AI", definition: "AI that can perform dedicated tasks with intelligence but cannot perform beyond its field or limitations. Most common type currently available." },
+    { term: "General AI", definition: "AI that could perform any intellectual task with efficiency like a human. Aims to think and reason independently." },
+    { term: "Super AI", definition: "Hypothetical AI that could surpass human intelligence and perform any task better than humans with cognitive properties." },
+    { term: "Reactive Machines", definition: "Most basic type of AI that doesn't store memories or past experiences. Only focuses on current scenarios." },
+    { term: "Limited Memory AI", definition: "Can store past experiences or data for a short period and use it temporarily, like self-driving cars." },
+    { term: "Theory of Mind AI", definition: "Should understand human emotions, beliefs, and interact socially like humans. Still not developed." },
+    { term: "Self-Awareness AI", definition: "Future AI that will have own consciousness, sentiments, and self-awareness. Will be smarter than human mind." },
+    { term: "TensorFlow", definition: "Open-source framework by Google for numerical computation using data flow graphs." },
+    { term: "Three Laws of Robotics", definition: "Isaac Asimov's ethical framework: don't harm humans, obey humans (unless harmful), protect self (when safe)." }
+  ],
+  mod3: [
+    { term: "Agent", definition: "Anything that can perceive its environment through sensors and act upon that environment through actuators." },
+    { term: "Intelligent Agent", definition: "An autonomous entity that makes decisions enabling AI to be put into action by sensing environment and using actuators." },
+    { term: "Rational Agent", definition: "An agent that acts with the best outcome after considering past and current percepts." },
+    { term: "Sensor", definition: "A device that detects changes in the environment and sends information to other electronic devices." },
+    { term: "Actuator", definition: "Component of machines that converts energy into motion, responsible for moving and controlling a system." },
+    { term: "Simple Reflex Agent", definition: "Makes decisions based on current percepts, ignoring percept history. Only succeeds in fully observable environments." },
+    { term: "Model-Based Agent", definition: "Can work in partially observable environments with knowledge about how things happen in the world." },
+    { term: "Goal-Based Agent", definition: "Has goal information describing desirable situations. Uses searching and planning to achieve goals." },
+    { term: "Utility-Based Agent", definition: "Acts based not only on goals but also on the best way to achieve them, using utility measurement." },
+    { term: "PEAS", definition: "Performance measure, Environment, Actuators, Sensors - a model for defining AI agent properties." }
+  ]
+};
+
+// ===== FLASHCARDS LOGIC =====
+let currentCards = [...flashcards.mod1];
+let currentCardIndex = 0;
+let isFlipped = false;
+
+function setFlashcardModuleBtn(mod, btn) {
+  currentCards = [...(flashcards[mod] || [])];
+  currentCardIndex = 0;
+  document.querySelectorAll('.module-select-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderFlashcard();
+}
+
+// Legacy alias used by home card buttons that pass no btn arg
+function setFlashcardModule(mod) {
+  setFlashcardModuleBtn(mod, null);
+}
+
+function renderFlashcard() {
+  const card = currentCards[currentCardIndex];
+  if (!card) return;
+  document.getElementById('cardTerm').textContent = card.term;
+  document.getElementById('cardDef').textContent = card.definition;
+  document.getElementById('fcCounter').textContent = `Card ${currentCardIndex + 1} of ${currentCards.length}`;
+  const pct = (currentCardIndex / currentCards.length) * 100;
+  document.getElementById('fcProgress').style.width = pct + '%';
+  isFlipped = false;
+  document.getElementById('cardInner').classList.remove('flipped');
+}
+
+function flipCard() {
+  isFlipped = !isFlipped;
+  document.getElementById('cardInner').classList.toggle('flipped', isFlipped);
+}
+
+function nextCard() {
+  if (currentCardIndex < currentCards.length - 1) { currentCardIndex++; renderFlashcard(); }
+}
+
+function prevCard() {
+  if (currentCardIndex > 0) { currentCardIndex--; renderFlashcard(); }
+}
+
+function shuffleCards() {
+  for (let i = currentCards.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [currentCards[i], currentCards[j]] = [currentCards[j], currentCards[i]];
+  }
+  currentCardIndex = 0;
+  renderFlashcard();
+}
+
+function resetCards() {
+  currentCards = [...flashcards.mod1];
+  currentCardIndex = 0;
+  document.querySelectorAll('.module-select-btn').forEach((b, i) => b.classList.toggle('active', i === 0));
+  renderFlashcard();
+}
+
+// Initialize
+renderFlashcard();
+
+// ===== QUIZ DATA =====
+const quizData = {
+  mod1: {
+    set1: [
+      { question: "Who coined the term 'Artificial Intelligence'?", options: ["Alan Turing", "John McCarthy", "Herbert Simon", "Allen Newell"], correct: 1 },
+      { question: "In what year was the term 'Artificial Intelligence' coined?", options: ["1943", "1950", "1956", "1966"], correct: 2 },
+      { question: "What is the Turing Test used for?", options: ["Testing computer speed", "Checking machine's ability to exhibit intelligent behavior", "Measuring processing power", "Testing network connectivity"], correct: 1 },
+      { question: "Which company developed Deep Blue, the chess-playing computer?", options: ["Google", "Microsoft", "IBM", "Apple"], correct: 2 },
+      { question: "What does GPU stand for in AI context?", options: ["General Processing Unit", "Graphical Processing Unit", "Global Processing Unit", "Game Processing Unit"], correct: 1 },
+      { question: "Which AI subfield analyzes, understands, and generates human language?", options: ["Computer Vision", "Machine Learning", "Natural Language Processing", "Deep Learning"], correct: 2 },
+      { question: "What was the name of the first chatbot created in 1966?", options: ["ELIZA", "Siri", "Alexa", "Cortana"], correct: 0 },
+      { question: "Which is NOT a central principle of AI?", options: ["Reasoning", "Learning", "Communication", "Manufacturing"], correct: 3 },
+      { question: "What does IoT stand for?", options: ["Internet of Things", "Intelligence of Technology", "Interface of Tools", "Integration of Tech"], correct: 0 },
+      { question: "Which AI application helps detect fraudulent transactions?", options: ["Gaming", "Banking", "Music", "Art"], correct: 1 }
+    ],
+    set2: [
+      { question: "What enables AI to add intelligence to existing products?", options: ["Hardware upgrades", "AI capabilities like machine learning", "Larger storage", "Faster processors"], correct: 1 },
+      { question: "Which technology generates massive amounts of data for AI to analyze?", options: ["CPUs", "Internet of Things", "Hard drives", "Monitors"], correct: 1 },
+      { question: "What is a major advantage of AI?", options: ["Reduced human error", "Lower costs", "Simplified hardware", "Faster internet"], correct: 0 },
+      { question: "What is a limitation of current AI systems?", options: ["Too slow", "Cannot make emotional connections", "Uses too little data", "Too simple"], correct: 1 },
+      { question: "Which AI component uses huge neural networks with many layers?", options: ["Shallow Learning", "Deep Learning", "Surface Learning", "Simple Learning"], correct: 1 },
+      { question: "What do neural networks process information through?", options: ["Files", "Interconnected units", "Databases", "Spreadsheets"], correct: 1 },
+      { question: "Which industry uses AI for personalized medicine and X-ray readings?", options: ["Retail", "Healthcare", "Banking", "Entertainment"], correct: 1 },
+      { question: "What replaced humans in coal mines according to AI advantages?", options: ["Computers", "AI robots", "Drones", "Automated carts"], correct: 1 },
+      { question: "What does NLP stand for?", options: ["New Language Programming", "Natural Language Processing", "Network Language Protocol", "Neural Learning Process"], correct: 1 },
+      { question: "Which AI era saw the creation of WABOT-1?", options: ["AI Winter", "Golden Years", "Modern Era", "Future Era"], correct: 1 }
+    ],
+    set3: [
+      { question: "What makes AI systems 'learn' automatically?", options: ["Manual programming", "Pattern recognition in data", "Human intervention", "Fixed algorithms"], correct: 1 },
+      { question: "Which AI application provides virtual shopping capabilities?", options: ["Healthcare", "Retail", "Banking", "Manufacturing"], correct: 1 },
+      { question: "What is the main purpose of computer vision?", options: ["Create documents", "Recognize images and videos", "Process text", "Generate sounds"], correct: 1 },
+      { question: "Which technology provides compute power for training neural networks?", options: ["CPU", "GPU", "RAM", "SSD"], correct: 1 },
+      { question: "What was Logic Theorist?", options: ["A chatbot", "First AI program", "A robot", "A search engine"], correct: 1 },
+      { question: "What does API stand for in AI context?", options: ["Application Programming Interface", "Automated Process Integration", "Artificial Program Intelligence", "Advanced Protocol Interface"], correct: 0 },
+      { question: "Which is an example of narrow AI?", options: ["Human-level robot", "Chess playing program", "General purpose AI", "Conscious machine"], correct: 1 },
+      { question: "What did IBM's Deep Blue defeat Garry Kasparov in?", options: ["Go", "Chess", "Poker", "Checkers"], correct: 1 },
+      { question: "Which AI principle involves moving and manipulating objects?", options: ["Communication", "Perception", "Physical action", "Reasoning"], correct: 2 },
+      { question: "What enables AI to achieve incredible accuracy?", options: ["Larger storage", "Deep neural networks", "Faster internet", "More users"], correct: 1 }
+    ]
+  },
+  mod2: {
+    set1: [
+      { question: "What is AI Ethics?", options: ["Programming rules", "Moral principles for AI development", "Hardware specifications", "Data storage methods"], correct: 1 },
+      { question: "Who created the Three Laws of Robotics?", options: ["Alan Turing", "John McCarthy", "Isaac Asimov", "Herbert Simon"], correct: 2 },
+      { question: "What is the first law of robotics?", options: ["Obey humans", "Protect self", "Must not harm humans", "Learn continuously"], correct: 2 },
+      { question: "What is Narrow AI also called?", options: ["Strong AI", "Weak AI", "General AI", "Super AI"], correct: 1 },
+      { question: "Which AI type is most commonly available today?", options: ["Super AI", "General AI", "Narrow AI", "Self-Aware AI"], correct: 2 },
+      { question: "What is an example of Narrow AI?", options: ["Human-like robot", "Chess program", "Conscious machine", "Self-aware system"], correct: 1 },
+      { question: "Which AI type doesn't store memories?", options: ["Limited Memory", "Reactive Machines", "Learning Agents", "Goal-Based"], correct: 1 },
+      { question: "What is an example of a Reactive Machine?", options: ["Self-driving car", "Siri", "IBM's Deep Blue", "Google Assistant"], correct: 2 },
+      { question: "Which AI type can learn from past experiences?", options: ["Simple Reflex", "Reactive", "Learning Agent", "Theory of Mind"], correct: 2 },
+      { question: "What does Self-Awareness AI have?", options: ["Limited memory", "Own consciousness", "Simple reactions", "Basic programs"], correct: 1 }
+    ],
+    set2: [
+      { question: "Which framework was developed by Google?", options: ["Caffe", "TensorFlow", "Theano", "PyTorch"], correct: 1 },
+      { question: "What language is Keras programmed in?", options: ["Java", "C++", "Python", "JavaScript"], correct: 2 },
+      { question: "Which tool can process 50+ million images daily?", options: ["TensorFlow", "Caffe", "Keras", "Scikit-Learn"], correct: 1 },
+      { question: "What does Keras run on top of?", options: ["Direct hardware", "TensorFlow or Theano", "CPU only", "Web browsers"], correct: 1 },
+      { question: "Which is an open-source neural network library?", options: ["Windows AI", "Keras", "Microsoft Office", "Adobe AI"], correct: 1 },
+      { question: "What is PyTorch based on?", options: ["Java", "C++", "Python", "Ruby"], correct: 2 },
+      { question: "Which Microsoft product is a virtual assistant?", options: ["Word", "Cortana", "Excel", "PowerPoint"], correct: 1 },
+      { question: "What search engine does Cortana use?", options: ["Google", "Yahoo", "Bing", "DuckDuckGo"], correct: 2 },
+      { question: "Which company created Watson?", options: ["Google", "Microsoft", "IBM", "Apple"], correct: 2 },
+      { question: "What is Salesforce Einstein used for?", options: ["Gaming", "CRM and marketing", "Music", "Video editing"], correct: 1 }
+    ],
+    set3: [
+      { question: "Why are AI ethics important?", options: ["Increase speed", "Guide responsible AI use", "Reduce costs", "Improve graphics"], correct: 1 },
+      { question: "What should AI ethics guard against?", options: ["Fast processing", "Unintended bias", "Low memory", "Slow networks"], correct: 1 },
+      { question: "What is General AI designed to do?", options: ["One task only", "Think like humans", "Store data", "Display graphics"], correct: 1 },
+      { question: "What is Super AI?", options: ["Current technology", "Hypothetical advanced AI", "Simple programs", "Basic algorithms"], correct: 1 },
+      { question: "Which AI type stores data temporarily?", options: ["Reactive", "Limited Memory", "Super AI", "Theory of Mind"], correct: 1 },
+      { question: "What do self-driving cars use?", options: ["Reactive AI", "Limited Memory AI", "Theory of Mind", "Simple programs"], correct: 1 },
+      { question: "What is Theory of Mind AI supposed to understand?", options: ["Code", "Human emotions", "Networks", "Databases"], correct: 1 },
+      { question: "Which AI framework was developed by Berkeley?", options: ["TensorFlow", "Keras", "Caffe", "PyTorch"], correct: 2 },
+      { question: "What does Azure ML Studio deploy designs as?", options: ["Desktop apps", "Web applications", "Mobile games", "Operating systems"], correct: 1 },
+      { question: "Which virtual assistant works on Android, iOS, and KaiOS?", options: ["Cortana", "Siri", "Google Assistant", "Alexa"], correct: 2 }
+    ]
+  },
+  mod3: {
+    set1: [
+      { question: "What is an agent?", options: ["A program", "Anything that perceives and acts on environment", "A database", "A network"], correct: 1 },
+      { question: "What do agents use to perceive their environment?", options: ["Displays", "Sensors", "Keyboards", "Speakers"], correct: 1 },
+      { question: "What do agents use to act on their environment?", options: ["Monitors", "Sensors", "Actuators", "Databases"], correct: 2 },
+      { question: "What is an example of a human sensor?", options: ["Hands", "Eyes", "Legs", "Mouth"], correct: 1 },
+      { question: "What is an example of a robot actuator?", options: ["Camera", "Wheels", "Sensor", "Scanner"], correct: 1 },
+      { question: "What detects changes in the environment?", options: ["Actuator", "Sensor", "Display", "Speaker"], correct: 1 },
+      { question: "What converts energy into motion?", options: ["Sensor", "Display", "Actuator", "Camera"], correct: 2 },
+      { question: "What are effectors?", options: ["Input devices", "Devices that affect environment", "Storage units", "Networks"], correct: 1 },
+      { question: "What cycle does an agent run in?", options: ["Start-stop-restart", "Perceiving-thinking-acting", "Input-output", "Load-save"], correct: 1 },
+      { question: "What is a rational agent?", options: ["One that acts randomly", "One that acts with best outcome", "One that stops", "One that waits"], correct: 1 }
+    ],
+    set2: [
+      { question: "Which agent type is the simplest?", options: ["Model-based", "Goal-based", "Simple Reflex", "Learning"], correct: 2 },
+      { question: "What does Simple Reflex Agent ignore?", options: ["Current state", "Percept history", "Actions", "Environment"], correct: 1 },
+      { question: "What does Model-Based Agent have?", options: ["No memory", "Internal state and model", "Only sensors", "No actuators"], correct: 1 },
+      { question: "What do Goal-Based Agents use?", options: ["Only current state", "Goal information", "No planning", "Random actions"], correct: 1 },
+      { question: "What makes Utility-Based Agents different?", options: ["No sensors", "Utility measurement", "No actuators", "Simple rules"], correct: 1 },
+      { question: "What can Learning Agents do?", options: ["Only react", "Learn from experience", "Stay static", "Ignore feedback"], correct: 1 },
+      { question: "What are the 4 components of Learning Agent?", options: ["4 sensors", "Learning element, critic, performance, problem generator", "4 actuators", "4 goals"], correct: 1 },
+      { question: "What does the critic component do?", options: ["Learn", "Provide feedback", "Act", "Sense"], correct: 1 },
+      { question: "What does the performance element do?", options: ["Learn", "Select actions", "Store data", "Display info"], correct: 1 },
+      { question: "What does problem generator do?", options: ["Create errors", "Suggest new experiences", "Delete data", "Stop learning"], correct: 1 }
+    ],
+    set3: [
+      { question: "What does PEAS stand for?", options: ["Process, Execute, Act, Sense", "Performance, Environment, Actuators, Sensors", "Program, Evaluate, Analyze, Store", "Perceive, Execute, Adapt, Stop"], correct: 1 },
+      { question: "In PEAS, what is P?", options: ["Program", "Performance measure", "Process", "Perceive"], correct: 1 },
+      { question: "What is the first rule of AI agents?", options: ["Must act", "Must perceive environment", "Must learn", "Must stop"], correct: 1 },
+      { question: "What is the second rule of AI agents?", options: ["Ignore observations", "Use observation to decide", "Act randomly", "Stay idle"], correct: 1 },
+      { question: "What is the third rule of AI agents?", options: ["Don't act", "Decision results in action", "Wait forever", "Store only"], correct: 1 },
+      { question: "What is the fourth rule of AI agents?", options: ["Act randomly", "Action must be rational", "Never act", "Act slowly"], correct: 1 },
+      { question: "What is Agent Structure composed of?", options: ["Sensors only", "Architecture + Agent program", "Actuators only", "Data only"], correct: 1 },
+      { question: "What is Architecture in agent structure?", options: ["Software", "Machinery with actuators and sensors", "Database", "Network"], correct: 1 },
+      { question: "What is Agent Function?", options: ["Random output", "Maps actions from percepts", "Stores data", "Displays info"], correct: 1 },
+      { question: "What is Agent Program?", options: ["Random code", "Implementation of agent function", "Sensor data", "Actuator list"], correct: 1 }
+    ]
+  }
+};
+
+// ===== QUIZ LOGIC =====
+let currentQuizModule = 'mod1';
+let currentQuizSet = 'set1';
+let currentQuestion = 0;
+let score = 0;
+let answeredQuestions = [];
+
+function setQuizModule(mod, el) {
+  currentQuizModule = mod;
+  document.querySelectorAll('#quizModBtn1,#quizModBtn2,#quizModBtn3').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  const titles = { mod1:'🤖 Module 1: Introduction to AI', mod2:'🔧 Module 2: AI Ethics, Types & Tools', mod3:'🧠 Module 3: Intelligent Agents' };
+  document.getElementById('quizModTitle').textContent = titles[mod];
+}
+
+function selectSet(num) {
+  currentQuizSet = 'set' + num;
+  [1,2,3].forEach(n => document.getElementById('setBtn'+n).classList.toggle('active', n===num));
+}
+
+function startQuiz() {
+  currentQuestion = 0; score = 0; answeredQuestions = [];
+  document.getElementById('quizStart').style.display = 'none';
+  document.getElementById('quizQuestion').classList.add('active');
+  document.getElementById('quizResults').classList.remove('active');
+  updateQuizDisplay();
+}
+
+function backToSetup() {
+  document.getElementById('quizStart').style.display = 'block';
+  document.getElementById('quizQuestion').classList.remove('active');
+  document.getElementById('quizResults').classList.remove('active');
+}
+
+function updateQuizDisplay() {
+  const questions = quizData[currentQuizModule][currentQuizSet];
+  const question = questions[currentQuestion];
+  document.getElementById('qProgress').textContent = `Question ${currentQuestion+1} of ${questions.length}`;
+  document.getElementById('qScore').textContent = `Score: ${score}`;
+  document.getElementById('quizProgressBar').style.width = `${((currentQuestion+1)/questions.length)*100}%`;
+  document.getElementById('qText').textContent = question.question;
+  const feedback = document.getElementById('qFeedback');
+  feedback.className = 'feedback-box';
+  feedback.textContent = '';
+  document.getElementById('nextBtn').classList.remove('visible');
+  const optsList = document.getElementById('qOptions');
+  optsList.innerHTML = '';
+  const letters = ['A','B','C','D','E'];
+  question.options.forEach((opt, i) => {
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.innerHTML = `<span class="option-letter">${letters[i]}</span> ${opt}`;
+    btn.onclick = () => selectAnswer(i);
+    li.appendChild(btn);
+    optsList.appendChild(li);
+  });
+}
+
+function selectAnswer(index) {
+  if (answeredQuestions.find(a => a.q === currentQuestion)) return;
+  const questions = quizData[currentQuizModule][currentQuizSet];
+  const question = questions[currentQuestion];
+  const optBtns = document.querySelectorAll('.option-btn');
+  optBtns.forEach((btn, i) => {
+    btn.disabled = true;
+    if (i === question.correct) btn.classList.add('correct');
+    else if (i === index) btn.classList.add('wrong');
+  });
+  const isCorrect = index === question.correct;
+  if (isCorrect) score++;
+  const feedback = document.getElementById('qFeedback');
+  feedback.className = 'feedback-box ' + (isCorrect ? 'correct' : 'wrong');
+  feedback.textContent = isCorrect ? '✅ Correct!' : `❌ Incorrect. Correct answer: ${question.options[question.correct]}`;
+  document.getElementById('qScore').textContent = `Score: ${score}`;
+  answeredQuestions.push({ q: currentQuestion, correct: isCorrect, answer: question.options[index], correctAnswer: question.options[question.correct], questionText: question.question });
+  document.getElementById('nextBtn').classList.add('visible');
+}
+
+function nextQuestion() {
+  const questions = quizData[currentQuizModule][currentQuizSet];
+  if (currentQuestion < questions.length - 1) { currentQuestion++; updateQuizDisplay(); }
+  else showResults();
+}
+
+function showResults() {
+  document.getElementById('quizQuestion').classList.remove('active');
+  const results = document.getElementById('quizResults');
+  results.classList.add('active');
+  const questions = quizData[currentQuizModule][currentQuizSet];
+  const pct = (score / questions.length) * 100;
+  document.getElementById('resultScore').textContent = `${score}/${questions.length}`;
+  document.getElementById('resultLabel').textContent = `out of ${questions.length} questions`;
+  let msg = '';
+  if (pct >= 90)      msg = '🌟 Outstanding! Excellent mastery!';
+  else if (pct >= 75) msg = '🎉 Great job! Strong understanding!';
+  else if (pct >= 60) msg = '👍 Good work! Review to strengthen knowledge.';
+  else                msg = '📚 Keep studying! Review and try again.';
+  document.getElementById('resultMessage').textContent = msg;
+  const reviewList = document.getElementById('reviewList');
+  reviewList.innerHTML = '';
+  answeredQuestions.forEach((a, i) => {
+    const div = document.createElement('div');
+    div.className = 'review-item ' + (a.correct ? 'correct' : 'wrong');
+    div.innerHTML = `<strong>Q${i+1}:</strong> ${a.questionText}<br><span>${a.correct ? '✅ ' + a.answer : '❌ Your answer: ' + a.answer + ' | ✅ Correct: ' + a.correctAnswer}</span>`;
+    reviewList.appendChild(div);
+  });
+}
+
+function restartQuiz() {
+  currentQuestion = 0; score = 0; answeredQuestions = [];
+  document.getElementById('quizResults').classList.remove('active');
+  document.getElementById('quizStart').style.display = 'block';
+}
+
+function showPDF(num) {
+  [1,2,3].forEach(n => {
+    document.getElementById('pdfFrame' + n).style.display = n === num ? 'block' : 'none';
+    document.getElementById('pdfLabel' + n).style.display = n === num ? 'block' : 'none';
+    document.getElementById('pdfDirect' + n).style.display = n === num ? 'inline-block' : 'none';
+    document.getElementById('pdfBtn' + n).classList.toggle('active', n === num);
+  });
+}
+
+function initQuiz() {
+  const p = new URLSearchParams(window.location.search);
+  if (p.get('page') === 'quiz') {
+    if (p.get('mod') && quizData[p.get('mod')]) currentQuizModule = p.get('mod');
+    if (p.get('set')) currentQuizSet = 'set' + p.get('set');
+    showPage('quiz');
+  }
+}
+window.addEventListener('load', initQuiz);
+</script>
+
+</body>
+</html>
