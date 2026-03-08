@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* MP068 Color Palette */
+    --rosarian: #FAEADD;
+    --harmonious-rose: #F29CB7;
+    --solarized: #FBCF4F;
+    --testosterose: #DDAAFF;
+    --purple-seduction: #522A6F;
+    --wet-charcoal: #222023;
+    
+    --white: #ffffff;
+    --card-bg: #ffffff;
+    --text-dark: #2a2a2a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--rosarian);
+    min-height: 100vh;
+    color: var(--text-dark);
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    background: var(--purple-seduction);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: white;
+    margin-right: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  }
+  .nav-logo span { color: var(--solarized); }
+  .nav-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .nav-btn:hover { background: rgba(255,255,255,0.25); }
+  .nav-btn.active { background: rgba(255,255,255,0.25); }
+
+  /* ===== PAGES ===== */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: var(--purple-seduction);
+    color: white;
+    padding: 3.5rem 2rem 2.5rem;
+    text-align: center;
+  }
+  .hero h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+  }
+  .hero p {
+    font-size: 1.05rem;
+    opacity: 0.95;
+    max-width: 550px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ===== SECTION TITLES ===== */
+  .section-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--purple-seduction);
+    padding: 0 2rem;
+    margin: 2rem 0 1rem;
+  }
+  .section-title span {
+    display: inline-block;
+    border-bottom: 3px solid var(--harmonious-rose);
+    padding-bottom: 2px;
+  }
+
+  /* ===== SUBJECT CARDS ===== */
+  .subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.2rem;
+    padding: 0 2rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .subject-card {
+    background: white;
+    border-radius: 18px;
+    padding: 1.8rem 1.5rem;
+    box-shadow: 0 8px 25px rgba(82, 42, 111, 0.15);
+    border: 2px solid var(--testosterose);
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .subject-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: var(--harmonious-rose);
+  }
+  .subject-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(82, 42, 111, 0.25);
+    border-color: var(--purple-seduction);
+  }
+  .subject-icon {
+    font-size: 2.8rem;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+  .subject-card h2 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 0.4rem;
+  }
+  .subject-card p {
+    font-size: 0.88rem;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+  .subject-card .modules-badge {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.2rem;
+  }
+  .module-pill {
+    background: rgba(221, 170, 255, 0.2);
+    border: 1px solid var(--testosterose);
+    color: var(--purple-seduction);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  .subject-card .card-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .card-btn {
+    flex: 1;
+    min-width: 80px;
+    padding: 0.45rem 0.7rem;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .card-btn.primary {
+    background: var(--purple-seduction);
+    color: white;
+  }
+  .card-btn.primary:hover { opacity: 0.9; transform: scale(1.03); }
+  .card-btn.secondary {
+    background: rgba(242, 156, 183, 0.2);
+    color: var(--purple-seduction);
+    border: 2px solid var(--harmonious-rose);
+  }
+  .card-btn.secondary:hover { 
+    border-color: var(--purple-seduction); 
+    background: rgba(221, 170, 255, 0.2);
+  }
+
+  /* Add subject placeholder */
+  .add-subject-card {
+    background: rgba(255, 255, 255, 0.6);
+    border: 2.5px dashed var(--harmonious-rose);
+    border-radius: 18px;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #888;
+    min-height: 180px;
+    cursor: default;
+  }
+  .add-subject-card .plus { 
+    font-size: 2.5rem; 
+    margin-bottom: 0.5rem; 
+    color: var(--harmonious-rose);
+  }
+  .add-subject-card p { font-size: 0.85rem; color: #999; line-height: 1.5; }
+
+  /* ===== QUICK QUIZ PAGE ===== */
+  .page-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  .page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .page-header h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--purple-seduction);
+    margin-bottom: 0.4rem;
+  }
+  .page-header p { color: #666; }
+
+  /* Subject picker for quiz page */
+  .subject-picker {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(82, 42, 111, 0.12);
+    border: 2px solid var(--testosterose);
+    margin-bottom: 1.5rem;
+  }
+  .subject-picker h3 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--purple-seduction);
+    margin-bottom: 1rem;
+  }
+  .picker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.8rem;
+  }
+  .picker-card {
+    background: rgba(242, 156, 183, 0.15);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .picker-card:hover {
+    border-color: var(--harmonious-rose);
+    background: rgba(221, 170, 255, 0.15);
+  }
+  .picker-card.selected {
+    border-color: var(--purple-seduction);
+    background: rgba(82, 42, 111, 0.1);
+    box-shadow: 0 4px 15px rgba(82, 42, 111, 0.2);
+  }
+  .pick-icon { font-size: 2rem; margin-bottom: 0.3rem; }
+  .picker-card h4 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 0.2rem;
+  }
+  .picker-card p { font-size: 0.75rem; color: #666; }
+
+  /* Module picker */
+  .module-picker {
+    display: none;
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(82, 42, 111, 0.12);
+    border: 2px solid var(--testosterose);
+    margin-bottom: 1.5rem;
+  }
+  .module-picker h3 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--purple-seduction);
+    margin-bottom: 1rem;
+  }
+  .mod-option {
+    background: rgba(242, 156, 183, 0.15);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 0.6rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .mod-option:hover {
+    border-color: var(--harmonious-rose);
+    background: rgba(221, 170, 255, 0.15);
+  }
+  .mod-option.selected {
+    border-color: var(--purple-seduction);
+    background: rgba(82, 42, 111, 0.1);
+    box-shadow: 0 4px 15px rgba(82, 42, 111, 0.2);
+  }
+  .mod-icon { font-size: 1.8rem; }
+  .mod-option-text h4 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-dark);
+  }
+
+  /* Quiz type picker */
+  .quiz-type-picker {
+    display: none;
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(82, 42, 111, 0.12);
+    border: 2px solid var(--testosterose);
+    margin-bottom: 1.5rem;
+  }
+  .quiz-type-picker h3 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--purple-seduction);
+    margin-bottom: 1rem;
+  }
+  .quiz-type-btns {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+  .quiz-type-btn {
+    flex: 1;
+    min-width: 180px;
+    background: rgba(242, 156, 183, 0.15);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .quiz-type-btn:hover {
+    border-color: var(--harmonious-rose);
+    background: rgba(221, 170, 255, 0.15);
+  }
+  .quiz-type-btn.selected {
+    border-color: var(--purple-seduction);
+    background: rgba(82, 42, 111, 0.1);
+    box-shadow: 0 4px 15px rgba(82, 42, 111, 0.2);
+  }
+  .quiz-type-icon { font-size: 2rem; margin-bottom: 0.4rem; }
+  .quiz-type-btn h4 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 0.2rem;
+  }
+  .quiz-type-btn p { font-size: 0.8rem; color: #666; }
+
+  /* Set picker */
+  .set-picker {
+    display: none;
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(82, 42, 111, 0.12);
+    border: 2px solid var(--testosterose);
+    margin-bottom: 1.5rem;
+  }
+  .set-picker h3 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--purple-seduction);
+    margin-bottom: 1rem;
+  }
+  .set-btns {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .set-btn {
+    flex: 1;
+    min-width: 100px;
+    background: rgba(242, 156, 183, 0.15);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 0.8rem;
+    font-family: 'Baloo 2', cursive;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .set-btn:hover {
+    border-color: var(--harmonious-rose);
+    background: rgba(221, 170, 255, 0.15);
+  }
+  .set-btn.selected {
+    border-color: var(--purple-seduction);
+    background: rgba(82, 42, 111, 0.1);
+    box-shadow: 0 4px 15px rgba(82, 42, 111, 0.2);
+  }
+
+  /* Launch area */
+  .launch-area {
+    display: none;
+    text-align: center;
+  }
+  .launch-btn {
+    background: var(--purple-seduction);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 1rem 2.5rem;
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 6px 20px rgba(82, 42, 111, 0.3);
+  }
+  .launch-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(82, 42, 111, 0.4);
+  }
+
+  /* Footer */
+  .hub-footer {
+    text-align: center;
+    padding: 2rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-logo">📚 Study<span>Hub</span></div>
+  <button class="nav-btn active" onclick="showPage('home')">🏠 Home</button>
+  <button class="nav-btn" onclick="showPage('quiz')">📝 Quick Quiz</button>
+</nav>
+
+<!-- ===== HOME PAGE ===== -->
+<div id="home" class="page active">
+
+  <div class="hero">
+    <h1>📚 Study Hub</h1>
+    <p>Choose a subject to review, practice flashcards, or take a quiz. More subjects can be added any time!</p>
+  </div>
+
+  <!-- SUBJECTS -->
+  <div class="section-title"><span>📖 Subjects</span></div>
+  <div class="subjects-grid">
+
+    <!-- BIOTECHNOLOGY -->
+    <div class="subject-card">
+      <span class="subject-icon">🧬</span>
+      <h2>Biotechnology</h2>
+      <p>Introduction to Biotech, Recombinant DNA Technology, and Microbial Biotechnology.</p>
+      <div class="modules-badge">
+        <span class="module-pill">🔬 Module 1</span>
+        <span class="module-pill">🧪 Module 2</span>
+        <span class="module-pill">🦠 Module 3</span>
+      </div>
+      <div class="card-actions">
+        <button class="card-btn primary" onclick="goTo('biotech.html','home','')">📖 Reviewer</button>
+        <button class="card-btn secondary" onclick="goTo('biotech.html','flashcards','mod1')">🃏 Flashcards</button>
+        <button class="card-btn secondary" onclick="startQuizFor('biotech', 'module')">📝 Module Quiz</button>
+        <button class="card-btn secondary" onclick="startQuizFor('biotech', 'mixed')">🎲 Mixed Quiz</button>
+      </div>
+    </div>
+
+    <!-- PLACEHOLDER: add more subjects below following this card pattern -->
+    <div class="add-subject-card">
+      <div class="plus">＋</div>
+      <p><strong>Add a new subject</strong><br>Create a new subject file following the provided template and add a card here.</p>
+    </div>
+
+  </div>
+
+  <div class="hub-footer">Study Hub • Add new subjects by creating a subject file and adding a card above.</div>
+</div>
+
+<!-- ===== QUICK QUIZ PAGE ===== -->
+<div id="quiz" class="page">
+  <div class="page-content">
+    <div class="page-header">
+      <h1>📝 Quick Quiz</h1>
+      <p>Select a subject and quiz type, then launch directly into the quiz.</p>
+    </div>
+
+    <!-- Step 1: Subject -->
+    <div class="subject-picker">
+      <h3>Step 1 — Choose a Subject</h3>
+      <div class="picker-grid" id="subjectPickerGrid">
+
+        <!-- BIOTECHNOLOGY -->
+        <div class="picker-card" onclick="selectSubject('biotech', this)">
+          <div class="pick-icon">🧬</div>
+          <h4>Biotechnology</h4>
+          <p>3 Modules • 3 Quiz Sets</p>
+        </div>
+
+        <!-- Add more subjects here as you create them -->
+        <div class="picker-card" style="opacity:0.4;cursor:default;">
+          <div class="pick-icon">➕</div>
+          <h4>Add Subject</h4>
+          <p>Coming soon</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Step 2: Quiz Type -->
+    <div class="quiz-type-picker" id="quizTypePicker">
+      <h3>Step 2 — Choose Quiz Type</h3>
+      <div class="quiz-type-btns">
+        <div class="quiz-type-btn" onclick="selectQuizType('module', this)">
+          <div class="quiz-type-icon">📝</div>
+          <h4>Module Quiz</h4>
+          <p>Select a specific module</p>
+        </div>
+        <div class="quiz-type-btn" onclick="selectQuizType('mixed', this)">
+          <div class="quiz-type-icon">🎲</div>
+          <h4>Mixed Quiz</h4>
+          <p>Random from all modules</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Module (only for module quiz) -->
+    <div class="module-picker" id="modulePicker">
+      <h3>Step 3 — Choose a Module</h3>
+      <div id="moduleOptions"></div>
+    </div>
+
+    <!-- Step 4: Set -->
+    <div class="set-picker" id="setPicker">
+      <h3 id="setPickerTitle">Step 4 — Choose a Question Set</h3>
+      <div class="set-btns">
+        <div class="set-btn" onclick="selectSet(1, this)">📋 Set 1</div>
+        <div class="set-btn" onclick="selectSet(2, this)">📋 Set 2</div>
+        <div class="set-btn" onclick="selectSet(3, this)">📋 Set 3</div>
+      </div>
+    </div>
+
+    <!-- Launch -->
+    <div class="launch-area" id="launchArea">
+      <button class="launch-btn" onclick="launchQuiz()">🚀 Launch Quiz →</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ===== NAVIGATION =====
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+// ===== SUBJECT → FILE MAPPING =====
+// Add new subjects here: key → { file, modules: [{mod, label, icon, desc}] }
+const subjects = {
+  biotech: {
+    file: 'biotech.html',
+    label: 'Biotechnology',
+    modules: [
+      { mod: 'mod1', icon: '🔬', label: 'Module 1', desc: 'Introduction to Biotechnology' },
+      { mod: 'mod2', icon: '🧪', label: 'Module 2', desc: 'Recombinant DNA Technology'    },
+      { mod: 'mod3', icon: '🦠', label: 'Module 3', desc: 'Microbial Biotechnology'        },
+    ]
+  }
+  // To add a new subject, copy the block above and change key + values:
+  // chemistry: {
+  //   file: 'chemistry.html',
+  //   label: 'Chemistry',
+  //   modules: [
+  //     { mod: 'mod1', icon: '⚗️', label: 'Module 1', desc: 'Atomic Structure' },
+  //   ]
+  // }
+};
+
+// Navigate into a subject file at a specific page/module
+function goTo(file, page, mod) {
+  let url = file + '?page=' + page;
+  if (mod) url += '&mod=' + mod;
+  window.location.href = url;
+}
+
+// Open quiz page pre-filtered to a subject and quiz type
+function startQuizFor(subjectKey, quizType) {
+  showPage('quiz');
+  // Auto-select the subject card
+  const cards = document.querySelectorAll('#subjectPickerGrid .picker-card');
+  cards.forEach(c => c.classList.remove('selected'));
+  // Reset everything
+  resetQuizFlow();
+  // find matching and select
+  selectSubjectByKey(subjectKey);
+  // If quiz type specified, auto-select it
+  if (quizType) {
+    setTimeout(() => {
+      const typeCards = document.querySelectorAll('.quiz-type-btn');
+      typeCards.forEach(c => {
+        if ((quizType === 'module' && c.querySelector('h4').textContent === 'Module Quiz') ||
+            (quizType === 'mixed' && c.querySelector('h4').textContent === 'Mixed Quiz')) {
+          selectQuizType(quizType, c);
+        }
+      });
+    }, 100);
+  }
+}
+
+// ===== QUIZ FLOW STATE =====
+let selectedSubject = null;
+let selectedQuizType = null;
+let selectedMod     = null;
+let selectedSet     = null;
+
+function resetQuizFlow() {
+  selectedSubject = null;
+  selectedQuizType = null;
+  selectedMod = null;
+  selectedSet = null;
+  document.getElementById('quizTypePicker').style.display = 'none';
+  document.getElementById('modulePicker').style.display = 'none';
+  document.getElementById('setPicker').style.display = 'none';
+  document.getElementById('launchArea').style.display = 'none';
+}
+
+function selectSubject(key, el) {
+  document.querySelectorAll('.picker-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedSubject = key;
+  selectedQuizType = null;
+  selectedMod = null;
+  selectedSet = null;
+  document.querySelectorAll('.quiz-type-btn').forEach(b => b.classList.remove('selected'));
+  document.getElementById('modulePicker').style.display = 'none';
+  document.getElementById('setPicker').style.display = 'none';
+  document.getElementById('launchArea').style.display = 'none';
+  document.getElementById('quizTypePicker').style.display = 'block';
+}
+
+function selectSubjectByKey(key) {
+  const cards = document.querySelectorAll('#subjectPickerGrid .picker-card');
+  cards.forEach(c => {
+    if (c.querySelector('h4') && c.querySelector('h4').textContent === subjects[key]?.label) {
+      c.classList.add('selected');
+    }
+  });
+  selectedSubject = key;
+  selectedQuizType = null;
+  selectedMod = null;
+  selectedSet = null;
+  document.getElementById('modulePicker').style.display = 'none';
+  document.getElementById('setPicker').style.display = 'none';
+  document.getElementById('launchArea').style.display = 'none';
+  document.getElementById('quizTypePicker').style.display = 'block';
+}
+
+function selectQuizType(type, el) {
+  document.querySelectorAll('.quiz-type-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedQuizType = type;
+  selectedMod = null;
+  selectedSet = null;
+  document.querySelectorAll('.set-btn').forEach(b => b.classList.remove('selected'));
+  document.getElementById('launchArea').style.display = 'none';
+  
+  if (type === 'module') {
+    // Show module picker
+    renderModulePicker(selectedSubject);
+    document.getElementById('modulePicker').style.display = 'block';
+    document.getElementById('setPicker').style.display = 'none';
+    document.getElementById('setPickerTitle').textContent = 'Step 4 — Choose a Question Set';
+  } else if (type === 'mixed') {
+    // Skip module picker, go straight to set picker
+    document.getElementById('modulePicker').style.display = 'none';
+    document.getElementById('setPicker').style.display = 'block';
+    document.getElementById('setPickerTitle').textContent = 'Step 3 — Choose a Question Set';
+  }
+}
+
+function renderModulePicker(key) {
+  const subject = subjects[key];
+  if (!subject) return;
+  const container = document.getElementById('moduleOptions');
+  container.innerHTML = '';
+  subject.modules.forEach(m => {
+    const div = document.createElement('div');
+    div.className = 'mod-option';
+    div.innerHTML = `<div class="mod-icon">${m.icon}</div>
+      <div class="mod-option-text"><h4>${m.label}: ${m.desc}</h4></div>`;
+    div.onclick = () => selectModule(m.mod, div);
+    container.appendChild(div);
+  });
+}
+
+function selectModule(mod, el) {
+  document.querySelectorAll('.mod-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedMod = mod;
+  selectedSet = null;
+  document.querySelectorAll('.set-btn').forEach(b => b.classList.remove('selected'));
+  document.getElementById('setPicker').style.display = 'block';
+  document.getElementById('launchArea').style.display = 'none';
+}
+
+function selectSet(num, el) {
+  document.querySelectorAll('.set-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedSet = num;
+  document.getElementById('launchArea').style.display = 'block';
+}
+
+function launchQuiz() {
+  if (!selectedSubject || !selectedQuizType || !selectedSet) return;
+  
+  const file = subjects[selectedSubject].file;
+  let url = `${file}?page=quiz&set=${selectedSet}`;
+  
+  if (selectedQuizType === 'module' && selectedMod) {
+    url += `&mod=${selectedMod}`;
+  } else if (selectedQuizType === 'mixed') {
+    url += `&mod=mixed`;
+  }
+  
+  window.location.href = url;
+}
+</script>
+</body>
+</html>
