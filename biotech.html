@@ -111,51 +111,7 @@
   .page { display: none; }
   .page.active { display: block; }
 
-  /* ===== HOME ===== */
-  #home {
-    min-height: calc(100vh - 60px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 3rem 2rem;
-    text-align: center;
-  }
-
-  .home-hero {
-    background: linear-gradient(135deg, var(--teal), var(--forest));
-    border-radius: 24px;
-    padding: 3.5rem 4rem;
-    color: white;
-    max-width: 700px;
-    box-shadow: 0 20px 60px rgba(26,127,142,0.3);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .home-hero::before {
-    content: '🧬';
-    position: absolute;
-    font-size: 10rem;
-    opacity: 0.08;
-    right: -2rem;
-    top: -2rem;
-  }
-
-  .home-hero h1 {
-    font-family: 'Baloo 2', cursive;
-    font-size: 2.8rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
-  }
-
-  .home-hero p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    margin-bottom: 2rem;
-    line-height: 1.6;
-  }
+  /* ===== HOME (old styles removed, new ones below) ===== */
 
   .home-cards {
     display: flex;
@@ -193,6 +149,41 @@
     margin-top: 0.5rem;
     font-weight: 700;
   }
+
+  /* ===== HOME MODULE CARDS (compsci-style) ===== */
+  #home { display: none; }
+  #home.active { display: block; }
+
+  .home-hero {
+    background: linear-gradient(135deg, var(--teal), var(--forest));
+    color: white;
+    padding: 3.5rem 2rem 2.5rem;
+    text-align: center;
+  }
+  .home-hero h1 { font-family: 'Baloo 2', cursive; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 0.5rem; text-shadow: 2px 2px 6px rgba(0,0,0,0.2); }
+  .home-hero p { font-size: 1.05rem; opacity: 0.95; max-width: 650px; margin: 0 auto; line-height: 1.6; }
+
+  .modules-section { max-width: 1100px; margin: 2rem auto; padding: 0 2rem 2rem; }
+  .section-heading { font-family: 'Baloo 2', cursive; font-size: 1.5rem; font-weight: 800; color: var(--teal); margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 3px solid var(--mint); }
+  .modules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+
+  .module-card { background: linear-gradient(135deg, var(--teal) 0%, var(--forest) 100%); border-radius: 18px; padding: 2rem 1.5rem; box-shadow: 0 8px 30px rgba(0,0,0,0.25); border: none; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; }
+  .module-card::before { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.06); border-radius: 18px; pointer-events: none; }
+  .module-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.35); filter: brightness(1.1); }
+  .module-card .module-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .module-card .module-icon { font-size: 2.5rem; line-height: 1; }
+  .module-card h2 { font-family: 'Baloo 2', cursive; font-size: 1.3rem; font-weight: 800; color: #ffffff; text-shadow: 0 1px 4px rgba(0,0,0,0.4); }
+  .module-subtitle { font-size: 0.88rem; color: rgba(255,255,255,0.82); margin-top: 0.2rem; font-weight: 600; }
+  .module-desc { font-size: 0.88rem; line-height: 1.6; color: rgba(255,255,255,0.88); margin-bottom: 1rem; }
+  .module-topics { background: rgba(0,0,0,0.18); border-left: 3px solid rgba(255,255,255,0.55); padding: 0.8rem 1rem 0.8rem 1.8rem; margin-bottom: 1.2rem; border-radius: 0 6px 6px 0; }
+  .module-topics li { font-size: 0.83rem; margin-bottom: 0.3rem; color: rgba(255,255,255,0.88); }
+  .module-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .action-btn { flex: 1; min-width: 80px; padding: 0.5rem 0.8rem; border-radius: 10px; border: none; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; text-align: center; }
+  .action-btn.primary { background: rgba(255,255,255,0.22); color: #fff; border: 2px solid rgba(255,255,255,0.55); }
+  .action-btn.primary:hover { background: rgba(255,255,255,0.38); transform: scale(1.03); }
+  .action-btn.secondary { background: rgba(0,0,0,0.18); color: rgba(255,255,255,0.92); border: 2px solid rgba(255,255,255,0.3); }
+  .action-btn.secondary:hover { background: rgba(0,0,0,0.28); border-color: rgba(255,255,255,0.65); }
+  .page-footer { text-align: center; padding: 2rem; color: #888; font-size: 0.85rem; }
 
   /* ===== REVIEWER ===== */
   #reviewer {
@@ -1009,19 +1000,20 @@
 
 <!-- ===== NAV ===== -->
 <nav>
-  <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor:pointer;" title="Back to Subject Hub">← <span>Bio</span>Tech</div>
+  <div class="nav-logo">🧬 Bio<span>Tech</span></div>
 
   <div class="dropdown">
-    <button class="nav-btn" id="reviewerNavBtn">📖 Reviewer ▾</button>
+    <button class="nav-btn">📚 Modules ▾</button>
     <div class="dropdown-menu">
-      <button class="dropdown-item" onclick="showPage('reviewer'); setReviewerModule('mod1')">🔬 Introduction to Biotechnology (Module 1)</button>
-      <button class="dropdown-item" onclick="showPage('reviewer'); setReviewerModule('mod2')">🧪 Recombinant DNA Technology (Module 2)</button>
-      <button class="dropdown-item" onclick="showPage('reviewer'); setReviewerModule('mod3')">🦠 Microbial Biotechnology (Module 3)</button>
+      <button class="dropdown-item" onclick="showPage('mod1')">🔬 Module 1: Introduction to Biotechnology</button>
+      <button class="dropdown-item" onclick="showPage('mod2')">🧪 Module 2: Recombinant DNA Technology</button>
+      <button class="dropdown-item" onclick="showPage('mod3')">🦠 Module 3: Microbial Biotechnology</button>
     </div>
   </div>
 
   <button class="nav-btn" onclick="showPage('flashcards')">🃏 Flashcards</button>
   <button class="nav-btn" onclick="showPage('quiz')">📝 Quiz</button>
+  <button class="nav-btn" onclick="showPage('slides')">📄 Slides</button>
   <button class="nav-btn" onclick="window.location.href='index.html'" style="margin-left:auto;">🏠 Back to Hub</button>
 </nav>
 
@@ -1029,57 +1021,102 @@
 <div id="home" class="page active">
   <div class="home-hero">
     <h1>🧬 Biotechnology</h1>
-    <p>Your interactive study companion for Biotechnology.<br>Review notes, practice flashcards, and test your knowledge!</p>
-    <button onclick="window.location.href='index.html'" style="margin-top:1rem;background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.5);color:white;padding:0.5rem 1.4rem;border-radius:25px;font-family:'Nunito',sans-serif;font-weight:700;cursor:pointer;font-size:0.9rem;">← Back to Subject Hub</button>
+    <p>Explore Biotechnology from foundational concepts to recombinant DNA and microbial applications.</p>
   </div>
-  <div class="home-cards">
-    <div class="home-card" onclick="showPage('reviewer'); setReviewerModule('mod1')">
-      <div class="icon">🔬</div>
-      <h3>Module 1</h3>
-      <p>Introduction to Biotechnology</p>
-    </div>
-    <div class="home-card" onclick="showPage('reviewer'); setReviewerModule('mod2')">
-      <div class="icon">🧪</div>
-      <h3>Module 2</h3>
-      <p>Recombinant DNA Technology</p>
-    </div>
-    <div class="home-card" onclick="showPage('reviewer'); setReviewerModule('mod3')">
-      <div class="icon">🦠</div>
-      <h3>Module 3</h3>
-      <p>Microbial Biotechnology</p>
-    </div>
-    <div class="home-card" onclick="showPage('flashcards')">
-      <div class="icon">🃏</div>
-      <h3>Flashcards</h3>
-      <p>Study key terms across all 3 modules</p>
-    </div>
-    <div class="home-card" onclick="showPage('quiz')">
-      <div class="icon">📝</div>
-      <h3>Quiz</h3>
-      <p>Test your knowledge — 35 questions per module</p>
-    </div>
-    <div class="home-card" onclick="showPage('reviewer'); setReviewerModule('slides')">
-      <div class="icon">📄</div>
-      <h3>PDF Slides</h3>
-      <p>View the original slide decks for all 3 modules</p>
+
+  <div class="modules-section">
+    <h2 class="section-heading">📖 Course Modules</h2>
+    <div class="modules-grid">
+
+      <!-- MODULE 1 -->
+      <div class="module-card" onclick="showPage('mod1')">
+        <div class="module-header">
+          <span class="module-icon">🔬</span>
+          <div>
+            <h2>Module 1</h2>
+            <p class="module-subtitle">Introduction to Biotechnology</p>
+          </div>
+        </div>
+        <p class="module-desc">Understand what biotechnology is, its interdisciplinary roots, historical milestones, and the 7 major types — from agricultural to forensic to medical biotech.</p>
+        <ul class="module-topics">
+          <li>Definition &amp; Key Characteristics</li>
+          <li>History: Ancient to Modern (1928–2003)</li>
+          <li>7 Types of Biotechnology</li>
+          <li>Biotech Products &amp; Top 10 Drugs</li>
+          <li>Ethics, Regulation &amp; 21st Century Challenges</li>
+        </ul>
+        <div class="module-actions">
+          <button class="action-btn primary" onclick="event.stopPropagation(); showPage('mod1')">📖 Study</button>
+          <button class="action-btn secondary" onclick="event.stopPropagation(); showPage('flashcards'); setFlashcardModuleBtn('mod1')">🃏 Cards</button>
+          <button class="action-btn secondary" onclick="event.stopPropagation(); showPage('quiz'); setQuizModule('mod1', document.getElementById('quizModBtn1'))">📝 Quiz</button>
+        </div>
+      </div>
+
+      <!-- MODULE 2 -->
+      <div class="module-card" onclick="showPage('mod2')">
+        <div class="module-header">
+          <span class="module-icon">🧪</span>
+          <div>
+            <h2>Module 2</h2>
+            <p class="module-subtitle">Recombinant DNA Technology</p>
+          </div>
+        </div>
+        <p class="module-desc">Learn how scientists cut, combine, and clone DNA. From restriction enzymes and vectors to DNA libraries and the scientists who made it all possible.</p>
+        <ul class="module-topics">
+          <li>Restriction Enzymes &amp; Sticky/Blunt Ends</li>
+          <li>Gene Cloning 6-Step Process</li>
+          <li>Cloning Vectors (Plasmid, BAC, YAC, Ti…)</li>
+          <li>Blue-White Selection &amp; Transformation</li>
+          <li>Genomic vs. cDNA Libraries</li>
+        </ul>
+        <div class="module-actions">
+          <button class="action-btn primary" onclick="event.stopPropagation(); showPage('mod2')">📖 Study</button>
+          <button class="action-btn secondary" onclick="event.stopPropagation(); showPage('flashcards'); setFlashcardModuleBtn('mod2')">🃏 Cards</button>
+          <button class="action-btn secondary" onclick="event.stopPropagation(); showPage('quiz'); setQuizModule('mod2', document.getElementById('quizModBtn2'))">📝 Quiz</button>
+        </div>
+      </div>
+
+      <!-- MODULE 3 -->
+      <div class="module-card" onclick="showPage('mod3')">
+        <div class="module-header">
+          <span class="module-icon">🦠</span>
+          <div>
+            <h2>Module 3</h2>
+            <p class="module-subtitle">Microbial Biotechnology</p>
+          </div>
+        </div>
+        <p class="module-desc">Discover how microbes — bacteria, yeast, and archaea — are harnessed to produce enzymes, insulin, vaccines, antibiotics, and everyday foods.</p>
+        <ul class="module-topics">
+          <li>Bacteria, Yeast &amp; Archaea Structure</li>
+          <li>Microbial Enzymes (Taq, Cellulase, Subtilisin)</li>
+          <li>Recombinant Insulin Production</li>
+          <li>Antibiotics &amp; Antibiotic Resistance</li>
+          <li>Vaccines: 5 Types &amp; Examples</li>
+        </ul>
+        <div class="module-actions">
+          <button class="action-btn primary" onclick="event.stopPropagation(); showPage('mod3')">📖 Study</button>
+          <button class="action-btn secondary" onclick="event.stopPropagation(); showPage('flashcards'); setFlashcardModuleBtn('mod3')">🃏 Cards</button>
+          <button class="action-btn secondary" onclick="event.stopPropagation(); showPage('quiz'); setQuizModule('mod3', document.getElementById('quizModBtn3'))">📝 Quiz</button>
+        </div>
+      </div>
+
     </div>
   </div>
+  <div class="page-footer">Biotechnology Reviewer • Use the nav above for Flashcards, Quiz &amp; PDF Slides</div>
 </div>
 
-<!-- ===== REVIEWER PAGE ===== -->
-<div id="reviewer" class="page">
-
-  <!-- Module Tabs -->
-  <div style="background:white;border-bottom:2px solid var(--mint);padding:0 2rem;display:flex;gap:0.5rem;position:sticky;top:60px;z-index:50;">
-    <button class="reviewer-tab active" id="tab-mod1" onclick="setReviewerModule('mod1')">🔬 Module 1</button>
-    <button class="reviewer-tab" id="tab-mod2" onclick="setReviewerModule('mod2')">🧪 Module 2</button>
-    <button class="reviewer-tab" id="tab-mod3" onclick="setReviewerModule('mod3')">🦠 Module 3</button>
-    <button class="reviewer-tab" id="tab-slides" onclick="setReviewerModule('slides')" style="margin-left:auto;">📄 PDF Slides</button>
+<!-- ===== MODULE 1 PAGE ===== -->
+<div id="mod1" class="page">
+  <div style="background:white;border-bottom:2px solid var(--mint);padding:0.8rem 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:60px;z-index:50;">
+    <button onclick="showPage('home')" style="background:var(--teal);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
+    <span style="font-weight:800;color:var(--teal);">🔬 Module 1: Introduction to Biotechnology</span>
+    <div style="margin-left:auto;display:flex;gap:0.5rem;">
+      <button onclick="showPage('flashcards')" style="background:transparent;border:2px solid var(--mint);color:var(--teal);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">🃏 Flashcards</button>
+      <button onclick="showPage('quiz')" style="background:transparent;border:2px solid var(--mint);color:var(--teal);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">📝 Quiz</button>
+    </div>
   </div>
-
-  <!-- ===== MODULE 1 CONTENT ===== -->
-  <div id="reviewer-mod1" class="reviewer-module">
-  <div class="module-header" style="background:linear-gradient(135deg,#1a5a8e,#1a7a3c);">
+  <div class="reviewer-module">
+<div class="module-header" style="background:linear-gradient(135deg,#1a5a8e,#1a7a3c);">
     <div class="module-icon">🔬</div>
     <div>
       <h1>Introduction to Biotechnology</h1>
@@ -1275,12 +1312,21 @@
       </div>
     </div>
   </div>
+  </div>
+</div>
 
-  </div><!-- end reviewer-mod1 -->
-
-  <!-- ===== MODULE 2 CONTENT ===== -->
-  <div id="reviewer-mod2" class="reviewer-module" style="display:none;">
-  <div class="module-header" style="background:linear-gradient(135deg,#6a1a8e,#1a7a3c);">
+<!-- ===== MODULE 2 PAGE ===== -->
+<div id="mod2" class="page">
+  <div style="background:white;border-bottom:2px solid var(--mint);padding:0.8rem 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:60px;z-index:50;">
+    <button onclick="showPage('home')" style="background:var(--teal);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
+    <span style="font-weight:800;color:var(--teal);">🧪 Module 2: Recombinant DNA Technology</span>
+    <div style="margin-left:auto;display:flex;gap:0.5rem;">
+      <button onclick="showPage('flashcards')" style="background:transparent;border:2px solid var(--mint);color:var(--teal);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">🃏 Flashcards</button>
+      <button onclick="showPage('quiz')" style="background:transparent;border:2px solid var(--mint);color:var(--teal);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">📝 Quiz</button>
+    </div>
+  </div>
+  <div class="reviewer-module">
+<div class="module-header" style="background:linear-gradient(135deg,#6a1a8e,#1a7a3c);">
     <div class="module-icon">🧪</div>
     <div>
       <h1>Recombinant DNA Technology</h1>
@@ -1566,13 +1612,21 @@
       </div>
     </div>
   </div>
+  </div>
+</div>
 
-  </div><!-- end reviewer-mod2 -->
-
-  <!-- ===== MODULE 3 CONTENT ===== -->
-  <div id="reviewer-mod3" class="reviewer-module" style="display:none;">
-
-  <!-- EXPECTED LEARNING OUTCOMES -->
+<!-- ===== MODULE 3 PAGE ===== -->
+<div id="mod3" class="page">
+  <div style="background:white;border-bottom:2px solid var(--mint);padding:0.8rem 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:60px;z-index:50;">
+    <button onclick="showPage('home')" style="background:var(--teal);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
+    <span style="font-weight:800;color:var(--teal);">🦠 Module 3: Microbial Biotechnology</span>
+    <div style="margin-left:auto;display:flex;gap:0.5rem;">
+      <button onclick="showPage('flashcards')" style="background:transparent;border:2px solid var(--mint);color:var(--teal);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">🃏 Flashcards</button>
+      <button onclick="showPage('quiz')" style="background:transparent;border:2px solid var(--mint);color:var(--teal);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">📝 Quiz</button>
+    </div>
+  </div>
+  <div class="reviewer-module">
+<!-- EXPECTED LEARNING OUTCOMES -->
   <div class="section-block">
     <div class="section-header">🎯 Expected Learning Outcomes</div>
     <div class="content-card">
@@ -2175,12 +2229,17 @@
       </div>
     </div>
   </div>
+  </div>
+</div>
 
-  </div><!-- end reviewer-mod3 -->
-
-  <!-- ===== PDF SLIDES SECTION ===== -->
-  <div id="reviewer-slides" class="reviewer-module" style="display:none;">
-  <div class="module-header" style="background:linear-gradient(135deg,#2c3e50,#1a7a3c);">
+<!-- ===== SLIDES PAGE ===== -->
+<div id="slides" class="page">
+  <div style="background:white;border-bottom:2px solid var(--mint);padding:0.8rem 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:60px;z-index:50;">
+    <button onclick="showPage('home')" style="background:var(--teal);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
+    <span style="font-weight:800;color:var(--teal);">📄 PDF Slides</span>
+  </div>
+  <div class="reviewer-module">
+<div class="module-header" style="background:linear-gradient(135deg,#2c3e50,#1a7a3c);">
     <div class="module-icon">📄</div>
     <div>
       <h1>PDF Slides</h1>
@@ -2203,13 +2262,13 @@
     <!-- PDF iframes -->
     <div class="pdf-frame-wrap">
       <iframe id="pdfFrame1" class="pdf-frame"
-        src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/maryathenahernandez-bit/q3/blob/main/pdfs/MODULE-1_BIOTECHNOLOGY-AND-ITS-WORKFORCE.pdf&embedded=true"
+        src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/maryathenahernandez-bit/BIOTECH_QUIZBEE/main/MODULE-1_BIOTECHNOLOGY-AND-ITS-WORKFORCE.pdf&embedded=true"
         allowfullscreen></iframe>
       <iframe id="pdfFrame2" class="pdf-frame" style="display:none;"
-        src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/maryathenahernandez-bit/q3/blob/main/pdfs/MODULE-2_RECOMBINANT-DNA-TECHNOLOGY.pdf&embedded=true"
+        src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/maryathenahernandez-bit/BIOTECH_QUIZBEE/main/MODULE-2_RECOMBINANT-DNA-TECHNOLOGY_compressed.pdf&embedded=true"
         allowfullscreen></iframe>
       <iframe id="pdfFrame3" class="pdf-frame" style="display:none;"
-        src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/maryathenahernandez-bit/q3/blob/main/pdfs/Module-3-Microbial-Biotechnology.pdf&embedded=true"
+        src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/maryathenahernandez-bit/BIOTECH_QUIZBEE/main/Module-3-Microbial-Biotechnology.pdf&embedded=true"
         allowfullscreen></iframe>
     </div>
 
@@ -2220,7 +2279,8 @@
       <a class="pdf-direct-btn" href="https://raw.githubusercontent.com/maryathenahernandez-bit/BIOTECH_QUIZBEE/main/Module-3-Microbial-Biotechnology.pdf" target="_blank" id="pdfDirect3" style="display:none;">⬇️ Open Module 3 PDF</a>
     </div>
   </div>
-  </div><!-- end reviewer-slides -->
+  </div>
+</div>
 
 <!-- ===== FLASHCARDS PAGE ===== -->
 <div id="flashcards" class="page">
@@ -2341,15 +2401,24 @@ function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   if (id === 'flashcards') renderFlashcard();
+  window.scrollTo(0, 0);
 }
 
+// Helper called from home card "Cards" buttons
+function setFlashcardModuleBtn(mod) {
+  currentCards = [...(flashcardsData[mod] || [])];
+  currentCardIndex = 0;
+  // Sync the module-select-btn highlight
+  document.querySelectorAll('.module-select-btn').forEach(b => {
+    const oc = b.getAttribute('onclick') || '';
+    b.classList.toggle('active', oc.includes("'" + mod + "'"));
+  });
+  renderFlashcard();
+}
+
+// setReviewerModule kept for URL-param routing compatibility
 function setReviewerModule(mod) {
-  document.querySelectorAll('.reviewer-module').forEach(m => m.style.display = 'none');
-  const el = document.getElementById('reviewer-' + mod);
-  if (el) el.style.display = 'block';
-  document.querySelectorAll('.reviewer-tab').forEach(t => t.classList.remove('active'));
-  const tab = document.getElementById('tab-' + mod);
-  if (tab) tab.classList.add('active');
+  showPage(mod);
 }
 
 function showPDF(num) {
