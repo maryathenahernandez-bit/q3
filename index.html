@@ -512,6 +512,24 @@
       </div>
     </div>
 
+    <!-- COMPUTER SCIENCE 12 -->
+    <div class="subject-card" onclick="goTo('compsci.html','home','')">
+      <span class="subject-icon">💻</span>
+      <h2>Computer Science 12</h2>
+      <p>Artificial Intelligence: concepts, ethics, types, tools, and intelligent agents.</p>
+      <div class="modules-badge">
+        <span class="module-pill">🤖 Module 1</span>
+        <span class="module-pill">🔧 Module 2</span>
+        <span class="module-pill">🧠 Module 3</span>
+      </div>
+      <div class="card-actions">
+        <button class="card-btn primary" onclick="event.stopPropagation(); goTo('compsci.html','home','')">📖 Reviewer</button>
+        <button class="card-btn secondary" onclick="event.stopPropagation(); goTo('compsci.html','flashcards','mod1')">🃏 Flashcards</button>
+        <button class="card-btn secondary" onclick="event.stopPropagation(); startQuizFor('compsci', 'module')">📝 Module Quiz</button>
+        <button class="card-btn secondary" onclick="event.stopPropagation(); startQuizFor('compsci', 'mixed')">🎲 Mixed Quiz</button>
+      </div>
+    </div>
+
     <!-- PLACEHOLDER: add more subjects below following this card pattern -->
     <div class="add-subject-card">
       <div class="plus">＋</div>
@@ -540,6 +558,13 @@
         <div class="picker-card" onclick="selectSubject('biotech', this)">
           <div class="pick-icon">🧬</div>
           <h4>Biotechnology</h4>
+          <p>3 Modules • 3 Quiz Sets</p>
+        </div>
+
+        <!-- COMPUTER SCIENCE 12 -->
+        <div class="picker-card" onclick="selectSubject('compsci', this)">
+          <div class="pick-icon">💻</div>
+          <h4>Computer Science 12</h4>
           <p>3 Modules • 3 Quiz Sets</p>
         </div>
 
@@ -613,6 +638,15 @@ const subjects = {
       { mod: 'mod1', icon: '🔬', label: 'Module 1', desc: 'Introduction to Biotechnology' },
       { mod: 'mod2', icon: '🧪', label: 'Module 2', desc: 'Recombinant DNA Technology'    },
       { mod: 'mod3', icon: '🦠', label: 'Module 3', desc: 'Microbial Biotechnology'        },
+    ]
+  },
+  compsci: {
+    file: 'compsci.html',
+    label: 'Computer Science 12',
+    modules: [
+      { mod: 'mod1', icon: '🤖', label: 'Module 1', desc: 'Introduction to AI' },
+      { mod: 'mod2', icon: '🔧', label: 'Module 2', desc: 'AI Ethics, Types & Tools' },
+      { mod: 'mod3', icon: '🧠', label: 'Module 3', desc: 'Intelligent Agents' },
     ]
   }
   // To add a new subject, copy the block above and change key + values:
