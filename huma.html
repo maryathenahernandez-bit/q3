@@ -1031,7 +1031,8 @@ const pdfFiles = {
   2: {
     label: '🧠 Lesson 1.2: The Entrepreneurial Mindset — Slides',
     url: 'https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/Hum5_Lesson1.2.pdf',
-    dlLabel: '⬇️ Download Lesson 1.2 Slides (PDF)'
+    dlLabel: '⬇️ Download Lesson 1.2 Slides (PDF)',
+    forceViewer: true
   },
   3: {
     label: '🇵🇭 Lesson 1.3: Successful Filipino Entrepreneurship — Slides',
@@ -1059,10 +1060,7 @@ function showPDF(num) {
     if (btn) btn.classList.toggle('active', i === num);
   }
   // Use Google Docs viewer for PPTX/DOCX, direct src for PDF
-  const isPDF = file.url.toLowerCase().endsWith('.pdf');
-  const viewerUrl = isPDF
-    ? file.url
-    : 'https://docs.google.com/viewer?url=' + encodeURIComponent(file.url) + '&embedded=true';
+  const viewerUrl = 'https://docs.google.com/viewer?url=' + encodeURIComponent(file.url) + '&embedded=true';
   document.getElementById('pdfMainFrame').src = viewerUrl;
   document.getElementById('pdfCurrentLabel').textContent = file.label;
   document.getElementById('pdfDownloadBtn').href = file.url;
