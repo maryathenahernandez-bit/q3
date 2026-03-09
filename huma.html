@@ -305,6 +305,7 @@
       <div class="dropdown-menu">
         <button class="dropdown-item" onclick="showPage('mod1')">💡 Lesson 1: The Entrepreneur</button>
         <button class="dropdown-item" onclick="showPage('mod2')">🧠 Lesson 1.2: The Entrepreneurial Mindset</button>
+        <button class="dropdown-item" onclick="showPage('mod3')">🇵🇭 Lesson 1.3: Successful Filipino Entrepreneurship</button>
       </div>
     </div>
     <button class="nav-btn" onclick="showPage('flashcards')">🃏 Flashcards</button>
@@ -320,6 +321,7 @@
   <div class="mobile-nav-section">Lessons</div>
   <button class="mobile-nav-btn" onclick="showPage('mod1');closeMobileMenu()">💡 Lesson 1: The Entrepreneur</button>
   <button class="mobile-nav-btn" onclick="showPage('mod2');closeMobileMenu()">🧠 Lesson 1.2: The Entrepreneurial Mindset</button>
+  <button class="mobile-nav-btn" onclick="showPage('mod3');closeMobileMenu()">🇵🇭 Lesson 1.3: Successful Filipino Entrepreneurship</button>
   <div class="mobile-nav-section">Study Tools</div>
   <button class="mobile-nav-btn" onclick="showPage('flashcards');closeMobileMenu()">🃏 Flashcards</button>
   <button class="mobile-nav-btn" onclick="showPage('quiz');closeMobileMenu()">📝 Quiz</button>
@@ -369,6 +371,23 @@
           <button class="action-btn primary" onclick="event.stopPropagation(); showPage('mod2')">📖 Study</button>
           <button class="action-btn secondary" onclick="event.stopPropagation(); showPage('flashcards'); setFlashcardModuleBtn('mod2')">🃏 Cards</button>
           <button class="action-btn secondary" onclick="event.stopPropagation(); showPage('quiz'); setQuizModule('mod2', document.getElementById('quizModBtn2'))">📝 Quiz</button>
+        </div>
+      </div>
+
+      <div class="module-card" onclick="showPage('mod3')">
+        <div class="mc-header"><span class="mc-icon">🇵🇭</span><div><h2>Lesson 1.3</h2><p class="mc-subtitle">Successful Filipino Entrepreneurship</p></div></div>
+        <p class="mc-desc">Explore the entrepreneurial ecosystem, the Philippines in the global landscape, and 10 notable Filipino entrepreneurs who built iconic businesses.</p>
+        <ul class="mc-topics">
+          <li>Entrepreneurial Ecosystem &amp; Components</li>
+          <li>Philippines in 2024 CEOWORLD Index (18th globally)</li>
+          <li>Henry Sy, Tony Tan Caktiong, Lucio Tan</li>
+          <li>Socorro Ramos, Mariano Que, Ramon Ang</li>
+          <li>John Gokongwei, Vicky Belo, Josh Mojica, Louise Mabulo</li>
+        </ul>
+        <div class="mc-actions">
+          <button class="action-btn primary" onclick="event.stopPropagation(); showPage('mod3')">📖 Study</button>
+          <button class="action-btn secondary" onclick="event.stopPropagation(); showPage('flashcards'); setFlashcardModuleBtn('mod3')">🃏 Cards</button>
+          <button class="action-btn secondary" onclick="event.stopPropagation(); showPage('quiz'); setQuizModule('mod3', document.getElementById('quizModBtn3'))">📝 Quiz</button>
         </div>
       </div>
 
@@ -641,6 +660,234 @@
   </div>
 </div>
 
+
+<!-- LESSON 1.3 -->
+<div id="mod3" class="page">
+  <div class="subnav-bar" style="background:white;border-bottom:2px solid var(--dry-creek);padding:0.8rem 1.2rem;display:flex;align-items:center;gap:0.6rem;position:sticky;top:60px;z-index:50;flex-wrap:wrap;">
+    <button onclick="showPage('home')" style="background:var(--mocha);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
+    <span style="font-weight:800;color:var(--spicy);">🇵🇭 Lesson 1.3: Successful Filipino Entrepreneurship</span>
+    <div class="subnav-btns" style="margin-left:auto;display:flex;gap:0.5rem;flex-wrap:wrap;">
+      <button onclick="showPage('flashcards'); setFlashcardModuleBtn('mod3')" style="background:transparent;border:2px solid var(--dry-creek);color:var(--mocha);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">🃏 Flashcards</button>
+      <button onclick="showPage('quiz')" style="background:transparent;border:2px solid var(--dry-creek);color:var(--mocha);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">📝 Quiz</button>
+    </div>
+  </div>
+  <div class="reviewer-module">
+    <div class="module-header" style="background:linear-gradient(135deg,var(--terra),var(--soil));">
+      <div class="module-icon">🇵🇭</div>
+      <div><h1>Successful Filipino Entrepreneurship</h1><p>Lesson 1.3 — Humanities 5: Entrepreneurship</p></div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-header">🌐 Key Concepts</div>
+      <div class="content-card">
+        <div class="def-card"><div class="term">Entrepreneurial Ecosystem</div><div class="definition">The community and support system around entrepreneurs — including funds, technology, human resources, and professional services — in a business environment where government policies encourage and safeguard them.</div></div>
+        <div class="def-card"><div class="term">Serial Entrepreneurship</div><div class="definition">The practice of starting several businesses one after another over a period of time. A serial entrepreneur starts, runs, exits, and then starts again.</div></div>
+        <h2 class="sub-title">Components of an Entrepreneurial Ecosystem</h2>
+        <ul class="objective-list">
+          <li><span class="num">1</span><strong>Entrepreneurs</strong> — people with business ideas</li>
+          <li><span class="num">2</span><strong>Investors</strong> — people who provide funding</li>
+          <li><span class="num">3</span><strong>Universities &amp; Schools</strong> — education and research</li>
+          <li><span class="num">4</span><strong>Government</strong> — rules, policies, and support programs</li>
+          <li><span class="num">5</span><strong>Mentors &amp; Networks</strong> — guidance and connections</li>
+          <li><span class="num">6</span><strong>Banks &amp; Financial Institutions</strong></li>
+          <li><span class="num">7</span><strong>Service Providers</strong> — lawyers, accountants, consultants</li>
+        </ul>
+        <div class="highlight"><strong>Philippine Example:</strong> Metro Manila (especially Makati, BGC, and Quezon City) is the center of the Philippine entrepreneurial ecosystem, supported by universities such as UP Diliman, Ateneo de Manila, and De La Salle University.</div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-header">🌍 The Philippines in the Global Entrepreneurship Landscape</div>
+      <div class="content-card">
+        <div class="compare-table-wrap"><table class="compare-table">
+          <thead><tr><th>Indicator</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Global Rank</strong></td><td>18th most entrepreneurial country (out of 190 countries) — 2024 CEOWORLD Entrepreneurship Index, top-billed by the USA</td></tr>
+            <tr><td><strong>Basis of Rankings</strong></td><td>Innovation, Competitiveness, Labor Skills, Infrastructure, Access to Capital, Openness for Business</td></tr>
+            <tr><td><strong>Southeast Asia Rank</strong></td><td>2nd highest in Southeast Asia, next to Malaysia (23.60 score)</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-header">🏆 Notable Filipino Entrepreneurs</div>
+      <div class="content-card">
+        <p style="font-size:0.9rem;color:#666;margin-bottom:1.2rem;">Study each entrepreneur's background, key business contributions, and the industries they transformed.</p>
+
+        <h2 class="sub-title">1. Henry Sy (1924 – 2019)</h2>
+        <div class="def-card">
+          <div class="term">SM Malls &amp; BDO Founder</div>
+          <div class="definition">
+            <ul style="list-style:none;padding:0;">
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Started ShoeMart (SM) at age 12 — a small shoe store in Manila (1958) that became the Philippines' largest mall chain</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">SM Prime Holdings operates <strong>70+ malls</strong> in the Philippines and several in China</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Topped Forbes Philippines' 50 Richest list for <strong>11 consecutive years</strong> (2008–2018)</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Net worth estimated at <strong>$20 billion</strong>; ranked 53rd wealthiest person in the world</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Controlled <strong>Banco de Oro (BDO)</strong> — the biggest bank in the Philippines by assets</li>
+              <li style="padding:0.25rem 0;">Founded National University (NU); known for his humble and frugal lifestyle</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="sub-title">2. Tony Tan Caktiong (Born January 5, 1953)</h2>
+        <div class="def-card">
+          <div class="term">Jollibee / JFC Founder</div>
+          <div class="definition">
+            <ul style="list-style:none;padding:0;">
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Founded Jollibee in 1978 — started as an <strong>ice cream parlor in 1975</strong>, pivoted to burgers, spaghetti, and fried chicken</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Jollibee Foods Corporation (JFC) now owns <strong>6,500+ stores worldwide</strong></li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">JFC brands: Chowking, Greenwich, Red Ribbon, Mang Inasal, The Coffee Bean &amp; Tea Leaf</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Also owns a majority stake in DoubleDragon Properties</li>
+              <li style="padding:0.25rem 0;">Net worth over <strong>$2 billion</strong>; key lesson: adapt to change and innovate</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="sub-title">3. Lucio Tan (Born July 17, 1934)</h2>
+        <div class="def-card">
+          <div class="term">Fortune Tobacco, PAL, PNB, Tanduay Rum</div>
+          <div class="definition">
+            <ul style="list-style:none;padding:0;">
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Born in Fujian, China; <strong>worked as a janitor</strong> while studying chemical engineering</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Founded Fortune Tobacco (1960s) — became the biggest cigarette manufacturer in the Philippines</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Established Asia Breweries (1970s) to challenge San Miguel Beer</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Acquired <strong>Philippine Airlines (PAL) in 1995</strong>, saving it from financial trouble</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Owns Philippine National Bank (PNB) — merged with Allied Bank in 2013</li>
+              <li style="padding:0.25rem 0;">Tanduay Distillers produces Tanduay Rum, one of the world's best-selling rums; also owns Eton Properties and University of the East (UE)</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="sub-title">4. Socorro Ramos (Born September 23, 1923)</h2>
+        <div class="def-card">
+          <div class="term">National Book Store Founder</div>
+          <div class="definition">
+            <ul style="list-style:none;padding:0;">
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Worked as a salesperson at Goodwill Bookstore at age 18</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">In 1940, put up a small stall on <strong>Escolta Street, Manila</strong> selling school supplies</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);"><strong>Secretly sold banned imported books</strong> during the Japanese occupation in WWII</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Rebuilt after a typhoon in 1948 destroyed her store by borrowing money</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">National Book Store grew into the largest bookstore chain in the Philippines (<strong>230+ branches</strong>)</li>
+              <li style="padding:0.25rem 0;">Founded Anvil Publishing to make books more affordable for Filipinos</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="sub-title">5. Mariano Que (1921 – 2017)</h2>
+        <div class="def-card">
+          <div class="term">Mercury Drug Founder</div>
+          <div class="definition">
+            <ul style="list-style:none;padding:0;">
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Started Mercury Drug on <strong>March 1, 1945</strong> on Bambang Street, Manila with only <strong>PHP 100 capital</strong></li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Sold sulfiathiazole (a 'miracle' antibacterial drug) piece by piece from a wooden pushcart</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Named after <strong>Mercury</strong>, the Roman god of commerce, speed, and medicine</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Pioneer of <strong>24/7 pharmacy service</strong> and self-service medicine counters in the Philippines</li>
+              <li style="padding:0.25rem 0;">Mercury Drug is now the biggest drugstore chain in the Philippines with <strong>1,200+ branches</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="sub-title">6. Ramon Ang (Born January 14, 1954)</h2>
+        <div class="def-card">
+          <div class="term">San Miguel Corporation Chairman</div>
+          <div class="definition">
+            <ul style="list-style:none;padding:0;">
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Born to a modest ethnic Chinese family; began career <strong>selling used car and truck parts</strong></li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Started business career in the late 1970s importing cars and engines</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Chairman of <strong>San Miguel Corporation (SMC)</strong>; expanded it from beer &amp; food into power, fuel, infrastructure, and telecoms</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Led SMC's acquisition of <strong>Petron Corporation</strong> — the largest oil company in the Philippines</li>
+              <li style="padding:0.25rem 0;">Founding chair of Eagle Cement Corporation; net worth estimated <strong>over $3 billion</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="sub-title">7. John Gokongwei (August 11, 1926 – 2019)</h2>
+        <div class="def-card">
+          <div class="term">URC, Cebu Pacific, Robinsons, JG Summit</div>
+          <div class="definition">
+            <ul style="list-style:none;padding:0;">
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Started trading goods in Cebu at <strong>age 15</strong> after his father passed away (sold peanuts, soap, thread)</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Founded <strong>Universal Robina Corporation (URC)</strong> in 1957 — Jack 'n Jill snacks (Piattos, Chippy) and C2 Green Tea</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Launched <strong>Cebu Pacific in 1996</strong> — now the largest budget airline in the Philippines</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Founded Robinsons Retail Holdings: Robinsons Malls, supermarkets, and department stores</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Co-founded Digitel (Sun Cellular) — introduced unlimited call &amp; text promos in the Philippines</li>
+              <li style="padding:0.25rem 0;">Third richest person in the Philippines when he passed away in 2019 at age 93; net worth <strong>over $5 billion</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="sub-title">8. Dr. Vicky Belo (Born January 25, 1956)</h2>
+        <div class="def-card">
+          <div class="term">Belo Medical Group Founder</div>
+          <div class="definition">
+            <ul style="list-style:none;padding:0;">
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Started her dermatology business in a <strong>44 sq.m. clinic in 1990</strong></li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Founder and medical director of <strong>Belo Medical Group</strong> — a leading cosmetic surgery clinic in the Philippines</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Introduced modern liposuction techniques in the Philippines</li>
+              <li style="padding:0.25rem 0;">First Filipino member of the <strong>American Academy of Cosmetic Surgery (AACS)</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="sub-title">9. Josh Mojica (Born July 5, 2004)</h2>
+        <div class="def-card">
+          <div class="term">Kangkong Chips Original Founder</div>
+          <div class="definition">
+            <ul style="list-style:none;padding:0;">
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Founder of <strong>Kangkong Chips Original</strong> — started in 2021 at <strong>age 17</strong></li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Based his product on his aunt's kangkong (water spinach) chips recipe</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Started with only <strong>PHP 3,000 initial capital</strong></li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Earned over <strong>PHP 100,000 monthly</strong> within six months; earned his first million within one year</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">By 2022: two-story factory, <strong>100 employees</strong>, 6 flavors, local and international customers</li>
+              <li style="padding:0.25rem 0;">Leveraged social media effectively to grow the brand</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="sub-title">10. Louise Mabulo (Born 1998)</h2>
+        <div class="def-card">
+          <div class="term">The Cacao Project Founder — Social Entrepreneur</div>
+          <div class="definition">
+            <ul style="list-style:none;padding:0;">
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Finalist in <strong>Junior MasterChef Philippines in 2011</strong> at just 12 years old; known as the 'Young Chef of the Philippines'</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Founded <strong>The Cacao Project in 2016</strong> to help farmers in Camarines Sur recover from Typhoon Nina</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Recognized by the <strong>UN Environment Programme</strong> for sustainable agriculture work</li>
+              <li style="padding:0.25rem 0;border-bottom:1px dashed var(--dry-creek);">Included in <strong>Forbes 30 Under 30 Asia</strong> for Social Entrepreneurship in 2020</li>
+              <li style="padding:0.25rem 0;">Vocal advocate for fair trade and sustainable food systems</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-header">⚡ Quick Review: Key Terms at a Glance</div>
+      <div class="content-card">
+        <div class="compare-table-wrap"><table class="compare-table">
+          <thead><tr><th>Person / Term</th><th>Quick Definition</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Entrepreneurial Ecosystem</strong></td><td>The community and support system (funds, tech, government, networks) that surrounds entrepreneurs.</td></tr>
+            <tr><td><strong>Serial Entrepreneurship</strong></td><td>The practice of starting multiple businesses one after another over time.</td></tr>
+            <tr><td><strong>Henry Sy</strong></td><td>SM Malls founder; richest Filipino for 11 consecutive years; net worth ~$20B.</td></tr>
+            <tr><td><strong>Tony Tan Caktiong</strong></td><td>Jollibee founder; pivoted from ice cream to fast food; JFC has 6,500+ stores worldwide.</td></tr>
+            <tr><td><strong>Lucio Tan</strong></td><td>Fortune Tobacco, PAL, PNB, Tanduay Rum — went from janitor to billionaire.</td></tr>
+            <tr><td><strong>Socorro Ramos</strong></td><td>Founded National Book Store in 1940; rebuilt after WWII and typhoon; 230+ branches.</td></tr>
+            <tr><td><strong>Mariano Que</strong></td><td>Founded Mercury Drug (1945) with PHP 100; pioneer of 24/7 pharmacy in the Philippines.</td></tr>
+            <tr><td><strong>Ramon Ang</strong></td><td>Chairman of San Miguel Corp; expanded into energy, fuel, cement; owns Petron.</td></tr>
+            <tr><td><strong>John Gokongwei</strong></td><td>URC, Cebu Pacific, Robinsons, Sun Cellular; started trading at age 15 in Cebu.</td></tr>
+            <tr><td><strong>Dr. Vicky Belo</strong></td><td>Belo Medical Group founder; pioneered cosmetic surgery in 🇵🇭; first Filipino AACS member.</td></tr>
+            <tr><td><strong>Josh Mojica</strong></td><td>Kangkong Chips founder; started at 17 with PHP 3,000; earned first million within a year.</td></tr>
+            <tr><td><strong>Louise Mabulo</strong></td><td>The Cacao Project founder; Forbes 30 Under 30 Asia 2020; social entrepreneur and chef.</td></tr>
+            <tr><td><strong>2024 CEOWORLD Index</strong></td><td>Philippines ranked 18th globally and 2nd in Southeast Asia for entrepreneurship.</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!-- SLIDES -->
 <div id="slides" class="page">
   <div class="subnav-bar" style="background:white;border-bottom:2px solid var(--dry-creek);padding:0.8rem 1.2rem;display:flex;align-items:center;gap:0.6rem;position:sticky;top:60px;z-index:50;flex-wrap:wrap;">
@@ -680,6 +927,7 @@
     <div class="flashcard-module-select">
       <button class="module-select-btn active" onclick="setFlashcardModule('mod1', this)">💡 Lesson 1</button>
       <button class="module-select-btn" onclick="setFlashcardModule('mod2', this)">🧠 Lesson 1.2</button>
+      <button class="module-select-btn" onclick="setFlashcardModule('mod3', this)">🇵🇭 Lesson 1.3</button>
     </div>
     <div class="progress-bar-wrap"><div class="progress-bar-fill" id="fcProgress" style="width:0%"></div></div>
     <div class="flashcard-counter" id="fcCounter">Card 1 of 17</div>
@@ -712,11 +960,12 @@
     <div class="quiz-module-select">
       <button class="module-select-btn active" id="quizModBtn1" onclick="setQuizModule('mod1', this)">💡 Lesson 1</button>
       <button class="module-select-btn" id="quizModBtn2" onclick="setQuizModule('mod2', this)">🧠 Lesson 1.2</button>
+      <button class="module-select-btn" id="quizModBtn3" onclick="setQuizModule('mod3', this)">🇵🇭 Lesson 1.3</button>
     </div>
     <div id="quizStart" class="quiz-start">
       <div class="icon">☕</div>
       <h2 id="quizModTitle">💡 Lesson 1: The Entrepreneur</h2>
-      <p>Multiple Choice &amp; True/False questions per set.</p>
+      <p id="quizSetInfo">Multiple Choice &amp; True/False questions per set.</p>
       <div style="display:flex;gap:0.6rem;justify-content:center;flex-wrap:wrap;margin-bottom:0.8rem;">
         <span style="background:#d4eefb;color:#1a5a8e;padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Multiple Choice</span>
         <span style="background:var(--pumpkin);color:var(--spicy);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">True / False</span>
@@ -840,6 +1089,28 @@ const flashcardsData = {
     { term:"Phase 3: Growth", def:"Emphasis shifts from planning to execution. The business should be generating profits and moving toward sustainable performance." },
     { term:"Phase 4: Expansion", def:"The business broadens its network, customer base, and offerings through new territories or mergers and acquisitions." },
     { term:"Phase 5: Maturity", def:"Entrepreneurs face two options — push for further expansion, or exit the business." }
+  ],
+  mod3: [
+    { term:"Entrepreneurial Ecosystem", def:"The community and support system around entrepreneurs — including funds, technology, human resources, and professional services — in a business environment where government policies encourage and safeguard them." },
+    { term:"Serial Entrepreneurship", def:"The practice of starting several businesses one after another over a period of time. A serial entrepreneur starts, runs, exits, and then starts again." },
+    { term:"7 Components of Entrepreneurial Ecosystem", def:"Entrepreneurs, Investors, Universities & Schools, Government, Mentors & Networks, Banks & Financial Institutions, Service Providers." },
+    { term:"Philippines in 2024 CEOWORLD Index", def:"Ranked 18th most entrepreneurial country globally (out of 190 countries) and 2nd in Southeast Asia, next to Malaysia." },
+    { term:"Henry Sy", def:"SM Malls founder. Started ShoeMart at age 12. Topped Forbes 🇵🇭 50 Richest for 11 consecutive years. Net worth ~$20B. Also founded BDO and National University." },
+    { term:"Henry Sy — Key Fact", def:"SM Prime Holdings operates 70+ malls in the Philippines and several in China. Net worth $20B; ranked 53rd wealthiest in the world." },
+    { term:"Tony Tan Caktiong", def:"Jollibee founder. Started as ice cream parlor in 1975; pivoted to fast food in 1978. JFC now has 6,500+ stores worldwide. Brands: Chowking, Red Ribbon, Mang Inasal, CBTL." },
+    { term:"Lucio Tan", def:"Fortune Tobacco, PAL, PNB, Tanduay Rum. Born in Fujian, China; worked as a janitor. Acquired PAL in 1995. Also owns University of the East (UE)." },
+    { term:"Socorro Ramos", def:"National Book Store founder (1940). Secretly sold banned books during Japanese occupation. Rebuilt after 1948 typhoon. 230+ branches. Founded Anvil Publishing." },
+    { term:"Mariano Que", def:"Mercury Drug founder. Started on March 1, 1945 with PHP 100 and a wooden pushcart. Named after Mercury, Roman god of commerce & medicine. Pioneer of 24/7 pharmacy. 1,200+ branches." },
+    { term:"Ramon Ang", def:"Chairman of San Miguel Corporation. Expanded SMC from beer & food into power, fuel, infrastructure, telecoms. Led acquisition of Petron. Net worth over $3 billion." },
+    { term:"John Gokongwei", def:"Founded URC (Jack 'n Jill, C2), Cebu Pacific (1996), Robinsons Malls, and Sun Cellular. Started trading at age 15 in Cebu. Third richest Filipino; net worth over $5B." },
+    { term:"Dr. Vicky Belo", def:"Belo Medical Group founder. Started in a 44 sq.m. clinic in 1990. Introduced modern liposuction in 🇵🇭. First Filipino member of the American Academy of Cosmetic Surgery (AACS)." },
+    { term:"Josh Mojica", def:"Kangkong Chips Original founder. Started in 2021 at age 17 with PHP 3,000 capital. Earned PHP 100,000 monthly within 6 months; first million within a year. 100 employees by 2022." },
+    { term:"Louise Mabulo", def:"The Cacao Project founder (2016). Former Junior MasterChef 🇵🇭 finalist (age 12). Forbes 30 Under 30 Asia 2020 for Social Entrepreneurship. Advocates for fair trade and sustainable food." },
+    { term:"Who started with PHP 100 and a pushcart?", def:"Mariano Que — founder of Mercury Drug, starting on March 1, 1945 on Bambang Street, Manila." },
+    { term:"Who secretly sold books during WWII?", def:"Socorro Ramos — who later founded National Book Store." },
+    { term:"Who pivoted an ice cream parlor into a global fast food chain?", def:"Tony Tan Caktiong — who founded Jollibee in 1978 after starting as an ice cream parlor in 1975." },
+    { term:"What is The Cacao Project?", def:"A social enterprise founded by Louise Mabulo in 2016 to help farmers in Camarines Sur recover from Typhoon Nina through sustainable cacao farming." },
+    { term:"What is Kangkong Chips Original?", def:"A snack food business founded by Josh Mojica in 2021 at age 17, based on his aunt's kangkong (water spinach) chips recipe, starting with PHP 3,000 capital." }
   ]
 };
 
@@ -947,6 +1218,40 @@ const allQuizData = {
     { type:"tf", q:"There are exactly 12 criteria in the 12 R's of Opportunity Screening.", options:["True","False"], answer:0, explanation:"TRUE — The 12 R's are: Relevance, Resonance, Reinforcement, Revenues, Responsiveness, Reach, Range, Revolutionary Impact, Returns, Relative Ease of Implementation, Resources Required, and Risks." },
     { type:"tf", q:"A Positioning Statement should change frequently depending on seasonal promotions.", options:["True","False"], answer:1, explanation:"FALSE — A good Positioning Statement is stable and leaves room for growth. It should be simple, memorable, credible, and tailored to the target market — not changed with every promotion." },
     { type:"tf", q:"Phase 4 of the Enterprise Life Cycle is called 'Expansion.'", options:["True","False"], answer:0, explanation:"TRUE — Phase 4 is Expansion, when the business broadens its network, customer base, and offerings through new territories or mergers and acquisitions." }
+  ],
+  mod3: [
+    // --- 20 Multiple Choice ---
+    { type:"mc", q:"What is an entrepreneurial ecosystem?", options:["A rainforest where businesses grow","The community and support system around entrepreneurs including funds, tech, government, and networks","A government-run incubator program","A franchise business model"], answer:1, explanation:"An entrepreneurial ecosystem is the community and support system around entrepreneurs — including funds, technology, human resources, professional services — in a business environment where government policies encourage them." },
+    { type:"mc", q:"How did the Philippines rank in the 2024 CEOWORLD Entrepreneurship Index?", options:["1st globally","2nd in Southeast Asia and 10th globally","18th globally and 2nd in Southeast Asia","5th globally"], answer:2, explanation:"The Philippines ranked 18th globally (out of 190 countries) and 2nd in Southeast Asia — next to Malaysia — in the 2024 CEOWORLD Entrepreneurship Index." },
+    { type:"mc", q:"Henry Sy started his first business (ShoeMart) at what age?", options:["18","21","12","15"], answer:2, explanation:"Henry Sy started ShoeMart at age 12 — a small shoe store in Manila in 1958 that eventually grew into the Philippines' largest mall chain." },
+    { type:"mc", q:"For how many consecutive years did Henry Sy top Forbes Philippines' 50 Richest list?", options:["5 years","8 years","11 years","15 years"], answer:2, explanation:"Henry Sy topped Forbes Philippines' 50 Richest list for 11 consecutive years (2008–2018)." },
+    { type:"mc", q:"Tony Tan Caktiong originally founded Jollibee as what type of business?", options:["A pizza restaurant","A fried chicken stall","An ice cream parlor","A burger joint"], answer:2, explanation:"Tony Tan Caktiong started the business as an ice cream parlor in 1975, then pivoted to burgers, spaghetti, and fried chicken when he officially founded Jollibee in 1978." },
+    { type:"mc", q:"Which of the following brands does NOT belong to Jollibee Foods Corporation (JFC)?", options:["Chowking","Red Ribbon","Mang Inasal","Max's Restaurant"], answer:3, explanation:"Max's Restaurant is not part of JFC. JFC brands include Chowking, Greenwich, Red Ribbon, Mang Inasal, and The Coffee Bean & Tea Leaf." },
+    { type:"mc", q:"Lucio Tan acquired Philippine Airlines (PAL) in what year?", options:["1985","1990","1995","2000"], answer:2, explanation:"Lucio Tan acquired Philippine Airlines (PAL) in 1995, saving it from financial trouble." },
+    { type:"mc", q:"Socorro Ramos is the founder of which business?", options:["Mercury Drug","National Book Store","SM Malls","Belo Medical Group"], answer:1, explanation:"Socorro Ramos founded National Book Store in 1940, starting with a small stall on Escolta Street, Manila selling school supplies." },
+    { type:"mc", q:"Mariano Que started Mercury Drug with how much initial capital?", options:["PHP 1,000","PHP 500","PHP 100","PHP 5,000"], answer:2, explanation:"Mariano Que started Mercury Drug on March 1, 1945 with only PHP 100 capital, selling medicine from a wooden pushcart on Bambang Street, Manila." },
+    { type:"mc", q:"Mercury Drug was named after Mercury, the Roman god of:", options:["War and strength","Commerce, speed, and medicine","Love and beauty","Wisdom and knowledge"], answer:1, explanation:"Mariano Que named his pharmacy after Mercury, the Roman god of commerce, speed, and medicine — fitting for a drugstore." },
+    { type:"mc", q:"Ramon Ang is the Chairman of which corporation?", options:["Jollibee Foods Corporation","Universal Robina Corporation","San Miguel Corporation","SM Prime Holdings"], answer:2, explanation:"Ramon Ang is the Chairman of San Miguel Corporation (SMC), which he expanded from beer and food into power, fuel, infrastructure, and telecoms." },
+    { type:"mc", q:"John Gokongwei founded Cebu Pacific in what year?", options:["1985","1990","1996","2001"], answer:2, explanation:"John Gokongwei launched Cebu Pacific in 1996, which is now the largest budget airline in the Philippines." },
+    { type:"mc", q:"Which snack brand is associated with John Gokongwei's Universal Robina Corporation?", options:["Chippy and Piattos (Jack 'n Jill)","Oishi","Clover Chips","Nova"], answer:0, explanation:"Universal Robina Corporation (URC) is famous for Jack 'n Jill snacks, including Chippy, Piattos, and Roller Coaster, as well as C2 Green Tea." },
+    { type:"mc", q:"Dr. Vicky Belo started her dermatology business in a clinic of what size?", options:["100 sq.m.","44 sq.m.","200 sq.m.","20 sq.m."], answer:1, explanation:"Dr. Vicky Belo started her dermatology business in a 44 sq.m. clinic in 1990, which grew into the Belo Medical Group." },
+    { type:"mc", q:"Josh Mojica started Kangkong Chips Original in 2021 at what age?", options:["15","16","17","18"], answer:2, explanation:"Josh Mojica founded Kangkong Chips Original in 2021 at the age of 17, based on his aunt's kangkong (water spinach) chips recipe." },
+    { type:"mc", q:"How much was Josh Mojica's initial capital for Kangkong Chips Original?", options:["PHP 30,000","PHP 10,000","PHP 3,000","PHP 100,000"], answer:2, explanation:"Josh Mojica started with only PHP 3,000 in initial capital. Within six months he was earning over PHP 100,000 monthly." },
+    { type:"mc", q:"Louise Mabulo founded The Cacao Project in 2016 to help farmers in which province?", options:["Batangas","Camarines Sur","Cebu","Davao"], answer:1, explanation:"Louise Mabulo founded The Cacao Project in 2016 to help farmers in Camarines Sur recover from the devastation caused by Typhoon Nina." },
+    { type:"mc", q:"Louise Mabulo was included in Forbes 30 Under 30 Asia for which category?", options:["Technology","Arts & Culture","Social Entrepreneurship","Finance"], answer:2, explanation:"Louise Mabulo was included in Forbes 30 Under 30 Asia in 2020 under the Social Entrepreneurship category for her work with The Cacao Project." },
+    { type:"mc", q:"Which of the following is NOT listed as a component of an entrepreneurial ecosystem?", options:["Investors","Government","Competitors","Service Providers"], answer:2, explanation:"Competitors are not a listed component of an entrepreneurial ecosystem. The 7 components are: Entrepreneurs, Investors, Universities & Schools, Government, Mentors & Networks, Banks & Financial Institutions, and Service Providers." },
+    { type:"mc", q:"Which city area is described as the center of the Philippine entrepreneurial ecosystem?", options:["Cebu City","Davao City","Metro Manila (Makati, BGC, Quezon City)","Iloilo City"], answer:2, explanation:"Metro Manila — especially Makati, BGC, and Quezon City — is the center of the Philippine entrepreneurial ecosystem, supported by universities like UP Diliman, Ateneo, and DLSU." },
+    // --- 10 True/False ---
+    { type:"tf", q:"The Philippines ranked 18th most entrepreneurial country globally in the 2024 CEOWORLD Index.", options:["True","False"], answer:0, explanation:"TRUE — The Philippines ranked 18th out of 190 countries in the 2024 CEOWORLD Entrepreneurship Index." },
+    { type:"tf", q:"Tony Tan Caktiong originally founded Jollibee as a pizza restaurant.", options:["True","False"], answer:1, explanation:"FALSE — Jollibee started as an ice cream parlor in 1975, not a pizza restaurant. It pivoted to fast food when officially founded in 1978." },
+    { type:"tf", q:"Henry Sy topped Forbes Philippines' 50 Richest list for 11 consecutive years.", options:["True","False"], answer:0, explanation:"TRUE — Henry Sy topped Forbes Philippines' 50 Richest list for 11 consecutive years from 2008 to 2018." },
+    { type:"tf", q:"In Southeast Asia, the Philippines ranked 1st in the CEOWORLD Entrepreneurship Index.", options:["True","False"], answer:1, explanation:"FALSE — The Philippines ranked 2nd in Southeast Asia, after Malaysia (which scored 23.60)." },
+    { type:"tf", q:"Josh Mojica started his kangkong chips business with PHP 30,000 in capital.", options:["True","False"], answer:1, explanation:"FALSE — Josh Mojica started with PHP 3,000 (not PHP 30,000) in initial capital." },
+    { type:"tf", q:"Socorro Ramos founded Mercury Drug.", options:["True","False"], answer:1, explanation:"FALSE — Socorro Ramos founded National Book Store, not Mercury Drug. Mercury Drug was founded by Mariano Que." },
+    { type:"tf", q:"Lucio Tan acquired Philippine Airlines in 1995.", options:["True","False"], answer:0, explanation:"TRUE — Lucio Tan acquired Philippine Airlines (PAL) in 1995, saving it from financial collapse." },
+    { type:"tf", q:"Louise Mabulo was included in Forbes 30 Under 30 Asia in 2020.", options:["True","False"], answer:0, explanation:"TRUE — Louise Mabulo was included in Forbes 30 Under 30 Asia in 2020 for Social Entrepreneurship, recognized for her Cacao Project work." },
+    { type:"tf", q:"Serial entrepreneurship means running one business for an entire lifetime.", options:["True","False"], answer:1, explanation:"FALSE — Serial entrepreneurship means starting multiple businesses one after another over time. A serial entrepreneur starts, runs, exits, and starts again." },
+    { type:"tf", q:"Mariano Que named Mercury Drug after the Roman god of commerce and medicine.", options:["True","False"], answer:0, explanation:"TRUE — Mariano Que named his pharmacy Mercury Drug after Mercury, the Roman god of commerce, speed, and medicine." }
   ]
 };
 
@@ -1019,6 +1324,40 @@ const allQuizData_set2 = {
     { type:"tf", q:"Opportunity Seizing means evaluating market trends to decide if an opportunity is worth pursuing.", options:["True","False"], answer:1, explanation:"FALSE — That is Opportunity Screening. Opportunity Seizing is recognizing and taking advantage of favorable situations or chances when they arise." },
     { type:"tf", q:"The Development Phase of the Enterprise Life Cycle is when the business officially launches after concept testing.", options:["True","False"], answer:1, explanation:"FALSE — That describes the Start-up Phase. The Development Phase is when the entrepreneur determines if the opportunity is worth investing by gathering market information and evaluating resources." },
     { type:"tf", q:"A Positioning Statement helps evaluate the consistency of marketing efforts with the brand.", options:["True","False"], answer:0, explanation:"TRUE — One of the 4 characteristics of a good Positioning Statement is that it helps evaluate the consistency of marketing efforts with the brand." }
+  ],
+  mod3: [
+    // --- 20 Multiple Choice ---
+    { type:"mc", q:"What practice is described as 'starting, running, exiting, and starting again' with multiple businesses over time?", options:["Franchise entrepreneurship","Serial entrepreneurship","Social entrepreneurship","Corporate entrepreneurship"], answer:1, explanation:"Serial entrepreneurship is the practice of starting several businesses one after another. A serial entrepreneur starts, runs, exits, and then begins a new venture." },
+    { type:"mc", q:"What was Henry Sy's bank, which he controlled and which became the biggest bank in the Philippines by assets?", options:["BPI","Metrobank","Banco de Oro (BDO)","Philippine National Bank"], answer:2, explanation:"Henry Sy controlled Banco de Oro (BDO), which became the biggest bank in the Philippines by assets." },
+    { type:"mc", q:"Which university did Henry Sy found?", options:["University of Santo Tomas","De La Salle University","National University (NU)","University of the East (UE)"], answer:2, explanation:"Henry Sy founded National University (NU). He was also known for his humble and frugal lifestyle despite his immense wealth." },
+    { type:"mc", q:"How many stores does Jollibee Foods Corporation (JFC) operate worldwide?", options:["1,500+","3,000+","6,500+","500+"], answer:2, explanation:"As of the data in the reviewer, JFC operates 6,500+ stores worldwide across its various brands." },
+    { type:"mc", q:"Lucio Tan worked as what job while studying chemical engineering?", options:["Security guard","Factory worker","Janitor","Street vendor"], answer:2, explanation:"Lucio Tan was born in Fujian, China and worked as a janitor while studying chemical engineering — a classic rags-to-riches story." },
+    { type:"mc", q:"Which beer company did Lucio Tan establish to challenge San Miguel Beer?", options:["Red Horse Brewing","Gold Eagle Beer","Asia Breweries","Tanduay Distillers"], answer:2, explanation:"Lucio Tan established Asia Breweries in the 1970s to challenge the market dominance of San Miguel Beer." },
+    { type:"mc", q:"What was the name of the drug that Mariano Que sold piece by piece from his pushcart?", options:["Penicillin","Sulfiathiazole","Aspirin","Amoxicillin"], answer:1, explanation:"Mariano Que sold sulfiathiazole — described as a 'miracle' antibacterial drug — piece by piece from a wooden pushcart after World War II." },
+    { type:"mc", q:"On what street did Mariano Que open the first Mercury Drug outlet?", options:["Rizal Avenue","Escolta Street","Bambang Street","Recto Avenue"], answer:2, explanation:"The first Mercury Drug outlet opened on Bambang Street, Manila on March 1, 1945." },
+    { type:"mc", q:"Ramon Ang led San Miguel Corporation's acquisition of which oil company?", options:["Shell Philippines","Caltex","Petron Corporation","Total Philippines"], answer:2, explanation:"Ramon Ang led SMC's acquisition of Petron Corporation, making it the largest oil company in the Philippines." },
+    { type:"mc", q:"What was John Gokongwei's very first trading activity at age 15 in Cebu?", options:["Selling shoes and clothing","Selling peanuts, soap, and thread","Selling fish and produce","Starting a cornstarch plant"], answer:1, explanation:"John Gokongwei's entrepreneurial journey began at age 15 in Cebu, trading goods — specifically peanuts, soap, and thread — after his father passed away." },
+    { type:"mc", q:"Which telecommunications company did John Gokongwei co-found, introducing unlimited call and text promos in the Philippines?", options:["Globe Telecom","Smart Communications","Digitel (Sun Cellular)","PLDT"], answer:2, explanation:"John Gokongwei co-founded Digitel (Sun Cellular), which introduced unlimited call and text promos in the Philippines." },
+    { type:"mc", q:"Dr. Vicky Belo is the first Filipino member of which international organization?", options:["World Health Organization","American Medical Association","American Academy of Cosmetic Surgery (AACS)","International Society of Aesthetic Plastic Surgery"], answer:2, explanation:"Dr. Vicky Belo became the first Filipino member of the American Academy of Cosmetic Surgery (AACS), a significant international recognition." },
+    { type:"mc", q:"How much was Josh Mojica earning monthly within six months of starting Kangkong Chips?", options:["PHP 10,000","PHP 50,000","PHP 100,000+","PHP 1,000,000"], answer:2, explanation:"Within six months, Josh Mojica was earning over PHP 100,000 monthly. He earned his first million within one year of starting the business." },
+    { type:"mc", q:"How many employees did Josh Mojica's Kangkong Chips business have by 2022?", options:["10","50","100","200"], answer:2, explanation:"By 2022, Kangkong Chips Original had grown to 100 employees, a two-story factory, 6 flavors, and both local and international customers." },
+    { type:"mc", q:"What event did Louise Mabulo become famous for at age 12?", options:["Being the youngest Forbes entrepreneur","Winning Junior MasterChef Philippines","Founding The Cacao Project","Being featured in the UN Environment Programme"], answer:1, explanation:"Louise Mabulo became known as the 'Young Chef of the Philippines' after becoming a finalist in Junior MasterChef Philippines in 2011 at just 12 years old." },
+    { type:"mc", q:"The Cacao Project was created to help farmers recover from which natural disaster?", options:["Typhoon Yolanda (Haiyan)","Typhoon Ondoy","Typhoon Nina","Typhoon Pepeng"], answer:2, explanation:"Louise Mabulo founded The Cacao Project in 2016 to help farmers in Camarines Sur recover from Typhoon Nina." },
+    { type:"mc", q:"Which Philippine university is NOT listed as part of the Metro Manila entrepreneurial ecosystem?", options:["UP Diliman","Ateneo de Manila","De La Salle University","University of San Carlos"], answer:3, explanation:"University of San Carlos is based in Cebu, not Metro Manila. The reviewer lists UP Diliman, Ateneo de Manila, and De La Salle University as supporting the Metro Manila entrepreneurial ecosystem." },
+    { type:"mc", q:"What ranking basis does the CEOWORLD Index use to evaluate entrepreneurship?", options:["GDP, Population, and Trade Balance","Innovation, Competitiveness, Labor Skills, Infrastructure, Access to Capital, Openness for Business","Number of startups and patents filed","Ease of business registration only"], answer:1, explanation:"The CEOWORLD Entrepreneurship Index ranks countries based on Innovation, Competitiveness, Labor Skills, Infrastructure, Access to Capital, and Openness for Business." },
+    { type:"mc", q:"Socorro Ramos secretly sold which items during the Japanese occupation?", options:["Food and medicine","Imported books","Electronic goods","Clothing and fabric"], answer:1, explanation:"During the Japanese occupation in WWII, Socorro Ramos secretly sold banned imported books — a risky but courageous entrepreneurial act that defined her character." },
+    { type:"mc", q:"Which company did Ramon Ang found as Eagle Cement Corporation's founding chair?", options:["He bought it from another company","He founded it as a startup","He is described as its founding chair in the reviewer","He acquired it through SMC"], answer:2, explanation:"Ramon Ang is the founding chair of Eagle Cement Corporation, in addition to his role as Chairman of San Miguel Corporation." },
+    // --- 10 True/False ---
+    { type:"tf", q:"The Cacao Project was founded by Louise Mabulo in 2016.", options:["True","False"], answer:0, explanation:"TRUE — Louise Mabulo founded The Cacao Project in 2016 to help cacao farmers in Camarines Sur recover from Typhoon Nina." },
+    { type:"tf", q:"John Gokongwei founded Cebu Pacific, which is now the largest budget airline in the Philippines.", options:["True","False"], answer:0, explanation:"TRUE — John Gokongwei launched Cebu Pacific in 1996, and it is now the largest budget airline in the Philippines." },
+    { type:"tf", q:"Lucio Tan was born in Manila.", options:["True","False"], answer:1, explanation:"FALSE — Lucio Tan was born in Fujian, China. He immigrated to the Philippines and worked as a janitor while studying chemical engineering." },
+    { type:"tf", q:"Henry Sy's net worth was estimated at $20 billion.", options:["True","False"], answer:0, explanation:"TRUE — Henry Sy's net worth was estimated at $20 billion, making him one of the wealthiest people in Asia." },
+    { type:"tf", q:"Dr. Vicky Belo started with a 100 sq.m. clinic in 1990.", options:["True","False"], answer:1, explanation:"FALSE — Dr. Vicky Belo started in a very small 44 sq.m. clinic in 1990, not 100 sq.m." },
+    { type:"tf", q:"Josh Mojica earned his first million within one year of starting Kangkong Chips.", options:["True","False"], answer:0, explanation:"TRUE — Josh Mojica earned his first million within one year of starting Kangkong Chips Original in 2021 with just PHP 3,000." },
+    { type:"tf", q:"National Book Store was founded on Bambang Street, Manila.", options:["True","False"], answer:1, explanation:"FALSE — National Book Store was founded on Escolta Street, Manila by Socorro Ramos. Mercury Drug was founded on Bambang Street by Mariano Que." },
+    { type:"tf", q:"Ramon Ang expanded San Miguel Corporation into power, fuel, and infrastructure businesses.", options:["True","False"], answer:0, explanation:"TRUE — Under Ramon Ang's leadership, San Miguel Corporation expanded far beyond its beer and food origins into power, fuel, infrastructure, and telecoms." },
+    { type:"tf", q:"The Philippines ranked higher than Malaysia in the 2024 Southeast Asia CEOWORLD Entrepreneurship rankings.", options:["True","False"], answer:1, explanation:"FALSE — Malaysia ranked higher, with the Philippines ranking 2nd in Southeast Asia next to Malaysia's 23.60 score." },
+    { type:"tf", q:"Louise Mabulo was recognized by the UN Environment Programme for her sustainable agriculture work.", options:["True","False"], answer:0, explanation:"TRUE — Louise Mabulo was recognized by the UN Environment Programme for her sustainable agriculture work through The Cacao Project." }
   ]
 };
 
@@ -1032,7 +1371,8 @@ let answered = [];
 
 const quizModuleNames = {
   mod1:'💡 Lesson 1: The Entrepreneur',
-  mod2:'🧠 Lesson 1.2: The Entrepreneurial Mindset'
+  mod2:'🧠 Lesson 1.2: The Entrepreneurial Mindset',
+  mod3:'🇵🇭 Lesson 1.3: Successful Filipino Entrepreneurship'
 };
 
 function selectSet(num) {
