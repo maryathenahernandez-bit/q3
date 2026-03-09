@@ -1654,6 +1654,32 @@ const quizData = {
       { question: "What is Agent Function?", options: ["Random output", "Maps actions from percepts", "Stores data", "Displays info"], correct: 1 },
       { question: "What is Agent Program?", options: ["Random code", "Implementation of agent function", "Sensor data", "Actuator list"], correct: 1 }
     ]
+  },
+  mixed: {
+    set1: [
+      { question: "Who coined the term 'Artificial Intelligence'?", options: ["Alan Turing", "John McCarthy", "Herbert Simon", "Allen Newell"], correct: 1 },
+      { question: "What is the Turing Test used for?", options: ["Testing computer speed", "Checking machine's ability to exhibit intelligent behavior", "Measuring processing power", "Testing network connectivity"], correct: 1 },
+      { question: "Which AI subfield analyzes, understands, and generates human language?", options: ["Computer Vision", "Machine Learning", "Natural Language Processing", "Deep Learning"], correct: 2 },
+      { question: "What is Narrow AI also called?", options: ["Strong AI", "Weak AI", "General AI", "Super AI"], correct: 1 },
+      { question: "Who created the Three Laws of Robotics?", options: ["Alan Turing", "John McCarthy", "Isaac Asimov", "Herbert Simon"], correct: 2 },
+      { question: "Which AI type doesn't store memories?", options: ["Limited Memory", "Reactive Machines", "Learning Agents", "Goal-Based"], correct: 1 },
+      { question: "What is an agent?", options: ["A program", "Anything that perceives and acts on environment", "A database", "A network"], correct: 1 },
+      { question: "What do agents use to perceive their environment?", options: ["Displays", "Sensors", "Keyboards", "Speakers"], correct: 1 },
+      { question: "What does PEAS stand for?", options: ["Process, Execute, Act, Sense", "Performance, Environment, Actuators, Sensors", "Program, Evaluate, Analyze, Store", "Perceive, Execute, Adapt, Stop"], correct: 1 },
+      { question: "What is a rational agent?", options: ["One that acts randomly", "One that acts with best outcome", "One that stops", "One that waits"], correct: 1 }
+    ],
+    set2: [
+      { question: "What does GPU stand for in AI context?", options: ["General Processing Unit", "Graphical Processing Unit", "Global Processing Unit", "Game Processing Unit"], correct: 1 },
+      { question: "Which AI application helps detect fraudulent transactions?", options: ["Gaming", "Banking", "Music", "Art"], correct: 1 },
+      { question: "What is the first law of robotics?", options: ["Obey humans", "Protect self", "Must not harm humans", "Learn continuously"], correct: 2 },
+      { question: "Which AI type is most commonly available today?", options: ["Super AI", "General AI", "Narrow AI", "Self-Aware AI"], correct: 2 },
+      { question: "Which framework was developed by Google?", options: ["Caffe", "TensorFlow", "Theano", "PyTorch"], correct: 1 },
+      { question: "What do Goal-Based Agents use?", options: ["Only current state", "Goal information", "No planning", "Random actions"], correct: 1 },
+      { question: "What converts energy into motion?", options: ["Sensor", "Display", "Actuator", "Camera"], correct: 2 },
+      { question: "What does the critic component do in a Learning Agent?", options: ["Learn", "Provide feedback", "Act", "Sense"], correct: 1 },
+      { question: "Which AI type can learn from past experiences?", options: ["Simple Reflex", "Reactive", "Learning Agent", "Theory of Mind"], correct: 2 },
+      { question: "What is Agent Structure composed of?", options: ["Sensors only", "Architecture + Agent program", "Actuators only", "Data only"], correct: 1 }
+    ]
   }
 };
 
@@ -1667,9 +1693,9 @@ let answeredQuestions = [];
 function setQuizModule(mod, el) {
   currentQuizModule = mod;
   document.querySelectorAll('#quizModBtn1,#quizModBtn2,#quizModBtn3').forEach(b => b.classList.remove('active'));
-  el.classList.add('active');
-  const titles = { mod1:'🤖 Module 1: Introduction to AI', mod2:'🔧 Module 2: AI Ethics, Types & Tools', mod3:'🧠 Module 3: Intelligent Agents' };
-  document.getElementById('quizModTitle').textContent = titles[mod];
+  if (el) el.classList.add('active');
+  const titles = { mod1:'🤖 Module 1: Introduction to AI', mod2:'🔧 Module 2: AI Ethics, Types & Tools', mod3:'🧠 Module 3: Intelligent Agents', mixed:'🎲 Mixed: All Modules' };
+  document.getElementById('quizModTitle').textContent = titles[mod] || mod;
 }
 
 function selectSet(num) {
@@ -1784,9 +1810,14 @@ function showPDF(num) {
 function initQuiz() {
   const p = new URLSearchParams(window.location.search);
   if (p.get('page') === 'quiz') {
-    if (p.get('mod') && quizData[p.get('mod')]) currentQuizModule = p.get('mod');
-    if (p.get('set')) currentQuizSet = 'set' + p.get('set');
+    const mod = p.get('mod');
+    const set = p.get('set');
+    if (mod && quizData[mod]) currentQuizModule = mod;
+    if (set) currentQuizSet = 'set' + set;
+    setQuizModule(currentQuizModule, null);
     showPage('quiz');
+    // Auto-start if both mod and set are provided
+    if (mod && set) startQuiz();
   }
 }
 window.addEventListener('load', initQuiz);
