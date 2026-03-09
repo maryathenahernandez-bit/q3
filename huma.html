@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Humanities 5 — Entrepreneurship Reviewer</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white:    #ffffff;
+    --froth:    #FAEADC;
+    --pumpkin:  #F2D9C3;
+    --dry-creek:#E0BFA2;
+    --peanut:   #C8A48A;
+    --terra:    #A07761;
+    --mocha:    #A47864;
+    --pepper:   #8E6E58;
+    --spicy:    #6C4E3E;
+    --soil:     #5A3D2E;
+    --dark:     #3A2419;
+    --card-bg:  #FDF5EE;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Nunito',sans-serif; background:linear-gradient(135deg,var(--froth) 0%,#f5e4ce 40%,var(--pumpkin) 100%); min-height:100vh; color:var(--dark); }
+
+  /* NAV */
+  nav { background:linear-gradient(90deg,var(--spicy),var(--soil)); padding:0 2rem; display:flex; align-items:center; gap:0.5rem; box-shadow:0 4px 20px rgba(0,0,0,0.2); position:sticky; top:0; z-index:100; height:60px; }
+  .nav-logo { font-family:'Baloo 2',cursive; font-size:1.3rem; font-weight:800; color:white; margin-right:1.5rem; text-shadow:1px 1px 3px rgba(0,0,0,0.3); }
+  .nav-logo span { color:var(--dry-creek); }
+  .nav-btn { background:transparent; border:none; color:white; font-family:'Nunito',sans-serif; font-size:0.95rem; font-weight:700; padding:0.5rem 1rem; border-radius:8px; cursor:pointer; transition:background 0.2s; position:relative; }
+  .nav-btn:hover, .nav-btn.active { background:rgba(255,255,255,0.2); }
+  .dropdown { position:relative; }
+  .dropdown-menu { display:none; position:absolute; top:100%; left:0; background:white; border-radius:10px; box-shadow:0 8px 30px rgba(0,0,0,0.15); min-width:260px; overflow:hidden; z-index:200; }
+  .dropdown:hover .dropdown-menu { display:block; }
+  .dropdown-item { display:block; padding:0.8rem 1.2rem; color:var(--dark); font-weight:600; font-size:0.9rem; transition:background 0.2s; border-left:4px solid transparent; cursor:pointer; border:none; background:none; width:100%; text-align:left; font-family:'Nunito',sans-serif; }
+  .dropdown-item:hover { background:var(--froth); border-left-color:var(--mocha); }
+  .dropdown-item.active { background:var(--froth); border-left-color:var(--spicy); color:var(--spicy); }
+
+  /* PAGES */
+  .page { display:none; }
+  .page.active { display:block; }
+  #home { display:none; }
+  #home.active { display:block; }
+
+  /* HOME */
+  .home-hero { background:linear-gradient(135deg,var(--spicy),var(--soil)); color:white; padding:3.5rem 2rem 2.5rem; text-align:center; }
+  .home-hero h1 { font-family:'Baloo 2',cursive; font-size:clamp(2rem,5vw,3rem); font-weight:800; margin-bottom:0.5rem; text-shadow:2px 2px 6px rgba(0,0,0,0.2); }
+  .home-hero p { font-size:1.05rem; opacity:0.95; max-width:650px; margin:0 auto; line-height:1.6; }
+  .modules-section { max-width:1100px; margin:2rem auto; padding:0 2rem 2rem; }
+  .section-heading { font-family:'Baloo 2',cursive; font-size:1.5rem; font-weight:800; color:var(--spicy); margin-bottom:1.5rem; padding-bottom:0.5rem; border-bottom:3px solid var(--dry-creek); }
+  .modules-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; }
+  .module-card { background:linear-gradient(135deg,var(--mocha) 0%,var(--spicy) 100%); border-radius:18px; padding:2rem 1.5rem; box-shadow:0 8px 30px rgba(0,0,0,0.25); border:none; cursor:pointer; transition:all 0.3s; position:relative; overflow:hidden; }
+  .module-card::before { content:''; position:absolute; inset:0; background:rgba(255,255,255,0.06); border-radius:18px; pointer-events:none; }
+  .module-card:hover { transform:translateY(-6px); box-shadow:0 16px 48px rgba(0,0,0,0.35); filter:brightness(1.1); }
+  .module-card .mc-header { display:flex; align-items:center; gap:1rem; margin-bottom:1rem; }
+  .module-card .mc-icon { font-size:2.5rem; line-height:1; }
+  .module-card h2 { font-family:'Baloo 2',cursive; font-size:1.3rem; font-weight:800; color:#fff; text-shadow:0 1px 4px rgba(0,0,0,0.4); }
+  .mc-subtitle { font-size:0.88rem; color:rgba(255,255,255,0.82); margin-top:0.2rem; font-weight:600; }
+  .mc-desc { font-size:0.88rem; line-height:1.6; color:rgba(255,255,255,0.88); margin-bottom:1rem; }
+  .mc-topics { background:rgba(0,0,0,0.18); border-left:3px solid rgba(255,255,255,0.55); padding:0.8rem 1rem 0.8rem 1.8rem; margin-bottom:1.2rem; border-radius:0 6px 6px 0; }
+  .mc-topics li { font-size:0.83rem; margin-bottom:0.3rem; color:rgba(255,255,255,0.88); }
+  .mc-actions { display:flex; gap:0.6rem; flex-wrap:wrap; }
+  .action-btn { flex:1; min-width:80px; padding:0.5rem 0.8rem; border-radius:10px; border:none; font-family:'Nunito',sans-serif; font-weight:700; font-size:0.85rem; cursor:pointer; transition:all 0.2s; text-align:center; }
+  .action-btn.primary { background:rgba(255,255,255,0.22); color:#fff; border:2px solid rgba(255,255,255,0.55); }
+  .action-btn.primary:hover { background:rgba(255,255,255,0.38); transform:scale(1.03); }
+  .action-btn.secondary { background:rgba(0,0,0,0.18); color:rgba(255,255,255,0.92); border:2px solid rgba(255,255,255,0.3); }
+  .action-btn.secondary:hover { background:rgba(0,0,0,0.28); border-color:rgba(255,255,255,0.65); }
+  .page-footer { text-align:center; padding:2rem; color:#888; font-size:0.85rem; }
+
+  /* REVIEWER */
+  .reviewer-module { max-width:1000px; margin:0 auto; padding:2rem; }
+  .module-header { background:linear-gradient(135deg,var(--mocha),var(--soil)); border-radius:20px; padding:2rem 2.5rem; color:white; margin-bottom:2rem; display:flex; align-items:center; gap:1.5rem; box-shadow:0 10px 30px rgba(90,61,46,0.3); }
+  .module-header .module-icon { font-size:3rem; }
+  .module-header h1 { font-family:'Baloo 2',cursive; font-size:1.8rem; font-weight:800; }
+  .module-header p { opacity:0.9; font-size:0.95rem; margin-top:0.3rem; }
+  .section-header { background:linear-gradient(90deg,var(--mocha),var(--peanut)); color:white; padding:1rem 1.5rem; border-radius:12px 12px 0 0; font-family:'Baloo 2',cursive; font-size:1.1rem; font-weight:700; display:flex; align-items:center; gap:0.5rem; }
+  .content-card { background:white; border-radius:0 0 12px 12px; padding:1.5rem; margin-bottom:1.5rem; box-shadow:0 4px 16px rgba(0,0,0,0.08); border:1px solid var(--dry-creek); border-top:none; }
+  .section-block { margin-bottom:2rem; }
+  .objective-list { list-style:none; }
+  .objective-list li { padding:0.7rem 1rem; margin-bottom:0.5rem; border-radius:8px; background:var(--card-bg); display:flex; align-items:flex-start; gap:0.7rem; font-weight:600; border-left:4px solid var(--mocha); line-height:1.5; }
+  .objective-list li .num { background:var(--mocha); color:white; width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:800; flex-shrink:0; margin-top:2px; }
+  .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  @media (max-width:600px) { .info-grid { grid-template-columns:1fr; } }
+  .info-box { background:var(--card-bg); border-radius:10px; padding:1rem 1.2rem; border:2px solid var(--dry-creek); }
+  .info-box h4 { font-size:0.9rem; font-weight:800; color:var(--mocha); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:0.6rem; }
+  .info-box ul { list-style:none; }
+  .info-box ul li { padding:0.3rem 0; font-size:0.9rem; border-bottom:1px solid var(--dry-creek); display:flex; gap:0.5rem; }
+  .info-box ul li:last-child { border-bottom:none; }
+  .info-box ul li::before { content:'•'; color:var(--mocha); font-weight:900; }
+  .def-card { background:var(--card-bg); border-radius:10px; padding:1rem 1.2rem; margin-bottom:0.8rem; border-left:5px solid var(--peanut); }
+  .def-card .term { font-weight:800; font-size:1rem; color:var(--spicy); margin-bottom:0.3rem; }
+  .def-card .definition { font-size:0.9rem; line-height:1.6; }
+  .compare-table { width:100%; border-collapse:collapse; }
+  .compare-table th { background:linear-gradient(90deg,var(--mocha),var(--peanut)); color:white; padding:0.8rem 1rem; text-align:left; font-weight:700; }
+  .compare-table th:first-child { border-radius:8px 0 0 0; }
+  .compare-table th:last-child { border-radius:0 8px 0 0; }
+  .compare-table td { padding:0.7rem 1rem; font-size:0.9rem; border-bottom:1px solid var(--dry-creek); vertical-align:top; }
+  .compare-table tr:nth-child(even) td { background:var(--card-bg); }
+  .compare-table tr:last-child td:first-child { border-radius:0 0 0 8px; }
+  .compare-table tr:last-child td:last-child { border-radius:0 0 8px 0; }
+  .tag { display:inline-block; padding:2px 10px; border-radius:20px; font-size:0.75rem; font-weight:700; }
+  .tag-warm { background:var(--pumpkin); color:var(--spicy); }
+  .tag-cool { background:#d4eefb; color:#1a5a8e; }
+  .highlight { background:linear-gradient(135deg,var(--froth),var(--pumpkin)); border-radius:10px; padding:1rem 1.2rem; margin:0.8rem 0; border:2px solid var(--dry-creek); font-size:0.9rem; line-height:1.6; }
+  .highlight strong { color:var(--spicy); }
+  .cluster-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; }
+  .cluster-card { background:var(--card-bg); border-radius:12px; padding:1rem 1.2rem; border:2px solid var(--dry-creek); border-top:4px solid var(--mocha); }
+  .cluster-card h4 { font-family:'Baloo 2',cursive; font-size:1rem; font-weight:800; color:var(--spicy); margin-bottom:0.5rem; }
+  .cluster-card p { font-size:0.85rem; color:#555; margin-bottom:0.7rem; line-height:1.4; }
+  .cluster-card ul { list-style:none; }
+  .cluster-card ul li { font-size:0.83rem; padding:0.2rem 0; color:var(--dark); border-bottom:1px dashed var(--dry-creek); }
+  .cluster-card ul li:last-child { border-bottom:none; }
+  .cluster-card ul li::before { content:'→ '; color:var(--mocha); font-weight:700; }
+  .vaccine-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  @media (max-width:600px) { .vaccine-grid { grid-template-columns:1fr; } }
+  .vaccine-card { background:var(--card-bg); border-radius:10px; padding:1rem; border:2px solid var(--dry-creek); }
+  .vaccine-card h4 { font-weight:800; color:var(--spicy); margin-bottom:0.5rem; font-size:0.95rem; }
+  .vaccine-card p { font-size:0.88rem; line-height:1.5; }
+  h2.sub-title { font-family:'Baloo 2',cursive; font-size:1.2rem; font-weight:800; color:var(--spicy); margin:1.2rem 0 0.6rem; }
+
+  /* FLASHCARDS */
+  #flashcards { max-width:750px; margin:0 auto; padding:2rem; }
+  .flashcard-header { text-align:center; margin-bottom:2rem; }
+  .flashcard-header h1 { font-family:'Baloo 2',cursive; font-size:2rem; color:var(--spicy); font-weight:800; }
+  .flashcard-header p { color:#555; margin-top:0.3rem; }
+  .flashcard-module-select { display:flex; gap:0.8rem; justify-content:center; flex-wrap:wrap; margin-bottom:1.5rem; }
+  .module-select-btn { padding:0.5rem 1.2rem; border-radius:20px; border:2px solid var(--dry-creek); background:white; font-family:'Nunito',sans-serif; font-weight:700; font-size:0.85rem; cursor:pointer; transition:all 0.2s; color:var(--dark); }
+  .module-select-btn.active { background:var(--mocha); color:white; border-color:var(--mocha); }
+  .flashcard-counter { text-align:center; color:#555; font-weight:700; margin-bottom:1rem; font-size:0.9rem; }
+  .card-scene { perspective:1200px; height:280px; cursor:pointer; margin-bottom:1.5rem; }
+  .card-inner { position:relative; width:100%; height:100%; transform-style:preserve-3d; transition:transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+  .card-inner.flipped { transform:rotateY(180deg); }
+  .card-face { position:absolute; width:100%; height:100%; backface-visibility:hidden; border-radius:20px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:2rem; text-align:center; box-shadow:0 12px 40px rgba(0,0,0,0.12); }
+  .card-front { background:linear-gradient(135deg,var(--mocha),var(--soil)); color:white; }
+  .card-front .card-label { font-size:0.75rem; text-transform:uppercase; letter-spacing:2px; opacity:0.8; margin-bottom:1rem; font-weight:700; }
+  .card-front .card-term { font-family:'Baloo 2',cursive; font-size:1.6rem; font-weight:800; line-height:1.3; }
+  .card-back { background:white; border:3px solid var(--dry-creek); transform:rotateY(180deg); color:var(--dark); }
+  .card-back .card-label { font-size:0.75rem; text-transform:uppercase; letter-spacing:2px; color:var(--mocha); margin-bottom:1rem; font-weight:700; }
+  .card-back .card-def { font-size:0.95rem; line-height:1.7; color:#333; }
+  .card-hint { text-align:center; color:#888; font-size:0.82rem; margin-bottom:1.5rem; }
+  .flashcard-nav { display:flex; gap:1rem; justify-content:center; align-items:center; }
+  .fc-btn { background:white; border:2px solid var(--dry-creek); color:var(--dark); font-family:'Nunito',sans-serif; font-weight:700; padding:0.6rem 1.5rem; border-radius:10px; cursor:pointer; transition:all 0.2s; font-size:0.9rem; }
+  .fc-btn:hover { background:var(--mocha); color:white; border-color:var(--mocha); }
+  .fc-btn.primary { background:var(--mocha); color:white; border-color:var(--mocha); }
+  .fc-btn.primary:hover { background:var(--soil); border-color:var(--soil); }
+  .progress-bar-wrap { background:var(--dry-creek); border-radius:100px; height:6px; margin-bottom:1.5rem; overflow:hidden; }
+  .progress-bar-fill { height:100%; background:linear-gradient(90deg,var(--mocha),var(--peanut)); border-radius:100px; transition:width 0.3s; }
+
+  /* QUIZ */
+  #quiz { max-width:750px; margin:0 auto; padding:2rem; }
+  .quiz-header { text-align:center; margin-bottom:2rem; }
+  .quiz-header h1 { font-family:'Baloo 2',cursive; font-size:2rem; color:var(--spicy); font-weight:800; }
+  .quiz-module-select { display:flex; gap:0.8rem; justify-content:center; flex-wrap:wrap; margin-bottom:1.5rem; }
+  .quiz-start { background:white; border-radius:20px; padding:2.5rem; text-align:center; box-shadow:0 8px 30px rgba(0,0,0,0.1); border:2px solid var(--dry-creek); }
+  .quiz-start .icon { font-size:4rem; margin-bottom:1rem; }
+  .quiz-start h2 { font-family:'Baloo 2',cursive; font-size:1.6rem; color:var(--spicy); margin-bottom:0.5rem; }
+  .quiz-start p { color:#666; margin-bottom:1.5rem; }
+  .start-btn { background:linear-gradient(135deg,var(--mocha),var(--soil)); color:white; border:none; padding:0.9rem 2.5rem; border-radius:12px; font-family:'Nunito',sans-serif; font-weight:800; font-size:1rem; cursor:pointer; transition:transform 0.2s,box-shadow 0.2s; box-shadow:0 4px 16px rgba(108,78,62,0.3); }
+  .start-btn:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(108,78,62,0.4); }
+  .quiz-question-wrap { display:none; }
+  .quiz-question-wrap.active { display:block; }
+  .quiz-progress-info { display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem; font-weight:700; font-size:0.88rem; color:#555; }
+  .quiz-score-badge { background:var(--mocha); color:white; padding:2px 10px; border-radius:20px; font-size:0.8rem; }
+  .question-card { background:white; border-radius:16px; padding:1.8rem; box-shadow:0 8px 24px rgba(0,0,0,0.08); border:2px solid var(--dry-creek); margin-bottom:1rem; }
+  .question-type-badge { display:inline-block; padding:3px 12px; border-radius:20px; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:0.8rem; }
+  .type-mc { background:#d4eefb; color:#1a5a8e; }
+  .type-tf { background:var(--pumpkin); color:var(--spicy); }
+  .set-select-btn { background:var(--card-bg); border:2px solid var(--dry-creek); border-radius:20px; padding:0.4rem 1.2rem; font-family:'Nunito',sans-serif; font-weight:700; font-size:0.85rem; cursor:pointer; color:var(--dark); transition:all 0.2s; }
+  .set-select-btn:hover { border-color:var(--mocha); color:var(--mocha); }
+  .set-select-btn.active { background:var(--mocha); color:white; border-color:var(--mocha); }
+  .question-text { font-size:1rem; font-weight:700; line-height:1.5; margin-bottom:1.2rem; color:var(--dark); }
+  .options-list { list-style:none; display:flex; flex-direction:column; gap:0.6rem; }
+  .option-btn { background:var(--card-bg); border:2px solid var(--dry-creek); border-radius:10px; padding:0.8rem 1rem; text-align:left; font-family:'Nunito',sans-serif; font-size:0.9rem; font-weight:600; cursor:pointer; transition:all 0.2s; display:flex; align-items:center; gap:0.7rem; width:100%; color:var(--dark); }
+  .option-btn:hover:not(:disabled) { background:var(--froth); border-color:var(--mocha); }
+  .option-btn.correct { background:#d4f0dc; border-color:#1a7a3c; color:#1a5a2c; }
+  .option-btn.wrong { background:#fde8e8; border-color:#e55; color:#c00; }
+  .option-btn:disabled { cursor:not-allowed; }
+  .option-letter { width:28px; height:28px; border-radius:50%; background:var(--dry-creek); color:var(--spicy); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.8rem; flex-shrink:0; transition:all 0.2s; }
+  .option-btn.correct .option-letter { background:#1a7a3c; color:white; }
+  .option-btn.wrong .option-letter { background:#e55; color:white; }
+  .feedback-box { display:none; padding:0.8rem 1rem; border-radius:10px; font-size:0.88rem; font-weight:600; margin-top:0.8rem; }
+  .feedback-box.correct { background:#d4f0dc; color:#1a5a2c; display:block; }
+  .feedback-box.wrong { background:#fde8e8; color:#c00; display:block; }
+  .next-btn { background:linear-gradient(135deg,var(--mocha),var(--soil)); color:white; border:none; padding:0.8rem 2rem; border-radius:10px; font-family:'Nunito',sans-serif; font-weight:800; font-size:0.95rem; cursor:pointer; margin-top:1rem; display:none; transition:transform 0.2s; width:100%; }
+  .next-btn:hover { transform:translateY(-2px); }
+  .next-btn.visible { display:block; }
+  .quiz-results { display:none; background:white; border-radius:20px; padding:2.5rem; text-align:center; box-shadow:0 8px 30px rgba(0,0,0,0.1); border:2px solid var(--dry-creek); }
+  .quiz-results.active { display:block; }
+  .result-score { font-family:'Baloo 2',cursive; font-size:4rem; font-weight:800; color:var(--mocha); margin:0.5rem 0; }
+  .result-label { font-size:1rem; color:#666; margin-bottom:1rem; }
+  .result-message { background:var(--card-bg); border-radius:12px; padding:1rem; margin-bottom:1.5rem; font-weight:600; color:var(--dark); border:2px solid var(--dry-creek); }
+  .review-list { text-align:left; margin-bottom:1.5rem; }
+  .review-item { border-radius:10px; padding:0.8rem; margin-bottom:0.6rem; font-size:0.88rem; border:1px solid var(--dry-creek); }
+  .review-item.correct { background:#d4f0dc; border-color:#1a7a3c; }
+  .review-item.wrong { background:#fde8e8; border-color:#e55; }
+  .review-item .q-text { font-weight:700; margin-bottom:0.3rem; }
+  .review-item .a-text { color:#444; }
+
+  /* PDF */
+  .pdf-mod-btn { background:var(--card-bg); border:2px solid var(--dry-creek); border-radius:20px; padding:0.45rem 1.3rem; font-family:'Nunito',sans-serif; font-weight:700; font-size:0.88rem; cursor:pointer; color:var(--dark); transition:all 0.2s; }
+  .pdf-mod-btn:hover { border-color:var(--mocha); color:var(--mocha); }
+  .pdf-mod-btn.active { background:var(--mocha); color:white; border-color:var(--mocha); }
+  .pdf-label { font-family:'Baloo 2',cursive; font-size:1rem; font-weight:700; color:var(--spicy); margin-bottom:0.6rem; }
+  .pdf-frame-wrap { width:100%; border-radius:14px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.12); background:#f5f5f5; margin-bottom:1rem; }
+  .pdf-frame { width:100%; height:80vh; min-height:500px; border:none; display:block; }
+  .pdf-links { text-align:center; }
+  .pdf-direct-btn { display:inline-block; background:var(--mocha); color:white; text-decoration:none; padding:0.55rem 1.4rem; border-radius:25px; font-family:'Nunito',sans-serif; font-weight:700; font-size:0.88rem; transition:background 0.2s; }
+  .pdf-direct-btn:hover { background:var(--soil); }
+
+  .scrollable { max-height:400px; overflow-y:auto; padding-right:0.5rem; }
+  .scrollable::-webkit-scrollbar { width:6px; }
+  .scrollable::-webkit-scrollbar-thumb { background:var(--dry-creek); border-radius:3px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">📖 Huma<span>5</span></div>
+  <div class="dropdown">
+    <button class="nav-btn">📚 Lessons ▾</button>
+    <div class="dropdown-menu">
+      <button class="dropdown-item" onclick="showPage('mod1')">💡 Lesson 1: The Entrepreneur</button>
+      <button class="dropdown-item" onclick="showPage('mod2')">🧠 Lesson 1.2: The Entrepreneurial Mindset</button>
+    </div>
+  </div>
+  <button class="nav-btn" onclick="showPage('flashcards')">🃏 Flashcards</button>
+  <button class="nav-btn" onclick="showPage('quiz')">📝 Quiz</button>
+  <button class="nav-btn" onclick="showPage('slides')">📄 Slides</button>
+  <button class="nav-btn" onclick="window.location.href='index.html'" style="margin-left:auto;">🏠 Back to Hub</button>
+</nav>
+
+<!-- HOME -->
+<div id="home" class="page active">
+  <div class="home-hero">
+    <h1>📖 Humanities 5</h1>
+    <p>Entrepreneurship — Explore the foundations of enterprise, the entrepreneurial mindset, and the art of spotting and seizing opportunity.</p>
+  </div>
+  <div class="modules-section">
+    <h2 class="section-heading">📚 Course Lessons</h2>
+    <div class="modules-grid">
+
+      <div class="module-card" onclick="showPage('mod1')">
+        <div class="mc-header"><span class="mc-icon">💡</span><div><h2>Lesson 1</h2><p class="mc-subtitle">The Entrepreneur</p></div></div>
+        <p class="mc-desc">Discover who entrepreneurs are, the scholars who defined them, 5 forms of innovation, and the 10 Personal Entrepreneur Competencies (PECs).</p>
+        <ul class="mc-topics">
+          <li>Key Definitions &amp; Etymology (Jean Baptiste Say)</li>
+          <li>Scholars: Cole, Drucker, Schumpeter</li>
+          <li>5 Forms of Innovation (Schumpeter)</li>
+          <li>5 Fundamental Principles of Entrepreneurship</li>
+          <li>10 PECs — Achievement, Planning &amp; Power Clusters</li>
+        </ul>
+        <div class="mc-actions">
+          <button class="action-btn primary" onclick="event.stopPropagation(); showPage('mod1')">📖 Study</button>
+          <button class="action-btn secondary" onclick="event.stopPropagation(); showPage('flashcards'); setFlashcardModuleBtn('mod1')">🃏 Cards</button>
+          <button class="action-btn secondary" onclick="event.stopPropagation(); showPage('quiz'); setQuizModule('mod1', document.getElementById('quizModBtn1'))">📝 Quiz</button>
+        </div>
+      </div>
+
+      <div class="module-card" onclick="showPage('mod2')">
+        <div class="mc-header"><span class="mc-icon">🧠</span><div><h2>Lesson 1.2</h2><p class="mc-subtitle">The Entrepreneurial Mindset</p></div></div>
+        <p class="mc-desc">Explore 5 learning styles, the 7 sources of opportunity, the 12 R's of screening, and how to conceptualize products through the enterprise life cycle.</p>
+        <ul class="mc-topics">
+          <li>5 Learning Styles (Imagining → Balanced)</li>
+          <li>Opportunity Seeking, Screening &amp; Seizing</li>
+          <li>7 Sources of Opportunity (Internal &amp; External)</li>
+          <li>12 R's of Opportunity Screening</li>
+          <li>Product Conceptualization, Prototypes &amp; Life Cycle</li>
+        </ul>
+        <div class="mc-actions">
+          <button class="action-btn primary" onclick="event.stopPropagation(); showPage('mod2')">📖 Study</button>
+          <button class="action-btn secondary" onclick="event.stopPropagation(); showPage('flashcards'); setFlashcardModuleBtn('mod2')">🃏 Cards</button>
+          <button class="action-btn secondary" onclick="event.stopPropagation(); showPage('quiz'); setQuizModule('mod2', document.getElementById('quizModBtn2'))">📝 Quiz</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="page-footer">Humanities 5 Reviewer • Use the nav above for Flashcards, Quiz &amp; PDF Slides</div>
+</div>
+
+
+<!-- LESSON 1 -->
+<div id="mod1" class="page">
+  <div style="background:white;border-bottom:2px solid var(--dry-creek);padding:0.8rem 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:60px;z-index:50;">
+    <button onclick="showPage('home')" style="background:var(--mocha);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
+    <span style="font-weight:800;color:var(--spicy);">💡 Lesson 1: The Entrepreneur</span>
+    <div style="margin-left:auto;display:flex;gap:0.5rem;">
+      <button onclick="showPage('flashcards'); setFlashcardModuleBtn('mod1')" style="background:transparent;border:2px solid var(--dry-creek);color:var(--mocha);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">🃏 Flashcards</button>
+      <button onclick="showPage('quiz')" style="background:transparent;border:2px solid var(--dry-creek);color:var(--mocha);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">📝 Quiz</button>
+    </div>
+  </div>
+  <div class="reviewer-module">
+    <div class="module-header">
+      <div class="module-icon">💡</div>
+      <div><h1>The Entrepreneur</h1><p>Lesson 1 — Humanities 5: Entrepreneurship</p></div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-header">📖 Key Definitions</div>
+      <div class="content-card">
+        <div class="def-card"><div class="term">Entrepreneur</div><div class="definition">Someone who starts and manages a business, undertaking the risks associated with it. The word comes from the French <em>entreprendre</em> meaning <strong>"to undertake"</strong> — coined by <strong>Jean Baptiste Say</strong>.</div></div>
+        <div class="def-card"><div class="term">Entrepreneurship</div><div class="definition">The dynamic process of conceptualizing, financing, and running a business enterprise to provide goods and services and earn profit.</div></div>
+        <div class="def-card"><div class="term">Creative Destruction</div><div class="definition">How new innovations and businesses replace old ones, leading to progress but also disrupting existing industries. Term coined by <strong>Joseph A. Schumpeter</strong>.</div></div>
+        <div class="def-card"><div class="term">Innovation</div><div class="definition">The development of new ideas, processes, products, or services that create value.</div></div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-header">👨‍🏫 Definitions by Scholars</div>
+      <div class="content-card">
+        <table class="compare-table">
+          <thead><tr><th>Scholar</th><th>Definition / Key Idea</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Arthur H. Cole</strong><br><small style="color:#888;font-weight:600;">Economic Historian</small></td><td>Entrepreneurship is a purposeful activity or integrated sequence of decisions to <em>initiate, organize, or expand</em> a profit-oriented business unit for producing or distributing economic goods or services.</td></tr>
+            <tr><td><strong>Peter F. Drucker</strong><br><small style="color:#888;font-weight:600;">Father of Modern Management</small></td><td>What successful entrepreneurs have in common is not a certain kind of personality, but a <strong>commitment to the systematic practice of innovation</strong>. Entrepreneurship can be learned and practiced.</td></tr>
+            <tr><td><strong>Joseph A. Schumpeter</strong></td><td>Associated entrepreneurship with innovation. Introduced the concept of <strong>Creative Destruction</strong> — new innovations replacing old ones, leading to progress while disrupting existing industries.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-header">⚡ 5 Forms of Innovation (Schumpeter)</div>
+      <div class="content-card">
+        <ul class="objective-list">
+          <li><span class="num">1</span>Launching of a new product or service</li>
+          <li><span class="num">2</span>Development of a new production method</li>
+          <li><span class="num">3</span>Opening of a new market</li>
+          <li><span class="num">4</span>Discovery of a new source of supply of raw materials</li>
+          <li><span class="num">5</span>Carrying out a new organization of industry</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-header">🏛️ 5 Fundamental Principles of Entrepreneurship</div>
+      <div class="content-card">
+        <ul class="objective-list">
+          <li><span class="num">1</span>Having a vision</li>
+          <li><span class="num">2</span>Providing innovative products or services</li>
+          <li><span class="num">3</span>Managing effectively</li>
+          <li><span class="num">4</span>Taking risks and opportunities</li>
+          <li><span class="num">5</span>Making informed decisions</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-header">🏆 10 Personal Entrepreneur Competencies (PECs)</div>
+      <div class="content-card">
+        <div class="cluster-grid">
+          <div class="cluster-card">
+            <h4>🥇 Achievement Cluster</h4>
+            <p>The drive and motivation of an entrepreneur to set and accomplish business goals.</p>
+            <ul>
+              <li>Opportunity Seeking &amp; Initiative</li>
+              <li>Persistence</li>
+              <li>Fulfilling Commitments</li>
+              <li>Demand for Quality &amp; Efficiency</li>
+              <li>Taking Calculated Risk</li>
+            </ul>
+          </div>
+          <div class="cluster-card">
+            <h4>📋 Planning Cluster</h4>
+            <p>Setting clear goals, gathering information, and creating organized plans for business decisions.</p>
+            <ul>
+              <li>Goal Setting</li>
+              <li>Information Seeking</li>
+              <li>Systematic Planning &amp; Monitoring</li>
+            </ul>
+          </div>
+          <div class="cluster-card">
+            <h4>💪 Power Cluster</h4>
+            <p>The entrepreneur's ability to influence, lead, and build relationships that support business success.</p>
+            <ul>
+              <li>Persuasion &amp; Networking</li>
+              <li>Independence &amp; Self-Confidence</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- LESSON 1.2 -->
+<div id="mod2" class="page">
+  <div style="background:white;border-bottom:2px solid var(--dry-creek);padding:0.8rem 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:60px;z-index:50;">
+    <button onclick="showPage('home')" style="background:var(--mocha);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
+    <span style="font-weight:800;color:var(--spicy);">🧠 Lesson 1.2: The Entrepreneurial Mindset</span>
+    <div style="margin-left:auto;display:flex;gap:0.5rem;">
+      <button onclick="showPage('flashcards'); setFlashcardModuleBtn('mod2')" style="background:transparent;border:2px solid var(--dry-creek);color:var(--mocha);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">🃏 Flashcards</button>
+      <button onclick="showPage('quiz')" style="background:transparent;border:2px solid var(--dry-creek);color:var(--mocha);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">📝 Quiz</button>
+    </div>
+  </div>
+  <div class="reviewer-module">
+    <div class="module-header" style="background:linear-gradient(135deg,var(--spicy),var(--soil));">
+      <div class="module-icon">🧠</div>
+      <div><h1>The Entrepreneurial Mindset</h1><p>Lesson 1.2 — Humanities 5: Entrepreneurship</p></div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-header">🎨 5 Learning Styles &amp; Skill Sets</div>
+      <div class="content-card">
+        <div class="highlight">There are <strong>five learning styles</strong> that shape how entrepreneurs think and act.</div>
+        <table class="compare-table" style="margin-top:0.8rem;">
+          <thead><tr><th>Style</th><th>Description</th><th>Challenges</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Imagining</strong></td><td>Prefers concrete experiences; uses varying thinking processes to generate multiple solutions and ideas.</td><td>May struggle with execution and follow-through; can be overwhelmed by too many ideas.</td></tr>
+            <tr><td><strong>Analyzing</strong></td><td>Prefers abstract information through reflection; enjoys logical problem solving and theory formulation.</td><td>Can overanalyze; may struggle in fast-paced environments; hard to embrace uncertainty.</td></tr>
+            <tr><td><strong>Deciding</strong></td><td>Drawn to application of theory through practical, task-oriented problem solving.</td><td>May overlook deeper analysis; can be impatient; might take risks without full consideration.</td></tr>
+            <tr><td><strong>Initiating</strong></td><td>Interested in practical activities; relies on intuition; learns from social interactions.</td><td>May take risks without enough preparation; can struggle with long-term planning.</td></tr>
+            <tr><td><strong>Balanced</strong></td><td>Flexible style that allows adaptation on a situational basis; combines all four styles.</td><td>May take longer to decide; can experience decision fatigue; harder to form a distinct identity.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-header">🔍 Opportunity Seeking, Screening &amp; Seizing</div>
+      <div class="content-card">
+        <div class="def-card"><div class="term">Opportunity</div><div class="definition">An idea that has the potential to be developed into a business venture.</div></div>
+
+        <h2 class="sub-title">A. Sources of Opportunity</h2>
+        <p style="font-size:0.9rem;margin-bottom:0.8rem;">Sources of opportunity are divided into <strong>Internal</strong> and <strong>External</strong>:</p>
+        <table class="compare-table">
+          <thead><tr><th>Source</th><th>Type</th><th>Description</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td><strong>The Unexpected</strong></td><td><span class="tag tag-warm">Internal</span></td><td>Successes, failures, and outside events that were not anticipated can open new opportunities.</td><td>3M's accidental invention of Post-it Notes</td></tr>
+            <tr><td><strong>Incongruities</strong></td><td><span class="tag tag-warm">Internal</span></td><td>A gap between what is and what should be (inefficiencies or customer dissatisfaction) can lead to innovation.</td><td>Netflix replacing Blockbuster by removing late fees</td></tr>
+            <tr><td><strong>Process Needs</strong></td><td><span class="tag tag-warm">Internal</span></td><td>Identifying a weak or missing link in a process to improve efficiency.</td><td>Amazon's One-Click Checkout reducing cart abandonment</td></tr>
+            <tr><td><strong>Industry &amp; Market Changes</strong></td><td><span class="tag tag-cool">External</span></td><td>Shifts in industry structure, trends, or consumer preferences create opportunities.</td><td>COVID-19 accelerating demand for remote work tools</td></tr>
+            <tr><td><strong>Demographic Changes</strong></td><td><span class="tag tag-cool">External</span></td><td>Population trends such as aging, urbanization, or income shifts.</td><td>Aging population increasing demand for elderly care &amp; medical tech</td></tr>
+            <tr><td><strong>Changes in Perception</strong></td><td><span class="tag tag-cool">External</span></td><td>Evolving consumer values and cultural shifts.</td><td>Demand for sustainable products fueling eco-fashion</td></tr>
+            <tr><td><strong>New Knowledge</strong></td><td><span class="tag tag-cool">External</span></td><td>Advances in science, technology, or business models.</td><td>AI advancements leading to new businesses like ChatGPT, Tesla self-driving</td></tr>
+          </tbody>
+        </table>
+
+        <h2 class="sub-title">B. How to Spot Opportunities</h2>
+        <ul class="objective-list">
+          <li><span class="num">1</span>Listen to the Market</li>
+          <li><span class="num">2</span>Feel the Competition</li>
+          <li><span class="num">3</span>Look at the Trends</li>
+        </ul>
+
+        <h2 class="sub-title">C. Opportunity Screening</h2>
+        <div class="def-card"><div class="term">Opportunity Screening</div><div class="definition">Entrepreneurs evaluate the market, competitors, and industry trends to assess whether an opportunity is worth pursuing.</div></div>
+        <p style="font-size:0.9rem;font-weight:700;margin:0.8rem 0 0.4rem;">An opportunity should:</p>
+        <ul class="objective-list">
+          <li><span class="num">1</span>Bring superior value to customers</li>
+          <li><span class="num">2</span>Provide a solution to a compelling problem</li>
+          <li><span class="num">3</span>Fully satisfy a need or want</li>
+          <li><span class="num">4</span>Be a potential cash cow (financially viable)</li>
+          <li><span class="num">5</span>Match the skills and resources of the entrepreneur</li>
+        </ul>
+
+        <h2 class="sub-title">The 12 R's of Opportunity Screening</h2>
+        <table class="compare-table" style="margin-top:0.5rem;">
+          <thead><tr><th>Criterion</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Relevance</strong></td><td>Does the opportunity align with the company's vision, mission, and goals?</td></tr>
+            <tr><td><strong>Resonance</strong></td><td>The opportunity must resonate with the values the entrepreneur wishes to impart.</td></tr>
+            <tr><td><strong>Reinforcement</strong></td><td>Does it resonate with the entrepreneur's interest, preference, or taste?</td></tr>
+            <tr><td><strong>Revenues</strong></td><td>Must determine the sales potential of the products and services.</td></tr>
+            <tr><td><strong>Responsiveness</strong></td><td>Can the business quickly adapt to market changes and trends?</td></tr>
+            <tr><td><strong>Reach</strong></td><td>Good chances of expanding through branches, distributorships, dealerships, and franchise outlets.</td></tr>
+            <tr><td><strong>Range</strong></td><td>Does the opportunity allow for expansion into other markets or product lines?</td></tr>
+            <tr><td><strong>Revolutionary Impact</strong></td><td>Is it the next big thing? Is it a game changer?</td></tr>
+            <tr><td><strong>Returns</strong></td><td>What are the expected financial and non-financial gains?</td></tr>
+            <tr><td><strong>Relative Ease of Implementation</strong></td><td>Is it easy to implement?</td></tr>
+            <tr><td><strong>Resources Required</strong></td><td>What capital, technology, and manpower are needed?</td></tr>
+            <tr><td><strong>Risks</strong></td><td>What are the potential challenges, competition, and threats?</td></tr>
+          </tbody>
+        </table>
+
+        <h2 class="sub-title">D. Opportunity Seizing</h2>
+        <div class="def-card"><div class="term">Opportunity Seizing</div><div class="definition">Recognizing and taking advantage of favorable situations or chances when they arise. Involves determining critical factors that could affect the outcome of the chosen opportunity.</div></div>
+        <div class="def-card"><div class="term">Positioning Statement</div><div class="definition">A concise explanation of how an entrepreneur wants the market to perceive his/her brand. It includes a brief explanation of the product or service and how it addresses a need of the target market.</div></div>
+        <p style="font-size:0.9rem;font-weight:700;margin:0.8rem 0 0.4rem;">Characteristics of a good Positioning Statement:</p>
+        <ul class="objective-list">
+          <li><span class="num">1</span>Simple, memorable, credible, and tailored to the target market</li>
+          <li><span class="num">2</span>Provides an easily understood unique description of the brand</li>
+          <li><span class="num">3</span>Helps evaluate the consistency of marketing efforts with the brand</li>
+          <li><span class="num">4</span>Leaves room for growth and development</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-header">💡 Product Conceptualization</div>
+      <div class="content-card">
+        <div class="def-card"><div class="term">Product Conceptualization</div><div class="definition">The phase during which entrepreneurs write their ideas on paper (concept statement) to identify concepts that will lay the foundation of their business model.</div></div>
+        <h2 class="sub-title">How to Make a Concept Statement</h2>
+        <ul class="objective-list">
+          <li><span class="num">1</span>Create a concept similar to successful products and ride market trends.</li>
+          <li><span class="num">2</span>Find a market niche or segment not yet filled by competitors.</li>
+          <li><span class="num">3</span>Conceptualize a product or service where competition is weak.</li>
+          <li><span class="num">4</span>Conceptualize a product or service that changes customer preferences, making existing products obsolete.</li>
+        </ul>
+        <h2 class="sub-title">Key Features of a Prototype</h2>
+        <div class="info-grid">
+          <div class="info-box"><h4>🧩 Representation</h4><ul><li>The form of the prototype.</li></ul></div>
+          <div class="info-box"><h4>🎯 Precision</h4><ul><li>The reliability of the prototype.</li></ul></div>
+          <div class="info-box"><h4>⚙️ Interactivity</h4><ul><li>The functionality open for testing.</li></ul></div>
+          <div class="info-box"><h4>🔄 Evolution</h4><ul><li>Lifecycle; some developed fast, tested, then replaced through rapid prototyping.</li></ul></div>
+        </div>
+        <h2 class="sub-title">Categories of Prototype</h2>
+        <div class="vaccine-grid" style="margin-top:0.5rem;">
+          <div class="vaccine-card"><h4>Low-Fidelity Prototype</h4><p>Easy and quick to make, usually paper-based, giving a preview of the product or service <strong>without testing it</strong>.</p></div>
+          <div class="vaccine-card"><h4>High-Fidelity Prototype</h4><p>Looks similar to the real product; interactive and offers <strong>insightful feedback from testers</strong>.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <div class="section-header">🔄 Implementation &amp; Enterprise Life Cycle</div>
+      <div class="content-card">
+        <div class="def-card"><div class="term">Implementation</div><div class="definition">The process of executing a plan or strategy so that the concept becomes a reality.</div></div>
+        <h2 class="sub-title">Enterprise Life Cycle — 5 Phases</h2>
+        <table class="compare-table" style="margin-top:0.5rem;">
+          <thead><tr><th>Phase</th><th>Name</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1</strong></td><td><strong>Development</strong></td><td>The entrepreneur determines if the opportunity is worth investing by gathering market information and expert advice, and evaluating skills and resources.</td></tr>
+            <tr><td><strong>2</strong></td><td><strong>Start-up</strong></td><td>Adaptability is key. The business concept must be tested and adjusted to meet end-user expectations until there are sufficiently compelling reasons to officially launch.</td></tr>
+            <tr><td><strong>3</strong></td><td><strong>Growth</strong></td><td>Emphasis shifts from planning to execution. The business should be generating profits and moving towards sustainable performance.</td></tr>
+            <tr><td><strong>4</strong></td><td><strong>Expansion</strong></td><td>The business has established its market presence and broadens its network, customer base, offerings, new territories, or through mergers and acquisitions.</td></tr>
+            <tr><td><strong>5</strong></td><td><strong>Maturity</strong></td><td>Entrepreneurs face two options: push for further expansion, or exit the business.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SLIDES -->
+<div id="slides" class="page">
+  <div style="background:white;border-bottom:2px solid var(--dry-creek);padding:0.8rem 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:60px;z-index:50;">
+    <button onclick="showPage('home')" style="background:var(--mocha);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
+    <span style="font-weight:800;color:var(--spicy);">📄 PDF Slides</span>
+  </div>
+  <div class="reviewer-module">
+    <div class="module-header" style="background:linear-gradient(135deg,var(--pepper),var(--soil));">
+      <div class="module-icon">📄</div>
+      <div><h1>PDF Slides</h1><p>View the original reviewer document for Humanities 5</p></div>
+    </div>
+    <div class="section-block">
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:1.2rem;">
+        <button class="pdf-mod-btn active" id="pdfBtn1" onclick="showPDF(1)">💡 Lessons 1 &amp; 1.2 Reviewer</button>
+      </div>
+      <div class="pdf-label" id="pdfLabel1">📄 Hum5 Reviewer — Entrepreneur &amp; Entrepreneurial Mindset</div>
+      <div class="pdf-frame-wrap">
+        <iframe id="pdfFrame1" class="pdf-frame"
+          src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/Hum5_Reviewer.docx&embedded=true"
+          allowfullscreen></iframe>
+      </div>
+      <div class="pdf-links">
+        <a class="pdf-direct-btn" href="https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/Hum5_Reviewer.docx" target="_blank" id="pdfDirect1">⬇️ Download Reviewer (DOCX)</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- FLASHCARDS -->
+<div id="flashcards" class="page">
+  <div id="flashcards-content" style="max-width:750px;margin:0 auto;padding:2rem;">
+    <div class="flashcard-header">
+      <h1>🃏 Flashcards</h1>
+      <p>Click a card to reveal the answer. Use arrows to navigate.</p>
+    </div>
+    <div class="flashcard-module-select">
+      <button class="module-select-btn active" onclick="setFlashcardModule('mod1', this)">💡 Lesson 1</button>
+      <button class="module-select-btn" onclick="setFlashcardModule('mod2', this)">🧠 Lesson 1.2</button>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="fcProgress" style="width:0%"></div></div>
+    <div class="flashcard-counter" id="fcCounter">Card 1 of 17</div>
+    <div class="card-scene" onclick="flipCard()">
+      <div class="card-inner" id="cardInner">
+        <div class="card-face card-front"><div class="card-label">TERM</div><div class="card-term" id="cardTerm">Loading...</div></div>
+        <div class="card-face card-back"><div class="card-label">DEFINITION / ANSWER</div><div class="card-def" id="cardDef">Loading...</div></div>
+      </div>
+    </div>
+    <div class="card-hint">👆 Click the card to flip it</div>
+    <div class="flashcard-nav">
+      <button class="fc-btn" onclick="prevCard()">← Previous</button>
+      <button class="fc-btn primary" onclick="flipCard()">Flip Card</button>
+      <button class="fc-btn" onclick="nextCard()">Next →</button>
+    </div>
+    <div style="text-align:center;margin-top:1rem;">
+      <button class="fc-btn" onclick="shuffleCards()">🔀 Shuffle</button>
+      <button class="fc-btn" onclick="resetCards()" style="margin-left:0.5rem;">↩ Reset</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- QUIZ -->
+<div id="quiz" class="page">
+  <div style="max-width:750px;margin:0 auto;padding:2rem;">
+    <div class="quiz-header">
+      <h1>📝 Quiz</h1>
+      <p style="color:#555;">Test your knowledge on Entrepreneurship</p>
+    </div>
+    <div class="quiz-module-select">
+      <button class="module-select-btn active" id="quizModBtn1" onclick="setQuizModule('mod1', this)">💡 Lesson 1</button>
+      <button class="module-select-btn" id="quizModBtn2" onclick="setQuizModule('mod2', this)">🧠 Lesson 1.2</button>
+    </div>
+    <div id="quizStart" class="quiz-start">
+      <div class="icon">☕</div>
+      <h2 id="quizModTitle">💡 Lesson 1: The Entrepreneur</h2>
+      <p>10 Multiple Choice + 5 True/False per set.</p>
+      <div style="display:flex;gap:0.6rem;justify-content:center;flex-wrap:wrap;margin-bottom:0.8rem;">
+        <span style="background:#d4eefb;color:#1a5a8e;padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Multiple Choice</span>
+        <span style="background:var(--pumpkin);color:var(--spicy);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">True / False</span>
+      </div>
+      <div style="display:flex;gap:0.5rem;justify-content:center;margin-bottom:1.2rem;">
+        <button id="setBtn1" class="set-select-btn active" onclick="selectSet(1)">📋 Set 1 — MC</button>
+        <button id="setBtn2" class="set-select-btn" onclick="selectSet(2)">📋 Set 2 — T/F</button>
+      </div>
+      <button class="start-btn" onclick="startQuiz()">Start Quiz →</button>
+    </div>
+    <div id="quizQuestion" class="quiz-question-wrap">
+      <div class="quiz-progress-info">
+        <span id="qProgress">Question 1 of 10</span>
+        <span class="quiz-score-badge" id="qScore">Score: 0</span>
+      </div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="quizProgressBar" style="width:10%"></div></div>
+      <div class="question-card">
+        <span class="question-type-badge type-mc" id="qTypeBadge">Multiple Choice</span>
+        <div class="question-text" id="qText"></div>
+        <ul class="options-list" id="qOptions"></ul>
+        <div class="feedback-box" id="qFeedback"></div>
+      </div>
+      <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Question →</button>
+    </div>
+    <div id="quizResults" class="quiz-results">
+      <div style="font-size:3rem">🎉</div>
+      <h2 style="font-family:'Baloo 2',cursive;color:var(--spicy);">Quiz Complete!</h2>
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-label" id="resultLabel">out of questions</div>
+      <div class="result-message" id="resultMessage"></div>
+      <h3 style="text-align:left;color:var(--spicy);margin-bottom:0.8rem;font-size:1rem;">Review Your Answers:</h3>
+      <div class="review-list scrollable" id="reviewList"></div>
+      <button class="start-btn" onclick="restartQuiz()">Try Again 🔄</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+// PAGE NAV
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if (id === 'flashcards') renderFlashcard();
+  window.scrollTo(0, 0);
+}
+
+function showPDF(num) {
+  document.getElementById('pdfFrame1').style.display = 'block';
+  document.getElementById('pdfLabel1').style.display = 'block';
+  document.getElementById('pdfDirect1').style.display = 'inline-block';
+  document.getElementById('pdfBtn1').classList.add('active');
+}
+
+// Called from home card buttons
+function setFlashcardModuleBtn(mod) {
+  currentCards = [...(flashcardsData[mod] || [])];
+  currentCardIndex = 0;
+  document.querySelectorAll('.module-select-btn').forEach(b => {
+    const oc = b.getAttribute('onclick') || '';
+    b.classList.toggle('active', oc.includes("'" + mod + "'"));
+  });
+  renderFlashcard();
+}
+
+// FLASHCARD DATA
+const flashcardsData = {
+  mod1: [
+    { term:"What does 'entrepreneur' mean and who coined it?", def:"From the French entreprendre meaning 'to undertake.' Coined by Jean Baptiste Say." },
+    { term:"Entrepreneur", def:"Someone who starts and manages a business, undertaking the risks associated with it." },
+    { term:"Entrepreneurship", def:"The dynamic process of conceptualizing, financing, and running a business enterprise to provide goods and services and earn profit." },
+    { term:"Creative Destruction", def:"How new innovations and businesses replace old ones, leading to progress but also disrupting existing industries. Term by Joseph A. Schumpeter." },
+    { term:"Innovation", def:"The development of new ideas, processes, products, or services that create value." },
+    { term:"Arthur H. Cole on Entrepreneurship", def:"It is a purposeful activity or integrated sequence of decisions to initiate, organize, or expand a profit-oriented business unit for producing or distributing economic goods or services." },
+    { term:"Peter F. Drucker on Entrepreneurship", def:"Successful entrepreneurs share a commitment to the systematic practice of innovation. Entrepreneurship can be learned and practiced." },
+    { term:"Joseph A. Schumpeter", def:"Associated entrepreneurship with innovation and introduced the concept of Creative Destruction." },
+    { term:"5 Forms of Innovation", def:"1. Launching a new product/service  2. New production method  3. Opening a new market  4. New source of raw materials  5. New organization of industry" },
+    { term:"5 Fundamental Principles of Entrepreneurship", def:"1. Having a vision  2. Providing innovative products/services  3. Managing effectively  4. Taking risks and opportunities  5. Making informed decisions" },
+    { term:"3 Clusters of the 10 PECs", def:"Achievement Cluster, Planning Cluster, and Power Cluster." },
+    { term:"Achievement Cluster PECs", def:"Opportunity Seeking & Initiative, Persistence, Fulfilling Commitments, Demand for Quality & Efficiency, Taking Calculated Risk." },
+    { term:"Planning Cluster PECs", def:"Goal Setting, Information Seeking, Systematic Planning & Monitoring." },
+    { term:"Power Cluster PECs", def:"Persuasion & Networking, Independence & Self-Confidence." },
+    { term:"Achievement Cluster — Description", def:"Refers to the drive and motivation of an entrepreneur to set and accomplish business goals." },
+    { term:"Planning Cluster — Description", def:"Focuses on setting clear goals, gathering information, and creating organized plans for business decisions." },
+    { term:"Power Cluster — Description", def:"Represents the entrepreneur's ability to influence, lead, and build relationships that support business success." }
+  ],
+  mod2: [
+    { term:"Imagining Style", def:"Prefers concrete experiences; uses varying thinking processes to generate multiple solutions. May struggle with execution and follow-through." },
+    { term:"Analyzing Style", def:"Prefers abstract information through reflection; enjoys logical problem solving and theory formulation. May struggle in fast-paced environments." },
+    { term:"Deciding Style", def:"Drawn to application of theory through practical, task-oriented problem solving. May overlook deeper analysis or take risks without full consideration." },
+    { term:"Initiating Style", def:"Interested in practical activities; relies on intuition; learns from social interactions. May take risks without enough preparation." },
+    { term:"Balanced Style", def:"Flexible style that allows adaptation on a situational basis; combines all four styles. May take longer to decide and can experience decision fatigue." },
+    { term:"Opportunity", def:"An idea that has the potential to be developed into a business venture." },
+    { term:"3 Ways to Spot Opportunities", def:"Listen to the Market, Feel the Competition, Look at the Trends." },
+    { term:"7 Sources of Opportunity", def:"Internal: The Unexpected, Incongruities, Process Needs. External: Industry & Market Changes, Demographic Changes, Changes in Perception, New Knowledge." },
+    { term:"The Unexpected (example)", def:"3M's accidental invention of Post-it Notes." },
+    { term:"Incongruities (example)", def:"Netflix replacing Blockbuster by removing late fees and inconvenience." },
+    { term:"Process Needs (example)", def:"Amazon's One-Click Checkout reducing cart abandonment." },
+    { term:"Opportunity Screening", def:"Entrepreneurs evaluate the market, competitors, and industry trends to assess whether an opportunity is worth pursuing." },
+    { term:"5 Criteria an Opportunity Should Meet", def:"1. Superior value to customers  2. Solution to a compelling problem  3. Fully satisfies a need or want  4. Potential cash cow  5. Matches skills and resources of the entrepreneur" },
+    { term:"12 R's of Opportunity Screening", def:"Relevance, Resonance, Reinforcement, Revenues, Responsiveness, Reach, Range, Revolutionary Impact, Returns, Relative Ease of Implementation, Resources Required, Risks." },
+    { term:"Relevance (12 R's)", def:"Does the opportunity align with the company's vision, mission, and goals?" },
+    { term:"Responsiveness (12 R's)", def:"Can the business quickly adapt to market changes and trends?" },
+    { term:"Revolutionary Impact (12 R's)", def:"Is it the next big thing? Is it a game changer?" },
+    { term:"Opportunity Seizing", def:"Recognizing and taking advantage of favorable situations or chances when they arise." },
+    { term:"Positioning Statement", def:"A concise explanation of how an entrepreneur wants the market to perceive his/her brand, including how the product addresses a need of the target market." },
+    { term:"4 Characteristics of a Good Positioning Statement", def:"1. Simple, memorable, credible, tailored to target market  2. Unique description of the brand  3. Helps evaluate marketing consistency  4. Leaves room for growth and development" },
+    { term:"Product Conceptualization", def:"The phase where entrepreneurs write ideas on paper (concept statement) to identify concepts that lay the foundation of their business model." },
+    { term:"4 Key Features of a Prototype", def:"Representation, Precision, Interactivity, Evolution." },
+    { term:"Low-Fidelity Prototype", def:"Easy and quick to make, usually paper-based; gives a preview of the product or service without testing it." },
+    { term:"High-Fidelity Prototype", def:"Looks similar to the real product; interactive and offers insightful feedback from testers." },
+    { term:"5 Phases of the Enterprise Life Cycle", def:"Phase 1 – Development, Phase 2 – Start-up, Phase 3 – Growth, Phase 4 – Expansion, Phase 5 – Maturity." },
+    { term:"Phase 1: Development", def:"The entrepreneur determines if the opportunity is worth investing by gathering market information and evaluating skills and resources." },
+    { term:"Phase 2: Start-up", def:"The business concept is tested and adjusted to meet end-user expectations until there are sufficiently compelling reasons to officially launch." },
+    { term:"Phase 3: Growth", def:"Emphasis shifts from planning to execution. The business should be generating profits and moving toward sustainable performance." },
+    { term:"Phase 4: Expansion", def:"The business broadens its network, customer base, and offerings through new territories or mergers and acquisitions." },
+    { term:"Phase 5: Maturity", def:"Entrepreneurs face two options — push for further expansion, or exit the business." }
+  ]
+};
+
+let currentCards = [...flashcardsData.mod1];
+let currentCardIndex = 0;
+let isFlipped = false;
+
+function setFlashcardModule(mod, btn) {
+  currentCards = [...(flashcardsData[mod] || [])];
+  currentCardIndex = 0;
+  document.querySelectorAll('.module-select-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderFlashcard();
+}
+
+function renderFlashcard() {
+  if (!currentCards.length) return;
+  const card = currentCards[currentCardIndex];
+  document.getElementById('cardTerm').textContent = card.term;
+  document.getElementById('cardDef').textContent = card.def;
+  document.getElementById('fcCounter').textContent = `Card ${currentCardIndex + 1} of ${currentCards.length}`;
+  document.getElementById('fcProgress').style.width = (((currentCardIndex + 1) / currentCards.length) * 100) + '%';
+  document.getElementById('cardInner').classList.remove('flipped');
+  isFlipped = false;
+}
+
+function flipCard() { document.getElementById('cardInner').classList.toggle('flipped'); isFlipped = !isFlipped; }
+function nextCard() { if (currentCardIndex < currentCards.length - 1) { currentCardIndex++; renderFlashcard(); } }
+function prevCard() { if (currentCardIndex > 0) { currentCardIndex--; renderFlashcard(); } }
+function shuffleCards() {
+  for (let i = currentCards.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [currentCards[i], currentCards[j]] = [currentCards[j], currentCards[i]];
+  }
+  currentCardIndex = 0; renderFlashcard();
+}
+function resetCards() { currentCardIndex = 0; renderFlashcard(); }
+
+// QUIZ DATA
+const allQuizData = {
+  mod1: [
+    { type:"mc", q:"The word 'entrepreneur' comes from the French word entreprendre, which means:", options:["To profit","To innovate","To undertake","To manage"], answer:2, explanation:"Entreprendre means 'to undertake.' The term was coined by Jean Baptiste Say." },
+    { type:"mc", q:"Who coined the term Creative Destruction?", options:["Peter F. Drucker","Arthur H. Cole","Joseph A. Schumpeter","Jean Baptiste Say"], answer:2, explanation:"Joseph A. Schumpeter introduced Creative Destruction — the idea that new innovations replace old ones, driving progress but disrupting existing industries." },
+    { type:"mc", q:"According to Peter F. Drucker, what do successful entrepreneurs have in common?", options:["A certain kind of personality","High tolerance for financial risk","A commitment to the systematic practice of innovation","Years of business experience"], answer:2, explanation:"Drucker argued that success comes from a commitment to the systematic practice of innovation — not personality. He also believed entrepreneurship can be learned and practiced." },
+    { type:"mc", q:"Which of the following is NOT one of Schumpeter's Forms of Innovation?", options:["Launching a new product or service","Opening of a new market","Hiring highly skilled employees","Discovery of a new source of supply of raw materials"], answer:2, explanation:"Hiring skilled employees is NOT a Form of Innovation. The 5 Forms are: new product/service, new production method, new market, new source of raw materials, new organization of industry." },
+    { type:"mc", q:"Which scholar defined entrepreneurship as a 'purposeful activity to initiate, organize, or expand a profit-oriented business unit'?", options:["Arthur H. Cole","Peter F. Drucker","Joseph A. Schumpeter","Jean Baptiste Say"], answer:0, explanation:"Arthur H. Cole (Economic Historian) defined entrepreneurship as a purposeful activity or integrated sequence of decisions to initiate, organize, or expand a profit-oriented business unit." },
+    { type:"mc", q:"Which of the following belongs to the Achievement Cluster of the 10 PECs?", options:["Goal Setting","Persuasion & Networking","Taking Calculated Risk","Systematic Planning & Monitoring"], answer:2, explanation:"Taking Calculated Risk belongs to the Achievement Cluster. Goal Setting and Systematic Planning & Monitoring belong to Planning; Persuasion & Networking belongs to Power." },
+    { type:"mc", q:"The Planning Cluster of PECs focuses on:", options:["Building relationships and leading others","Committing to deadlines and delivering results","Setting goals, gathering information, and creating organized plans","Taking initiative and seeking new opportunities"], answer:2, explanation:"The Planning Cluster focuses on Goal Setting, Information Seeking, and Systematic Planning & Monitoring — all centered on organizing for business decisions." },
+    { type:"mc", q:"The Power Cluster of PECs represents:", options:["The drive to accomplish business goals","The ability to influence, lead, and build relationships","Setting measurable objectives","Managing risk and efficiency"], answer:1, explanation:"The Power Cluster — Persuasion & Networking and Independence & Self-Confidence — represents the entrepreneur's ability to influence, lead, and build relationships supporting business success." },
+    { type:"mc", q:"Which of the following is a Fundamental Principle of Entrepreneurship?", options:["Avoiding competition at all costs","Delegating all decision-making to employees","Making informed decisions","Maintaining a fixed business model"], answer:2, explanation:"Making informed decisions is one of the 5 Fundamental Principles. The others are: having a vision, providing innovative products/services, managing effectively, and taking risks and opportunities." },
+    { type:"mc", q:"Entrepreneurship is best described as:", options:["Buying and selling existing businesses","Managing a large corporation","The dynamic process of conceptualizing, financing, and running a business for profit","Creating non-profit organizations"], answer:2, explanation:"Entrepreneurship is the dynamic process of conceptualizing, financing, and running a business enterprise to provide goods and services and earn profit." }
+  ],
+  mod2: [
+    { type:"mc", q:"An entrepreneur who prefers abstract information, logical problem solving, and theory formulation belongs to which learning style?", options:["Imagining Style","Analyzing Style","Deciding Style","Initiating Style"], answer:1, explanation:"The Analyzing Style prefers abstract information through reflection and enjoys logical problem solving and theory formulation. Challenge: may struggle in fast-paced environments." },
+    { type:"mc", q:"Which learning style relies on intuition and learns best through social interactions?", options:["Balanced Style","Deciding Style","Initiating Style","Analyzing Style"], answer:2, explanation:"The Initiating Style is interested in practical activities, relies on intuition, and learns from social interactions. Challenge: may take risks without enough preparation." },
+    { type:"mc", q:"3M's accidental invention of Post-it Notes is an example of which source of opportunity?", options:["The Unexpected (Internal)","Incongruities (Internal)","New Knowledge (External)","Demographic Changes (External)"], answer:0, explanation:"The Unexpected (Internal) — successes, failures, and outside events not anticipated — describes 3M's accidental discovery of a repositionable adhesive that became Post-it Notes." },
+    { type:"mc", q:"Netflix replacing Blockbuster by removing late fees is an example of which source of opportunity?", options:["The Unexpected","Incongruities","Process Needs","Changes in Perception"], answer:1, explanation:"Incongruities (Internal) — a gap between what is and what should be. Blockbuster's late fees were an incongruity (customer pain point) that Netflix eliminated." },
+    { type:"mc", q:"Which of the 12 R's of Opportunity Screening asks: 'Is it the next big thing? Is it a game changer?'", options:["Range","Reach","Revolutionary Impact","Returns"], answer:2, explanation:"Revolutionary Impact asks whether the opportunity is a game changer or the next big thing — assessing its transformative potential in the market." },
+    { type:"mc", q:"A Positioning Statement is best described as:", options:["A financial forecast for a new business","A concise explanation of how the entrepreneur wants the market to perceive the brand","A list of product features and specifications","A legal document for business registration"], answer:1, explanation:"A Positioning Statement is a concise explanation of how an entrepreneur wants the market to perceive his/her brand, including how the product addresses a need of the target market." },
+    { type:"mc", q:"Which prototype type is quick to make, usually paper-based, and gives a preview without testing?", options:["High-Fidelity Prototype","Low-Fidelity Prototype","Digital Prototype","Functional Prototype"], answer:1, explanation:"A Low-Fidelity Prototype is easy and quick to make, usually paper-based, and gives a preview of the product or service without actually testing it." },
+    { type:"mc", q:"During which phase of the Enterprise Life Cycle does the business establish its market presence and broaden its network through mergers or acquisitions?", options:["Growth","Maturity","Expansion","Start-up"], answer:2, explanation:"Phase 4 — Expansion: the business broadens its network, customer base, offerings, and new territories, or grows through mergers and acquisitions." },
+    { type:"mc", q:"Which of the following is a characteristic of a good Positioning Statement?", options:["It is technical and detailed","It is simple, memorable, and tailored to the target market","It is only used internally by the company","It changes frequently depending on promotions"], answer:1, explanation:"A good Positioning Statement is simple, memorable, credible, and tailored to the target market — providing a unique brand description while leaving room for growth." },
+    { type:"mc", q:"Product Conceptualization involves:", options:["Launching the final product to the public","Testing prototypes on real customers","Writing ideas on paper to identify concepts that lay the foundation of the business model","Conducting financial audits"], answer:2, explanation:"Product Conceptualization is the phase where entrepreneurs write their ideas on paper (concept statement) to lay the foundation of their business model." }
+  ]
+};
+
+const allQuizData_set2 = {
+  mod1: [
+    { type:"tf", q:"The term 'entrepreneur' was coined by Joseph A. Schumpeter.", options:["True","False"], answer:1, explanation:"FALSE — It was coined by Jean Baptiste Say. The word comes from the French entreprendre meaning 'to undertake.'" },
+    { type:"tf", q:"Peter F. Drucker believed that entrepreneurship can be learned and practiced.", options:["True","False"], answer:0, explanation:"TRUE — Drucker said entrepreneurship can be learned and practiced. Success comes from commitment to the systematic practice of innovation, not from personality." },
+    { type:"tf", q:"'Opportunity Seeking & Initiative' belongs to the Planning Cluster of the 10 PECs.", options:["True","False"], answer:1, explanation:"FALSE — It belongs to the Achievement Cluster, along with Persistence, Fulfilling Commitments, Demand for Quality & Efficiency, and Taking Calculated Risk." },
+    { type:"tf", q:"Creative Destruction refers to new innovations replacing old ones, leading to progress but also disrupting existing industries.", options:["True","False"], answer:0, explanation:"TRUE — Joseph A. Schumpeter introduced Creative Destruction to describe how entrepreneurial innovation drives progress while simultaneously disrupting and replacing existing industries." },
+    { type:"tf", q:"'Persuasion & Networking' and 'Independence & Self-Confidence' are both part of the Power Cluster.", options:["True","False"], answer:0, explanation:"TRUE — Both PECs belong to the Power Cluster, which represents the entrepreneur's ability to influence, lead, and build relationships that support business success." }
+  ],
+  mod2: [
+    { type:"tf", q:"The Balanced Style entrepreneur takes longer to decide and may experience decision fatigue.", options:["True","False"], answer:0, explanation:"TRUE — The Balanced Style combines all four learning styles and adapts situationally, but this flexibility may lead to longer decision times and decision fatigue." },
+    { type:"tf", q:"Opportunity Screening involves taking advantage of favorable situations once they arise.", options:["True","False"], answer:1, explanation:"FALSE — That describes Opportunity Seizing. Opportunity Screening is the evaluation of market, competitors, and industry trends to assess whether an opportunity is worth pursuing." },
+    { type:"tf", q:"A High-Fidelity Prototype looks similar to the real product and offers insightful feedback from testers.", options:["True","False"], answer:0, explanation:"TRUE — A High-Fidelity Prototype looks like the real product and is interactive, providing meaningful feedback from testers. Contrast with Low-Fidelity (paper-based, no testing)." },
+    { type:"tf", q:"In the Enterprise Life Cycle, the Start-up Phase is when the business has already generated consistent profits.", options:["True","False"], answer:1, explanation:"FALSE — Consistent profit generation happens in Phase 3: Growth, when emphasis shifts from planning to execution. The Start-up Phase focuses on testing and adjusting the concept." },
+    { type:"tf", q:"'Relevance' in the 12 R's of Opportunity Screening asks whether the opportunity aligns with the company's vision, mission, and goals.", options:["True","False"], answer:0, explanation:"TRUE — Relevance is the first of the 12 R's, asking whether the opportunity aligns with the company's vision, mission, and goals." }
+  ]
+};
+
+// QUIZ LOGIC
+let activeQuizModule = 'mod1';
+let activeQuizSet = 1;
+let quizQuestions = allQuizData['mod1'];
+let currentQuestion = 0;
+let score = 0;
+let answered = [];
+
+const quizModuleNames = {
+  mod1:'💡 Lesson 1: The Entrepreneur',
+  mod2:'🧠 Lesson 1.2: The Entrepreneurial Mindset'
+};
+
+function selectSet(num) {
+  activeQuizSet = num;
+  document.querySelectorAll('.set-select-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('setBtn' + num).classList.add('active');
+  quizQuestions = num === 1 ? allQuizData[activeQuizModule] : allQuizData_set2[activeQuizModule];
+}
+
+function setQuizModule(mod, btn) {
+  activeQuizModule = mod;
+  quizQuestions = activeQuizSet === 1 ? allQuizData[mod] : allQuizData_set2[mod];
+  document.querySelectorAll('.module-select-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  document.getElementById('quizQuestion').classList.remove('active');
+  document.getElementById('quizResults').classList.remove('active');
+  document.getElementById('quizStart').style.display = 'block';
+  document.getElementById('quizModTitle').textContent = quizModuleNames[mod];
+}
+
+function startQuiz() {
+  document.getElementById('quizStart').style.display = 'none';
+  document.getElementById('quizQuestion').classList.add('active');
+  currentQuestion = 0; score = 0; answered = [];
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = quizQuestions[currentQuestion];
+  document.getElementById('qProgress').textContent = `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
+  document.getElementById('qScore').textContent = `Score: ${score}`;
+  document.getElementById('quizProgressBar').style.width = ((currentQuestion / quizQuestions.length) * 100) + '%';
+  const badge = document.getElementById('qTypeBadge');
+  if (q.type === 'mc') { badge.textContent = 'Multiple Choice'; badge.className = 'question-type-badge type-mc'; }
+  else { badge.textContent = 'True or False'; badge.className = 'question-type-badge type-tf'; }
+  document.getElementById('qText').textContent = q.q;
+  document.getElementById('qFeedback').className = 'feedback-box';
+  document.getElementById('qFeedback').textContent = '';
+  document.getElementById('nextBtn').classList.remove('visible');
+  const letters = ['A','B','C','D'];
+  const optList = document.getElementById('qOptions');
+  optList.innerHTML = '';
+  q.options.forEach((opt, i) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<button class="option-btn" onclick="selectAnswer(${i})"><span class="option-letter">${q.type === 'tf' ? (i === 0 ? '✓' : '✗') : letters[i]}</span>${opt}</button>`;
+    optList.appendChild(li);
+  });
+}
+
+function selectAnswer(selectedIdx) {
+  const q = quizQuestions[currentQuestion];
+  const buttons = document.querySelectorAll('.option-btn');
+  buttons.forEach(btn => btn.disabled = true);
+  const isCorrect = selectedIdx === q.answer;
+  if (isCorrect) score++;
+  buttons[selectedIdx].classList.add(isCorrect ? 'correct' : 'wrong');
+  if (!isCorrect) buttons[q.answer].classList.add('correct');
+  const fb = document.getElementById('qFeedback');
+  fb.className = 'feedback-box ' + (isCorrect ? 'correct' : 'wrong');
+  fb.textContent = (isCorrect ? '✅ Correct! ' : '❌ Incorrect. ') + q.explanation;
+  answered.push({ q:q.q, type:q.type, yourAnswer:q.options[selectedIdx], correct:q.options[q.answer], isCorrect });
+  document.getElementById('nextBtn').classList.add('visible');
+  document.getElementById('qScore').textContent = `Score: ${score}`;
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  if (currentQuestion < quizQuestions.length) { renderQuestion(); } else { showResults(); }
+}
+
+function showResults() {
+  document.getElementById('quizQuestion').classList.remove('active');
+  document.getElementById('quizResults').classList.add('active');
+  document.getElementById('resultScore').textContent = `${score} / ${quizQuestions.length}`;
+  document.getElementById('resultLabel').textContent = `out of ${quizQuestions.length} questions`;
+  const pct = (score / quizQuestions.length) * 100;
+  let message;
+  if (pct === 100) message = "🏆 Perfect score! Absolute mastery!";
+  else if (pct >= 80) message = "🌟 Excellent work! You have a strong grasp of the material.";
+  else if (pct >= 60) message = "👍 Good job! A few more reviews will make you solid.";
+  else if (pct >= 40) message = "📖 Keep studying! Review the notes for key concepts.";
+  else message = "💪 Don't give up! Go through the reviewer carefully and try again.";
+  document.getElementById('resultMessage').textContent = message;
+  const typeLabels = { mc:'🔵 MC', tf:'🟡 T/F' };
+  const reviewList = document.getElementById('reviewList');
+  reviewList.innerHTML = '';
+  answered.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'review-item ' + (item.isCorrect ? 'correct' : 'wrong');
+    div.innerHTML = `<div class="q-text"><span style="font-size:0.75rem;margin-right:4px;opacity:0.7">${typeLabels[item.type]||''}</span>${i+1}. ${item.q}</div><div class="a-text">Your answer: <strong>${item.yourAnswer}</strong>${!item.isCorrect ? ` &nbsp;|&nbsp; ✅ Correct: <strong>${item.correct}</strong>` : ''}</div>`;
+    reviewList.appendChild(div);
+  });
+}
+
+function restartQuiz() {
+  document.getElementById('quizResults').classList.remove('active');
+  document.getElementById('quizStart').style.display = 'block';
+  currentQuestion = 0; score = 0; answered = [];
+}
+
+// URL PARAM ROUTING
+renderFlashcard();
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const page = params.get('page');
+  const mod  = params.get('mod');
+  const set  = params.get('set');
+  if (page) {
+    showPage(page);
+    if (page === 'flashcards' && mod) setFlashcardModuleBtn(mod);
+    if (page === 'quiz') {
+      if (set) selectSet(parseInt(set));
+      if (mod) {
+        const btn = document.getElementById('quizModBtn' + mod.replace('mod',''));
+        setQuizModule(mod, btn);
+      }
+    }
+  }
+})();
+</script>
+</body>
+</html>
