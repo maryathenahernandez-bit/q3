@@ -111,15 +111,20 @@
   .cluster-card ul li { font-size:0.83rem; padding:0.2rem 0; color:var(--dark); border-bottom:1px dashed var(--dry-creek); }
   .cluster-card ul li:last-child { border-bottom:none; }
   .cluster-card ul li::before { content:'→ '; color:var(--mocha); font-weight:700; }
-  .vaccine-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-  @media (max-width:600px) { .vaccine-grid { grid-template-columns:1fr; } }
-  .vaccine-card { background:var(--card-bg); border-radius:10px; padding:1rem; border:2px solid var(--dry-creek); }
-  .vaccine-card h4 { font-weight:800; color:var(--spicy); margin-bottom:0.5rem; font-size:0.95rem; }
-  .vaccine-card p { font-size:0.88rem; line-height:1.5; }
   h2.sub-title { font-family:'Baloo 2',cursive; font-size:1.2rem; font-weight:800; color:var(--spicy); margin:1.2rem 0 0.6rem; }
 
+  /* PDF */
+  .pdf-mod-btn { background:var(--card-bg); border:2px solid var(--dry-creek); border-radius:20px; padding:0.45rem 1.3rem; font-family:'Nunito',sans-serif; font-weight:700; font-size:0.88rem; cursor:pointer; color:var(--dark); transition:all 0.2s; }
+  .pdf-mod-btn:hover { border-color:var(--mocha); color:var(--mocha); }
+  .pdf-mod-btn.active { background:var(--mocha); color:white; border-color:var(--mocha); }
+  .pdf-label { font-family:'Baloo 2',cursive; font-size:1rem; font-weight:700; color:var(--spicy); margin-bottom:0.6rem; }
+  .pdf-frame-wrap { width:100%; border-radius:14px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.12); background:#f5f5f5; margin-bottom:1rem; }
+  .pdf-frame { width:100%; height:80vh; min-height:500px; border:none; display:block; }
+  .pdf-links { text-align:center; }
+  .pdf-direct-btn { display:inline-block; background:var(--mocha); color:white; text-decoration:none; padding:0.55rem 1.4rem; border-radius:25px; font-family:'Nunito',sans-serif; font-weight:700; font-size:0.88rem; transition:background 0.2s; }
+  .pdf-direct-btn:hover { background:var(--soil); }
+
   /* FLASHCARDS */
-  #flashcards { max-width:750px; margin:0 auto; padding:2rem; }
   .flashcard-header { text-align:center; margin-bottom:2rem; }
   .flashcard-header h1 { font-family:'Baloo 2',cursive; font-size:2rem; color:var(--spicy); font-weight:800; }
   .flashcard-header p { color:#555; margin-top:0.3rem; }
@@ -147,7 +152,6 @@
   .progress-bar-fill { height:100%; background:linear-gradient(90deg,var(--mocha),var(--peanut)); border-radius:100px; transition:width 0.3s; }
 
   /* QUIZ */
-  #quiz { max-width:750px; margin:0 auto; padding:2rem; }
   .quiz-header { text-align:center; margin-bottom:2rem; }
   .quiz-header h1 { font-family:'Baloo 2',cursive; font-size:2rem; color:var(--spicy); font-weight:800; }
   .quiz-module-select { display:flex; gap:0.8rem; justify-content:center; flex-wrap:wrap; margin-bottom:1.5rem; }
@@ -165,6 +169,7 @@
   .question-type-badge { display:inline-block; padding:3px 12px; border-radius:20px; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:0.8rem; }
   .type-mc { background:#d4eefb; color:#1a5a8e; }
   .type-tf { background:var(--pumpkin); color:var(--spicy); }
+  .type-id { background:#fef3d4; color:#8a6a00; }
   .set-select-btn { background:var(--card-bg); border:2px solid var(--dry-creek); border-radius:20px; padding:0.4rem 1.2rem; font-family:'Nunito',sans-serif; font-weight:700; font-size:0.85rem; cursor:pointer; color:var(--dark); transition:all 0.2s; }
   .set-select-btn:hover { border-color:var(--mocha); color:var(--mocha); }
   .set-select-btn.active { background:var(--mocha); color:white; border-color:var(--mocha); }
@@ -195,18 +200,6 @@
   .review-item.wrong { background:#fde8e8; border-color:#e55; }
   .review-item .q-text { font-weight:700; margin-bottom:0.3rem; }
   .review-item .a-text { color:#444; }
-
-  /* PDF */
-  .pdf-mod-btn { background:var(--card-bg); border:2px solid var(--dry-creek); border-radius:20px; padding:0.45rem 1.3rem; font-family:'Nunito',sans-serif; font-weight:700; font-size:0.88rem; cursor:pointer; color:var(--dark); transition:all 0.2s; }
-  .pdf-mod-btn:hover { border-color:var(--mocha); color:var(--mocha); }
-  .pdf-mod-btn.active { background:var(--mocha); color:white; border-color:var(--mocha); }
-  .pdf-label { font-family:'Baloo 2',cursive; font-size:1rem; font-weight:700; color:var(--spicy); margin-bottom:0.6rem; }
-  .pdf-frame-wrap { width:100%; border-radius:14px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.12); background:#f5f5f5; margin-bottom:1rem; }
-  .pdf-frame { width:100%; height:80vh; min-height:500px; border:none; display:block; }
-  .pdf-links { text-align:center; }
-  .pdf-direct-btn { display:inline-block; background:var(--mocha); color:white; text-decoration:none; padding:0.55rem 1.4rem; border-radius:25px; font-family:'Nunito',sans-serif; font-weight:700; font-size:0.88rem; transition:background 0.2s; }
-  .pdf-direct-btn:hover { background:var(--soil); }
-
   .scrollable { max-height:400px; overflow-y:auto; padding-right:0.5rem; }
   .scrollable::-webkit-scrollbar { width:6px; }
   .scrollable::-webkit-scrollbar-thumb { background:var(--dry-creek); border-radius:3px; }
@@ -278,7 +271,6 @@
   </div>
   <div class="page-footer">Humanities 5 Reviewer • Use the nav above for Flashcards, Quiz &amp; PDF Slides</div>
 </div>
-
 
 <!-- LESSON 1 -->
 <div id="mod1" class="page">
@@ -383,7 +375,6 @@
     </div>
   </div>
 </div>
-
 
 <!-- LESSON 1.2 -->
 <div id="mod2" class="page">
@@ -497,43 +488,53 @@
           <li><span class="num">1</span>Create a concept similar to successful products and ride market trends.</li>
           <li><span class="num">2</span>Find a market niche or segment not yet filled by competitors.</li>
           <li><span class="num">3</span>Conceptualize a product or service where competition is weak.</li>
-          <li><span class="num">4</span>Conceptualize a product or service that changes customer preferences, making existing products obsolete.</li>
         </ul>
-        <h2 class="sub-title">Key Features of a Prototype</h2>
+        <h2 class="sub-title">Prototypes</h2>
         <div class="info-grid">
-          <div class="info-box"><h4>🧩 Representation</h4><ul><li>The form of the prototype.</li></ul></div>
-          <div class="info-box"><h4>🎯 Precision</h4><ul><li>The reliability of the prototype.</li></ul></div>
-          <div class="info-box"><h4>⚙️ Interactivity</h4><ul><li>The functionality open for testing.</li></ul></div>
-          <div class="info-box"><h4>🔄 Evolution</h4><ul><li>Lifecycle; some developed fast, tested, then replaced through rapid prototyping.</li></ul></div>
+          <div class="info-box">
+            <h4>🗒️ Low-Fidelity Prototype</h4>
+            <ul>
+              <li>Easy and quick to make</li>
+              <li>Usually paper-based</li>
+              <li>Gives a preview without testing</li>
+            </ul>
+          </div>
+          <div class="info-box">
+            <h4>🖥️ High-Fidelity Prototype</h4>
+            <ul>
+              <li>Looks similar to the real product</li>
+              <li>Interactive</li>
+              <li>Offers insightful feedback from testers</li>
+            </ul>
+          </div>
         </div>
-        <h2 class="sub-title">Categories of Prototype</h2>
-        <div class="vaccine-grid" style="margin-top:0.5rem;">
-          <div class="vaccine-card"><h4>Low-Fidelity Prototype</h4><p>Easy and quick to make, usually paper-based, giving a preview of the product or service <strong>without testing it</strong>.</p></div>
-          <div class="vaccine-card"><h4>High-Fidelity Prototype</h4><p>Looks similar to the real product; interactive and offers <strong>insightful feedback from testers</strong>.</p></div>
-        </div>
+        <h2 class="sub-title">4 Key Features of a Prototype</h2>
+        <ul class="objective-list">
+          <li><span class="num">1</span>Representation</li>
+          <li><span class="num">2</span>Precision</li>
+          <li><span class="num">3</span>Interactivity</li>
+          <li><span class="num">4</span>Evolution</li>
+        </ul>
       </div>
     </div>
 
     <div class="section-block">
-      <div class="section-header">🔄 Implementation &amp; Enterprise Life Cycle</div>
+      <div class="section-header">🔄 5-Phase Enterprise Life Cycle</div>
       <div class="content-card">
-        <div class="def-card"><div class="term">Implementation</div><div class="definition">The process of executing a plan or strategy so that the concept becomes a reality.</div></div>
-        <h2 class="sub-title">Enterprise Life Cycle — 5 Phases</h2>
-        <table class="compare-table" style="margin-top:0.5rem;">
-          <thead><tr><th>Phase</th><th>Name</th><th>Description</th></tr></thead>
+        <table class="compare-table">
+          <thead><tr><th>Phase</th><th>Name</th><th>Key Focus</th></tr></thead>
           <tbody>
-            <tr><td><strong>1</strong></td><td><strong>Development</strong></td><td>The entrepreneur determines if the opportunity is worth investing by gathering market information and expert advice, and evaluating skills and resources.</td></tr>
-            <tr><td><strong>2</strong></td><td><strong>Start-up</strong></td><td>Adaptability is key. The business concept must be tested and adjusted to meet end-user expectations until there are sufficiently compelling reasons to officially launch.</td></tr>
-            <tr><td><strong>3</strong></td><td><strong>Growth</strong></td><td>Emphasis shifts from planning to execution. The business should be generating profits and moving towards sustainable performance.</td></tr>
-            <tr><td><strong>4</strong></td><td><strong>Expansion</strong></td><td>The business has established its market presence and broadens its network, customer base, offerings, new territories, or through mergers and acquisitions.</td></tr>
-            <tr><td><strong>5</strong></td><td><strong>Maturity</strong></td><td>Entrepreneurs face two options: push for further expansion, or exit the business.</td></tr>
+            <tr><td><strong>Phase 1</strong></td><td>Development</td><td>The entrepreneur determines if the opportunity is worth investing by gathering market information and evaluating skills and resources.</td></tr>
+            <tr><td><strong>Phase 2</strong></td><td>Start-up</td><td>The business concept is tested and adjusted to meet end-user expectations until there are sufficiently compelling reasons to officially launch.</td></tr>
+            <tr><td><strong>Phase 3</strong></td><td>Growth</td><td>Emphasis shifts from planning to execution. The business should be generating profits and moving toward sustainable performance.</td></tr>
+            <tr><td><strong>Phase 4</strong></td><td>Expansion</td><td>The business broadens its network, customer base, and offerings through new territories or mergers and acquisitions.</td></tr>
+            <tr><td><strong>Phase 5</strong></td><td>Maturity</td><td>Entrepreneurs face two options — push for further expansion, or exit the business.</td></tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
 </div>
-
 
 <!-- SLIDES -->
 <div id="slides" class="page">
@@ -557,12 +558,12 @@
           allowfullscreen></iframe>
       </div>
       <div class="pdf-links">
+        <p style="color:#666;font-size:0.85rem;margin-bottom:0.6rem;">If the viewer doesn't load, open the file directly:</p>
         <a class="pdf-direct-btn" href="https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/Hum5_Reviewer.docx" target="_blank" id="pdfDirect1">⬇️ Download Reviewer (DOCX)</a>
       </div>
     </div>
   </div>
 </div>
-
 
 <!-- FLASHCARDS -->
 <div id="flashcards" class="page">
@@ -596,7 +597,6 @@
   </div>
 </div>
 
-
 <!-- QUIZ -->
 <div id="quiz" class="page">
   <div style="max-width:750px;margin:0 auto;padding:2rem;">
@@ -611,14 +611,15 @@
     <div id="quizStart" class="quiz-start">
       <div class="icon">☕</div>
       <h2 id="quizModTitle">💡 Lesson 1: The Entrepreneur</h2>
-      <p>10 Multiple Choice + 5 True/False per set.</p>
+      <p>Multiple Choice &amp; True/False questions per set.</p>
       <div style="display:flex;gap:0.6rem;justify-content:center;flex-wrap:wrap;margin-bottom:0.8rem;">
         <span style="background:#d4eefb;color:#1a5a8e;padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">Multiple Choice</span>
         <span style="background:var(--pumpkin);color:var(--spicy);padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;">True / False</span>
       </div>
       <div style="display:flex;gap:0.5rem;justify-content:center;margin-bottom:1.2rem;">
-        <button id="setBtn1" class="set-select-btn active" onclick="selectSet(1)">📋 Set 1 — MC</button>
-        <button id="setBtn2" class="set-select-btn" onclick="selectSet(2)">📋 Set 2 — T/F</button>
+        <button id="setBtn1" class="set-select-btn active" onclick="selectSet(1)">📋 Set 1</button>
+        <button id="setBtn2" class="set-select-btn" onclick="selectSet(2)">📋 Set 2</button>
+        <button id="setBtn3" class="set-select-btn" onclick="selectSet(3)">📋 Set 3</button>
       </div>
       <button class="start-btn" onclick="startQuiz()">Start Quiz →</button>
     </div>
@@ -627,7 +628,7 @@
         <span id="qProgress">Question 1 of 10</span>
         <span class="quiz-score-badge" id="qScore">Score: 0</span>
       </div>
-      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="quizProgressBar" style="width:10%"></div></div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="quizProgressBar" style="width:5%"></div></div>
       <div class="question-card">
         <span class="question-type-badge type-mc" id="qTypeBadge">Multiple Choice</span>
         <div class="question-text" id="qText"></div>
@@ -649,7 +650,6 @@
   </div>
 </div>
 
-
 <script>
 // PAGE NAV
 function showPage(id) {
@@ -666,7 +666,6 @@ function showPDF(num) {
   document.getElementById('pdfBtn1').classList.add('active');
 }
 
-// Called from home card buttons
 function setFlashcardModuleBtn(mod) {
   currentCards = [...(flashcardsData[mod] || [])];
   currentCardIndex = 0;
@@ -677,7 +676,7 @@ function setFlashcardModuleBtn(mod) {
   renderFlashcard();
 }
 
-// FLASHCARD DATA
+// ===== FLASHCARD DATA =====
 const flashcardsData = {
   mod1: [
     { term:"What does 'entrepreneur' mean and who coined it?", def:"From the French entreprendre meaning 'to undertake.' Coined by Jean Baptiste Say." },
@@ -688,7 +687,7 @@ const flashcardsData = {
     { term:"Arthur H. Cole on Entrepreneurship", def:"It is a purposeful activity or integrated sequence of decisions to initiate, organize, or expand a profit-oriented business unit for producing or distributing economic goods or services." },
     { term:"Peter F. Drucker on Entrepreneurship", def:"Successful entrepreneurs share a commitment to the systematic practice of innovation. Entrepreneurship can be learned and practiced." },
     { term:"Joseph A. Schumpeter", def:"Associated entrepreneurship with innovation and introduced the concept of Creative Destruction." },
-    { term:"5 Forms of Innovation", def:"1. Launching a new product/service  2. New production method  3. Opening a new market  4. New source of raw materials  5. New organization of industry" },
+    { term:"5 Forms of Innovation (Schumpeter)", def:"1. Launching a new product/service  2. New production method  3. Opening a new market  4. New source of raw materials  5. New organization of industry" },
     { term:"5 Fundamental Principles of Entrepreneurship", def:"1. Having a vision  2. Providing innovative products/services  3. Managing effectively  4. Taking risks and opportunities  5. Making informed decisions" },
     { term:"3 Clusters of the 10 PECs", def:"Achievement Cluster, Planning Cluster, and Power Cluster." },
     { term:"Achievement Cluster PECs", def:"Opportunity Seeking & Initiative, Persistence, Fulfilling Commitments, Demand for Quality & Efficiency, Taking Calculated Risk." },
@@ -767,7 +766,7 @@ function shuffleCards() {
 }
 function resetCards() { currentCardIndex = 0; renderFlashcard(); }
 
-// QUIZ DATA
+// ===== QUIZ DATA — SET 1 (all original MC questions) =====
 const allQuizData = {
   mod1: [
     { type:"mc", q:"The word 'entrepreneur' comes from the French word entreprendre, which means:", options:["To profit","To innovate","To undertake","To manage"], answer:2, explanation:"Entreprendre means 'to undertake.' The term was coined by Jean Baptiste Say." },
@@ -795,6 +794,7 @@ const allQuizData = {
   ]
 };
 
+// ===== QUIZ DATA — SET 2 (all original T/F questions) =====
 const allQuizData_set2 = {
   mod1: [
     { type:"tf", q:"The term 'entrepreneur' was coined by Joseph A. Schumpeter.", options:["True","False"], answer:1, explanation:"FALSE — It was coined by Jean Baptiste Say. The word comes from the French entreprendre meaning 'to undertake.'" },
@@ -812,7 +812,13 @@ const allQuizData_set2 = {
   ]
 };
 
-// QUIZ LOGIC
+// ===== QUIZ DATA — SET 3 (placeholder — add more questions later) =====
+const allQuizData_set3 = {
+  mod1: [],
+  mod2: []
+};
+
+// ===== QUIZ LOGIC =====
 let activeQuizModule = 'mod1';
 let activeQuizSet = 1;
 let quizQuestions = allQuizData['mod1'];
@@ -829,12 +835,16 @@ function selectSet(num) {
   activeQuizSet = num;
   document.querySelectorAll('.set-select-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('setBtn' + num).classList.add('active');
-  quizQuestions = num === 1 ? allQuizData[activeQuizModule] : allQuizData_set2[activeQuizModule];
+  if (num === 1) quizQuestions = allQuizData[activeQuizModule];
+  else if (num === 2) quizQuestions = allQuizData_set2[activeQuizModule];
+  else quizQuestions = allQuizData_set3[activeQuizModule];
 }
 
 function setQuizModule(mod, btn) {
   activeQuizModule = mod;
-  quizQuestions = activeQuizSet === 1 ? allQuizData[mod] : allQuizData_set2[mod];
+  if (activeQuizSet === 1) quizQuestions = allQuizData[mod];
+  else if (activeQuizSet === 2) quizQuestions = allQuizData_set2[mod];
+  else quizQuestions = allQuizData_set3[mod];
   document.querySelectorAll('.module-select-btn').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
   document.getElementById('quizQuestion').classList.remove('active');
@@ -844,6 +854,10 @@ function setQuizModule(mod, btn) {
 }
 
 function startQuiz() {
+  if (!quizQuestions || quizQuestions.length === 0) {
+    alert('No questions available for this set yet. Check back later!');
+    return;
+  }
   document.getElementById('quizStart').style.display = 'none';
   document.getElementById('quizQuestion').classList.add('active');
   currentQuestion = 0; score = 0; answered = [];
