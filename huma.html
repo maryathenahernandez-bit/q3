@@ -892,26 +892,28 @@
 <div id="slides" class="page">
   <div class="subnav-bar" style="background:white;border-bottom:2px solid var(--dry-creek);padding:0.8rem 1.2rem;display:flex;align-items:center;gap:0.6rem;position:sticky;top:60px;z-index:50;flex-wrap:wrap;">
     <button onclick="showPage('home')" style="background:var(--mocha);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
-    <span style="font-weight:800;color:var(--spicy);">📄 PDF Slides</span>
+    <span style="font-weight:800;color:var(--spicy);">📄 PDF Slides &amp; Files</span>
   </div>
   <div class="reviewer-module">
     <div class="module-header" style="background:linear-gradient(135deg,var(--pepper),var(--soil));">
       <div class="module-icon">📄</div>
-      <div><h1>PDF Slides</h1><p>View the original reviewer document for Humanities 5</p></div>
+      <div><h1>PDF Slides &amp; Files</h1><p>View lesson slides and reviewer documents for Humanities 5</p></div>
     </div>
     <div class="section-block">
       <div style="display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:1.2rem;">
-        <button class="pdf-mod-btn active" id="pdfBtn1" onclick="showPDF(1)">💡 Lessons 1 &amp; 1.2 Reviewer</button>
+        <button class="pdf-mod-btn active" id="pdfBtn1" onclick="showPDF(1)">💡 Lesson 1 Slides</button>
+        <button class="pdf-mod-btn" id="pdfBtn2" onclick="showPDF(2)">🧠 Lesson 1.2 Slides</button>
+        <button class="pdf-mod-btn" id="pdfBtn3" onclick="showPDF(3)">🇵🇭 Lesson 1.3 Slides</button>
+        <button class="pdf-mod-btn" id="pdfBtn4" onclick="showPDF(4)">📝 Lessons 1–1.2 Reviewer</button>
+        <button class="pdf-mod-btn" id="pdfBtn5" onclick="showPDF(5)">📝 Lesson 1.3 Reviewer</button>
       </div>
-      <div class="pdf-label" id="pdfLabel1">📄 Hum5 Reviewer — Entrepreneur &amp; Entrepreneurial Mindset</div>
+      <div class="pdf-label" id="pdfCurrentLabel">💡 Lesson 1: The Entrepreneur — Slides</div>
       <div class="pdf-frame-wrap">
-        <iframe id="pdfFrame1" class="pdf-frame"
-          src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/Hum5_Reviewer.docx&embedded=true"
-          allowfullscreen></iframe>
+        <iframe id="pdfMainFrame" class="pdf-frame" src="" allowfullscreen></iframe>
       </div>
       <div class="pdf-links">
-        <p style="color:#666;font-size:0.85rem;margin-bottom:0.6rem;">If the viewer doesn't load, open the file directly:</p>
-        <a class="pdf-direct-btn" href="https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/Hum5_Reviewer.docx" target="_blank" id="pdfDirect1">⬇️ Download Reviewer (DOCX)</a>
+        <p style="color:#666;font-size:0.85rem;margin-bottom:0.6rem;">If the viewer doesn't load, download the file directly:</p>
+        <a class="pdf-direct-btn" id="pdfDownloadBtn" href="" target="_blank">⬇️ Download File</a>
       </div>
     </div>
   </div>
@@ -1020,11 +1022,51 @@ function closeMobileMenu() {
   document.getElementById('mobileMenu').classList.remove('open');
 }
 
+const pdfFiles = {
+  1: {
+    label: '💡 Lesson 1: The Entrepreneur — Slides',
+    url: 'https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/Hum5_Lesson1_Entrepreneurship-1%20(1).pptx',
+    dlLabel: '⬇️ Download Lesson 1 Slides (PPTX)'
+  },
+  2: {
+    label: '🧠 Lesson 1.2: The Entrepreneurial Mindset — Slides',
+    url: 'https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/Hum5_Lesson1.2.pdf',
+    dlLabel: '⬇️ Download Lesson 1.2 Slides (PDF)'
+  },
+  3: {
+    label: '🇵🇭 Lesson 1.3: Successful Filipino Entrepreneurship — Slides',
+    url: 'https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/Hum5_Lesson3_FILIPINO-ENTREPRENEURS.pptx',
+    dlLabel: '⬇️ Download Lesson 1.3 Slides (PPTX)'
+  },
+  4: {
+    label: '📝 Lessons 1 & 1.2 Reviewer Document',
+    url: 'https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/Hum5_Reviewer.docx',
+    dlLabel: '⬇️ Download Lessons 1–1.2 Reviewer (DOCX)'
+  },
+  5: {
+    label: '📝 Lesson 1.3 Reviewer Document',
+    url: 'https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/HUM5_Lesson3_Reviewer.docx',
+    dlLabel: '⬇️ Download Lesson 1.3 Reviewer (DOCX)'
+  }
+};
+
 function showPDF(num) {
-  document.getElementById('pdfFrame1').style.display = 'block';
-  document.getElementById('pdfLabel1').style.display = 'block';
-  document.getElementById('pdfDirect1').style.display = 'inline-block';
-  document.getElementById('pdfBtn1').classList.add('active');
+  const file = pdfFiles[num];
+  if (!file) return;
+  // Update active button
+  for (let i = 1; i <= 5; i++) {
+    const btn = document.getElementById('pdfBtn' + i);
+    if (btn) btn.classList.toggle('active', i === num);
+  }
+  // Use Google Docs viewer for PPTX/DOCX, direct src for PDF
+  const isPDF = file.url.toLowerCase().endsWith('.pdf');
+  const viewerUrl = isPDF
+    ? file.url
+    : 'https://docs.google.com/viewer?url=' + encodeURIComponent(file.url) + '&embedded=true';
+  document.getElementById('pdfMainFrame').src = viewerUrl;
+  document.getElementById('pdfCurrentLabel').textContent = file.label;
+  document.getElementById('pdfDownloadBtn').href = file.url;
+  document.getElementById('pdfDownloadBtn').textContent = file.dlLabel;
 }
 
 function setFlashcardModuleBtn(mod) {
@@ -1481,6 +1523,7 @@ function restartQuiz() {
 
 // URL PARAM ROUTING
 renderFlashcard();
+showPDF(1);
 (function() {
   const params = new URLSearchParams(window.location.search);
   const page = params.get('page');
