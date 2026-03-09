@@ -24,17 +24,32 @@
   body { font-family:'Nunito',sans-serif; background:linear-gradient(135deg,var(--froth) 0%,#f5e4ce 40%,var(--pumpkin) 100%); min-height:100vh; color:var(--dark); }
 
   /* NAV */
-  nav { background:linear-gradient(90deg,var(--spicy),var(--soil)); padding:0 2rem; display:flex; align-items:center; gap:0.5rem; box-shadow:0 4px 20px rgba(0,0,0,0.2); position:sticky; top:0; z-index:100; height:60px; }
-  .nav-logo { font-family:'Baloo 2',cursive; font-size:1.3rem; font-weight:800; color:white; margin-right:1.5rem; text-shadow:1px 1px 3px rgba(0,0,0,0.3); }
+  nav { background:linear-gradient(90deg,var(--spicy),var(--soil)); padding:0 1rem; display:flex; align-items:center; gap:0.3rem; box-shadow:0 4px 20px rgba(0,0,0,0.2); position:sticky; top:0; z-index:100; height:60px; overflow:visible; }
+  .nav-logo { font-family:'Baloo 2',cursive; font-size:1.2rem; font-weight:800; color:white; margin-right:0.5rem; text-shadow:1px 1px 3px rgba(0,0,0,0.3); white-space:nowrap; flex-shrink:0; }
   .nav-logo span { color:var(--dry-creek); }
-  .nav-btn { background:transparent; border:none; color:white; font-family:'Nunito',sans-serif; font-size:0.95rem; font-weight:700; padding:0.5rem 1rem; border-radius:8px; cursor:pointer; transition:background 0.2s; position:relative; }
+  .nav-desktop { display:flex; align-items:center; gap:0.3rem; flex:1; }
+  .nav-btn { background:transparent; border:none; color:white; font-family:'Nunito',sans-serif; font-size:0.88rem; font-weight:700; padding:0.45rem 0.7rem; border-radius:8px; cursor:pointer; transition:background 0.2s; position:relative; white-space:nowrap; }
   .nav-btn:hover, .nav-btn.active { background:rgba(255,255,255,0.2); }
+  .nav-hub-btn { margin-left:auto; }
   .dropdown { position:relative; }
   .dropdown-menu { display:none; position:absolute; top:100%; left:0; background:white; border-radius:10px; box-shadow:0 8px 30px rgba(0,0,0,0.15); min-width:260px; overflow:hidden; z-index:200; }
   .dropdown:hover .dropdown-menu { display:block; }
   .dropdown-item { display:block; padding:0.8rem 1.2rem; color:var(--dark); font-weight:600; font-size:0.9rem; transition:background 0.2s; border-left:4px solid transparent; cursor:pointer; border:none; background:none; width:100%; text-align:left; font-family:'Nunito',sans-serif; }
   .dropdown-item:hover { background:var(--froth); border-left-color:var(--mocha); }
   .dropdown-item.active { background:var(--froth); border-left-color:var(--spicy); color:var(--spicy); }
+  /* Mobile hamburger */
+  .nav-hamburger { display:none; background:transparent; border:none; cursor:pointer; padding:0.4rem; flex-direction:column; gap:5px; margin-left:auto; }
+  .nav-hamburger span { display:block; width:22px; height:2px; background:white; border-radius:2px; transition:all 0.3s; }
+  .mobile-menu { display:none; position:fixed; top:60px; left:0; right:0; background:linear-gradient(180deg,var(--spicy),var(--soil)); z-index:99; flex-direction:column; padding:0.5rem 0 1rem; box-shadow:0 8px 20px rgba(0,0,0,0.3); }
+  .mobile-menu.open { display:flex; }
+  .mobile-nav-btn { background:transparent; border:none; color:white; font-family:'Nunito',sans-serif; font-size:1rem; font-weight:700; padding:0.85rem 1.5rem; text-align:left; cursor:pointer; border-bottom:1px solid rgba(255,255,255,0.1); width:100%; }
+  .mobile-nav-btn:last-child { border-bottom:none; }
+  .mobile-nav-btn:hover { background:rgba(255,255,255,0.15); }
+  .mobile-nav-section { color:rgba(255,255,255,0.5); font-size:0.72rem; font-weight:800; text-transform:uppercase; letter-spacing:1px; padding:0.6rem 1.5rem 0.2rem; }
+  @media (max-width:700px) {
+    .nav-desktop { display:none; }
+    .nav-hamburger { display:flex; }
+  }
 
   /* PAGES */
   .page { display:none; }
@@ -203,6 +218,80 @@
   .scrollable { max-height:400px; overflow-y:auto; padding-right:0.5rem; }
   .scrollable::-webkit-scrollbar { width:6px; }
   .scrollable::-webkit-scrollbar-thumb { background:var(--dry-creek); border-radius:3px; }
+
+  /* ===== MOBILE RESPONSIVE ===== */
+  @media (max-width:700px) {
+    /* Global padding */
+    .reviewer-module { padding:1rem; }
+    .modules-section { padding:0 1rem 1.5rem; }
+
+    /* Home hero */
+    .home-hero { padding:2rem 1rem 1.5rem; }
+    .home-hero h1 { font-size:1.7rem; }
+    .home-hero p { font-size:0.92rem; }
+
+    /* Module cards on home */
+    .modules-grid { grid-template-columns:1fr; gap:1rem; }
+    .module-card { padding:1.5rem 1.2rem; }
+
+    /* Module header banner */
+    .module-header { padding:1.2rem 1rem; gap:0.8rem; border-radius:14px; }
+    .module-header .module-icon { font-size:2rem; }
+    .module-header h1 { font-size:1.3rem; }
+    .module-header p { font-size:0.82rem; }
+
+    /* Sub-nav bars (inline style elements) */
+    .subnav-bar { padding:0.6rem 1rem !important; flex-wrap:wrap; gap:0.4rem !important; }
+    .subnav-bar .subnav-btns { flex-wrap:wrap; }
+
+    /* Section content */
+    .section-header { font-size:0.95rem; padding:0.8rem 1rem; }
+    .content-card { padding:1rem; }
+    .section-block { margin-bottom:1.2rem; }
+
+    /* Tables — make scrollable */
+    .compare-table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    .compare-table { min-width:480px; font-size:0.8rem; }
+    .compare-table th, .compare-table td { padding:0.55rem 0.7rem; }
+
+    /* Cluster grid */
+    .cluster-grid { grid-template-columns:1fr; }
+
+    /* Info grid */
+    .info-grid { grid-template-columns:1fr; }
+
+    /* Definition cards */
+    .def-card { padding:0.8rem 1rem; }
+
+    /* Flashcards */
+    #flashcards-content { padding:1rem !important; }
+    .card-scene { height:240px; }
+    .card-front .card-term { font-size:1.2rem; }
+    .card-back .card-def { font-size:0.85rem; }
+    .flashcard-nav { gap:0.5rem; }
+    .fc-btn { padding:0.5rem 0.9rem; font-size:0.82rem; }
+
+    /* Quiz */
+    #quiz > div { padding:1rem !important; }
+    .quiz-start { padding:1.5rem 1rem; }
+    .quiz-start .icon { font-size:2.5rem; }
+    .quiz-start h2 { font-size:1.2rem; }
+    .question-card { padding:1.2rem 1rem; }
+    .question-text { font-size:0.92rem; }
+    .option-btn { font-size:0.85rem; padding:0.65rem 0.8rem; }
+
+    /* Slides */
+    .pdf-frame { height:60vh; min-height:320px; }
+  }
+
+  @media (max-width:420px) {
+    .module-card .mc-icon { font-size:1.8rem; }
+    .module-card h2 { font-size:1.1rem; }
+    .action-btn { font-size:0.78rem; padding:0.4rem 0.5rem; }
+    .start-btn { padding:0.75rem 1.5rem; font-size:0.9rem; }
+    .set-select-btn { padding:0.35rem 0.8rem; font-size:0.78rem; }
+    .module-select-btn { padding:0.4rem 0.9rem; font-size:0.8rem; }
+  }
 </style>
 </head>
 <body>
@@ -210,18 +299,34 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">📖 Huma<span>5</span></div>
-  <div class="dropdown">
-    <button class="nav-btn">📚 Lessons ▾</button>
-    <div class="dropdown-menu">
-      <button class="dropdown-item" onclick="showPage('mod1')">💡 Lesson 1: The Entrepreneur</button>
-      <button class="dropdown-item" onclick="showPage('mod2')">🧠 Lesson 1.2: The Entrepreneurial Mindset</button>
+  <div class="nav-desktop">
+    <div class="dropdown">
+      <button class="nav-btn">📚 Lessons ▾</button>
+      <div class="dropdown-menu">
+        <button class="dropdown-item" onclick="showPage('mod1')">💡 Lesson 1: The Entrepreneur</button>
+        <button class="dropdown-item" onclick="showPage('mod2')">🧠 Lesson 1.2: The Entrepreneurial Mindset</button>
+      </div>
     </div>
+    <button class="nav-btn" onclick="showPage('flashcards')">🃏 Flashcards</button>
+    <button class="nav-btn" onclick="showPage('quiz')">📝 Quiz</button>
+    <button class="nav-btn" onclick="showPage('slides')">📄 Slides</button>
+    <button class="nav-btn nav-hub-btn" onclick="window.location.href='index.html'">🏠 Back to Hub</button>
   </div>
-  <button class="nav-btn" onclick="showPage('flashcards')">🃏 Flashcards</button>
-  <button class="nav-btn" onclick="showPage('quiz')">📝 Quiz</button>
-  <button class="nav-btn" onclick="showPage('slides')">📄 Slides</button>
-  <button class="nav-btn" onclick="window.location.href='index.html'" style="margin-left:auto;">🏠 Back to Hub</button>
+  <button class="nav-hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-nav-section">Lessons</div>
+  <button class="mobile-nav-btn" onclick="showPage('mod1');closeMobileMenu()">💡 Lesson 1: The Entrepreneur</button>
+  <button class="mobile-nav-btn" onclick="showPage('mod2');closeMobileMenu()">🧠 Lesson 1.2: The Entrepreneurial Mindset</button>
+  <div class="mobile-nav-section">Study Tools</div>
+  <button class="mobile-nav-btn" onclick="showPage('flashcards');closeMobileMenu()">🃏 Flashcards</button>
+  <button class="mobile-nav-btn" onclick="showPage('quiz');closeMobileMenu()">📝 Quiz</button>
+  <button class="mobile-nav-btn" onclick="showPage('slides');closeMobileMenu()">📄 Slides</button>
+  <div class="mobile-nav-section">Navigation</div>
+  <button class="mobile-nav-btn" onclick="window.location.href='index.html'">🏠 Back to Hub</button>
+</div>
 
 <!-- HOME -->
 <div id="home" class="page active">
@@ -274,10 +379,10 @@
 
 <!-- LESSON 1 -->
 <div id="mod1" class="page">
-  <div style="background:white;border-bottom:2px solid var(--dry-creek);padding:0.8rem 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:60px;z-index:50;">
+  <div class="subnav-bar" style="background:white;border-bottom:2px solid var(--dry-creek);padding:0.8rem 1.2rem;display:flex;align-items:center;gap:0.6rem;position:sticky;top:60px;z-index:50;flex-wrap:wrap;">
     <button onclick="showPage('home')" style="background:var(--mocha);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
     <span style="font-weight:800;color:var(--spicy);">💡 Lesson 1: The Entrepreneur</span>
-    <div style="margin-left:auto;display:flex;gap:0.5rem;">
+    <div class="subnav-btns" style="margin-left:auto;display:flex;gap:0.5rem;flex-wrap:wrap;">
       <button onclick="showPage('flashcards'); setFlashcardModuleBtn('mod1')" style="background:transparent;border:2px solid var(--dry-creek);color:var(--mocha);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">🃏 Flashcards</button>
       <button onclick="showPage('quiz')" style="background:transparent;border:2px solid var(--dry-creek);color:var(--mocha);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">📝 Quiz</button>
     </div>
@@ -301,14 +406,14 @@
     <div class="section-block">
       <div class="section-header">👨‍🏫 Definitions by Scholars</div>
       <div class="content-card">
-        <table class="compare-table">
+        <div class="compare-table-wrap"><table class="compare-table">
           <thead><tr><th>Scholar</th><th>Definition / Key Idea</th></tr></thead>
           <tbody>
             <tr><td><strong>Arthur H. Cole</strong><br><small style="color:#888;font-weight:600;">Economic Historian</small></td><td>Entrepreneurship is a purposeful activity or integrated sequence of decisions to <em>initiate, organize, or expand</em> a profit-oriented business unit for producing or distributing economic goods or services.</td></tr>
             <tr><td><strong>Peter F. Drucker</strong><br><small style="color:#888;font-weight:600;">Father of Modern Management</small></td><td>What successful entrepreneurs have in common is not a certain kind of personality, but a <strong>commitment to the systematic practice of innovation</strong>. Entrepreneurship can be learned and practiced.</td></tr>
             <tr><td><strong>Joseph A. Schumpeter</strong></td><td>Associated entrepreneurship with innovation. Introduced the concept of <strong>Creative Destruction</strong> — new innovations replacing old ones, leading to progress while disrupting existing industries.</td></tr>
           </tbody>
-        </table>
+        </table></div>
       </div>
     </div>
 
@@ -378,10 +483,10 @@
 
 <!-- LESSON 1.2 -->
 <div id="mod2" class="page">
-  <div style="background:white;border-bottom:2px solid var(--dry-creek);padding:0.8rem 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:60px;z-index:50;">
+  <div class="subnav-bar" style="background:white;border-bottom:2px solid var(--dry-creek);padding:0.8rem 1.2rem;display:flex;align-items:center;gap:0.6rem;position:sticky;top:60px;z-index:50;flex-wrap:wrap;">
     <button onclick="showPage('home')" style="background:var(--mocha);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
     <span style="font-weight:800;color:var(--spicy);">🧠 Lesson 1.2: The Entrepreneurial Mindset</span>
-    <div style="margin-left:auto;display:flex;gap:0.5rem;">
+    <div class="subnav-btns" style="margin-left:auto;display:flex;gap:0.5rem;flex-wrap:wrap;">
       <button onclick="showPage('flashcards'); setFlashcardModuleBtn('mod2')" style="background:transparent;border:2px solid var(--dry-creek);color:var(--mocha);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">🃏 Flashcards</button>
       <button onclick="showPage('quiz')" style="background:transparent;border:2px solid var(--dry-creek);color:var(--mocha);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">📝 Quiz</button>
     </div>
@@ -396,7 +501,7 @@
       <div class="section-header">🎨 5 Learning Styles &amp; Skill Sets</div>
       <div class="content-card">
         <div class="highlight">There are <strong>five learning styles</strong> that shape how entrepreneurs think and act.</div>
-        <table class="compare-table" style="margin-top:0.8rem;">
+        <div class="compare-table-wrap"><table class="compare-table" style="margin-top:0.8rem;">
           <thead><tr><th>Style</th><th>Description</th><th>Challenges</th></tr></thead>
           <tbody>
             <tr><td><strong>Imagining</strong></td><td>Prefers concrete experiences; uses varying thinking processes to generate multiple solutions and ideas.</td><td>May struggle with execution and follow-through; can be overwhelmed by too many ideas.</td></tr>
@@ -405,7 +510,7 @@
             <tr><td><strong>Initiating</strong></td><td>Interested in practical activities; relies on intuition; learns from social interactions.</td><td>May take risks without enough preparation; can struggle with long-term planning.</td></tr>
             <tr><td><strong>Balanced</strong></td><td>Flexible style that allows adaptation on a situational basis; combines all four styles.</td><td>May take longer to decide; can experience decision fatigue; harder to form a distinct identity.</td></tr>
           </tbody>
-        </table>
+        </table></div>
       </div>
     </div>
 
@@ -416,7 +521,7 @@
 
         <h2 class="sub-title">A. Sources of Opportunity</h2>
         <p style="font-size:0.9rem;margin-bottom:0.8rem;">Sources of opportunity are divided into <strong>Internal</strong> and <strong>External</strong>:</p>
-        <table class="compare-table">
+        <div class="compare-table-wrap"><table class="compare-table">
           <thead><tr><th>Source</th><th>Type</th><th>Description</th><th>Example</th></tr></thead>
           <tbody>
             <tr><td><strong>The Unexpected</strong></td><td><span class="tag tag-warm">Internal</span></td><td>Successes, failures, and outside events that were not anticipated can open new opportunities.</td><td>3M's accidental invention of Post-it Notes</td></tr>
@@ -427,7 +532,7 @@
             <tr><td><strong>Changes in Perception</strong></td><td><span class="tag tag-cool">External</span></td><td>Evolving consumer values and cultural shifts.</td><td>Demand for sustainable products fueling eco-fashion</td></tr>
             <tr><td><strong>New Knowledge</strong></td><td><span class="tag tag-cool">External</span></td><td>Advances in science, technology, or business models.</td><td>AI advancements leading to new businesses like ChatGPT, Tesla self-driving</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <h2 class="sub-title">B. How to Spot Opportunities</h2>
         <ul class="objective-list">
@@ -448,7 +553,7 @@
         </ul>
 
         <h2 class="sub-title">The 12 R's of Opportunity Screening</h2>
-        <table class="compare-table" style="margin-top:0.5rem;">
+        <div class="compare-table-wrap"><table class="compare-table" style="margin-top:0.5rem;">
           <thead><tr><th>Criterion</th><th>Description</th></tr></thead>
           <tbody>
             <tr><td><strong>Relevance</strong></td><td>Does the opportunity align with the company's vision, mission, and goals?</td></tr>
@@ -464,7 +569,7 @@
             <tr><td><strong>Resources Required</strong></td><td>What capital, technology, and manpower are needed?</td></tr>
             <tr><td><strong>Risks</strong></td><td>What are the potential challenges, competition, and threats?</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <h2 class="sub-title">D. Opportunity Seizing</h2>
         <div class="def-card"><div class="term">Opportunity Seizing</div><div class="definition">Recognizing and taking advantage of favorable situations or chances when they arise. Involves determining critical factors that could affect the outcome of the chosen opportunity.</div></div>
@@ -521,7 +626,7 @@
     <div class="section-block">
       <div class="section-header">🔄 5-Phase Enterprise Life Cycle</div>
       <div class="content-card">
-        <table class="compare-table">
+        <div class="compare-table-wrap"><table class="compare-table">
           <thead><tr><th>Phase</th><th>Name</th><th>Key Focus</th></tr></thead>
           <tbody>
             <tr><td><strong>Phase 1</strong></td><td>Development</td><td>The entrepreneur determines if the opportunity is worth investing by gathering market information and evaluating skills and resources.</td></tr>
@@ -530,7 +635,7 @@
             <tr><td><strong>Phase 4</strong></td><td>Expansion</td><td>The business broadens its network, customer base, and offerings through new territories or mergers and acquisitions.</td></tr>
             <tr><td><strong>Phase 5</strong></td><td>Maturity</td><td>Entrepreneurs face two options — push for further expansion, or exit the business.</td></tr>
           </tbody>
-        </table>
+        </table></div>
       </div>
     </div>
   </div>
@@ -538,7 +643,7 @@
 
 <!-- SLIDES -->
 <div id="slides" class="page">
-  <div style="background:white;border-bottom:2px solid var(--dry-creek);padding:0.8rem 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:60px;z-index:50;">
+  <div class="subnav-bar" style="background:white;border-bottom:2px solid var(--dry-creek);padding:0.8rem 1.2rem;display:flex;align-items:center;gap:0.6rem;position:sticky;top:60px;z-index:50;flex-wrap:wrap;">
     <button onclick="showPage('home')" style="background:var(--mocha);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
     <span style="font-weight:800;color:var(--spicy);">📄 PDF Slides</span>
   </div>
@@ -567,7 +672,7 @@
 
 <!-- FLASHCARDS -->
 <div id="flashcards" class="page">
-  <div id="flashcards-content" style="max-width:750px;margin:0 auto;padding:2rem;">
+  <div id="flashcards-content" style="max-width:750px;margin:0 auto;padding:clamp(1rem,4vw,2rem);">
     <div class="flashcard-header">
       <h1>🃏 Flashcards</h1>
       <p>Click a card to reveal the answer. Use arrows to navigate.</p>
@@ -599,7 +704,7 @@
 
 <!-- QUIZ -->
 <div id="quiz" class="page">
-  <div style="max-width:750px;margin:0 auto;padding:2rem;">
+  <div style="max-width:750px;margin:0 auto;padding:clamp(1rem,4vw,2rem);">
     <div class="quiz-header">
       <h1>📝 Quiz</h1>
       <p style="color:#555;">Test your knowledge on Entrepreneurship</p>
@@ -656,6 +761,14 @@ function showPage(id) {
   document.getElementById(id).classList.add('active');
   if (id === 'flashcards') renderFlashcard();
   window.scrollTo(0, 0);
+  closeMobileMenu();
+}
+
+function toggleMobileMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
 }
 
 function showPDF(num) {
