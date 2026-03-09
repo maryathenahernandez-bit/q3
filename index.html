@@ -30,41 +30,25 @@
   }
 
   /* ===== NAV ===== */
-  nav {
-    background: var(--purple-seduction);
-    padding: 0 2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    height: 60px;
+  nav { background:var(--purple-seduction); padding:0 1rem; display:flex; align-items:center; gap:0.3rem; box-shadow:0 4px 20px rgba(0,0,0,0.3); position:sticky; top:0; z-index:100; height:60px; overflow:visible; }
+  .nav-logo { font-family:'Baloo 2',cursive; font-size:1.2rem; font-weight:800; color:white; margin-right:0.8rem; text-shadow:2px 2px 4px rgba(0,0,0,0.3); white-space:nowrap; flex-shrink:0; }
+  .nav-logo span { color:var(--solarized); }
+  .nav-desktop { display:flex; align-items:center; gap:0.3rem; }
+  .nav-btn { background:transparent; border:none; color:white; font-family:'Nunito',sans-serif; font-size:0.9rem; font-weight:700; padding:0.45rem 0.9rem; border-radius:8px; cursor:pointer; transition:background 0.2s; white-space:nowrap; }
+  .nav-btn:hover { background:rgba(255,255,255,0.25); }
+  .nav-btn.active { background:rgba(255,255,255,0.25); }
+  /* Mobile hamburger */
+  .nav-hamburger { display:none; background:transparent; border:none; cursor:pointer; padding:0.4rem; flex-direction:column; gap:5px; margin-left:auto; }
+  .nav-hamburger span { display:block; width:22px; height:2px; background:white; border-radius:2px; }
+  .mobile-menu { display:none; position:fixed; top:60px; left:0; right:0; background:linear-gradient(180deg,var(--purple-seduction),#021d52); z-index:99; flex-direction:column; padding:0.5rem 0 1rem; box-shadow:0 8px 20px rgba(0,0,0,0.3); }
+  .mobile-menu.open { display:flex; }
+  .mobile-nav-btn { background:transparent; border:none; color:white; font-family:'Nunito',sans-serif; font-size:1rem; font-weight:700; padding:0.85rem 1.5rem; text-align:left; cursor:pointer; border-bottom:1px solid rgba(255,255,255,0.1); width:100%; }
+  .mobile-nav-btn:last-child { border-bottom:none; }
+  .mobile-nav-btn:hover { background:rgba(255,255,255,0.15); }
+  @media (max-width:600px) {
+    .nav-desktop { display:none; }
+    .nav-hamburger { display:flex; }
   }
-  .nav-logo {
-    font-family: 'Baloo 2', cursive;
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: white;
-    margin-right: 1.5rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-  }
-  .nav-logo span { color: var(--solarized); }
-  .nav-btn {
-    background: transparent;
-    border: none;
-    color: white;
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  .nav-btn:hover { background: rgba(255,255,255,0.25); }
-  .nav-btn.active { background: rgba(255,255,255,0.25); }
 
   /* ===== PAGES ===== */
   .page { display: none; }
@@ -471,6 +455,30 @@
     font-size: 0.85rem;
     font-weight: 600;
   }
+
+  /* ===== MOBILE RESPONSIVE ===== */
+  @media (max-width:650px) {
+    .hero { padding:1.8rem 1rem 1.2rem; }
+    .hero h1 { font-size:1.7rem; }
+    .hero p { font-size:0.9rem; }
+    .subjects-section { padding:1rem; }
+    .subjects-grid { grid-template-columns:1fr; gap:1rem; }
+    .subject-card { padding:1.3rem 1rem; }
+    .subject-card h2 { font-size:1.1rem; }
+    .card-actions { flex-wrap:wrap; gap:0.4rem; }
+    .card-btn { font-size:0.8rem; padding:0.45rem 0.7rem; }
+    .module-pill { font-size:0.72rem; padding:2px 8px; }
+    /* Quiz page */
+    .quiz-wrap { padding:1rem; }
+    .quiz-start { padding:1.2rem 1rem; }
+    .question-card { padding:1.1rem; }
+    .question-text { font-size:0.92rem; }
+    .option-btn { font-size:0.85rem; }
+  }
+  @media (max-width:400px) {
+    .hero h1 { font-size:1.4rem; }
+    .card-btn { flex:1; text-align:center; }
+  }
 </style>
 </head>
 <body>
@@ -478,9 +486,18 @@
 <!-- ===== NAV ===== -->
 <nav>
   <div class="nav-logo">📚 Study<span>Hub</span></div>
-  <button class="nav-btn active" onclick="showPage('home')">🏠 Home</button>
-  <button class="nav-btn" onclick="showPage('quiz')">📝 Quick Quiz</button>
+  <div class="nav-desktop">
+    <button class="nav-btn active" onclick="showPage('home')">🏠 Home</button>
+    <button class="nav-btn" onclick="showPage('quiz')">📝 Quick Quiz</button>
+  </div>
+  <button class="nav-hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-nav-btn" onclick="showPage('home');closeMobileMenu()">🏠 Home</button>
+  <button class="mobile-nav-btn" onclick="showPage('quiz');closeMobileMenu()">📝 Quick Quiz</button>
+</div>
 
 <!-- ===== HOME PAGE ===== -->
 <div id="home" class="page active">
@@ -638,11 +655,18 @@
 
 <script>
 // ===== NAVIGATION =====
+function toggleMobileMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
+  if (event && event.target) event.target.classList.add('active');
+  closeMobileMenu();
 }
 
 // ===== SUBJECT → FILE MAPPING =====
