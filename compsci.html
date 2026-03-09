@@ -30,82 +30,30 @@
   }
 
   /* ===== NAV ===== */
-  nav {
-    background: var(--purple-seduction);
-    padding: 0 2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    height: 60px;
-  }
-
-  .nav-logo {
-    font-family: 'Baloo 2', cursive;
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: white;
-    margin-right: 1.5rem;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-  }
-
-  .nav-logo span { color: var(--solarized); }
-
-  .nav-btn {
-    background: transparent;
-    border: none;
-    color: white;
-    font-family: 'Nunito', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.2s;
-    position: relative;
-  }
-
-  .nav-btn:hover, .nav-btn.active { background: rgba(255,255,255,0.2); }
-
-  .dropdown { position: relative; }
-
-  .dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-    min-width: 260px;
-    overflow: hidden;
-    z-index: 200;
-  }
-
-  .dropdown:hover .dropdown-menu { display: block; }
-
-  .dropdown-item {
-    display: block;
-    padding: 0.8rem 1.2rem;
-    color: var(--text-dark);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: background 0.2s;
-    border-left: 4px solid transparent;
-    cursor: pointer;
-    border: none;
-    background: none;
-    width: 100%;
-    text-align: left;
-  }
-
-  .dropdown-item:hover {
-    background: rgba(29, 151, 241, 0.15);
-    border-left-color: var(--purple-seduction);
+  nav { background:var(--purple-seduction); padding:0 1rem; display:flex; align-items:center; gap:0.3rem; box-shadow:0 4px 20px rgba(0,0,0,0.3); position:sticky; top:0; z-index:100; height:60px; overflow:visible; }
+  .nav-logo { font-family:'Baloo 2',cursive; font-size:1.2rem; font-weight:800; color:white; margin-right:0.5rem; text-shadow:1px 1px 3px rgba(0,0,0,0.3); white-space:nowrap; flex-shrink:0; }
+  .nav-logo span { color:var(--solarized); }
+  .nav-desktop { display:flex; align-items:center; gap:0.3rem; flex:1; }
+  .nav-btn { background:transparent; border:none; color:white; font-family:'Nunito',sans-serif; font-size:0.88rem; font-weight:700; padding:0.45rem 0.7rem; border-radius:8px; cursor:pointer; transition:background 0.2s; position:relative; white-space:nowrap; }
+  .nav-btn:hover, .nav-btn.active { background:rgba(255,255,255,0.2); }
+  .nav-hub-btn { margin-left:auto; }
+  .dropdown { position:relative; }
+  .dropdown-menu { display:none; position:absolute; top:100%; left:0; background:white; border-radius:10px; box-shadow:0 8px 30px rgba(0,0,0,0.15); min-width:260px; overflow:hidden; z-index:200; }
+  .dropdown:hover .dropdown-menu { display:block; }
+  .dropdown-item { display:block; padding:0.8rem 1.2rem; color:var(--text-dark); font-weight:600; font-size:0.9rem; transition:background 0.2s; border-left:4px solid transparent; cursor:pointer; border:none; background:none; width:100%; text-align:left; font-family:'Nunito',sans-serif; }
+  .dropdown-item:hover { background:rgba(29,151,241,0.15); border-left-color:var(--purple-seduction); }
+  /* Mobile hamburger */
+  .nav-hamburger { display:none; background:transparent; border:none; cursor:pointer; padding:0.4rem; flex-direction:column; gap:5px; margin-left:auto; }
+  .nav-hamburger span { display:block; width:22px; height:2px; background:white; border-radius:2px; }
+  .mobile-menu { display:none; position:fixed; top:60px; left:0; right:0; background:linear-gradient(180deg,var(--purple-seduction),#021d52); z-index:99; flex-direction:column; padding:0.5rem 0 1rem; box-shadow:0 8px 20px rgba(0,0,0,0.3); }
+  .mobile-menu.open { display:flex; }
+  .mobile-nav-btn { background:transparent; border:none; color:white; font-family:'Nunito',sans-serif; font-size:1rem; font-weight:700; padding:0.85rem 1.5rem; text-align:left; cursor:pointer; border-bottom:1px solid rgba(255,255,255,0.1); width:100%; }
+  .mobile-nav-btn:last-child { border-bottom:none; }
+  .mobile-nav-btn:hover { background:rgba(255,255,255,0.15); }
+  .mobile-nav-section { color:rgba(255,255,255,0.5); font-size:0.72rem; font-weight:800; text-transform:uppercase; letter-spacing:1px; padding:0.6rem 1.5rem 0.2rem; }
+  @media (max-width:700px) {
+    .nav-desktop { display:none; }
+    .nav-hamburger { display:flex; }
   }
 
   /* ===== PAGES ===== */
@@ -175,18 +123,18 @@
 
   /* ===== REVIEWER PAGE ===== */
   .reviewer-page {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   .content-header {
     background: var(--purple-seduction);
     color: white;
     padding: 2.5rem 2rem;
-    border-radius: 16px;
-    margin-bottom: 2rem;
-    box-shadow: 0 8px 25px rgba(3, 44, 125, 0.2);
+    border-radius: 0;
+    margin-bottom: 0;
+    box-shadow: 0 4px 20px rgba(3, 44, 125, 0.3);
   }
 
   .content-header h1 {
@@ -202,6 +150,7 @@
     line-height: 1.5;
   }
 
+  .content-body-wrap { max-width: 900px; margin: 2rem auto; padding: 0 2rem 2rem; }
   .content-body {
     background: white;
     padding: 2.5rem;
@@ -665,13 +614,67 @@
   }
 
   @media (max-width: 768px) {
-    .modules-grid {
-      grid-template-columns: 1fr;
-    }
+    .modules-grid { grid-template-columns: 1fr; }
+    .content-body { padding: 1.5rem; }
+  }
 
-    .content-body {
-      padding: 1.5rem;
-    }
+  /* ===== MOBILE RESPONSIVE ===== */
+  @media (max-width: 700px) {
+    /* Hero */
+    .hero { padding: 2rem 1rem 1.5rem; }
+    .hero h1 { font-size: 1.7rem; }
+    .hero p { font-size: 0.92rem; }
+
+    /* Modules section */
+    .modules-section { padding: 0 1rem 1.5rem; }
+    .modules-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .module-card { padding: 1.4rem 1.1rem; }
+
+    /* Reviewer full-width header */
+    .content-header { padding: 1.5rem 1rem; }
+    .content-header h1 { font-size: 1.3rem; }
+    .content-subtitle { font-size: 0.88rem; }
+
+    /* Content body wrap */
+    .content-body-wrap { padding: 0 0.8rem 1.5rem; margin-top: 1rem; }
+    .content-body { padding: 1rem; }
+
+    /* Sub-nav bars */
+    .subnav-bar { padding: 0.6rem 0.8rem !important; flex-wrap: wrap; gap: 0.4rem !important; }
+    .subnav-btns { flex-wrap: wrap; }
+
+    /* Tables */
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table { min-width: 420px; font-size: 0.8rem; }
+    th, td { padding: 0.5rem 0.6rem; }
+
+    /* Flashcards */
+    #flashcards-content { padding: 1rem !important; }
+    .card-scene { height: 230px; }
+    .flashcard-nav { gap: 0.5rem; }
+    .fc-btn { padding: 0.5rem 0.8rem; font-size: 0.82rem; }
+
+    /* Quiz */
+    .quiz-page-wrap { padding: 1rem !important; }
+    .quiz-start { padding: 1.5rem 1rem; }
+    .question-card { padding: 1.2rem 1rem; }
+    .question-text { font-size: 0.92rem; }
+    .option-btn { font-size: 0.85rem; padding: 0.65rem 0.8rem; }
+
+    /* Slides */
+    .pdf-frame { height: 60vh; min-height: 300px; }
+
+    /* Definition boxes, info boxes */
+    .definition-box, .example-box, .info-box { padding: 0.9rem 1rem; }
+    .types-grid, .comparison-grid { grid-template-columns: 1fr !important; }
+  }
+
+  @media (max-width: 420px) {
+    .module-card h2 { font-size: 1.1rem; }
+    .action-btn { font-size: 0.78rem; padding: 0.4rem 0.5rem; }
+    .module-select-btn { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
+    .set-select-btn { padding: 0.35rem 0.8rem; font-size: 0.78rem; }
+    .start-btn { padding: 0.75rem 1.5rem; font-size: 0.9rem; }
   }
 </style>
 </head>
@@ -680,27 +683,36 @@
 <!-- ===== NAV ===== -->
 <nav>
   <div class="nav-logo">💻 Computer <span>Science 12</span></div>
-
-  <div class="dropdown">
-    <button class="nav-btn">📚 Modules ▾</button>
-    <div class="dropdown-menu">
-      <button class="dropdown-item" onclick="showPage('mod1')">
-        🤖 Module 1: Introduction to AI
-      </button>
-      <button class="dropdown-item" onclick="showPage('mod2')">
-        🔧 Module 2: AI Ethics, Types & Tools
-      </button>
-      <button class="dropdown-item" onclick="showPage('mod3')">
-        🧠 Module 3: Intelligent Agents
-      </button>
+  <div class="nav-desktop">
+    <div class="dropdown">
+      <button class="nav-btn">📚 Modules ▾</button>
+      <div class="dropdown-menu">
+        <button class="dropdown-item" onclick="showPage('mod1')">🤖 Module 1: Introduction to AI</button>
+        <button class="dropdown-item" onclick="showPage('mod2')">🔧 Module 2: AI Ethics, Types & Tools</button>
+        <button class="dropdown-item" onclick="showPage('mod3')">🧠 Module 3: Intelligent Agents</button>
+      </div>
     </div>
+    <button class="nav-btn" onclick="showPage('flashcards')">🃏 Flashcards</button>
+    <button class="nav-btn" onclick="showPage('quiz')">📝 Quiz</button>
+    <button class="nav-btn" onclick="showPage('slides')">📄 Slides</button>
+    <button class="nav-btn nav-hub-btn" onclick="window.location.href='index.html'">🏠 Back to Hub</button>
   </div>
-
-  <button class="nav-btn" onclick="showPage('flashcards')">🃏 Flashcards</button>
-  <button class="nav-btn" onclick="showPage('quiz')">📝 Quiz</button>
-  <button class="nav-btn" onclick="showPage('slides')">📄 Slides</button>
-  <button class="nav-btn" onclick="window.location.href='index.html'" style="margin-left:auto;">🏠 Back to Hub</button>
+  <button class="nav-hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-nav-section">Modules</div>
+  <button class="mobile-nav-btn" onclick="showPage('mod1');closeMobileMenu()">🤖 Module 1: Introduction to AI</button>
+  <button class="mobile-nav-btn" onclick="showPage('mod2');closeMobileMenu()">🔧 Module 2: AI Ethics, Types & Tools</button>
+  <button class="mobile-nav-btn" onclick="showPage('mod3');closeMobileMenu()">🧠 Module 3: Intelligent Agents</button>
+  <div class="mobile-nav-section">Study Tools</div>
+  <button class="mobile-nav-btn" onclick="showPage('flashcards');closeMobileMenu()">🃏 Flashcards</button>
+  <button class="mobile-nav-btn" onclick="showPage('quiz');closeMobileMenu()">📝 Quiz</button>
+  <button class="mobile-nav-btn" onclick="showPage('slides');closeMobileMenu()">📄 Slides</button>
+  <div class="mobile-nav-section">Navigation</div>
+  <button class="mobile-nav-btn" onclick="window.location.href='index.html'">🏠 Back to Hub</button>
+</div>
 
 <!-- ===== HOME PAGE ===== -->
 <div id="home" class="page active">
@@ -793,10 +805,10 @@
 
 <!-- ===== MODULE 1 PAGE ===== -->
 <div id="mod1" class="page reviewer-page">
-  <div style="background:white;border-bottom:2px solid var(--testosterose);padding:0.8rem 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:60px;z-index:50;">
+  <div class="subnav-bar" style="background:white;border-bottom:2px solid var(--testosterose);padding:0.8rem 1.2rem;display:flex;align-items:center;gap:0.6rem;position:sticky;top:60px;z-index:50;flex-wrap:wrap;">
     <button onclick="showPage('home')" style="background:var(--purple-seduction);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
     <span style="font-weight:800;color:var(--purple-seduction);">🤖 Module 1: Introduction to Artificial Intelligence</span>
-    <div style="margin-left:auto;display:flex;gap:0.5rem;">
+    <div class="subnav-btns" style="margin-left:auto;display:flex;gap:0.5rem;flex-wrap:wrap;">
       <button onclick="showPage('flashcards')" style="background:transparent;border:2px solid var(--testosterose);color:var(--purple-seduction);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">🃏 Flashcards</button>
       <button onclick="showPage('quiz')" style="background:transparent;border:2px solid var(--testosterose);color:var(--purple-seduction);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">📝 Quiz</button>
     </div>
@@ -806,7 +818,7 @@
     <p class="content-subtitle">Understanding AI concepts, its applications, principles, and components</p>
   </div>
 
-  <div class="content-body">
+  <div class="content-body-wrap"><div class="content-body">
     
     <section class="content-section">
       <h2>What is Artificial Intelligence?</h2>
@@ -936,10 +948,10 @@
 
 <!-- ===== MODULE 2 PAGE ===== -->
 <div id="mod2" class="page reviewer-page">
-  <div style="background:white;border-bottom:2px solid var(--testosterose);padding:0.8rem 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:60px;z-index:50;">
+  <div class="subnav-bar" style="background:white;border-bottom:2px solid var(--testosterose);padding:0.8rem 1.2rem;display:flex;align-items:center;gap:0.6rem;position:sticky;top:60px;z-index:50;flex-wrap:wrap;">
     <button onclick="showPage('home')" style="background:var(--purple-seduction);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
     <span style="font-weight:800;color:var(--purple-seduction);">🔧 Module 2: AI Ethics, Types &amp; Tools</span>
-    <div style="margin-left:auto;display:flex;gap:0.5rem;">
+    <div class="subnav-btns" style="margin-left:auto;display:flex;gap:0.5rem;flex-wrap:wrap;">
       <button onclick="showPage('flashcards')" style="background:transparent;border:2px solid var(--testosterose);color:var(--purple-seduction);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">🃏 Flashcards</button>
       <button onclick="showPage('quiz')" style="background:transparent;border:2px solid var(--testosterose);color:var(--purple-seduction);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">📝 Quiz</button>
     </div>
@@ -949,7 +961,7 @@
     <p class="content-subtitle">Understanding ethical AI, different AI types, and the tools used in AI development</p>
   </div>
 
-  <div class="content-body">
+  <div class="content-body-wrap"><div class="content-body">
     
     <section class="content-section">
       <h2>Artificial Intelligence Ethics</h2>
@@ -1074,10 +1086,10 @@
 
 <!-- ===== MODULE 3 PAGE ===== -->
 <div id="mod3" class="page reviewer-page">
-  <div style="background:white;border-bottom:2px solid var(--testosterose);padding:0.8rem 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:60px;z-index:50;">
+  <div class="subnav-bar" style="background:white;border-bottom:2px solid var(--testosterose);padding:0.8rem 1.2rem;display:flex;align-items:center;gap:0.6rem;position:sticky;top:60px;z-index:50;flex-wrap:wrap;">
     <button onclick="showPage('home')" style="background:var(--purple-seduction);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
     <span style="font-weight:800;color:var(--purple-seduction);">🧠 Module 3: Intelligent Agents</span>
-    <div style="margin-left:auto;display:flex;gap:0.5rem;">
+    <div class="subnav-btns" style="margin-left:auto;display:flex;gap:0.5rem;flex-wrap:wrap;">
       <button onclick="showPage('flashcards')" style="background:transparent;border:2px solid var(--testosterose);color:var(--purple-seduction);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">🃏 Flashcards</button>
       <button onclick="showPage('quiz')" style="background:transparent;border:2px solid var(--testosterose);color:var(--purple-seduction);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">📝 Quiz</button>
     </div>
@@ -1087,7 +1099,7 @@
     <p class="content-subtitle">Understanding how AI agents interact with environments and make decisions</p>
   </div>
 
-  <div class="content-body">
+  <div class="content-body-wrap"><div class="content-body">
     
     <section class="content-section">
       <h2>What is an Agent?</h2>
@@ -1244,7 +1256,7 @@
 
 <!-- ===== FLASHCARDS PAGE ===== -->
 <div id="flashcards" class="page">
-  <div id="flashcards-content" style="max-width:750px;margin:0 auto;padding:2rem;">
+  <div id="flashcards-content" style="max-width:750px;margin:0 auto;padding:clamp(1rem,4vw,2rem);">
     <div class="flashcard-header">
       <h1>🃏 Flashcards</h1>
       <p>Click a card to reveal the answer. Use arrows to navigate.</p>
@@ -1292,7 +1304,7 @@
 <!-- ===== QUIZ PAGE ===== -->
 <!-- ===== QUIZ PAGE ===== -->
 <div id="quiz" class="page">
-  <div style="max-width:750px;margin:0 auto;padding:2rem;">
+  <div class="quiz-page-wrap" style="max-width:750px;margin:0 auto;padding:clamp(1rem,4vw,2rem);">
     <div class="quiz-header">
       <h1>📝 Quiz</h1>
       <p style="color:#555;">Test your knowledge on Computer Science 12</p>
@@ -1356,7 +1368,7 @@
 
 <!-- ===== SLIDES PAGE ===== -->
 <div id="slides" class="page">
-  <div style="background:white;border-bottom:2px solid var(--testosterose);padding:0.8rem 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:60px;z-index:50;">
+  <div class="subnav-bar" style="background:white;border-bottom:2px solid var(--testosterose);padding:0.8rem 1.2rem;display:flex;align-items:center;gap:0.6rem;position:sticky;top:60px;z-index:50;flex-wrap:wrap;">
     <button onclick="showPage('home')" style="background:var(--testosterose);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
     <span style="font-weight:800;color:var(--testosterose);">📄 PDF Slides</span>
   </div>
@@ -1406,7 +1418,15 @@
 
 <script>
 // ===== NAVIGATION =====
+function toggleMobileMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
 function showPage(id) {
+  closeMobileMenu();
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 
