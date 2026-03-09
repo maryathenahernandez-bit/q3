@@ -107,6 +107,23 @@
   .dropdown-item.locked { color: #aaa; cursor: not-allowed; }
   .dropdown-item.locked:hover { background: #f5f5f5; border-left-color: #ddd; }
 
+  /* Mobile hamburger */
+  .nav-desktop { display: flex; align-items: center; gap: 0.5rem; flex: 1; }
+  .nav-hamburger { display: none; background: transparent; border: none; cursor: pointer; padding: 0.4rem; flex-direction: column; gap: 5px; margin-left: auto; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: white; border-radius: 2px; transition: all 0.3s; }
+  .mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: linear-gradient(180deg, var(--teal), var(--forest)); z-index: 99; flex-direction: column; padding: 0.5rem 0 1rem; box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+  .mobile-menu.open { display: flex; }
+  .mobile-nav-btn { background: transparent; border: none; color: white; font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 700; padding: 0.85rem 1.5rem; text-align: left; cursor: pointer; border-bottom: 1px solid rgba(255,255,255,0.1); width: 100%; }
+  .mobile-nav-btn:last-child { border-bottom: none; }
+  .mobile-nav-btn:hover { background: rgba(255,255,255,0.15); }
+  .mobile-nav-section { color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 0.6rem 1.5rem 0.2rem; }
+  @media (max-width: 700px) {
+    nav { padding: 0 1rem; }
+    .nav-logo { font-size: 1.1rem; margin-right: 0.5rem; }
+    .nav-desktop { display: none; }
+    .nav-hamburger { display: flex; }
+  }
+
   /* ===== PAGES ===== */
   .page { display: none; }
   .page.active { display: block; }
@@ -994,6 +1011,30 @@
   .protein-card h4 { font-weight: 800; color: var(--teal); font-size: 0.9rem; margin-bottom: 0.3rem; }
   .protein-card p { font-size: 0.85rem; color: #444; }
 
+  /* ===== ADDITIONAL MOBILE RESPONSIVE STYLES ===== */
+  @media (max-width: 700px) {
+    .modules-section { padding: 0 1rem 1.5rem; }
+    .modules-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+    .reviewer-module { padding: 1rem; }
+    .module-header { padding: 1.5rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .module-header .module-icon { font-size: 2.5rem; }
+    .module-header h1 { font-size: 1.5rem; }
+    .section-header { padding: 0.8rem 1rem; font-size: 1rem; }
+    .content-card { padding: 1rem; }
+  }
+
+  @media (max-width: 500px) {
+    .home-hero { padding: 2.5rem 1rem 2rem; }
+    .home-hero h1 { font-size: 1.8rem; }
+    .home-hero p { font-size: 0.95rem; }
+    .flashcard-container { padding: 1.5rem 1rem; }
+    .flashcard { min-height: 250px; padding: 1.5rem; }
+    .quiz-container { padding: 1rem; }
+    .quiz-question { font-size: 1rem; }
+    .quiz-option { padding: 0.8rem 1rem; font-size: 0.9rem; }
+    .action-btn { font-size: 0.8rem; padding: 0.45rem 0.7rem; }
+  }
+
 </style>
 </head>
 <body>
@@ -1002,20 +1043,43 @@
 <nav>
   <div class="nav-logo">🧬 Bio<span>Tech</span></div>
 
-  <div class="dropdown">
-    <button class="nav-btn">📚 Modules ▾</button>
-    <div class="dropdown-menu">
-      <button class="dropdown-item" onclick="showPage('mod1')">🔬 Module 1: Introduction to Biotechnology</button>
-      <button class="dropdown-item" onclick="showPage('mod2')">🧪 Module 2: Recombinant DNA Technology</button>
-      <button class="dropdown-item" onclick="showPage('mod3')">🦠 Module 3: Microbial Biotechnology</button>
+  <div class="nav-desktop">
+    <div class="dropdown">
+      <button class="nav-btn">📚 Modules ▾</button>
+      <div class="dropdown-menu">
+        <button class="dropdown-item" onclick="showPage('mod1')">🔬 Module 1: Introduction to Biotechnology</button>
+        <button class="dropdown-item" onclick="showPage('mod2')">🧪 Module 2: Recombinant DNA Technology</button>
+        <button class="dropdown-item" onclick="showPage('mod3')">🦠 Module 3: Microbial Biotechnology</button>
+      </div>
     </div>
+
+    <button class="nav-btn" onclick="showPage('flashcards')">🃏 Flashcards</button>
+    <button class="nav-btn" onclick="showPage('quiz')">📝 Quiz</button>
+    <button class="nav-btn" onclick="showPage('slides')">📄 Slides</button>
+    <button class="nav-btn" onclick="window.location.href='index.html'" style="margin-left:auto;">🏠 Back to Hub</button>
   </div>
 
-  <button class="nav-btn" onclick="showPage('flashcards')">🃏 Flashcards</button>
-  <button class="nav-btn" onclick="showPage('quiz')">📝 Quiz</button>
-  <button class="nav-btn" onclick="showPage('slides')">📄 Slides</button>
-  <button class="nav-btn" onclick="window.location.href='index.html'" style="margin-left:auto;">🏠 Back to Hub</button>
+  <button class="nav-hamburger" onclick="toggleMobileMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-nav-section">Modules</div>
+  <button class="mobile-nav-btn" onclick="showPage('mod1'); closeMobileMenu()">🔬 Module 1: Introduction to Biotechnology</button>
+  <button class="mobile-nav-btn" onclick="showPage('mod2'); closeMobileMenu()">🧪 Module 2: Recombinant DNA Technology</button>
+  <button class="mobile-nav-btn" onclick="showPage('mod3'); closeMobileMenu()">🦠 Module 3: Microbial Biotechnology</button>
+  
+  <div class="mobile-nav-section">Tools</div>
+  <button class="mobile-nav-btn" onclick="showPage('flashcards'); closeMobileMenu()">🃏 Flashcards</button>
+  <button class="mobile-nav-btn" onclick="showPage('quiz'); closeMobileMenu()">📝 Quiz</button>
+  <button class="mobile-nav-btn" onclick="showPage('slides'); closeMobileMenu()">📄 Slides</button>
+  
+  <div class="mobile-nav-section">Navigation</div>
+  <button class="mobile-nav-btn" onclick="window.location.href='index.html'">🏠 Back to Hub</button>
+</div>
 
 <!-- ===== HOME PAGE ===== -->
 <div id="home" class="page active">
@@ -2396,6 +2460,17 @@
 </div>
 
 <script>
+// ===== MOBILE MENU =====
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('open');
+}
+
+function closeMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.remove('open');
+}
+
 // ===== PAGE NAVIGATION =====
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
