@@ -2814,19 +2814,6 @@ const allQuizData = {
   { type:"id", q:"IDENTIFICATION: This is the type of DNA library that contains only expressed (active) genes and is made using reverse transcriptase from mRNA.", options:["Genomic Library","Shotgun Library","cDNA Library","Cosmid Library"], answer:2, explanation:"A cDNA Library contains only expressed genes, derived from mRNA using reverse transcriptase. It has no introns and no non-coding DNA — making it ideal for producing eukaryotic proteins in bacteria." },
   { type:"id", q:"IDENTIFICATION: This pair of scientists co-founded Genentech and commercialized the production of recombinant human insulin (Humulin), the first FDA-approved genetically engineered product.", options:["Watson and Crick","Cohen and Berg","Boyer and Swanson","Arber and Nathans"], answer:2, explanation:"Herbert Boyer (molecular biologist) and Robert Swanson (venture capitalist) co-founded Genentech in 1976 and commercialized recombinant human insulin (Humulin) — the first FDA-approved genetically engineered product (1982)." },
   { type:"id", q:"IDENTIFICATION: This is the recognition sequence for the restriction enzyme EcoRI, which reads the same on both complementary strands in the 5'→3' direction.", options:["A↓AGCTT","G↓AATTC","G↓GATCC","CCC↓GGG"], answer:1, explanation:"EcoRI's recognition site is G↓AATTC — a palindromic sequence that reads the same on both complementary strands in the 5'→3' direction. EcoRI produces sticky (cohesive) ends." }
-  ],
-
-  mixed: [
-  { type:"mc", q:"What is biotechnology?", options:["The use of computers to analyze biological data","The use of living organisms or their products to improve life","The study of microscopic organisms only","The process of creating synthetic DNA"], answer:1, explanation:"Biotechnology is the use of living organisms or their products to improve life and solve problems." },
-  { type:"mc", q:"What was the first FDA-approved genetically engineered product?", options:["Recombinant Human Growth Hormone","Humulin (Recombinant Human Insulin)","Clotting Factor VIII","Erythropoietin"], answer:1, explanation:"Humulin (recombinant human insulin) was the first FDA-approved genetically engineered product (1982), produced by Genentech." },
-  { type:"mc", q:"What is bacterial transformation?", options:["The process by which bacteria divide by binary fission","The process by which bacteria take in DNA from their surrounding environment","The process of bacteria producing antibiotics","The process of bacteria undergoing Gram staining"], answer:1, explanation:"Bacterial transformation is the process by which bacteria take in DNA from their surrounding environment." },
-  { type:"mc", q:"What does DNA Fingerprinting primarily identify?", options:["Blood type","Individual identity from biological samples","Chromosome number","Protein sequences"], answer:1, explanation:"DNA Fingerprinting is the primary tool of forensic biotechnology, used to identify individuals from blood, hair, or saliva." },
-  { type:"mc", q:"Which restriction enzyme produces sticky ends with the sequence G↓AATTC?", options:["HindIII","BamHI","EcoRI","SmaI"], answer:2, explanation:"EcoRI recognizes G↓AATTC and produces sticky (cohesive) ends." },
-  { type:"mc", q:"What condition develops when the body cannot produce insulin?", options:["Type II diabetes mellitus","Type I diabetes mellitus","Hypoglycemia","Hemophilia"], answer:1, explanation:"When the body cannot produce insulin, a person develops Type I diabetes mellitus." },
-  { type:"tf", q:"True or False: Before recombinant DNA technology, insulin used in medicine came from pigs and cows.", options:["True","False"], answer:0, explanation:"TRUE. Before recombinant DNA technology, insulin came from pig and cow. It was expensive, inefficient, and caused allergic reactions." },
-  { type:"tf", q:"True or False: In gene cloning, both the vector DNA and the insert DNA must be cut with the SAME restriction enzyme to produce compatible ends.", options:["True","False"], answer:0, explanation:"TRUE. Both DNAs must be cut with the same restriction enzyme so that the sticky ends produced are complementary to each other." },
-  { type:"id", q:"IDENTIFICATION: This microbial enzyme derived from Thermus aquaticus is used in PCR and can survive high temperatures.", options:["Taq polymerase","Pfu DNA polymerase","Restriction enzyme","DNA ligase"], answer:0, explanation:"Taq polymerase is derived from Thermus aquaticus. It is heat-stable and is the key enzyme used in PCR." },
-  { type:"id", q:"IDENTIFICATION: This is the mnemonic for the 3 essential tools of recombinant DNA technology: Scissors, Route, Ligase.", options:["RLS","SRL","LRS","RSL"], answer:1, explanation:"SRL: S = Scissors (restriction enzymes), R = Route (vector), L = Ligase (DNA ligase joins fragments)." }
   ]
 };
 
@@ -2945,19 +2932,7 @@ const allQuizData_set2 = {
   { type:"id", q:"IDENTIFICATION: This is the technique used to create cDNA, where an mRNA template is reverse-transcribed into a complementary DNA strand using the enzyme reverse transcriptase.", options:["PCR amplification","Gene cloning","Reverse transcription","Restriction digestion"], answer:2, explanation:"Reverse transcription is the process where reverse transcriptase synthesizes a single-stranded cDNA from an mRNA template — working in the reverse direction of normal transcription (DNA → RNA becomes RNA → DNA). It is the key step in creating a cDNA library." },
   { type:"id", q:"IDENTIFICATION: This co-founder of Genentech was the molecular biologist who, with Stanley Cohen, created the first recombinant clone, and then commercialized recombinant insulin with Robert Swanson.", options:["Paul Berg","Daniel Nathans","Werner Arber","Herbert Boyer"], answer:3, explanation:"Herbert Boyer co-created the first recombinant clone with Stanley Cohen, then co-founded Genentech with Robert Swanson. Together, Boyer and Swanson commercialized Humulin (recombinant human insulin) — the first FDA-approved genetically engineered product (1982)." },
   { type:"id", q:"IDENTIFICATION: This is the vector property that allows independent replication of the plasmid within the bacterial host, separate from the chromosomal DNA — essential for maintaining copies of the cloned gene.", options:["Multiple Cloning Site (MCS)","Selectable Marker Gene","Origin of Replication (ori)","RNA Polymerase Promoter"], answer:2, explanation:"The Origin of Replication (ori) is the site on the vector where DNA replication begins, allowing the plasmid to replicate independently from the bacterial chromosome. High-copy-number plasmids can produce hundreds to thousands of copies per cell." },
-  { type:"id", q:"IDENTIFICATION: This is the mnemonic used to remember vector sizes in order: Plasmid (~6–12 kb) → Bacteriophage lambda (~25 kb) → Cosmid (~35 kb) → BAC (~300 kb) → YAC (200–2,000 kb).", options:["SRL (Scissors, Route, Ligase)","Blue = Boring, White = Winner","Please Bring Cookies Before Yankees","Every Good Boy Does Fine"], answer:2, explanation:"'Please Bring Cookies Before Yankees' is the mnemonic for vector sizes: P = Plasmid (~6–12 kb), B = Bacteriophage lambda (~25 kb), C = Cosmid (~35 kb), B = BAC (~300 kb), Y = YAC (200–2,000 kb) — in order of increasing insert capacity." },
-
-  mixed: [
-  { type:"mc", q:"Which ancient civilizations practiced fermentation using Saccharomyces cerevisiae?", options:["Only the Egyptians","Only the Chinese","Chinese, Greeks, Romans, Babylonians, and Egyptians","Only the Greeks"], answer:2, explanation:"Early civilizations including the Chinese, Greeks, Romans, Babylonians, and Egyptians all practiced fermentation — an ancient form of biotechnology." },
-  { type:"mc", q:"What is the primary purpose of a bacterial plasmid?", options:["It serves as the main chromosome of bacteria","A small, circular, self-replicating DNA molecule separate from the chromosome","It is the bacterial equivalent of the nucleus","A membrane-bound organelle for protein synthesis"], answer:1, explanation:"A plasmid is a small, circular, self-replicating DNA molecule separate from the main bacterial chromosome." },
-  { type:"mc", q:"What is electroporation?", options:["A method of growing bacteria in culture","A method for introducing DNA into bacterial cells using a brief electrical pulse","A technique for staining bacteria","A process for purifying recombinant proteins"], answer:1, explanation:"Electroporation is a method for introducing DNA into bacterial cells where an electroporator delivers a brief electrical pulse." },
-  { type:"mc", q:"Which vector type is BEST for cloning very large genomic fragments for human chromosome mapping?", options:["Bacterial Plasmid","Bacteriophage Lambda","Cosmid","YAC (Yeast Artificial Chromosome)"], answer:3, explanation:"YACs are best for very large genomic fragments (up to 2 Mb) and were essential for the Human Genome Project." },
-  { type:"mc", q:"What enzyme is used in cheese production, and was the first genetically engineered food ingredient approved by the FDA in 1990?", options:["Amylase","Cellulase","Subtilisin","Rennin (Chymosin)"], answer:3, explanation:"Rennin (chymosin) coagulates milk for cheese production and was the first genetically engineered food ingredient approved by the FDA in 1990." },
-  { type:"mc", q:"Why can't eukaryotic proteins always be expressed correctly in bacteria using genomic DNA?", options:["Because bacteria do not have restriction enzymes","Because bacteria cannot splice introns from pre-mRNA","Because genomic DNA is too large for any bacterial vector","Because bacteria produce different amino acids"], answer:1, explanation:"Bacteria lack the RNA splicing machinery to remove introns from pre-mRNA. cDNA (made from processed mRNA) must be used instead." },
-  { type:"tf", q:"True or False: Werner Arber proposed that restriction enzymes serve as a bacterial defense mechanism against bacteriophages.", options:["True","False"], answer:0, explanation:"TRUE. Werner Arber proposed that restriction enzymes protect bacteria from invading bacteriophages by cutting the foreign viral DNA." },
-  { type:"tf", q:"True or False: In blue-white selection, white colonies are the desired recombinant clones.", options:["True","False"], answer:0, explanation:"TRUE. White colonies have the insert disrupting the lacZ gene, so no β-galactosidase is produced — these are the recombinant clones." },
-  { type:"id", q:"IDENTIFICATION: This is the step in gene cloning where the recombinant plasmid is introduced into E. coli cells.", options:["Isolation","Ligation","Transformation","Antibiotic selection"], answer:2, explanation:"Transformation (Step 4) introduces recombinant plasmids into competent E. coli cells, done by heat shock or electroporation." },
-  { type:"id", q:"IDENTIFICATION: This is the type of DNA library that contains only expressed (active) genes and is made using reverse transcriptase from mRNA.", options:["Genomic Library","Shotgun Library","cDNA Library","Cosmid Library"], answer:2, explanation:"A cDNA Library contains only expressed genes derived from mRNA using reverse transcriptase. It has no introns and no non-coding DNA." }
+  { type:"id", q:"IDENTIFICATION: This is the mnemonic used to remember vector sizes in order: Plasmid (~6–12 kb) → Bacteriophage lambda (~25 kb) → Cosmid (~35 kb) → BAC (~300 kb) → YAC (200–2,000 kb).", options:["SRL (Scissors, Route, Ligase)","Blue = Boring, White = Winner","Please Bring Cookies Before Yankees","Every Good Boy Does Fine"], answer:2, explanation:"'Please Bring Cookies Before Yankees' is the mnemonic for vector sizes: P = Plasmid (~6–12 kb), B = Bacteriophage lambda (~25 kb), C = Cosmid (~35 kb), B = BAC (~300 kb), Y = YAC (200–2,000 kb) — in order of increasing insert capacity." }
   ]
 };
 
@@ -2968,40 +2943,28 @@ let currentQuestion = 0;
 let score = 0;
 let answered = [];
 
-const quizModuleNames = { mod1: '🔬 Module 1: Introduction to Biotechnology', mod2: '🧪 Module 2: Recombinant DNA Technology', mod3: '🦠 Module 3: Microbial Biotechnology', mixed: '🎲 Mixed: All Modules' };
+const quizModuleNames = { mod1: '🔬 Module 1: Introduction to Biotechnology', mod2: '🧪 Module 2: Recombinant DNA Technology', mod3: '🦠 Module 3: Microbial Biotechnology' };
 
 function selectSet(num) {
   activeQuizSet = num;
   document.querySelectorAll('.set-select-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('setBtn' + num).classList.add('active');
-  if (activeQuizModule === 'mixed') {
-    if (num === 1) quizQuestions = allQuizData.mixed;
-    else if (num === 2) quizQuestions = allQuizData_set2.mixed;
-    else quizQuestions = allQuizData_set3.mixed;
-  } else {
-    if (num === 1) quizQuestions = allQuizData[activeQuizModule];
-    else if (num === 2) quizQuestions = allQuizData_set2[activeQuizModule];
-    else quizQuestions = allQuizData_set3[activeQuizModule];
-  }
+  if (num === 1) quizQuestions = allQuizData[activeQuizModule];
+  else if (num === 2) quizQuestions = allQuizData_set2[activeQuizModule];
+  else quizQuestions = allQuizData_set3[activeQuizModule];
 }
 
 function setQuizModule(mod, btn) {
   activeQuizModule = mod;
-  if (mod === 'mixed') {
-    if (activeQuizSet === 1) quizQuestions = allQuizData.mixed;
-    else if (activeQuizSet === 2) quizQuestions = allQuizData_set2.mixed;
-    else quizQuestions = allQuizData_set3.mixed;
-  } else {
-    if (activeQuizSet === 1) quizQuestions = allQuizData[mod];
-    else if (activeQuizSet === 2) quizQuestions = allQuizData_set2[mod];
-    else quizQuestions = allQuizData_set3[mod];
-  }
+  if (activeQuizSet === 1) quizQuestions = allQuizData[mod];
+  else if (activeQuizSet === 2) quizQuestions = allQuizData_set2[mod];
+  else quizQuestions = allQuizData_set3[mod];
   document.querySelectorAll('.module-select-btn').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
   document.getElementById('quizQuestion').classList.remove('active');
   document.getElementById('quizResults').classList.remove('active');
   document.getElementById('quizStart').style.display = 'block';
-  document.getElementById('quizModTitle').textContent = quizModuleNames[mod] || mod;
+  document.getElementById('quizModTitle').textContent = quizModuleNames[mod];
 }
 
 function startQuiz() {
@@ -3199,19 +3162,7 @@ const allQuizData_set3 = {
   { type:"id", q:"IDENTIFICATION: This enzyme synthesizes the second DNA strand in cDNA library construction (Step 5), using the single-stranded cDNA as a template after the mRNA has been removed.", options:["Reverse Transcriptase","DNA Ligase","Restriction Enzyme","DNA Polymerase"], answer:3, explanation:"DNA Polymerase synthesizes the second cDNA strand (Step 5) using random short primers and the first-strand cDNA as a template — after the mRNA was removed in Step 4. Reverse Transcriptase synthesized the FIRST cDNA strand from mRNA (Step 3). Together they produce double-stranded cDNA." },
   { type:"id", q:"IDENTIFICATION: This is the term for the clear zones of bacterial lysis visible on a bacterial lawn when bacteriophage lambda successfully infects and kills bacteria — used as evidence of phage infection in vector experiments.", options:["Colonies","Plaques","Conjugation zones","Transformation zones"], answer:1, explanation:"Plaques are clear zones of bacterial lysis on a bacterial lawn (agar plate covered with bacteria). They form when bacteriophage lambda infects and lyses bacteria in that region. In bacteriophage vector experiments, plaques indicate successful phage infection of bacteria carrying the recombinant phage." },
   { type:"id", q:"IDENTIFICATION: This is the co-founder of Genentech who, together with Stanley Cohen, created the first recombinant clone using pSC101 — and then with Robert Swanson commercialized the first genetically engineered drug.", options:["Werner Arber","Hamilton Smith","Herbert Boyer","Paul Berg"], answer:2, explanation:"Herbert Boyer co-created the first recombinant clone with Stanley Cohen (1973) using pSC101 vector. Boyer then co-founded Genentech with Robert Swanson and commercialized recombinant human insulin (Humulin) — the first FDA-approved genetically engineered product (1982). This combination of discovery and commercialization made him pivotal in modern biotechnology." },
-  { type:"id", q:"IDENTIFICATION: This is the 8-step process used to screen a DNA library for a specific target gene — using a labeled DNA probe that hybridizes with matching sequences on a nylon membrane replica of bacterial colonies.", options:["PCR amplification","Blue-white selection","Colony hybridization","Southern blotting"], answer:2, explanation:"Colony Hybridization is the 8-step screening process: grow colonies → replica-transfer to membrane → lyse cells and denature DNA → fix single-stranded DNA → add labeled probe → hybridize → wash excess probe → detect via autoradiography or fluorescent imaging → match to master plate and culture positive colonies." },
-
-  mixed: [
-  { type:"mc", q:"Which ancient civilizations used selective breeding to improve crops and livestock?", options:["Only the Egyptians","Only the Chinese","Chinese, Greeks, Romans, Babylonians, and Egyptians","Only the Greeks"], answer:2, explanation:"Multiple ancient civilizations practiced selective breeding as an early form of biotechnology." },
-  { type:"mc", q:"What is the role of DNA Ligase in gene cloning?", options:["It cuts DNA at specific palindromic sequences","It transports DNA into the host cell","It joins DNA fragments covalently by sealing breaks in the backbone","It copies DNA for PCR amplification"], answer:2, explanation:"DNA ligase joins DNA fragments by sealing breaks in the backbone. After complementary sticky ends join by hydrogen bonding, DNA ligase covalently seals the recombinant plasmid." },
-  { type:"mc", q:"Which vaccine type uses plasmids carrying antigen genes that cause cells to produce the antigen?", options:["Attenuated vaccine","Inactivated vaccine","DNA-based vaccine","Subunit vaccine"], answer:2, explanation:"DNA-based vaccines use plasmids carrying antigen genes that cause cells to produce the antigen (e.g., AstraZeneca COVID-19)." },
-  { type:"mc", q:"What is the difference between a genomic library and a cDNA library?", options:["A genomic library uses mRNA while a cDNA library uses chromosomal DNA","A genomic library contains exons+introns+non-coding regions while a cDNA library contains only expressed genes","A cDNA library contains the entire genome while a genomic library is tissue-specific","There is no difference between them"], answer:1, explanation:"A genomic library contains ALL of an organism's DNA, while a cDNA library contains only expressed genes derived from mRNA — no introns, no non-coding regions." },
-  { type:"mc", q:"Alexander Fleming discovered penicillin in 1928 when which organism killed nearby Staphylococcus aureus?", options:["Bacillus subtilis","Aspergillus niger","Penicillium notatum","Saccharomyces cerevisiae"], answer:2, explanation:"Alexander Fleming discovered penicillin in 1928 when Penicillium notatum killed nearby Staphylococcus aureus." },
-  { type:"mc", q:"What does the DNA probe do during colony hybridization?", options:["It stains all colonies blue","It is a single-stranded DNA sequence that base-pairs with the target gene sequence","It inserts into the target gene to disrupt it","It provides antibiotic resistance to positive colonies"], answer:1, explanation:"A DNA probe is a short, single-stranded DNA sequence complementary to the target gene, labeled to hybridize with matching sequences on the membrane." },
-  { type:"tf", q:"True or False: Restriction enzymes are named after the organism they were derived from.", options:["True","False"], answer:0, explanation:"TRUE. Restriction enzymes are named after their source bacterium (e.g., EcoRI = E. coli R, enzyme I; HindIII = Haemophilus influenzae d, enzyme III)." },
-  { type:"tf", q:"True or False: Paul Berg received the Nobel Prize in Chemistry in 1980 for creating the first recombinant DNA molecule.", options:["True","False"], answer:0, explanation:"TRUE. Paul Berg received the Nobel Prize in Chemistry in 1980 for creating the first recombinant DNA molecule using E. coli and SV40 viral DNA." },
-  { type:"id", q:"IDENTIFICATION: This is the mnemonic 'Please Bring Cookies Before Yankees' used to remember cloning vectors in order of increasing insert size.", options:["Plasmid, Bacteriophage, Cosmid, BAC, YAC","Plasmid, BAC, Cosmid, Bacteriophage, YAC","YAC, BAC, Cosmid, Bacteriophage, Plasmid","Cosmid, Plasmid, BAC, Bacteriophage, YAC"], answer:0, explanation:"Please Bring Cookies Before Yankees = Plasmid (~6–12 kb), Bacteriophage lambda (~25 kb), Cosmid (~35 kb), BAC (~300 kb), YAC (200–2,000 kb). In order of increasing insert size." },
-  { type:"id", q:"IDENTIFICATION: This scientist discovered bacterial transformation and created pSC101, the first plasmid vector — a co-founder of molecular cloning.", options:["Paul Berg","Herbert Boyer","Stanley Cohen","Robert Swanson"], answer:2, explanation:"Stanley Cohen developed bacterial transformation, created pSC101 (the first plasmid vector), and along with Herbert Boyer, co-created the first recombinant clone." }
+  { type:"id", q:"IDENTIFICATION: This is the 8-step process used to screen a DNA library for a specific target gene — using a labeled DNA probe that hybridizes with matching sequences on a nylon membrane replica of bacterial colonies.", options:["PCR amplification","Blue-white selection","Colony hybridization","Southern blotting"], answer:2, explanation:"Colony Hybridization is the 8-step screening process: grow colonies → replica-transfer to membrane → lyse cells and denature DNA → fix single-stranded DNA → add labeled probe → hybridize → wash excess probe → detect via autoradiography or fluorescent imaging → match to master plate and culture positive colonies." }
   ]
 };
 
@@ -3230,13 +3181,13 @@ renderFlashcard();
       setFlashcardModule(mod, btn);
     }
     if (page === 'quiz') {
-      if (set) selectSet(parseInt(set));
+      if (set) {
+        selectSet(parseInt(set));
+      }
       if (mod) {
-        const btn = mod !== 'mixed' ? document.getElementById('quizModBtn' + mod.replace('mod','')) : null;
+        const btn = document.getElementById('quizModBtn' + mod.replace('mod',''));
         setQuizModule(mod, btn);
       }
-      // Auto-start if both mod and set provided
-      if (mod && set) startQuiz();
     }
   }
 })();
