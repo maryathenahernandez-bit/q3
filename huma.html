@@ -1294,6 +1294,18 @@ const allQuizData = {
     { type:"tf", q:"Mariano Que named Mercury Drug after the Roman god of commerce and medicine.", options:["True","False"], answer:0, explanation:"TRUE — Mariano Que named his pharmacy Mercury Drug after Mercury, the Roman god of commerce, speed, and medicine." }
   ]
 };
+Object.assign(allQuizData, { mixed: [
+  { type:"mc", q:"What is an entrepreneur?", options:["A government employee","A person who organizes, manages, and assumes the risk of a business","A person who only invests in stocks","A manager in a large corporation"], answer:1, explanation:"An entrepreneur is someone who organizes, manages, and takes on the risks of a business enterprise, seeking profit and creating value." },
+  { type:"mc", q:"Which PEC involves not giving up when facing obstacles?", options:["Information Seeking","Goal Setting","Persistence","Persuasion & Networking"], answer:2, explanation:"Persistence is an Achievement Cluster PEC that involves not giving up despite setbacks and obstacles — a defining trait of successful entrepreneurs." },
+  { type:"mc", q:"What is the entrepreneurial mindset?", options:["A fixed approach to doing business","A mindset focused purely on profit","A way of thinking that sees opportunities, embraces challenges, and drives innovation","A mindset that avoids all risk"], answer:2, explanation:"The entrepreneurial mindset is a way of thinking that sees opportunities in challenges, embraces innovation, and drives creative problem-solving — applicable beyond just business." },
+  { type:"mc", q:"Which Filipino entrepreneur is known for founding Mercury Drug?", options:["Henry Sy","Lucio Tan","Tony Tan Caktiong","Mariano Que"], answer:3, explanation:"Mariano Que founded Mercury Drug, starting with a small stall selling medicines on Bambang Street, Manila after World War II." },
+  { type:"tf", q:"True or False: Opportunity Seeking & Initiative is part of the Achievement Cluster PECs.", options:["True","False"], answer:0, explanation:"TRUE — Opportunity Seeking & Initiative is one of the 5 Achievement Cluster PECs, involving identifying new opportunities and taking proactive action." },
+  { type:"tf", q:"True or False: Henry Sy started SM Group with a small shoe store (ShoeMart).", options:["True","False"], answer:0, explanation:"TRUE — Henry Sy started the SM Group with ShoeMart, a small shoe store in Manila, which he grew into the SM Supermalls empire." },
+  { type:"mc", q:"How many PECs are in the Planning Cluster?", options:["2","3","4","5"], answer:1, explanation:"The Planning Cluster has 3 PECs: Goal Setting, Information Seeking, and Systematic Planning & Monitoring." },
+  { type:"mc", q:"Which Schumpeter Form of Innovation involves developing an entirely new way to produce something?", options:["Launching a new product","New production method","Opening of a new market","New organization of industry"], answer:1, explanation:"'New production method' is one of Schumpeter's 5 Forms of Innovation — developing an entirely new or improved way to produce goods or deliver services." },
+  { type:"tf", q:"True or False: Jollibee started as an ice cream parlor before pivoting to fast food.", options:["True","False"], answer:0, explanation:"TRUE — Jollibee started as an ice cream parlor in 1975. Tony Tan Caktiong pivoted to fast food and officially founded Jollibee Foods Corporation in 1978." },
+  { type:"mc", q:"What does 'Persuasion & Networking' belong to in the PECs framework?", options:["Achievement Cluster","Planning Cluster","Power Cluster","Innovation Cluster"], answer:2, explanation:"Persuasion & Networking is one of the 2 Power Cluster PECs (along with Self-Confidence), reflecting the ability to influence others and build relationships." }
+]});
 
 // ===== QUIZ DATA — SET 2 (20 MC + 10 T/F per lesson) =====
 const allQuizData_set2 = {
@@ -1400,6 +1412,18 @@ const allQuizData_set2 = {
     { type:"tf", q:"Louise Mabulo was recognized by the UN Environment Programme for her sustainable agriculture work.", options:["True","False"], answer:0, explanation:"TRUE — Louise Mabulo was recognized by the UN Environment Programme for her sustainable agriculture work through The Cacao Project." }
   ]
 };
+Object.assign(allQuizData_set2, { mixed: [
+  { type:"mc", q:"Which PEC cluster includes 'Persistence', 'Risk-Taking', and 'Opportunity Seeking'?", options:["Planning Cluster","Power Cluster","Achievement Cluster","None of the above"], answer:2, explanation:"Persistence, Taking Calculated Risk, and Opportunity Seeking & Initiative are part of the Achievement Cluster in the 10 PECs framework." },
+  { type:"mc", q:"What does 'Systematic Planning & Monitoring' belong to in PECs?", options:["Achievement Cluster","Power Cluster","Planning Cluster","Innovation Cluster"], answer:2, explanation:"Systematic Planning & Monitoring is one of the 3 PECs in the Planning Cluster, alongside Goal Setting and Information Seeking." },
+  { type:"mc", q:"Which Filipino entrepreneur founded Jollibee Foods Corporation?", options:["Henry Sy","Lucio Tan","Tony Tan Caktiong","Manny Villar"], answer:2, explanation:"Tony Tan Caktiong founded Jollibee Foods Corporation, growing it from a small ice cream parlor into Asia's largest fast food chain." },
+  { type:"tf", q:"True or False: Entrepreneurs are born, not made — entrepreneurship cannot be learned.", options:["True","False"], answer:1, explanation:"FALSE — Entrepreneurship can be learned and developed through education, experience, and practice. Most scholars agree that entrepreneurial skills can be taught and cultivated." },
+  { type:"mc", q:"Which Schumpeter Form of Innovation involves finding cheaper or new input sources?", options:["Launching a new product","New production method","New organization of industry","Discovery of a new source of supply of raw materials"], answer:3, explanation:"'Discovery of a new source of supply of raw materials' is one of Schumpeter's 5 Forms of Innovation — finding cheaper or alternative input sources counts as this type." },
+  { type:"tf", q:"True or False: Henry Sy founded SM Group starting with a small shoe store.", options:["True","False"], answer:0, explanation:"TRUE — Henry Sy founded the SM Group starting with a small shoe store (ShoeMart) in Manila, which eventually grew into SM Supermalls and a diversified conglomerate." },
+  { type:"mc", q:"What does 'intrapreneur' mean?", options:["An entrepreneur who fails repeatedly","An entrepreneur inside a large organization who innovates within it","An international entrepreneur","A government-employed entrepreneur"], answer:1, explanation:"An intrapreneur is an employee within a large organization who acts like an entrepreneur — driving innovation and new projects from inside the company." },
+  { type:"mc", q:"Which of the following is one of the 4 Fundamental Principles of Entrepreneurship?", options:["Avoid all risk","Managing effectively","Copying successful businesses","Avoiding innovation"], answer:1, explanation:"'Managing effectively' is one of the 4 Fundamental Principles of Entrepreneurship — entrepreneurs must effectively manage resources, people, and operations to succeed." },
+  { type:"tf", q:"True or False: The entrepreneurial mindset includes resilience and adaptability as key traits.", options:["True","False"], answer:0, explanation:"TRUE — Resilience (bouncing back from failure) and adaptability (adjusting to change) are hallmarks of the entrepreneurial mindset." },
+  { type:"mc", q:"Josh Mojica started Kangkong Chips Original in 2021 with how much starting capital?", options:["PHP 500","PHP 1,000","PHP 3,000","PHP 10,000"], answer:2, explanation:"Josh Mojica started Kangkong Chips Original in 2021 with just PHP 3,000 in starting capital and earned his first million within one year." }
+]});
 
 // ===== QUIZ LOGIC =====
 let activeQuizModule = 'mod1';
@@ -1412,15 +1436,19 @@ let answered = [];
 const quizModuleNames = {
   mod1:'💡 Lesson 1: The Entrepreneur',
   mod2:'🧠 Lesson 1.2: The Entrepreneurial Mindset',
-  mod3:'🇵🇭 Lesson 1.3: Successful Filipino Entrepreneurship'
+  mod3:'🇵🇭 Lesson 1.3: Successful Filipino Entrepreneurship',
+  mixed:'🎲 Mixed: All Lessons'
 };
 
 function selectSet(num) {
   activeQuizSet = num;
   document.querySelectorAll('.set-select-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('setBtn' + num).classList.add('active');
-  if (num === 1) quizQuestions = allQuizData[activeQuizModule];
-  else quizQuestions = allQuizData_set2[activeQuizModule];
+  if (activeQuizModule === 'mixed') {
+    quizQuestions = (num === 1) ? allQuizData.mixed : allQuizData_set2.mixed;
+  } else {
+    quizQuestions = (num === 1) ? allQuizData[activeQuizModule] : allQuizData_set2[activeQuizModule];
+  }
 }
 
 function setQuizModule(mod, btn) {
@@ -1432,7 +1460,7 @@ function setQuizModule(mod, btn) {
   document.getElementById('quizQuestion').classList.remove('active');
   document.getElementById('quizResults').classList.remove('active');
   document.getElementById('quizStart').style.display = 'block';
-  document.getElementById('quizModTitle').textContent = quizModuleNames[mod];
+  document.getElementById('quizModTitle').textContent = quizModuleNames[mod] || mod;
 }
 
 function startQuiz() {
@@ -1533,7 +1561,7 @@ showPDF(1);
     if (page === 'quiz') {
       if (set) selectSet(parseInt(set));
       if (mod) {
-        const btn = document.getElementById('quizModBtn' + mod.replace('mod',''));
+        const btn = (mod !== 'mixed') ? document.getElementById('quizModBtn' + mod.replace('mod','')) : null;
         setQuizModule(mod, btn);
       }
     }
