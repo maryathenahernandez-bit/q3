@@ -604,13 +604,6 @@
           <p>3 Modules • 3 Quiz Sets</p>
         </div>
 
-        <!-- HUMANITIES 5 -->
-        <div class="picker-card" onclick="selectSubject('huma', this)">
-          <div class="pick-icon">🇵🇭</div>
-          <h4>Humanities 5</h4>
-          <p>3 Lessons • 2 Quiz Sets</p>
-        </div>
-
         <!-- Add more subjects here as you create them -->
         <div class="picker-card" style="opacity:0.4;cursor:default;">
           <div class="pick-icon">➕</div>
@@ -647,10 +640,10 @@
     <!-- Step 4: Set -->
     <div class="set-picker" id="setPicker">
       <h3 id="setPickerTitle">Step 4 — Choose a Question Set</h3>
-      <div class="set-btns" id="setBtns">
+      <div class="set-btns">
         <div class="set-btn" onclick="selectSet(1, this)">📋 Set 1</div>
         <div class="set-btn" onclick="selectSet(2, this)">📋 Set 2</div>
-        <div class="set-btn" id="setBtn3" onclick="selectSet(3, this)">📋 Set 3</div>
+        <div class="set-btn" onclick="selectSet(3, this)">📋 Set 3</div>
       </div>
     </div>
 
@@ -806,21 +799,17 @@ function selectQuizType(type, el) {
   document.querySelectorAll('.set-btn').forEach(b => b.classList.remove('selected'));
   document.getElementById('launchArea').style.display = 'none';
   
-  // Subjects with only 2 sets: huma. All others have 3.
-  const twoSetSubjects = ['huma'];
-  const limitSets = twoSetSubjects.includes(selectedSubject);
-
   if (type === 'module') {
+    // Show module picker
     renderModulePicker(selectedSubject);
     document.getElementById('modulePicker').style.display = 'block';
     document.getElementById('setPicker').style.display = 'none';
     document.getElementById('setPickerTitle').textContent = 'Step 4 — Choose a Question Set';
-    document.getElementById('setBtn3').style.display = limitSets ? 'none' : '';
   } else if (type === 'mixed') {
+    // Skip module picker, go straight to set picker
     document.getElementById('modulePicker').style.display = 'none';
     document.getElementById('setPicker').style.display = 'block';
     document.getElementById('setPickerTitle').textContent = 'Step 3 — Choose a Question Set';
-    document.getElementById('setBtn3').style.display = 'none';
   }
 }
 
@@ -845,9 +834,6 @@ function selectModule(mod, el) {
   selectedMod = mod;
   selectedSet = null;
   document.querySelectorAll('.set-btn').forEach(b => b.classList.remove('selected'));
-  // Re-apply set3 visibility based on subject
-  const twoSetSubjects = ['huma'];
-  document.getElementById('setBtn3').style.display = twoSetSubjects.includes(selectedSubject) ? 'none' : '';
   document.getElementById('setPicker').style.display = 'block';
   document.getElementById('launchArea').style.display = 'none';
 }
