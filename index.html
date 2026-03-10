@@ -604,13 +604,6 @@
           <p>3 Modules • 3 Quiz Sets</p>
         </div>
 
-        <!-- HUMANITIES 5 -->
-        <div class="picker-card" onclick="selectSubject('huma', this)">
-          <div class="pick-icon">🇵🇭</div>
-          <h4>Humanities 5</h4>
-          <p>3 Lessons • 2 Quiz Sets</p>
-        </div>
-
         <!-- Add more subjects here as you create them -->
         <div class="picker-card" style="opacity:0.4;cursor:default;">
           <div class="pick-icon">➕</div>
@@ -650,7 +643,7 @@
       <div class="set-btns">
         <div class="set-btn" onclick="selectSet(1, this)">📋 Set 1</div>
         <div class="set-btn" onclick="selectSet(2, this)">📋 Set 2</div>
-        <div class="set-btn" onclick="selectSet(3, this)" id="setBtn3">📋 Set 3</div>
+        <div class="set-btn" onclick="selectSet(3, this)">📋 Set 3</div>
       </div>
     </div>
 
@@ -806,16 +799,14 @@ function selectQuizType(type, el) {
   document.querySelectorAll('.set-btn').forEach(b => b.classList.remove('selected'));
   document.getElementById('launchArea').style.display = 'none';
   
-  // huma only has 2 sets; mixed always only has 2 sets
-  const twoSetOnly = (selectedSubject === 'huma') || (type === 'mixed');
-  document.getElementById('setBtn3').style.display = twoSetOnly ? 'none' : '';
-
   if (type === 'module') {
+    // Show module picker
     renderModulePicker(selectedSubject);
     document.getElementById('modulePicker').style.display = 'block';
     document.getElementById('setPicker').style.display = 'none';
     document.getElementById('setPickerTitle').textContent = 'Step 4 — Choose a Question Set';
   } else if (type === 'mixed') {
+    // Skip module picker, go straight to set picker
     document.getElementById('modulePicker').style.display = 'none';
     document.getElementById('setPicker').style.display = 'block';
     document.getElementById('setPickerTitle').textContent = 'Step 3 — Choose a Question Set';
@@ -843,8 +834,6 @@ function selectModule(mod, el) {
   selectedMod = mod;
   selectedSet = null;
   document.querySelectorAll('.set-btn').forEach(b => b.classList.remove('selected'));
-  // Re-apply set3 visibility based on subject (huma has only 2 sets)
-  document.getElementById('setBtn3').style.display = (selectedSubject === 'huma') ? 'none' : '';
   document.getElementById('setPicker').style.display = 'block';
   document.getElementById('launchArea').style.display = 'none';
 }
