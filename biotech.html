@@ -2817,7 +2817,21 @@ const allQuizData = {
   ]
 };
 
-// ===== QUIZ SET 2 DATA =====
+// ===== MIXED QUIZ QUESTIONS (drawn from all modules) =====
+// mixed array is added directly to each dataset object below
+// allQuizData.mixed — set 1 mixed questions
+Object.assign(allQuizData, { mixed: [
+  { type:"mc", q:"What is biotechnology?", options:["Using computers to analyze data","Using living organisms or their products to improve life","The study of microscopic organisms only","Creating synthetic DNA"], answer:1, explanation:"Biotechnology is the use of living organisms or their products to improve life and solve problems." },
+  { type:"mc", q:"What was the significance of Humulin (1982)?", options:["First vaccine ever produced","First biotechnology product approved for human use","First antibiotic discovered","First DNA fingerprinting application"], answer:1, explanation:"Humulin (recombinant human insulin) was the first biotechnology product approved for human use, introduced by Genentech." },
+  { type:"mc", q:"What is bacterial transformation?", options:["Bacteria dividing by binary fission","Bacteria taking in DNA from their environment","Bacteria producing antibiotics","Bacteria undergoing Gram staining"], answer:1, explanation:"Bacterial transformation is the process by which bacteria take in DNA from their surrounding environment." },
+  { type:"mc", q:"What are restriction enzymes also called?", options:["Molecular glue","Molecular scissors","DNA polymerase","Reverse transcriptase"], answer:1, explanation:"Restriction enzymes are called molecular scissors because they cut DNA at specific palindromic restriction sites." },
+  { type:"tf", q:"True or False: The Human Genome Project was completed in 2003.", options:["True","False"], answer:0, explanation:"TRUE. The Human Genome Project began in 1990 and was completed in 2003, mapping all human genes." },
+  { type:"tf", q:"True or False: Sticky ends are preferred over blunt ends for gene cloning.", options:["True","False"], answer:0, explanation:"TRUE. Sticky (cohesive) ends are preferred for gene cloning because their single-stranded overhangs join specifically and easily with complementary ends." },
+  { type:"mc", q:"Which yeast was the first eukaryote to have its genome sequenced?", options:["Pichia pastoris","Aspergillus niger","Saccharomyces cerevisiae","Candida albicans"], answer:2, explanation:"Saccharomyces cerevisiae was the first eukaryotic organism to have its entire genome sequenced." },
+  { type:"mc", q:"What is bioremediation?", options:["Growing organs in a lab","Using organisms to clean polluted environments","Using plants to produce drugs","Mapping human genes"], answer:1, explanation:"Bioremediation uses living organisms (bacteria, fungi, plants) to clean polluted environments." },
+  { type:"mc", q:"Who created the first recombinant DNA molecule?", options:["Watson and Crick","Hamilton Smith","Paul Berg","Stanley Cohen"], answer:2, explanation:"Paul Berg created the first recombinant DNA molecule in 1972 using E. coli and SV40 viral DNA." },
+  { type:"tf", q:"True or False: Gram-positive bacteria stain purple because they have a thick peptidoglycan cell wall.", options:["True","False"], answer:0, explanation:"TRUE. Gram-positive bacteria retain crystal violet dye due to their thick peptidoglycan cell wall, staining them purple." }
+]});
 const allQuizData_set2 = {
   mod3: [
   // --- MULTIPLE CHOICE ---
@@ -2935,6 +2949,18 @@ const allQuizData_set2 = {
   { type:"id", q:"IDENTIFICATION: This is the mnemonic used to remember vector sizes in order: Plasmid (~6–12 kb) → Bacteriophage lambda (~25 kb) → Cosmid (~35 kb) → BAC (~300 kb) → YAC (200–2,000 kb).", options:["SRL (Scissors, Route, Ligase)","Blue = Boring, White = Winner","Please Bring Cookies Before Yankees","Every Good Boy Does Fine"], answer:2, explanation:"'Please Bring Cookies Before Yankees' is the mnemonic for vector sizes: P = Plasmid (~6–12 kb), B = Bacteriophage lambda (~25 kb), C = Cosmid (~35 kb), B = BAC (~300 kb), Y = YAC (200–2,000 kb) — in order of increasing insert capacity." }
   ]
 };
+Object.assign(allQuizData_set2, { mixed: [
+  { type:"mc", q:"What are recombinant proteins?", options:["Proteins causing allergic reactions","Proteins produced through gene-cloning techniques","Proteins extracted from animal tissues","Proteins resisting antibiotic degradation"], answer:1, explanation:"Recombinant proteins are produced through gene-cloning techniques using fermenters/bioreactors." },
+  { type:"mc", q:"What does bioprospecting mean?", options:["Mining minerals with bacteria","Searching for organisms with useful biotechnological applications","Mass-cultivating bacteria industrially","Testing antibiotics on bacterial cultures"], answer:1, explanation:"Bioprospecting is the search for species or their products that have useful biotechnological applications, like Taq polymerase from Thermus aquaticus." },
+  { type:"mc", q:"What is the function of a DNA probe in colony hybridization?", options:["It stains all colonies blue","A single-stranded DNA sequence that base-pairs with the target gene","It inserts into the target gene","It provides antibiotic resistance"], answer:1, explanation:"A DNA probe is a short, single-stranded DNA sequence complementary to the target gene. Labeled with radioactive or fluorescent tags, it hybridizes to matching sequences to find target colonies." },
+  { type:"mc", q:"What enzyme is used in cheese production that was the first FDA-approved genetically engineered food ingredient (1990)?", options:["Amylase","Cellulase","Subtilisin","Rennin (Chymosin)"], answer:3, explanation:"Rennin (chymosin) was cloned and expressed in Aspergillus niger — the first genetically engineered food ingredient approved by the FDA in 1990." },
+  { type:"tf", q:"True or False: cDNA libraries contain only expressed (active) genes derived from mRNA.", options:["True","False"], answer:0, explanation:"TRUE. A cDNA library contains only expressed genes derived from mRNA using reverse transcriptase — no introns and no non-coding DNA." },
+  { type:"tf", q:"True or False: BAC vectors have a low copy number (1–2 per cell) which ensures stability of large inserts.", options:["True","False"], answer:0, explanation:"TRUE. BACs have a low copy number of 1–2 per cell, which ensures stability of large inserts (up to ~300 kb) by preventing DNA rearrangements." },
+  { type:"mc", q:"Which lactic acid bacteria are used in yogurt production?", options:["Saccharomyces cerevisiae and Pichia pastoris","Streptococcus thermophilus and Lactobacillus bulgaricus","E. coli and Bacillus subtilis","Penicillium notatum and Aspergillus niger"], answer:1, explanation:"Streptococcus thermophilus and Lactobacillus bulgaricus produce yogurt through lactic acid fermentation." },
+  { type:"mc", q:"What is the key difference between a genomic library and a cDNA library?", options:["Genomic uses mRNA; cDNA uses chromosomal DNA","Genomic contains exons+introns+non-coding; cDNA contains only expressed genes (no introns)","cDNA contains the entire genome; genomic is tissue-specific","No difference"], answer:1, explanation:"A genomic library contains ALL DNA (exons + introns + intergenic regions), while a cDNA library contains only expressed genes derived from mRNA — no introns." },
+  { type:"mc", q:"What type of vaccine is the Salk polio vaccine?", options:["Attenuated (live weakened)","Inactivated (killed)","mRNA vaccine","DNA-based vaccine"], answer:1, explanation:"The Salk polio vaccine is an inactivated (killed) vaccine containing killed polioviruses. It often requires booster shots." },
+  { type:"tf", q:"True or False: Bioremediation uses living organisms to clean up polluted environments.", options:["True","False"], answer:0, explanation:"TRUE. Bioremediation uses living organisms (bacteria, fungi, plants) to break down harmful substances — a nature-based solution for environmental cleanup." }
+]});
 
 let activeQuizModule = 'mod3';
 let activeQuizSet = 1;
@@ -2943,28 +2969,40 @@ let currentQuestion = 0;
 let score = 0;
 let answered = [];
 
-const quizModuleNames = { mod1: '🔬 Module 1: Introduction to Biotechnology', mod2: '🧪 Module 2: Recombinant DNA Technology', mod3: '🦠 Module 3: Microbial Biotechnology' };
+const quizModuleNames = { mod1: '🔬 Module 1: Introduction to Biotechnology', mod2: '🧪 Module 2: Recombinant DNA Technology', mod3: '🦠 Module 3: Microbial Biotechnology', mixed: '🎲 Mixed: All Modules' };
 
 function selectSet(num) {
   activeQuizSet = num;
   document.querySelectorAll('.set-select-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('setBtn' + num).classList.add('active');
-  if (num === 1) quizQuestions = allQuizData[activeQuizModule];
-  else if (num === 2) quizQuestions = allQuizData_set2[activeQuizModule];
-  else quizQuestions = allQuizData_set3[activeQuizModule];
+  if (activeQuizModule === 'mixed') {
+    if (num === 1) quizQuestions = allQuizData.mixed;
+    else if (num === 2) quizQuestions = allQuizData_set2.mixed;
+    else quizQuestions = allQuizData_set3.mixed;
+  } else {
+    if (num === 1) quizQuestions = allQuizData[activeQuizModule];
+    else if (num === 2) quizQuestions = allQuizData_set2[activeQuizModule];
+    else quizQuestions = allQuizData_set3[activeQuizModule];
+  }
 }
 
 function setQuizModule(mod, btn) {
   activeQuizModule = mod;
-  if (activeQuizSet === 1) quizQuestions = allQuizData[mod];
-  else if (activeQuizSet === 2) quizQuestions = allQuizData_set2[mod];
-  else quizQuestions = allQuizData_set3[mod];
+  if (mod === 'mixed') {
+    if (activeQuizSet === 1) quizQuestions = allQuizData.mixed;
+    else if (activeQuizSet === 2) quizQuestions = allQuizData_set2.mixed;
+    else quizQuestions = allQuizData_set3.mixed;
+  } else {
+    if (activeQuizSet === 1) quizQuestions = allQuizData[mod];
+    else if (activeQuizSet === 2) quizQuestions = allQuizData_set2[mod];
+    else quizQuestions = allQuizData_set3[mod];
+  }
   document.querySelectorAll('.module-select-btn').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
   document.getElementById('quizQuestion').classList.remove('active');
   document.getElementById('quizResults').classList.remove('active');
   document.getElementById('quizStart').style.display = 'block';
-  document.getElementById('quizModTitle').textContent = quizModuleNames[mod];
+  document.getElementById('quizModTitle').textContent = quizModuleNames[mod] || mod;
 }
 
 function startQuiz() {
@@ -3165,6 +3203,18 @@ const allQuizData_set3 = {
   { type:"id", q:"IDENTIFICATION: This is the 8-step process used to screen a DNA library for a specific target gene — using a labeled DNA probe that hybridizes with matching sequences on a nylon membrane replica of bacterial colonies.", options:["PCR amplification","Blue-white selection","Colony hybridization","Southern blotting"], answer:2, explanation:"Colony Hybridization is the 8-step screening process: grow colonies → replica-transfer to membrane → lyse cells and denature DNA → fix single-stranded DNA → add labeled probe → hybridize → wash excess probe → detect via autoradiography or fluorescent imaging → match to master plate and culture positive colonies." }
   ]
 };
+Object.assign(allQuizData_set3, { mixed: [
+  { type:"mc", q:"What does pharmacogenomics use to design personalized treatment?", options:["Patient's age profile","Patient's genetic profile (SNPs)","Patient's blood type","Patient's weight"], answer:1, explanation:"Pharmacogenomics uses a patient's genetic profile — specifically SNPs (Single Nucleotide Polymorphisms) — to design personalized treatment." },
+  { type:"mc", q:"Which vector type was critical for the Human Genome Project due to its ability to hold ~300 kb inserts?", options:["Plasmid","Bacteriophage Lambda","Cosmid","BAC (Bacterial Artificial Chromosome)"], answer:3, explanation:"BAC (Bacterial Artificial Chromosome) vectors hold inserts up to ~300 kb and were critical for sequencing large genomic regions in the Human Genome Project." },
+  { type:"mc", q:"What distinguishes Pichia pastoris as ideal for large-scale recombinant protein production?", options:["It undergoes binary fission rapidly","It grows to high cell densities and has strong promoters","It is the only yeast that can be genetically modified","It produces spores surviving sterilization"], answer:1, explanation:"Pichia pastoris grows to very high cell densities in liquid culture and possesses strong promoters, enabling batch processing and large-scale production." },
+  { type:"mc", q:"What is the fundamental principle of recombinant DNA technology?", options:["Combining DNA from a single organism to make copies","Combining DNA molecules from different sources to form new genetic combinations","Copying DNA sequences using PCR only","Deleting unwanted genes from a genome"], answer:1, explanation:"Recombinant DNA technology involves combining DNA molecules from different sources (different organisms) to form new genetic combinations not found in nature." },
+  { type:"tf", q:"True or False: The influenza vaccine must be given annually partly because the influenza virus mutates rapidly.", options:["True","False"], answer:0, explanation:"TRUE. The influenza vaccine requires annual shots because the influenza virus mutates rapidly each year, and antibody levels from inactivated vaccines also decline over time." },
+  { type:"tf", q:"True or False: Tissue engineering can create organs with a lower rejection risk than donor organs.", options:["True","False"], answer:0, explanation:"TRUE. Bioengineered organs from tissue engineering have a lower risk of rejection than donor organs — a key advantage of this approach." },
+  { type:"mc", q:"Which Gram stain result indicates gram-negative bacteria?", options:["Purple, thick cell wall","Pink, thin cell wall with outer membrane","Blue, no cell wall","Red, spiral shape"], answer:1, explanation:"Gram-negative bacteria stain pink (they lose crystal violet and pick up safranin). They have thin peptidoglycan walls plus an outer membrane." },
+  { type:"mc", q:"What is the first law of recombinant DNA tools — 'Scissors'?", options:["DNA Ligase","Plasmid/Vector","Restriction Enzymes","Reverse Transcriptase"], answer:2, explanation:"SRL mnemonic: S = Scissors (restriction enzymes cut DNA), R = Route (vector carries DNA), L = Ligase (joins DNA fragments)." },
+  { type:"mc", q:"What condition is treated using recombinant EPO (Erythropoietin)?", options:["Type I diabetes","Antibiotic-resistant infections","Anemia in cancer and chronic kidney disease patients","Growth deficiencies"], answer:2, explanation:"Erythropoietin (EPO) stimulates red blood cell production and is used to treat anemia in cancer patients and chronic kidney disease patients." },
+  { type:"tf", q:"True or False: The Ti vector is used to transfer genes into plant cells to create GM crops.", options:["True","False"], answer:0, explanation:"TRUE. The modified Ti vector (from Rhizobium radiobacter) transfers target genes into plant cells — the primary tool for creating genetically modified crops." }
+]});
 
 // Init — URL param routing (called from main.html links)
 renderFlashcard();
@@ -3181,11 +3231,9 @@ renderFlashcard();
       setFlashcardModule(mod, btn);
     }
     if (page === 'quiz') {
-      if (set) {
-        selectSet(parseInt(set));
-      }
+      if (set) selectSet(parseInt(set));
       if (mod) {
-        const btn = document.getElementById('quizModBtn' + mod.replace('mod',''));
+        const btn = (mod !== 'mixed') ? document.getElementById('quizModBtn' + mod.replace('mod','')) : null;
         setQuizModule(mod, btn);
       }
     }
