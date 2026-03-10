@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classical Physics I Reviewer</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #ffffff;
+    --misty: #FAD6D3;
+    --wheat: #F6DFB3;
+    --fawn: #E7AE75;
+    --salmon: #F28AA1;
+    --bole: #83513E;
+    --dark: #3d1f15;
+    --card-bg: #fff8f6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, var(--misty) 0%, #fbe8dc 40%, var(--wheat) 100%);
+    min-height: 100vh;
+    color: var(--dark);
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    background: linear-gradient(90deg, var(--bole), #5a3228);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: white;
+    margin-right: 1.5rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  }
+
+  .nav-logo span { color: var(--fawn); }
+
+  .nav-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .nav-btn:hover, .nav-btn.active { background: rgba(255,255,255,0.2); }
+
+  .dropdown { position: relative; }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    min-width: 260px;
+    overflow: hidden;
+    z-index: 200;
+  }
+
+  .dropdown:hover .dropdown-menu { display: block; }
+
+  .dropdown-item {
+    display: block;
+    padding: 0.8rem 1.2rem;
+    color: var(--dark);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+    border-left: 4px solid transparent;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .dropdown-item:hover { background: var(--misty); border-left-color: var(--bole); }
+  .dropdown-item.active { background: var(--misty); border-left-color: var(--salmon); color: var(--bole); }
+
+  /* Mobile hamburger */
+  .nav-desktop { display: flex; align-items: center; gap: 0.5rem; flex: 1; }
+  .nav-hamburger { display: none; background: transparent; border: none; cursor: pointer; padding: 0.4rem; flex-direction: column; gap: 5px; margin-left: auto; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: white; border-radius: 2px; transition: all 0.3s; }
+  .mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: linear-gradient(180deg, var(--bole), #5a3228); z-index: 99; flex-direction: column; padding: 0.5rem 0 1rem; box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+  .mobile-menu.open { display: flex; }
+  .mobile-nav-btn { background: transparent; border: none; color: white; font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 700; padding: 0.85rem 1.5rem; text-align: left; cursor: pointer; border-bottom: 1px solid rgba(255,255,255,0.1); width: 100%; }
+  .mobile-nav-btn:last-child { border-bottom: none; }
+  .mobile-nav-btn:hover { background: rgba(255,255,255,0.15); }
+  .mobile-nav-section { color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 0.6rem 1.5rem 0.2rem; }
+  @media (max-width: 700px) {
+    nav { padding: 0 1rem; }
+    .nav-logo { font-size: 1.1rem; margin-right: 0.5rem; }
+    .nav-desktop { display: none; }
+    .nav-hamburger { display: flex; }
+  }
+
+  /* ===== PAGES ===== */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  #home { display: none; }
+  #home.active { display: block; }
+
+  /* ===== HOME ===== */
+  .home-hero {
+    background: linear-gradient(135deg, var(--bole), #5a3228);
+    color: white;
+    padding: 3.5rem 2rem 2.5rem;
+    text-align: center;
+  }
+  .home-hero h1 { font-family: 'Baloo 2', cursive; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 0.5rem; text-shadow: 2px 2px 6px rgba(0,0,0,0.2); }
+  .home-hero p { font-size: 1.05rem; opacity: 0.95; max-width: 650px; margin: 0 auto; line-height: 1.6; }
+
+  .modules-section { max-width: 1100px; margin: 2rem auto; padding: 0 2rem 2rem; }
+  .section-heading { font-family: 'Baloo 2', cursive; font-size: 1.5rem; font-weight: 800; color: var(--bole); margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 3px solid var(--fawn); }
+  .modules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+
+  .module-card { background: linear-gradient(135deg, var(--salmon) 0%, var(--bole) 100%); border-radius: 18px; padding: 2rem 1.5rem; box-shadow: 0 8px 30px rgba(0,0,0,0.25); border: none; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; }
+  .module-card::before { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.06); border-radius: 18px; pointer-events: none; }
+  .module-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.35); filter: brightness(1.08); }
+  .module-card .module-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .module-card .module-icon { font-size: 2.5rem; line-height: 1; }
+  .module-card h2 { font-family: 'Baloo 2', cursive; font-size: 1.3rem; font-weight: 800; color: #ffffff; text-shadow: 0 1px 4px rgba(0,0,0,0.4); }
+  .module-subtitle { font-size: 0.88rem; color: rgba(255,255,255,0.82); margin-top: 0.2rem; font-weight: 600; }
+  .module-desc { font-size: 0.88rem; line-height: 1.6; color: rgba(255,255,255,0.88); margin-bottom: 1rem; }
+  .module-topics { background: rgba(0,0,0,0.18); border-left: 3px solid rgba(255,255,255,0.55); padding: 0.8rem 1rem 0.8rem 1.8rem; margin-bottom: 1.2rem; border-radius: 0 6px 6px 0; }
+  .module-topics li { font-size: 0.83rem; margin-bottom: 0.3rem; color: rgba(255,255,255,0.88); }
+  .module-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .action-btn { flex: 1; min-width: 80px; padding: 0.5rem 0.8rem; border-radius: 10px; border: none; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; text-align: center; }
+  .action-btn.primary { background: rgba(255,255,255,0.22); color: #fff; border: 2px solid rgba(255,255,255,0.55); }
+  .action-btn.primary:hover { background: rgba(255,255,255,0.38); transform: scale(1.03); }
+  .action-btn.secondary { background: rgba(0,0,0,0.18); color: rgba(255,255,255,0.92); border: 2px solid rgba(255,255,255,0.3); }
+  .action-btn.secondary:hover { background: rgba(0,0,0,0.28); border-color: rgba(255,255,255,0.65); }
+  .page-footer { text-align: center; padding: 2rem; color: #888; font-size: 0.85rem; }
+
+  /* ===== REVIEWER ===== */
+  #reviewer { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+
+  .module-header {
+    background: linear-gradient(135deg, var(--salmon), var(--bole));
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    color: white;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: 0 10px 30px rgba(131,81,62,0.3);
+  }
+
+  .module-header .module-icon { font-size: 3rem; }
+  .module-header h1 { font-family: 'Baloo 2', cursive; font-size: 1.8rem; font-weight: 800; }
+  .module-header p { opacity: 0.9; font-size: 0.95rem; margin-top: 0.3rem; }
+
+  .section-header {
+    background: linear-gradient(90deg, var(--bole), var(--fawn));
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 12px 12px 0 0;
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .content-card {
+    background: white;
+    border-radius: 0 0 12px 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    border: 1px solid var(--wheat);
+    border-top: none;
+  }
+
+  .section-block { margin-bottom: 2rem; }
+
+  .objective-list { list-style: none; }
+  .objective-list li {
+    padding: 0.7rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    background: var(--card-bg);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    font-weight: 600;
+    border-left: 4px solid var(--salmon);
+    line-height: 1.5;
+  }
+  .objective-list li .num {
+    background: var(--salmon);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 600px) { .info-grid { grid-template-columns: 1fr; } }
+
+  .info-box {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    border: 2px solid var(--wheat);
+  }
+  .info-box h4 { font-size: 0.9rem; font-weight: 800; color: var(--bole); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.6rem; }
+  .info-box ul { list-style: none; }
+  .info-box ul li { padding: 0.3rem 0; font-size: 0.9rem; border-bottom: 1px solid var(--wheat); display: flex; gap: 0.5rem; }
+  .info-box ul li:last-child { border-bottom: none; }
+  .info-box ul li::before { content: '•'; color: var(--salmon); font-weight: 900; }
+
+  .def-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 0.8rem;
+    border-left: 5px solid var(--fawn);
+  }
+  .def-card .term { font-weight: 800; font-size: 1rem; color: var(--bole); margin-bottom: 0.3rem; }
+  .def-card .definition { font-size: 0.9rem; line-height: 1.6; }
+
+  .process-steps { display: flex; flex-direction: column; gap: 0.8rem; }
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--wheat);
+  }
+  .step-num {
+    background: linear-gradient(135deg, var(--salmon), var(--bole));
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+  .step-text { font-size: 0.9rem; line-height: 1.5; padding-top: 0.2rem; }
+
+  .compare-table { width: 100%; border-collapse: collapse; }
+  .compare-table th { background: linear-gradient(90deg, var(--bole), var(--fawn)); color: white; padding: 0.8rem 1rem; text-align: left; font-weight: 700; }
+  .compare-table th:first-child { border-radius: 8px 0 0 0; }
+  .compare-table th:last-child { border-radius: 0 8px 0 0; }
+  .compare-table td { padding: 0.7rem 1rem; font-size: 0.9rem; border-bottom: 1px solid var(--wheat); vertical-align: top; }
+  .compare-table tr:nth-child(even) td { background: var(--card-bg); }
+  .compare-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+  .compare-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
+  .tag-salmon { background: var(--misty); color: var(--bole); }
+  .tag-fawn { background: var(--wheat); color: #6b4c1a; }
+  .tag-bole { background: #f5e0d8; color: var(--bole); }
+
+  .highlight {
+    background: linear-gradient(135deg, var(--misty), var(--wheat));
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    margin: 0.8rem 0;
+    border: 2px solid var(--fawn);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .highlight strong { color: var(--bole); }
+
+  h2.sub-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--bole);
+    margin: 1.2rem 0 0.6rem;
+  }
+
+  .formula-card {
+    background: linear-gradient(135deg, var(--misty), #fff);
+    border-radius: 10px;
+    padding: 0.8rem 1.2rem;
+    margin: 0.5rem 0;
+    border: 2px solid var(--salmon);
+    font-family: 'Baloo 2', cursive;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--bole);
+    text-align: center;
+  }
+
+  .example-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 0.8rem;
+    border-left: 4px solid var(--fawn);
+    border: 1px solid var(--wheat);
+    border-left: 4px solid var(--fawn);
+  }
+  .example-card h4 { font-weight: 800; color: var(--bole); font-size: 0.9rem; margin-bottom: 0.4rem; }
+  .example-card p { font-size: 0.88rem; line-height: 1.5; }
+
+  /* ===== FLASHCARDS ===== */
+  #flashcards { max-width: 750px; margin: 0 auto; padding: 2rem; }
+
+  .flashcard-header { text-align: center; margin-bottom: 2rem; }
+  .flashcard-header h1 { font-family: 'Baloo 2', cursive; font-size: 2rem; color: var(--bole); font-weight: 800; }
+  .flashcard-header p { color: #555; margin-top: 0.3rem; }
+
+  .flashcard-module-select { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+
+  .module-select-btn {
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    border: 2px solid var(--wheat);
+    background: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--dark);
+  }
+  .module-select-btn.active { background: var(--bole); color: white; border-color: var(--bole); }
+
+  .flashcard-counter { text-align: center; color: #555; font-weight: 700; margin-bottom: 1rem; font-size: 0.9rem; }
+
+  .card-scene { perspective: 1200px; height: 280px; cursor: pointer; margin-bottom: 1.5rem; }
+  .card-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+  .card-inner.flipped { transform: rotateY(180deg); }
+
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  }
+
+  .card-front { background: linear-gradient(135deg, var(--salmon), var(--bole)); color: white; }
+  .card-front .card-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8; margin-bottom: 1rem; font-weight: 700; }
+  .card-front .card-term { font-family: 'Baloo 2', cursive; font-size: 1.6rem; font-weight: 800; line-height: 1.3; }
+
+  .card-back { background: white; border: 3px solid var(--wheat); transform: rotateY(180deg); color: var(--dark); }
+  .card-back .card-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--bole); margin-bottom: 1rem; font-weight: 700; }
+  .card-back .card-def { font-size: 0.95rem; line-height: 1.7; color: #333; }
+
+  .card-hint { text-align: center; color: #888; font-size: 0.82rem; margin-bottom: 1.5rem; }
+
+  .flashcard-nav { display: flex; gap: 1rem; justify-content: center; align-items: center; }
+
+  .fc-btn {
+    background: white;
+    border: 2px solid var(--wheat);
+    color: var(--dark);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    padding: 0.6rem 1.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+  }
+  .fc-btn:hover { background: var(--bole); color: white; border-color: var(--bole); }
+  .fc-btn.primary { background: var(--bole); color: white; border-color: var(--bole); }
+  .fc-btn.primary:hover { background: #5a3228; border-color: #5a3228; }
+
+  .progress-bar-wrap { background: var(--wheat); border-radius: 100px; height: 6px; margin-bottom: 1.5rem; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--salmon), var(--fawn)); border-radius: 100px; transition: width 0.3s; }
+
+  /* ===== QUIZ ===== */
+  #quiz { max-width: 750px; margin: 0 auto; padding: 2rem; }
+
+  .quiz-header { text-align: center; margin-bottom: 2rem; }
+  .quiz-header h1 { font-family: 'Baloo 2', cursive; font-size: 2rem; color: var(--bole); font-weight: 800; }
+
+  .quiz-module-select { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+
+  .quiz-start {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    border: 2px solid var(--wheat);
+  }
+  .quiz-start .icon { font-size: 4rem; margin-bottom: 1rem; }
+  .quiz-start h2 { font-family: 'Baloo 2', cursive; font-size: 1.6rem; color: var(--bole); margin-bottom: 0.5rem; }
+  .quiz-start p { color: #666; margin-bottom: 1.5rem; }
+
+  .start-btn {
+    background: linear-gradient(135deg, var(--salmon), var(--bole));
+    color: white;
+    border: none;
+    padding: 0.9rem 2.5rem;
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(131,81,62,0.3);
+  }
+  .start-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(131,81,62,0.4); }
+
+  .quiz-question-wrap { display: none; }
+  .quiz-question-wrap.active { display: block; }
+
+  .quiz-progress-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; font-weight: 700; font-size: 0.88rem; color: #555; }
+  .quiz-score-badge { background: var(--bole); color: white; padding: 2px 10px; border-radius: 20px; font-size: 0.8rem; }
+
+  .question-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.8rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    border: 2px solid var(--wheat);
+    margin-bottom: 1rem;
+  }
+
+  .question-type-badge { display: inline-block; padding: 3px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.8rem; }
+  .type-mc { background: var(--misty); color: var(--bole); }
+  .type-tf { background: var(--wheat); color: #6b4c1a; }
+  .type-id { background: #fde8d8; color: #8a3a00; }
+
+  .set-select-btn {
+    background: var(--card-bg);
+    border: 2px solid var(--wheat);
+    border-radius: 20px;
+    padding: 0.4rem 1.2rem;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    color: var(--dark);
+    transition: all 0.2s;
+  }
+  .set-select-btn:hover { border-color: var(--bole); color: var(--bole); }
+  .set-select-btn.active { background: var(--bole); color: white; border-color: var(--bole); }
+
+  /* PDF Viewer */
+  .pdf-mod-btn { background: var(--card-bg); border: 2px solid var(--wheat); border-radius: 20px; padding: 0.45rem 1.3rem; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.88rem; cursor: pointer; color: var(--dark); transition: all 0.2s; }
+  .pdf-mod-btn:hover { border-color: var(--bole); color: var(--bole); }
+  .pdf-mod-btn.active { background: var(--bole); color: white; border-color: var(--bole); }
+  .pdf-label { font-family: 'Baloo 2', cursive; font-size: 1rem; font-weight: 700; color: var(--bole); margin-bottom: 0.6rem; }
+  .pdf-frame-wrap { width: 100%; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.12); background: #f5f5f5; margin-bottom: 1rem; }
+  .pdf-frame { width: 100%; height: 80vh; min-height: 500px; border: none; display: block; }
+  .pdf-links { text-align: center; }
+  .pdf-direct-btn { display: inline-block; background: var(--bole); color: white; text-decoration: none; padding: 0.55rem 1.4rem; border-radius: 25px; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.88rem; transition: background 0.2s; }
+  .pdf-direct-btn:hover { background: #5a3228; }
+
+  .question-text { font-size: 1rem; font-weight: 700; line-height: 1.5; margin-bottom: 1.2rem; color: var(--dark); }
+
+  .options-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .option-btn {
+    background: var(--card-bg);
+    border: 2px solid var(--wheat);
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    text-align: left;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    width: 100%;
+    color: var(--dark);
+  }
+  .option-btn:hover:not(:disabled) { background: var(--misty); border-color: var(--bole); }
+  .option-btn.correct { background: #d4f0dc; border-color: #2d8a4e; color: #1a5e30; }
+  .option-btn.wrong { background: #fde8e8; border-color: #e55; color: #c00; }
+  .option-btn:disabled { cursor: not-allowed; }
+
+  .option-letter {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--wheat); color: var(--bole);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 0.8rem; flex-shrink: 0; transition: all 0.2s;
+  }
+  .option-btn.correct .option-letter { background: #2d8a4e; color: white; }
+  .option-btn.wrong .option-letter { background: #e55; color: white; }
+
+  .feedback-box { display: none; padding: 0.8rem 1rem; border-radius: 10px; font-size: 0.88rem; font-weight: 600; margin-top: 0.8rem; }
+  .feedback-box.correct { background: #d4f0dc; color: #1a5e30; display: block; }
+  .feedback-box.wrong { background: #fde8e8; color: #c00; display: block; }
+
+  .next-btn {
+    background: linear-gradient(135deg, var(--salmon), var(--bole));
+    color: white; border: none; padding: 0.8rem 2rem; border-radius: 10px;
+    font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.95rem;
+    cursor: pointer; margin-top: 1rem; display: none; transition: transform 0.2s; width: 100%;
+  }
+  .next-btn:hover { transform: translateY(-2px); }
+  .next-btn.visible { display: block; }
+
+  .quiz-results { display: none; background: white; border-radius: 20px; padding: 2.5rem; text-align: center; box-shadow: 0 8px 30px rgba(0,0,0,0.1); border: 2px solid var(--wheat); }
+  .quiz-results.active { display: block; }
+  .result-score { font-family: 'Baloo 2', cursive; font-size: 4rem; font-weight: 800; color: var(--bole); margin: 0.5rem 0; }
+  .result-label { font-size: 1rem; color: #666; margin-bottom: 1rem; }
+  .result-message { background: var(--card-bg); border-radius: 12px; padding: 1rem; margin-bottom: 1.5rem; font-weight: 600; color: var(--dark); border: 2px solid var(--wheat); }
+  .review-list { text-align: left; margin-bottom: 1.5rem; }
+  .review-item { border-radius: 10px; padding: 0.8rem; margin-bottom: 0.6rem; font-size: 0.88rem; border: 1px solid var(--wheat); }
+  .review-item.correct { background: #d4f0dc; border-color: #2d8a4e; }
+  .review-item.wrong { background: #fde8e8; border-color: #e55; }
+  .review-item .q-text { font-weight: 700; margin-bottom: 0.3rem; }
+  .review-item .a-text { color: #444; }
+
+  .scrollable { max-height: 400px; overflow-y: auto; padding-right: 0.5rem; }
+  .scrollable::-webkit-scrollbar { width: 6px; }
+  .scrollable::-webkit-scrollbar-thumb { background: var(--wheat); border-radius: 3px; }
+
+  /* Reviewer module wrapper */
+  .reviewer-module { max-width: 900px; margin: 0 auto; padding: 2rem; }
+
+  @media (max-width: 700px) {
+    .modules-section { padding: 0 1rem 1.5rem; }
+    .modules-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+    .reviewer-module { padding: 1rem; }
+    .module-header { padding: 1.5rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .module-header .module-icon { font-size: 2.5rem; }
+    .module-header h1 { font-size: 1.5rem; }
+    .section-header { padding: 0.8rem 1rem; font-size: 1rem; }
+    .content-card { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-logo">⚡ <span>Physics</span> I</div>
+  <div class="nav-desktop">
+    <button class="nav-btn active" onclick="showPage('home',this)">🏠 Home</button>
+    <div class="dropdown">
+      <button class="nav-btn">📖 Reviewer ▾</button>
+      <div class="dropdown-menu">
+        <button class="dropdown-item" onclick="showPage('mod7',this)">⚡ Module 7: Work, Energy & Conservation</button>
+        <button class="dropdown-item" onclick="showPage('mod6',this)">💥 Module 6: Momentum & Collisions</button>
+        <button class="dropdown-item" onclick="showPage('mod3',this)">🔄 Module 3: Rotational Motion & Gravitation</button>
+      </div>
+    </div>
+    <button class="nav-btn" onclick="showPage('flashcards',this)">🃏 Flashcards</button>
+    <button class="nav-btn" onclick="showPage('quiz',this)">📝 Quiz</button>
+    <button class="nav-btn" onclick="showPage('pdfs',this)">📄 PDF</button>
+  </div>
+  <button class="nav-hamburger" onclick="toggleMobileMenu()" id="hamburger">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-nav-section">Navigation</div>
+  <button class="mobile-nav-btn" onclick="showPage('home',this);closeMobileMenu()">🏠 Home</button>
+  <div class="mobile-nav-section">Reviewer</div>
+  <button class="mobile-nav-btn" onclick="showPage('mod7',this);closeMobileMenu()">⚡ Module 7: Work & Energy</button>
+  <button class="mobile-nav-btn" onclick="showPage('mod6',this);closeMobileMenu()">💥 Module 6: Momentum & Collisions</button>
+  <button class="mobile-nav-btn" onclick="showPage('mod3',this);closeMobileMenu()">🔄 Module 3: Rotational Motion & Gravitation</button>
+  <div class="mobile-nav-section">Study Tools</div>
+  <button class="mobile-nav-btn" onclick="showPage('flashcards',this);closeMobileMenu()">🃏 Flashcards</button>
+  <button class="mobile-nav-btn" onclick="showPage('quiz',this);closeMobileMenu()">📝 Quiz</button>
+  <button class="mobile-nav-btn" onclick="showPage('pdfs',this);closeMobileMenu()">📄 PDF</button>
+</div>
+
+<!-- ===== HOME ===== -->
+<div id="home" class="page active">
+  <div class="home-hero">
+    <h1>⚡ Classical Physics I</h1>
+    <p>Grade 12 — Calculus Based | Comprehensive Reviewer for Modules 3, 6 &amp; 7</p>
+  </div>
+  <div class="modules-section">
+    <div class="section-heading">📚 Study Modules</div>
+    <div class="modules-grid">
+
+      <!-- Module 7 -->
+      <div class="module-card">
+        <div class="module-header">
+          <div class="module-icon">⚡</div>
+          <div>
+            <h2>Module 7</h2>
+            <div class="module-subtitle">Work, Energy &amp; Conservation</div>
+          </div>
+        </div>
+        <p class="module-desc">Master work as a dot product, mechanical energy, the work-energy theorem, power, and conservation of mechanical energy.</p>
+        <ul class="module-topics">
+          <li>Work: W = Fd cosθ</li>
+          <li>Gravitational, Elastic &amp; Kinetic Energy</li>
+          <li>Work-Energy Theorem</li>
+          <li>Power: P = W/t</li>
+          <li>Conservation of Mechanical Energy</li>
+        </ul>
+        <div class="module-actions">
+          <button class="action-btn primary" onclick="showPage('mod7',null)">📖 Read Reviewer</button>
+          <button class="action-btn secondary" onclick="showPage('flashcards',null);setFlashcardModule('mod7')">🃏 Flashcards</button>
+          <button class="action-btn secondary" onclick="showPage('quiz',null);setQuizModule('mod7')">📝 Quiz</button>
+        </div>
+      </div>
+
+      <!-- Module 6 -->
+      <div class="module-card">
+        <div class="module-header">
+          <div class="module-icon">💥</div>
+          <div>
+            <h2>Module 6</h2>
+            <div class="module-subtitle">Center of Mass, Momentum &amp; Collisions</div>
+          </div>
+        </div>
+        <p class="module-desc">Explore center of mass, linear momentum, impulse, conservation of momentum, and 1D &amp; 2D collision types.</p>
+        <ul class="module-topics">
+          <li>Center of Mass (xᶜₘ, yᶜₘ)</li>
+          <li>Momentum: p = mv</li>
+          <li>Impulse-Momentum Theorem: Ft = Δp</li>
+          <li>Elastic, Inelastic &amp; Perfectly Inelastic</li>
+          <li>2D Collisions &amp; Coefficient of Restitution</li>
+        </ul>
+        <div class="module-actions">
+          <button class="action-btn primary" onclick="showPage('mod6',null)">📖 Read Reviewer</button>
+          <button class="action-btn secondary" onclick="showPage('flashcards',null);setFlashcardModule('mod6')">🃏 Flashcards</button>
+          <button class="action-btn secondary" onclick="showPage('quiz',null);setQuizModule('mod6')">📝 Quiz</button>
+        </div>
+      </div>
+
+      <!-- Module 3 -->
+      <div class="module-card" style="background:linear-gradient(135deg,#9a6a3a,var(--bole));">
+        <div class="module-header">
+          <div class="module-icon">🔄</div>
+          <div>
+            <h2>Module 3</h2>
+            <div class="module-subtitle">Rotational Motion &amp; Gravitation</div>
+          </div>
+        </div>
+        <p class="module-desc">Master kinematics and dynamics of rotation, moment of inertia, torque, angular momentum, rotational energy, and equilibrium.</p>
+        <ul class="module-topics">
+          <li>Kinematics: ω, α, s = rθ, v = rω</li>
+          <li>Moment of Inertia: I = mr²</li>
+          <li>Torque &amp; Newton's 2nd Law: τ = Iα</li>
+          <li>Angular Momentum: L = Iω</li>
+          <li>Rotational Work &amp; KE; Equilibrium</li>
+        </ul>
+        <div class="module-actions">
+          <button class="action-btn primary" onclick="showPage('mod3',null)">📖 Read Reviewer</button>
+          <button class="action-btn secondary" onclick="showPage('flashcards',null);setFlashcardModule('mod3')">🃏 Flashcards</button>
+          <button class="action-btn secondary" onclick="showPage('quiz',null);setQuizModule('mod3')">📝 Quiz</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="section-heading" style="margin-top:2.5rem;">🛠️ Study Tools</div>
+    <div class="modules-grid">
+      <div class="module-card" style="background:linear-gradient(135deg,var(--fawn),var(--bole));cursor:pointer;" onclick="showPage('flashcards',null)">
+        <div class="module-header">
+          <div class="module-icon">🃏</div>
+          <div><h2>Flashcards</h2><div class="module-subtitle">30 terms from all 3 modules</div></div>
+        </div>
+        <p class="module-desc">Flip through key terms and formulas. Switch between modules or review all cards together.</p>
+        <div class="module-actions">
+          <button class="action-btn primary" onclick="showPage('flashcards',null)">Start Flashcards →</button>
+        </div>
+      </div>
+      <div class="module-card" style="background:linear-gradient(135deg,var(--salmon),#c84b65);cursor:pointer;" onclick="showPage('quiz',null)">
+        <div class="module-header">
+          <div class="module-icon">📝</div>
+          <div><h2>Practice Quiz</h2><div class="module-subtitle">MC, True/False &amp; Identification</div></div>
+        </div>
+        <p class="module-desc">Test yourself with timed multiple-choice, T/F, and identification questions from both modules.</p>
+        <div class="module-actions">
+          <button class="action-btn primary" onclick="showPage('quiz',null)">Start Quiz →</button>
+        </div>
+      </div>
+      <div class="module-card" style="background:linear-gradient(135deg,#8a7040,var(--bole));cursor:pointer;" onclick="showPage('pdfs',null)">
+        <div class="module-header">
+          <div class="module-icon">📄</div>
+          <div><h2>PDF Reviewer</h2><div class="module-subtitle">Full Comprehensive Reviewer</div></div>
+        </div>
+        <p class="module-desc">View or download the complete Physics Comprehensive Reviewer document.</p>
+        <div class="module-actions">
+          <button class="action-btn primary" onclick="showPage('pdfs',null)">Open PDF →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">Classical Physics I — Grade 12 Calculus Based | Modules 3, 6 &amp; 7</div>
+</div>
+
+<!-- ===== MODULE 7 REVIEWER ===== -->
+<div id="mod7" class="page">
+  <div style="background:white;border-bottom:2px solid var(--wheat);padding:0.8rem 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:60px;z-index:50;">
+    <button onclick="showPage('home',null)" style="background:var(--bole);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
+    <span style="font-weight:800;color:var(--bole);">⚡ Module 7: Work, Energy &amp; Conservation</span>
+    <div style="margin-left:auto;display:flex;gap:0.5rem;">
+      <button onclick="showPage('flashcards',null)" style="background:transparent;border:2px solid var(--wheat);color:var(--bole);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">🃏 Flashcards</button>
+      <button onclick="showPage('quiz',null)" style="background:transparent;border:2px solid var(--wheat);color:var(--bole);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">📝 Quiz</button>
+    </div>
+  </div>
+  <div class="reviewer-module">
+    <div class="module-header">
+      <div class="module-icon">⚡</div>
+      <div>
+        <h1>Work, Energy &amp; Conservation</h1>
+        <p>Module 7 — Classical Physics I, Grade 12 Calculus Based</p>
+      </div>
+    </div>
+
+    <!-- Learning Outcomes -->
+    <div class="section-block">
+      <div class="section-header">🎯 Expected Learning Outcomes</div>
+      <div class="content-card">
+        <ul class="objective-list">
+          <li><span class="num">7.1</span>Define work as a scalar or dot product of force and displacement</li>
+          <li><span class="num">7.2</span>Determine the work done by a force acting on a system</li>
+          <li><span class="num">7.3</span>Relate gravitational potential energy to the configuration of a system</li>
+          <li><span class="num">8.1</span>Analyze physical situations using the energy approach for non-isolated and isolated systems</li>
+          <li><span class="num">8.2</span>Recognize that energy can cross the boundary of a system at different rates</li>
+          <li><span class="num">8.3</span>Express the conservation of energy verbally and mathematically</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Work -->
+    <div class="section-block">
+      <div class="section-header">01 — Work: The Scientific Definition</div>
+      <div class="content-card">
+        <p style="margin-bottom:0.8rem;">For work to be done in the scientific sense, a force must be applied <em>and</em> there must be motion or displacement in the direction of the force. Work is a <strong>SCALAR quantity</strong> (dot product of two vectors).</p>
+        <div class="formula-card">W = F · d = Fd cosθ</div>
+        <p style="font-size:0.82rem;text-align:center;margin:0.3rem 0 1rem;color:#666;">W = work (J) &nbsp; F = force (N) &nbsp; d = displacement (m) &nbsp; θ = angle between F and d</p>
+        <table class="compare-table">
+          <thead><tr><th>Angle (θ)</th><th>Effect on Work</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td><strong>θ = 0°</strong></td><td>Maximum positive work — parallel</td><td>Pushing a box forward</td></tr>
+            <tr><td><strong>θ = 90°</strong></td><td>No work done (cos 90° = 0)</td><td>Normal force on horizontal surface</td></tr>
+            <tr><td><strong>90° &lt; θ ≤ 180°</strong></td><td>Negative work</td><td>Friction opposing motion; gravity going up</td></tr>
+          </tbody>
+        </table>
+        <div class="info-grid" style="margin-top:1rem;">
+          <div class="info-box"><h4>SI Unit</h4><ul><li>Joule (J) = 1 N·m</li><li>1 J = 10⁷ ergs</li></ul></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mechanical Energy -->
+    <div class="section-block">
+      <div class="section-header">02 — Mechanical Energy</div>
+      <div class="content-card">
+        <p style="margin-bottom:1rem;">Mechanical energy is the sum of the potential and kinetic energies of a body.</p>
+        <div class="info-grid">
+          <div class="info-box">
+            <h4>🌍 Gravitational PE (Uᴳ)</h4>
+            <div class="formula-card" style="font-size:0.9rem;margin-bottom:0.5rem;">Uᴳ = mgh</div>
+            <p style="font-size:0.85rem;">Energy due to position relative to Earth. m = mass (kg), g = 9.8 m/s², h = height (m)</p>
+          </div>
+          <div class="info-box">
+            <h4>🌀 Elastic PE (Uₛ)</h4>
+            <div class="formula-card" style="font-size:0.9rem;margin-bottom:0.5rem;">Uₛ = ½k(Δx)²</div>
+            <p style="font-size:0.85rem;">Energy stored in springs. k = spring constant (N/m), Δx = deformation (m)</p>
+          </div>
+          <div class="info-box">
+            <h4>🏃 Kinetic Energy (K)</h4>
+            <div class="formula-card" style="font-size:0.9rem;margin-bottom:0.5rem;">K = ½mv²</div>
+            <p style="font-size:0.85rem;">Energy due to motion. m = mass (kg), v = speed (m/s)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Work-Energy Theorem -->
+    <div class="section-block">
+      <div class="section-header">03 — Work-Energy Theorem</div>
+      <div class="content-card">
+        <p style="margin-bottom:0.8rem;">The work done on a body by the net force equals the change in its kinetic energy.</p>
+        <div class="formula-card">W = ΔK = ½mv² − ½mv₀²</div>
+        <div class="process-steps" style="margin-top:1rem;">
+          <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Work by force:</strong> W = Fx</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Newton's 2nd Law:</strong> W = max</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Kinematics:</strong> a = (v² − v₀²) / 2x</div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Conclusion:</strong> W = ½mv² − ½mv₀² = K − K₀</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Power -->
+    <div class="section-block">
+      <div class="section-header">04 — Power</div>
+      <div class="content-card">
+        <p style="margin-bottom:0.8rem;">Power is the rate at which work is done.</p>
+        <div class="formula-card">P = W/t = Fv̄ cosθ</div>
+        <table class="compare-table" style="margin-top:1rem;">
+          <thead><tr><th>Unit</th><th>Equivalence</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Watt (W) [SI]</strong></td><td>1 W = 1 J/s</td></tr>
+            <tr><td><strong>Kilowatt (kW)</strong></td><td>1 kW = 10³ W</td></tr>
+            <tr><td><strong>Horsepower (hp)</strong></td><td>1 hp = 746 W = 0.746 kW</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Conservation of Energy -->
+    <div class="section-block">
+      <div class="section-header">05 — Conservation of Mechanical Energy</div>
+      <div class="content-card">
+        <div class="highlight"><strong>Law of Conservation of Energy:</strong> Total energy is constant in any process. It may change form or transfer between systems, but the total remains the same.</div>
+        <table class="compare-table" style="margin-top:0.8rem;">
+          <thead><tr><th>System Type</th><th>Key Rule</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Non-isolated</strong></td><td>Energy CAN cross the boundary → system total energy changes</td></tr>
+            <tr><td><strong>Isolated (no non-conservative forces)</strong></td><td>Eₘ = U + K = constant</td></tr>
+          </tbody>
+        </table>
+        <div class="formula-card" style="margin-top:1rem;">U₁ + K₁ = U₂ + K₂ &nbsp;→&nbsp; mgh₁ + ½mv₁² = mgh₂ + ½mv₂²</div>
+      </div>
+    </div>
+
+    <!-- Worked Examples -->
+    <div class="section-block">
+      <div class="section-header">🔢 Worked Examples</div>
+      <div class="content-card">
+        <h2 class="sub-title">Example 1: Inclined Plane</h2>
+        <p style="font-size:0.9rem;margin-bottom:0.5rem;">A 25 N block pushed 3 m up a 30° incline by a 46 N force (μk = 0.2). FN = 21.65 N, fk = 4.33 N.</p>
+        <table class="compare-table">
+          <thead><tr><th>Force</th><th>Angle</th><th>Work Done</th></tr></thead>
+          <tbody>
+            <tr><td>Gravity (weight)</td><td>120°</td><td>−37.5 J</td></tr>
+            <tr><td>Applied Force F</td><td>0°</td><td>+138 J</td></tr>
+            <tr><td>Friction fk</td><td>180°</td><td>−12.99 J</td></tr>
+            <tr><td>Normal FN</td><td>90°</td><td>0 J</td></tr>
+          </tbody>
+        </table>
+
+        <h2 class="sub-title">Example 2: Grocery Cart</h2>
+        <p style="font-size:0.9rem;">25 kg cart pushed with 225 N at 60° over 7.5 m (μk = 0.32): <br>(a) W_applied = (225)(7.5) cos 60° = <strong>843.75 J</strong>; FN = 439.86 N, fk = 140.76 N<br>(b) W_friction = (140.76)(7.5) cos 180° = <strong>−1,055.7 J</strong></p>
+
+        <h2 class="sub-title">Example 3: Child on Slide (Gravitational PE)</h2>
+        <p style="font-size:0.9rem;">35 kg child climbs 6 m slide at 30°: h = 6 sin 30° = 3 m → Uᴳ = (35)(9.8)(3) = <strong>1,029 J</strong></p>
+
+        <h2 class="sub-title">Example 4: Work-Energy Theorem (Cart)</h2>
+        <p style="font-size:0.9rem;">2 kg cart from rest, pushed 350 N over 4 m: W = 1,400 J → v = √(2W/m) = <strong>37.42 m/s</strong></p>
+
+        <h2 class="sub-title">Example 5: Power (Car)</h2>
+        <p style="font-size:0.9rem;">1,200 kg car: 30 m/s → 50 m/s in 10 s: W = 9.6 × 10⁵ J → P = <strong>96 kW</strong></p>
+
+        <h2 class="sub-title">Example 6: Roller Coaster (Conservation of Eₘ)</h2>
+        <p style="font-size:0.9rem;">m = 3,500 kg; starts from rest at A (h = 20 m). EmA = 686,000 J<br>
+        Point B (h=5m): vB = <strong>17.15 m/s</strong> &nbsp;|&nbsp; Point C (h=16m): vC = <strong>8.85 m/s</strong> &nbsp;|&nbsp; Point D (h=10m): vD = <strong>14 m/s</strong></p>
+      </div>
+    </div>
+
+    <!-- Formula Cheat Sheet -->
+    <div class="section-block">
+      <div class="section-header">📋 All Formulas at a Glance</div>
+      <div class="content-card">
+        <table class="compare-table">
+          <thead><tr><th>Formula</th><th>Equation</th><th>Unit</th></tr></thead>
+          <tbody>
+            <tr><td>Work</td><td>W = Fd cosθ</td><td>Joule (J)</td></tr>
+            <tr><td>Gravitational PE</td><td>Uᴳ = mgh</td><td>Joule (J)</td></tr>
+            <tr><td>Elastic PE</td><td>Uₛ = ½k(Δx)²</td><td>Joule (J)</td></tr>
+            <tr><td>Kinetic Energy</td><td>K = ½mv²</td><td>Joule (J)</td></tr>
+            <tr><td>Work-Energy Theorem</td><td>W = ΔK = K − K₀</td><td>Joule (J)</td></tr>
+            <tr><td>Power</td><td>P = W/t</td><td>Watt (W)</td></tr>
+            <tr><td>Power (velocity form)</td><td>P = Fv̄ cosθ</td><td>Watt (W)</td></tr>
+            <tr><td>Conservation of Eₘ</td><td>U₁ + K₁ = U₂ + K₂</td><td>Joule (J)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODULE 6 REVIEWER ===== -->
+<div id="mod6" class="page">
+  <div style="background:white;border-bottom:2px solid var(--wheat);padding:0.8rem 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:60px;z-index:50;">
+    <button onclick="showPage('home',null)" style="background:var(--bole);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
+    <span style="font-weight:800;color:var(--bole);">💥 Module 6: Center of Mass, Momentum &amp; Collisions</span>
+    <div style="margin-left:auto;display:flex;gap:0.5rem;">
+      <button onclick="showPage('flashcards',null)" style="background:transparent;border:2px solid var(--wheat);color:var(--bole);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">🃏 Flashcards</button>
+      <button onclick="showPage('quiz',null)" style="background:transparent;border:2px solid var(--wheat);color:var(--bole);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">📝 Quiz</button>
+    </div>
+  </div>
+  <div class="reviewer-module">
+    <div class="module-header" style="background:linear-gradient(135deg,var(--fawn),var(--bole));">
+      <div class="module-icon">💥</div>
+      <div>
+        <h1>Center of Mass, Momentum &amp; Collisions</h1>
+        <p>Module 6 — Classical Physics I, Grade 12 Calculus Based</p>
+      </div>
+    </div>
+
+    <!-- Learning Outcomes -->
+    <div class="section-block">
+      <div class="section-header">🎯 Expected Learning Outcomes</div>
+      <div class="content-card">
+        <ul class="objective-list">
+          <li><span class="num">6.1</span>Relate the motion of center of mass to the momentum and net external force acting on the system</li>
+          <li><span class="num">6.2</span>Relate momentum, impulse, force, and time of contact in a system</li>
+          <li><span class="num">6.3</span>Compare and contrast elastic and inelastic collisions</li>
+          <li><span class="num">6.4</span>Solve problems involving center of mass, impulse, and momentum in contexts such as rocket motion, vehicle collisions, and ping-pong</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Center of Mass -->
+    <div class="section-block">
+      <div class="section-header">01 — Center of Mass (CM)</div>
+      <div class="content-card">
+        <p style="margin-bottom:0.8rem;">The <strong>center of mass (CM)</strong> is the point that moves as though all the system's mass were concentrated there and all external forces were applied there. For uniform objects, CM is at the geometric center.</p>
+        <div class="formula-card">xᶜₘ = Σ(mᵢxᵢ) / Σmᵢ &nbsp;|&nbsp; yᶜₘ = Σ(mᵢyᵢ) / Σmᵢ</div>
+        <div class="highlight" style="margin-top:1rem;">
+          <strong>Example: Three 1.2 kg particles at (0,0), (1,0), (0,1)</strong><br>
+          xᶜₘ = [0(1.2) + 1(1.2) + 0(1.2)] / 3.6 = <strong>0.33 m</strong><br>
+          yᶜₘ = [0(1.2) + 0(1.2) + 1(1.2)] / 3.6 = <strong>0.33 m</strong> → CM at (0.33, 0.33)
+        </div>
+      </div>
+    </div>
+
+    <!-- Momentum & Impulse -->
+    <div class="section-block">
+      <div class="section-header">02 — Momentum &amp; Impulse</div>
+      <div class="content-card">
+        <div class="info-grid">
+          <div class="info-box">
+            <h4>📐 Linear Momentum</h4>
+            <div class="formula-card" style="font-size:0.9rem;margin-bottom:0.5rem;">p = mv</div>
+            <p style="font-size:0.85rem;">Vector quantity — same direction as velocity. SI unit: kg·m/s</p>
+          </div>
+          <div class="info-box">
+            <h4>💢 Impulse-Momentum Theorem</h4>
+            <div class="formula-card" style="font-size:0.9rem;margin-bottom:0.5rem;">Ft = mv − mv₀ = Δp</div>
+            <p style="font-size:0.85rem;">Impulse equals the change in momentum of a body</p>
+          </div>
+        </div>
+        <h2 class="sub-title">Examples</h2>
+        <div class="def-card"><div class="term">Bullet vs. Man</div><div class="definition">2.1 g bullet at 550 m/s: p = (0.0021)(550) = 1.155 kg·m/s. Man (75 kg) speed needed: v = 1.155/75 = <strong>0.0154 m/s</strong></div></div>
+        <div class="def-card"><div class="term">Pole Vaulter on Mattress</div><div class="definition">55 kg vaults to 6.5 m. (a) v = √(2gh) = 11.29 m/s → p = 620.79 kg·m/s. (b) Stopped in 0.65 s: F = 620.79/0.65 = <strong>955.06 N</strong></div></div>
+        <div class="def-card"><div class="term">Bullet into Wood Block</div><div class="definition">m=0.05 kg, v₀=400 m/s, penetrates 0.1 m. (a) a = −800,000 m/s² (b) F = 40,000 N (c) t = 5×10⁻⁴ s (d) Impulse = <strong>20 N·s</strong></div></div>
+      </div>
+    </div>
+
+    <!-- Conservation of Momentum -->
+    <div class="section-block">
+      <div class="section-header">03 — Conservation of Linear Momentum</div>
+      <div class="content-card">
+        <p style="margin-bottom:0.8rem;">For an isolated system, total momentum before = total momentum after.</p>
+        <div class="formula-card">mᴀvᴀ₁ + mᴃvᴃ₁ = mᴀvᴀ₂ + mᴃvᴃ₂</div>
+        <div class="info-grid" style="margin-top:1rem;">
+          <div class="info-box"><h4>🔒 Internal Forces</h4><ul><li>Forces particles exert on each other within the system</li><li>Do NOT change total momentum</li></ul></div>
+          <div class="info-box"><h4>🌍 External Forces</h4><ul><li>Forces from objects outside the system</li><li>Isolated system: no external forces → momentum conserved</li></ul></div>
+        </div>
+        <h2 class="sub-title">Examples</h2>
+        <div class="def-card"><div class="term">Student on Raft</div><div class="definition">50 kg student jumps at 1.5 m/s off 75 kg raft: vR = −(50)(1.5)/75 = <strong>−1 m/s</strong> (opposite direction)</div></div>
+        <div class="def-card"><div class="term">Rifle Recoil</div><div class="definition">3.5 kg rifle fires 11 g bullet at 575 m/s: (a) vR = −1.81 m/s alone; (b) with 45 kg shooter: vR = <strong>−0.13 m/s</strong></div></div>
+        <div class="def-card"><div class="term">Two-Stage Rocket</div><div class="definition">Combined at 4,900 m/s. Upper (1,200 kg) → 5,700 m/s. Lower stage (2,400 kg) final velocity: <strong>4,500 m/s</strong></div></div>
+      </div>
+    </div>
+
+    <!-- Collisions -->
+    <div class="section-block">
+      <div class="section-header">04 — Types of Collisions</div>
+      <div class="content-card">
+        <p style="margin-bottom:0.8rem;"><strong>Momentum is ALWAYS conserved</strong> in all collisions. KE may or may not be conserved.</p>
+        <div class="formula-card">e = −(vᴀ₂ − vᴃ₂) / (vᴀ₁ − vᴃ₁) &nbsp;&nbsp; (Coefficient of Restitution)</div>
+        <table class="compare-table" style="margin-top:1rem;">
+          <thead><tr><th>Type</th><th>Momentum</th><th>Kinetic Energy</th><th>e</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Elastic</strong></td><td>✅ Conserved</td><td>✅ Conserved</td><td>e = 1</td></tr>
+            <tr><td><strong>Inelastic</strong></td><td>✅ Conserved</td><td>❌ Not conserved</td><td>0 &lt; e &lt; 1</td></tr>
+            <tr><td><strong>Perfectly Inelastic</strong></td><td>✅ Conserved</td><td>❌ Max loss (stick together)</td><td>e = 0</td></tr>
+          </tbody>
+        </table>
+
+        <h2 class="sub-title">Worked Problems</h2>
+        <div class="def-card">
+          <div class="term">Perfectly Inelastic: Balls A &amp; B</div>
+          <div class="definition">A (3.2 kg, +4.5 m/s) + B (5.6 kg, −7.2 m/s) stick together: v = [14.4 − 40.32]/8.8 = <strong>−2.95 m/s</strong>. KE lost = 177.55 − 38.29 = <strong>139.26 J</strong></div>
+        </div>
+        <div class="def-card">
+          <div class="term">Elastic (Equal Mass)</div>
+          <div class="definition">2.25 kg at 1.75 m/s hits stationary same-mass ball. Result: Ball A <strong>stops (0 m/s)</strong>, Ball B moves at <strong>1.75 m/s east</strong>. Classic equal-mass elastic result!</div>
+        </div>
+        <div class="def-card">
+          <div class="term">Elastic (Different Masses): A &amp; B</div>
+          <div class="definition">A (3.2 kg, +4.5 m/s) + B (5.6 kg, −7.2 m/s): vᴀ₂ = <strong>−10.39 m/s</strong> (left), vᴃ₂ = <strong>+1.31 m/s</strong> (right)</div>
+        </div>
+        <div class="def-card">
+          <div class="term">Railroad Car Coupling</div>
+          <div class="definition">Single car (2.5×10⁴ kg, 4 m/s) couples with 3 identical cars (2 m/s): final v = <strong>2.5 m/s</strong>. KE lost = <strong>3.75×10⁴ J</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2D Collisions -->
+    <div class="section-block">
+      <div class="section-header">05 — Collisions in 2D</div>
+      <div class="content-card">
+        <p style="margin-bottom:0.8rem;">Momentum is conserved separately in x and y components.</p>
+        <div class="formula-card">(x): mᴀvᴀx₁ + mᴃvᴃx₁ = mᴀvᴀx₂ + mᴃvᴃx₂ &nbsp;|&nbsp; (y): same for y</div>
+        <h2 class="sub-title">Car Collision (2D Perfectly Inelastic)</h2>
+        <p style="font-size:0.9rem;">Car A (2500 kg, 12 m/s east) + Car B (3000 kg, 15 m/s north) stick together:<br>
+        pₓ = 30,000 kg·m/s &nbsp;|&nbsp; pᵧ = 45,000 kg·m/s &nbsp;|&nbsp; Total mass = 5500 kg<br>
+        vₓ = 5.45 m/s &nbsp;|&nbsp; vᵧ = 8.18 m/s &nbsp;|&nbsp; <strong>v = 9.83 m/s at 56.4° N of E</strong></p>
+        <h2 class="sub-title">Billiard Ball (2D Elastic)</h2>
+        <p style="font-size:0.9rem;">Cue ball at 5 m/s, strikes stationary (same mass). Cue deflects 60°, struck at 30°: v₁ = <strong>2.5 m/s</strong>, v₂ = <strong>4.33 m/s</strong></p>
+        <h2 class="sub-title">LRT Coaches (Center of Mass)</h2>
+        <p style="font-size:0.9rem;">Coach 1 (65×10³ kg, 0.80 m/s) + Coach 2 (92×10³ kg, 1.3 m/s): vᶜₘ = 171,600/157,000 = <strong>≈1.093 m/s</strong></p>
+      </div>
+    </div>
+
+    <!-- Real-World Examples -->
+    <div class="section-block">
+      <div class="section-header">🌍 Real-World Collision Examples</div>
+      <div class="content-card">
+        <table class="compare-table">
+          <thead><tr><th>Situation</th><th>Type</th><th>Reason</th></tr></thead>
+          <tbody>
+            <tr><td>Basketball bouncing on concrete</td><td><span class="tag tag-fawn">Nearly Elastic</span></td><td>Returns to nearly same height; minimal energy loss</td></tr>
+            <tr><td>Bullet embedded in wood block</td><td><span class="tag tag-salmon">Perfectly Inelastic</span></td><td>Objects move together; max KE loss; momentum conserved</td></tr>
+            <tr><td>Billiard balls colliding</td><td><span class="tag tag-fawn">Nearly Elastic</span></td><td>Rigid balls; kinetic energy nearly conserved</td></tr>
+            <tr><td>Racecar hitting tire barrier</td><td><span class="tag tag-bole">Inelastic</span></td><td>Deformation, heat, sound — KE not conserved</td></tr>
+            <tr><td>Railroad cars coupling</td><td><span class="tag tag-salmon">Perfectly Inelastic</span></td><td>Objects stick together; maximum energy loss</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Key Terms -->
+    <div class="section-block">
+      <div class="section-header">📖 Key Terms</div>
+      <div class="content-card">
+        <div class="def-card"><div class="term">Impulse</div><div class="definition">Product of force and time; equals change in momentum (FΔt = Δp)</div></div>
+        <div class="def-card"><div class="term">Momentum</div><div class="definition">Product of mass and velocity (p = mv); vector quantity</div></div>
+        <div class="def-card"><div class="term">Center of Mass</div><div class="definition">Point where all system mass appears concentrated; responds to external forces</div></div>
+        <div class="def-card"><div class="term">Coefficient of Restitution (e)</div><div class="definition">Ratio of relative velocity after to before collision (0 to 1)</div></div>
+        <div class="def-card"><div class="term">Elastic Collision</div><div class="definition">Both momentum and KE conserved; e = 1</div></div>
+        <div class="def-card"><div class="term">Inelastic Collision</div><div class="definition">Momentum conserved; KE not conserved; 0 &lt; e &lt; 1</div></div>
+        <div class="def-card"><div class="term">Perfectly Inelastic</div><div class="definition">Objects stick together after collision; maximum KE loss; e = 0</div></div>
+        <div class="def-card"><div class="term">Isolated System</div><div class="definition">No external forces; total momentum is conserved</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODULE 3 REVIEWER ===== -->
+<div id="mod3" class="page">
+  <div style="background:white;border-bottom:2px solid var(--wheat);padding:0.8rem 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:60px;z-index:50;">
+    <button onclick="showPage('home',null)" style="background:var(--bole);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
+    <span style="font-weight:800;color:var(--bole);">🔄 Module 3: Rotational Motion &amp; Gravitation</span>
+    <div style="margin-left:auto;display:flex;gap:0.5rem;">
+      <button onclick="showPage('flashcards',null)" style="background:transparent;border:2px solid var(--wheat);color:var(--bole);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">🃏 Flashcards</button>
+      <button onclick="showPage('quiz',null)" style="background:transparent;border:2px solid var(--wheat);color:var(--bole);padding:0.35rem 0.9rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.82rem;cursor:pointer;">📝 Quiz</button>
+    </div>
+  </div>
+  <div class="reviewer-module">
+    <div class="module-header" style="background:linear-gradient(135deg,#9a6a3a,var(--bole));">
+      <div class="module-icon">🔄</div>
+      <div>
+        <h1>Systems of a Particle, Rotational Motion &amp; Gravitation</h1>
+        <p>Module 3 — Classical Physics I, Grade 12 Calculus Based</p>
+      </div>
+    </div>
+
+    <!-- Topics Overview -->
+    <div class="section-block">
+      <div class="section-header">📋 Important Topics</div>
+      <div class="content-card">
+        <ul class="objective-list">
+          <li><span class="num">01</span>Kinematics of Rotation</li>
+          <li><span class="num">02</span>Moment of Inertia &amp; Torque</li>
+          <li><span class="num">03</span>Dynamics of Rotation</li>
+          <li><span class="num">04</span>Angular Momentum</li>
+          <li><span class="num">05</span>Rotational Work and Kinetic Energy</li>
+          <li><span class="num">06</span>Center of Gravity &amp; Conditions for Equilibrium</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 01 Kinematics -->
+    <div class="section-block">
+      <div class="section-header">01 — Kinematics of Rotation</div>
+      <div class="content-card">
+        <p style="margin-bottom:0.8rem;">Rotation refers to the motion of a body turning about an axis, where each particle moves along a circular path.</p>
+        <div class="info-grid">
+          <div class="info-box">
+            <h4>📐 Angular Displacement (θ)</h4>
+            <div class="formula-card" style="font-size:0.9rem;margin-bottom:0.5rem;">s = rθ</div>
+            <p style="font-size:0.85rem;">s = arc length (m), r = radius (m), θ = angle (radians)<br>1 rev = 2π rad ≈ 6.283 rad &nbsp;|&nbsp; 1 rad = 57.3°</p>
+          </div>
+          <div class="info-box">
+            <h4>🌀 Angular Velocity (ω)</h4>
+            <div class="formula-card" style="font-size:0.9rem;margin-bottom:0.5rem;">ω = Δθ / t &nbsp;&nbsp; v = rω</div>
+            <p style="font-size:0.85rem;">Unit: rad/s. Linear velocity relates to angular by v = rω.</p>
+          </div>
+          <div class="info-box">
+            <h4>⚡ Angular Acceleration (α)</h4>
+            <div class="formula-card" style="font-size:0.9rem;margin-bottom:0.5rem;">α = (ω − ω₀) / t &nbsp;&nbsp; a = rα</div>
+            <p style="font-size:0.85rem;">Unit: rad/s². Linear acceleration a = rα.</p>
+          </div>
+        </div>
+        <h2 class="sub-title">Kinematic Equations: Translation vs. Rotation</h2>
+        <table class="compare-table">
+          <thead><tr><th>#</th><th>Translation</th><th>Rotation</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>x = vt</td><td>Δθ = ωt</td></tr>
+            <tr><td>2</td><td>v = (v + v₀) / 2</td><td>ω = (ω + ω₀) / 2</td></tr>
+            <tr><td>3</td><td>a = (v − v₀) / t</td><td>α = (ω − ω₀) / t</td></tr>
+            <tr><td>4</td><td>2ax = v² − v₀²</td><td>2αΔθ = ω² − ω₀²</td></tr>
+            <tr><td>5</td><td>Δx = v₀t + ½at²</td><td>Δθ = ω₀t + ½αt²</td></tr>
+          </tbody>
+        </table>
+        <h2 class="sub-title">Examples</h2>
+        <div class="def-card"><div class="term">Bicycle Wheel</div><div class="definition">12 rev in 15 s, r = 33 cm. θ = 12×2π = 75.40 rad. (a) ω = 75.40/15 = <strong>5.03 rad/s</strong>. (b) s = rθ = (0.33)(75.40) = <strong>24.88 m</strong></div></div>
+        <div class="def-card"><div class="term">Lynne Jogging on Circular Track</div><div class="definition">d = 25 m, 942 m in 5 min. r = 12.5 m. (a) θ = 942/12.5 = 75.36 rad → <strong>≈12 revolutions</strong>. (b) ω = 75.36/300 = <strong>0.25 rad/s</strong></div></div>
+      </div>
+    </div>
+
+    <!-- 02 Moment of Inertia -->
+    <div class="section-block">
+      <div class="section-header">02 — Moment of Inertia (I) &amp; Torque</div>
+      <div class="content-card">
+        <p style="margin-bottom:0.8rem;">The property of a rotating body to resist change in its state of rotation. For a particle: <strong>I = mr²</strong>. For a system: <strong>I = Σmᵢrᵢ²</strong>. SI unit: kg·m²</p>
+        <h2 class="sub-title">Moment of Inertia for Common Shapes</h2>
+        <table class="compare-table">
+          <thead><tr><th>Shape</th><th>Axis</th><th>Formula</th></tr></thead>
+          <tbody>
+            <tr><td>Point mass at radius R</td><td>Through center</td><td>I = MR²</td></tr>
+            <tr><td>Thin rod</td><td>Through center, ⊥ length</td><td>I = ¹⁄₁₂ ML²</td></tr>
+            <tr><td>Thin rod</td><td>Through end, ⊥ length</td><td>I = ⅓ ML²</td></tr>
+            <tr><td>Thin-walled hollow cylinder</td><td>Central axis</td><td>I = MR²</td></tr>
+            <tr><td>Solid cylinder / disk</td><td>Central axis</td><td>I = ½ MR²</td></tr>
+            <tr><td>Solid sphere</td><td>Through center</td><td>I = ⅖ MR²</td></tr>
+            <tr><td>Thick-walled hollow cylinder</td><td>Central axis</td><td>I = ½ M(R₁² + R₂²)</td></tr>
+            <tr><td>Cone</td><td>Central axis</td><td>I = ³⁄₁₀ MR²</td></tr>
+          </tbody>
+        </table>
+        <div class="highlight" style="margin-top:1rem;"><strong>Radius of Gyration (k):</strong> The distance from the axis where all mass can be assumed concentrated without changing I. &nbsp; k = √(I/m)</div>
+
+        <h2 class="sub-title">Torque (τ) — Moment of Force</h2>
+        <p style="margin-bottom:0.5rem;">Torque is the effectiveness of a force in producing rotation.</p>
+        <div class="formula-card">τ = rF sinθ = r⊥F &nbsp;&nbsp; (Unit: N·m)</div>
+        <div class="highlight" style="margin-top:0.8rem;"><strong>Sign convention:</strong> Counterclockwise (CCW) = <strong>Positive (+)</strong> &nbsp;|&nbsp; Clockwise (CW) = <strong>Negative (−)</strong></div>
+
+        <h2 class="sub-title">Examples</h2>
+        <div class="def-card"><div class="term">Baton (Majorette) — Moment of Inertia</div><div class="definition">0.5 m baton; m₁ = m₂ = 0.25 kg at ends (d = 0.12 m balls).<br>(a) Middle axis (r = 0.31 m): I = 2(0.25)(0.31)² = <strong>0.048 kg·m²</strong>; k = <strong>0.31 m</strong><br>(b) Axis 0.4 m from one end: I = 0.25(0.16)² + 0.25(0.46)² = <strong>0.059 kg·m²</strong>; k = <strong>0.34 m</strong></div></div>
+        <div class="def-card"><div class="term">Torque on a Rod</div><div class="definition">Στ about A = −3.90 − 15.0 − 9.0 = <strong>−27.9 N·m</strong> (clockwise).<br>Στ about C = 6.0 + 3.9 − 3.0 = <strong>+6.9 N·m</strong> (counterclockwise)</div></div>
+        <div class="def-card"><div class="term">Four Spheres at Corners of a 3 m Square (m = 2 kg each)</div><div class="definition">(a) Center ⊥ plane: I = 4(2)(2.12)² = <strong>35.96 kg·m²</strong><br>(b) Through one mass ⊥ plane: I = <strong>71.96 kg·m²</strong><br>(c) Through two adjacent masses: I = <strong>36 kg·m²</strong><br>(d) Diagonal through two masses: I = <strong>17.98 kg·m²</strong></div></div>
+      </div>
+    </div>
+
+    <!-- 03 Dynamics -->
+    <div class="section-block">
+      <div class="section-header">03 — Dynamics of Rotation</div>
+      <div class="content-card">
+        <table class="compare-table">
+          <thead><tr><th>Newton's Law</th><th>Rotational Statement</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1st Law</strong></td><td>A body at rest won't rotate, and a rotating body won't change angular velocity unless acted upon by an unbalanced torque.</td></tr>
+            <tr><td><strong>2nd Law</strong></td><td>τ = Iα &nbsp; — Unbalanced torque produces angular acceleration proportional to τ and inversely proportional to I.</td></tr>
+            <tr><td><strong>3rd Law</strong></td><td>For every action torque, there is an equal but opposite reaction torque.</td></tr>
+          </tbody>
+        </table>
+        <div class="formula-card" style="margin-top:1rem;">τ = Iα &nbsp; (Rotational Newton's 2nd Law)</div>
+
+        <h2 class="sub-title">Worked Examples</h2>
+        <div class="def-card"><div class="term">Ferris Wheel Torque</div><div class="definition">Disk, m = 825 kg, r = 12.5 m; 0 → 3.5 rad/s in 15 s.<br>I = ½mr² = ½(825)(12.5)² = 1.29×10⁵ kg·m²; α = 3.5/15 = 0.23 rad/s²<br>τ = Iα = <strong>3.01×10⁴ N·m</strong></div></div>
+        <div class="def-card"><div class="term">Block on a Pulley</div><div class="definition">m = 3.56 kg, r = 0.28 m, F = 7.5 N, moves 0.25 m from rest.<br>(a) a = F/m = <strong>2.11 m/s²</strong>; (b) α = a/r = <strong>7.54 rad/s²</strong>; (c) I = τ/α = (7.5×0.28)/7.54 = <strong>0.28 kg·m²</strong></div></div>
+        <div class="def-card"><div class="term">Electric Fan Blades</div><div class="definition">250 → 450 rev/min in 5 s. ω₀ = 26.18 rad/s; ω = 47.12 rad/s.<br>(a) α = (47.12 − 26.18)/5 = <strong>4.19 rad/s²</strong><br>(b) Δθ = 26.18(5) + ½(4.19)(25) = 183.3 rad → <strong>≈29.2 revolutions</strong></div></div>
+        <div class="def-card"><div class="term">Centrifuge Stopping</div><div class="definition">3600 rev/min, stops over 50 rev. ω₀ = 376.99 rad/s; Δθ = 314.16 rad.<br>2αΔθ = ω² − ω₀² → α = <strong>−226.2 rad/s²</strong></div></div>
+        <div class="def-card"><div class="term">Spinning Bearing (Solid Sphere)</div><div class="definition">m = 250 g, r = 2.25 cm; 12.56 → 9.42 rad/s in 5 s.<br>(a) α = <strong>−0.628 rad/s²</strong>; (b) I = ⅖mr² = <strong>5.06×10⁻⁵ kg·m²</strong>; (c) τ = <strong>3.18×10⁻⁵ N·m</strong>; (d) F = <strong>1.41×10⁻³ N</strong></div></div>
+      </div>
+    </div>
+
+    <!-- 04 Angular Momentum -->
+    <div class="section-block">
+      <div class="section-header">04 — Angular Momentum (L)</div>
+      <div class="content-card">
+        <p style="margin-bottom:0.8rem;">Angular momentum is the product of moment of inertia and angular velocity. In the absence of net external torque, angular momentum is conserved.</p>
+        <div class="info-grid">
+          <div class="info-box">
+            <h4>📐 Formula</h4>
+            <div class="formula-card" style="font-size:0.9rem;margin-bottom:0.5rem;">L = Iω</div>
+            <p style="font-size:0.85rem;">Unit: kg·m²/s</p>
+          </div>
+          <div class="info-box">
+            <h4>⚖️ Conservation</h4>
+            <div class="formula-card" style="font-size:0.9rem;margin-bottom:0.5rem;">I₀ω₀ = Iω</div>
+            <p style="font-size:0.85rem;">Applies when net external torque = 0. Analogous to conservation of linear momentum.</p>
+          </div>
+        </div>
+        <h2 class="sub-title">Examples</h2>
+        <div class="def-card"><div class="term">Physics Teacher on Rotating Stool</div><div class="definition">Arms out: ω₁ = 0.75 rev/s. Arms tucked: ω₂ = 1.50 rev/s.<br>I₁/I₂ = ω₂/ω₁ = 1.50/0.75 = <strong>2/1</strong> — moment of inertia with arms out is TWICE that with arms tucked.</div></div>
+        <div class="def-card"><div class="term">Star Collapsing to Neutron Star</div><div class="definition">5M☉, ω₀ = 1/5 rev/day. Collapses to 75% size, loses 10% mass.<br>I_final = (0.9m)(0.75r)² = 0.51mr²<br>ω = (1/5) / 0.51 = <strong>≈0.39 rev/day</strong> (much faster!)</div></div>
+      </div>
+    </div>
+
+    <!-- 05 Rotational Work & KE -->
+    <div class="section-block">
+      <div class="section-header">05 — Rotational Work &amp; Kinetic Energy</div>
+      <div class="content-card">
+        <table class="compare-table">
+          <thead><tr><th>Quantity</th><th>Formula</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Rotational Work</strong></td><td>W = τθ</td><td>Torque × angular displacement</td></tr>
+            <tr><td><strong>Rotational Power</strong></td><td>P = W/t</td><td>Work divided by time</td></tr>
+            <tr><td><strong>Rotational KE</strong></td><td>K_R = ½Iω²</td><td>Kinetic energy of rotating body</td></tr>
+            <tr><td><strong>Total KE (rolling)</strong></td><td>K_T = ½mv² + ½Iω²</td><td>Translational + Rotational</td></tr>
+          </tbody>
+        </table>
+        <h2 class="sub-title">Worked Examples</h2>
+        <div class="def-card"><div class="term">Spin Dryer</div><div class="definition">Retarding torque 12.5 N·m stops dryer in 8 rev in 4 s. θ = 8×2π = 50.27 rad.<br>(a) W = τθ = <strong>628.38 J</strong>; (b) P = W/t = <strong>157.10 W</strong></div></div>
+        <div class="def-card"><div class="term">Rolling Solid Cylinder</div><div class="definition">m = 10 kg, v = 10 m/s. For solid cylinder I = ½mr²; rolling: ω = v/r.<br>(a) K = ½mv² = <strong>500 J</strong>; (b) K_R = ¼mv² = <strong>250 J</strong>; (c) K_T = <strong>750 J</strong></div></div>
+        <div class="def-card"><div class="term">Model Airplane (Circular Motion)</div><div class="definition">m = 0.750 kg, r = 30 m, F = 0.800 N (⊥ to wire).<br>(a) τ = rF = <strong>24.0 N·m</strong>; (b) I = mr² = 675 kg·m², α = <strong>0.0356 rad/s²</strong>; (c) a = rα = <strong>1.07 m/s²</strong></div></div>
+      </div>
+    </div>
+
+    <!-- 06 Equilibrium -->
+    <div class="section-block">
+      <div class="section-header">06 — Center of Gravity &amp; Conditions for Equilibrium</div>
+      <div class="content-card">
+        <p style="margin-bottom:0.8rem;"><strong>Center of Gravity:</strong> The point where the entire weight of a body may be assumed to be concentrated.</p>
+        <table class="compare-table">
+          <thead><tr><th>Condition</th><th>Statement</th><th>Equation</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1st Condition</strong> (Translational)</td><td>Net force on body is zero</td><td>ΣF = 0 → ΣFₓ = 0, ΣFᵧ = 0</td></tr>
+            <tr><td><strong>2nd Condition</strong> (Rotational)</td><td>Sum of torques about any point is zero</td><td>Στ = 0</td></tr>
+          </tbody>
+        </table>
+        <div class="highlight" style="margin-top:0.8rem;"><strong>Equilibrant:</strong> A force added to produce translational equilibrium — equal in magnitude but opposite in direction to the resultant.</div>
+        <h2 class="sub-title">Worked Examples</h2>
+        <div class="def-card"><div class="term">Finding the Equilibrant</div><div class="definition">F₁ = 8 N (60° N of W); F₂ = 12 N (SW).<br>ΣFₓ = −4.0 − 8.49 = −12.49 N &nbsp;|&nbsp; ΣFᵧ = +6.93 − 8.49 = −1.56 N<br>R = √(12.49² + 1.56²) = 12.59 N at 7.12° S of W<br>F₃ = <strong>12.59 N, 7.12° South of East</strong> (opposite to resultant)</div></div>
+        <div class="def-card"><div class="term">Taho Vendor and Plank</div><div class="definition">1.5 m plank; 40 N at end B, 60 N at end A.<br>(a) ΣFᵧ = 0: F = <strong>100 N</strong>; (b) Στ = 0: x = 60/100 = <strong>0.6 m from end A</strong></div></div>
+        <div class="def-card"><div class="term">Person's Center of Mass on a Plank</div><div class="definition">Light plank on two scales: Fg₁ = 380 N (feet), Fg₂ = 320 N (head), 1.65 m apart.<br>W = 700 N. CM from feet = 1.65 − (380×1.65)/700 = <strong>0.754 m from feet</strong></div></div>
+        <div class="def-card"><div class="term">Car on Circular Track (Friction)</div><div class="definition">a_t = 1.70 m/s², ¼ circle before skidding.<br>v² = 2(1.70)(πr/2) = 1.70πr → a_c = 1.70π ≈ 5.34 m/s²<br>a = √(1.70² + 5.34²) = 5.60 m/s² → μ_s = 5.60/9.8 = <strong>≈0.572</strong></div></div>
+      </div>
+    </div>
+
+    <!-- All Formulas -->
+    <div class="section-block">
+      <div class="section-header">📋 All Formulas at a Glance — Rotational Motion</div>
+      <div class="content-card">
+        <table class="compare-table">
+          <thead><tr><th>Formula</th><th>Equation</th><th>Unit</th></tr></thead>
+          <tbody>
+            <tr><td>Angular displacement (arc)</td><td>s = rθ</td><td>m</td></tr>
+            <tr><td>Angular velocity</td><td>ω = Δθ / t</td><td>rad/s</td></tr>
+            <tr><td>Linear-angular velocity</td><td>v = rω</td><td>m/s</td></tr>
+            <tr><td>Angular acceleration</td><td>α = (ω − ω₀) / t</td><td>rad/s²</td></tr>
+            <tr><td>Linear-angular acceleration</td><td>a = rα</td><td>m/s²</td></tr>
+            <tr><td>Moment of inertia (particle)</td><td>I = mr²</td><td>kg·m²</td></tr>
+            <tr><td>Radius of gyration</td><td>k = √(I/m)</td><td>m</td></tr>
+            <tr><td>Torque</td><td>τ = rF sinθ</td><td>N·m</td></tr>
+            <tr><td>Rotational 2nd Law</td><td>τ = Iα</td><td>N·m</td></tr>
+            <tr><td>Angular momentum</td><td>L = Iω</td><td>kg·m²/s</td></tr>
+            <tr><td>Conservation of L</td><td>I₀ω₀ = Iω</td><td>kg·m²/s</td></tr>
+            <tr><td>Rotational work</td><td>W = τθ</td><td>J</td></tr>
+            <tr><td>Rotational KE</td><td>K_R = ½Iω²</td><td>J</td></tr>
+            <tr><td>Total KE (rolling body)</td><td>K_T = ½mv² + ½Iω²</td><td>J</td></tr>
+            <tr><td>1st Condition (Equilibrium)</td><td>ΣF = 0</td><td>N</td></tr>
+            <tr><td>2nd Condition (Equilibrium)</td><td>Στ = 0</td><td>N·m</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== FLASHCARDS ===== -->
+<div id="flashcards" class="page">
+  <div id="flashcards" style="max-width:750px;margin:0 auto;padding:2rem;">
+    <div class="flashcard-header">
+      <h1>🃏 Physics Flashcards</h1>
+      <p>Click the card to flip it! Navigate with the buttons below.</p>
+    </div>
+
+    <div class="flashcard-module-select">
+      <button class="module-select-btn active" id="fcBtnAll" onclick="setFlashcardModule('all',this)">All Cards (30)</button>
+      <button class="module-select-btn" id="fcBtnMod7" onclick="setFlashcardModule('mod7',this)">⚡ Module 7 (10)</button>
+      <button class="module-select-btn" id="fcBtnMod6" onclick="setFlashcardModule('mod6',this)">💥 Module 6 (10)</button>
+      <button class="module-select-btn" id="fcBtnMod3" onclick="setFlashcardModule('mod3',this)">🔄 Module 3 (10)</button>
+    </div>
+
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="fcProgress" style="width:5%"></div>
+    </div>
+
+    <div class="flashcard-counter" id="fcCounter">Card 1 of 20</div>
+
+    <div class="card-scene" onclick="flipCard()">
+      <div class="card-inner" id="cardInner">
+        <div class="card-face card-front">
+          <div class="card-label">TERM / FORMULA</div>
+          <div class="card-term" id="fcTerm">Work</div>
+        </div>
+        <div class="card-face card-back">
+          <div class="card-label">DEFINITION / MEANING</div>
+          <div class="card-def" id="fcDef">The scalar product of force and displacement: W = Fd cosθ. Measured in Joules (J). Zero work when force ⊥ displacement (θ=90°).</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="card-hint">👆 Click card to flip &nbsp;|&nbsp; Use buttons to navigate</p>
+
+    <div class="flashcard-nav">
+      <button class="fc-btn" onclick="fcNav(-1)">← Prev</button>
+      <button class="fc-btn primary" onclick="flipCard()">Flip 🔄</button>
+      <button class="fc-btn" onclick="fcNav(1)">Next →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== QUIZ ===== -->
+<div id="quiz" class="page">
+  <div style="max-width:750px;margin:0 auto;padding:2rem;">
+    <div class="quiz-header">
+      <h1>📝 Physics Quiz</h1>
+      <p style="color:#666;">Test your knowledge of Modules 6 &amp; 7</p>
+    </div>
+
+    <div class="quiz-module-select" id="quizModuleBtns">
+      <button class="set-select-btn active" id="quizBtnAll" onclick="setQuizModule('all',this)">All Questions</button>
+      <button class="set-select-btn" id="quizBtnMod7" onclick="setQuizModule('mod7',this)">⚡ Module 7</button>
+      <button class="set-select-btn" id="quizBtnMod6" onclick="setQuizModule('mod6',this)">💥 Module 6</button>
+      <button class="set-select-btn" id="quizBtnMod3" onclick="setQuizModule('mod3',this)">🔄 Module 3</button>
+    </div>
+
+    <!-- Start Screen -->
+    <div class="quiz-start" id="quizStart">
+      <div class="icon">🧲</div>
+      <h2 id="quizStartTitle">All Questions</h2>
+      <p id="quizStartDesc">A mix of multiple choice, true/false, and identification questions.</p>
+      <button class="start-btn" onclick="startQuiz()">Start Quiz →</button>
+    </div>
+
+    <!-- Question Wrap -->
+    <div class="quiz-question-wrap" id="quizQuestionWrap">
+      <div class="quiz-progress-info">
+        <span id="qProgress">Question 1 / 20</span>
+        <span class="quiz-score-badge" id="qScore">Score: 0</span>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="qProgressBar" style="width:5%"></div>
+      </div>
+      <div class="question-card">
+        <span class="question-type-badge type-mc" id="qTypeBadge">Multiple Choice</span>
+        <div class="question-text" id="qText"></div>
+        <ul class="options-list" id="qOptions"></ul>
+        <div class="feedback-box" id="qFeedback"></div>
+        <button class="next-btn" id="qNextBtn" onclick="nextQuestion()">Next Question →</button>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="quiz-results" id="quizResults">
+      <div style="font-size:3rem;margin-bottom:0.5rem;">🎉</div>
+      <div class="result-score" id="resultScore">0/0</div>
+      <div class="result-label">Quiz Complete!</div>
+      <div class="result-message" id="resultMsg"></div>
+      <div class="scrollable">
+        <div class="review-list" id="reviewList"></div>
+      </div>
+      <button class="start-btn" onclick="restartQuiz()" style="margin-top:1rem;">Try Again 🔄</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PDF VIEWER ===== -->
+<div id="pdfs" class="page">
+  <div style="max-width:950px;margin:0 auto;padding:2rem;">
+    <div class="quiz-header">
+      <h1>📄 PDF Reviewer</h1>
+      <p style="color:#666;">Physics Comprehensive Reviewer — Modules 6 &amp; 7</p>
+    </div>
+    <div class="pdf-label">⚡💥 Classical Physics I — Full Comprehensive Reviewer</div>
+    <div class="pdf-frame-wrap">
+      <iframe class="pdf-frame"
+        src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/Physics_Comprehensive_Reviewer.docx&embedded=true"
+        title="Physics Comprehensive Reviewer"></iframe>
+    </div>
+    <div class="pdf-links">
+      <a class="pdf-direct-btn" href="https://github.com/maryathenahernandez-bit/q3/blob/main/pdfs/Physics_Comprehensive_Reviewer.docx" target="_blank">📥 Download Reviewer</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== NAVIGATION =====
+function showPage(id, el) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  if (el) el.classList.add('active');
+  window.scrollTo(0,0);
+}
+function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+// ===== FLASHCARD DATA =====
+const allCards = [
+  // Module 7
+  { mod:'mod7', term:'Work (W)', def:'W = Fd cosθ — scalar product of force and displacement. Measured in Joules. Zero when θ=90°, negative when θ>90°.' },
+  { mod:'mod7', term:'Gravitational PE (Uᴳ)', def:'Uᴳ = mgh — energy stored due to height above ground. m=mass (kg), g=9.8 m/s², h=height (m).' },
+  { mod:'mod7', term:'Elastic PE (Uₛ)', def:'Uₛ = ½k(Δx)² — energy stored in a spring. k=spring constant (N/m), Δx=deformation (m).' },
+  { mod:'mod7', term:'Kinetic Energy (K)', def:'K = ½mv² — energy due to motion. Depends on mass and the square of speed. Unit: Joule (J).' },
+  { mod:'mod7', term:'Work-Energy Theorem', def:'The net work done on a body equals its change in KE: W = ΔK = ½mv² − ½mv₀². Derived from Newton\'s 2nd Law + kinematics.' },
+  { mod:'mod7', term:'Power (P)', def:'P = W/t = Fv̄cosθ — rate of doing work. SI unit: Watt (W = J/s). 1 hp = 746 W; 1 kW = 1000 W.' },
+  { mod:'mod7', term:'Conservation of Eₘ', def:'In an isolated system with no nonconservative forces: U₁+K₁ = U₂+K₂. Total mechanical energy stays constant.' },
+  { mod:'mod7', term:'Isolated vs Non-isolated System', def:'Isolated: no external forces; Eₘ is conserved. Non-isolated: energy crosses the boundary; total energy changes.' },
+  { mod:'mod7', term:'Negative Work', def:'Work is negative when the angle between force and displacement is between 90° and 180°. Example: friction opposing motion.' },
+  { mod:'mod7', term:'Joule (J)', def:'SI unit of work and energy. 1 J = 1 N·m. Also: 1 J = 10⁷ ergs.' },
+  // Module 6
+  { mod:'mod6', term:'Center of Mass (CM)', def:'The point where all system mass appears to be concentrated. xᶜₘ = Σ(mᵢxᵢ)/Σmᵢ. For uniform objects, CM is at the geometric center.' },
+  { mod:'mod6', term:'Linear Momentum (p)', def:'p = mv — vector quantity, same direction as velocity. SI unit: kg·m/s. Called "linear" to distinguish from angular momentum.' },
+  { mod:'mod6', term:'Impulse-Momentum Theorem', def:'Ft = Δp = mv − mv₀. The impulse of the net force equals the change in momentum. Time of contact matters!' },
+  { mod:'mod6', term:'Conservation of Momentum', def:'In an isolated system: mᴀvᴀ₁ + mᴃvᴃ₁ = mᴀvᴀ₂ + mᴃvᴃ₂. Total momentum before = total momentum after. Always applies.' },
+  { mod:'mod6', term:'Elastic Collision', def:'Both momentum AND kinetic energy are conserved. Coefficient of restitution e = 1. Example: billiard balls, equal-mass exchange.' },
+  { mod:'mod6', term:'Perfectly Inelastic Collision', def:'Objects stick together after collision. Maximum KE loss. e = 0. Momentum still conserved: p_before = p_after = (m₁+m₂)v.' },
+  { mod:'mod6', term:'Inelastic Collision', def:'Momentum conserved; KE NOT conserved. 0 < e < 1. Objects separate after collision but some energy is lost to heat/sound.' },
+  { mod:'mod6', term:'Coefficient of Restitution (e)', def:'e = −(vᴀ₂−vᴃ₂)/(vᴀ₁−vᴃ₁). Ranges from 0 (perfectly inelastic) to 1 (perfectly elastic). Measures bounce.' },
+  { mod:'mod6', term:'Internal vs External Forces', def:'Internal: forces between particles within the system — do NOT change total momentum. External: forces from outside — change total momentum.' },
+  { mod:'mod6', term:'2D Collision', def:'Momentum conserved in BOTH x and y independently. Solve two equations: Σpₓ before = Σpₓ after AND Σpᵧ before = Σpᵧ after.' },
+  // Module 3
+  { mod:'mod3', term:'Angular Displacement (θ)', def:'The angle swept by the radius vector. s = rθ, where s = arc length. 1 revolution = 2π rad = 6.283 rad. 1 rad = 57.3°.' },
+  { mod:'mod3', term:'Angular Velocity (ω)', def:'ω = Δθ/t — rate of change of angular displacement. Unit: rad/s. Related to linear velocity by v = rω.' },
+  { mod:'mod3', term:'Angular Acceleration (α)', def:'α = (ω − ω₀)/t — rate of change of angular velocity. Unit: rad/s². Related to linear acceleration by a = rα.' },
+  { mod:'mod3', term:'Moment of Inertia (I)', def:'I = Σmᵢrᵢ² — rotational inertia; resistance to change in rotational state. For a solid disk: I = ½MR². Unit: kg·m².' },
+  { mod:'mod3', term:'Radius of Gyration (k)', def:'The distance from the axis where all mass can be concentrated without altering I. k = √(I/m). Unit: meters.' },
+  { mod:'mod3', term:'Torque (τ)', def:'τ = rF sinθ — effectiveness of a force in rotating a body. CCW = positive; CW = negative. Unit: N·m.' },
+  { mod:'mod3', term:'Rotational Newton\'s 2nd Law', def:'τ = Iα — an unbalanced torque produces angular acceleration proportional to τ and inversely proportional to I.' },
+  { mod:'mod3', term:'Angular Momentum (L)', def:'L = Iω — product of moment of inertia and angular velocity. Conserved when net external torque = 0: I₀ω₀ = Iω. Unit: kg·m²/s.' },
+  { mod:'mod3', term:'Rotational KE & Work', def:'K_R = ½Iω² (rotational kinetic energy). W = τθ (rotational work). For rolling body: K_T = ½mv² + ½Iω².' },
+  { mod:'mod3', term:'Conditions for Equilibrium', def:'1st (Translational): ΣF = 0 (ΣFₓ = 0, ΣFᵧ = 0). 2nd (Rotational): Στ = 0. Both must hold for a rigid body in static equilibrium.' },
+];
+
+let fcModule = 'all';
+let fcCards = [...allCards];
+let fcIndex = 0;
+let fcFlipped = false;
+
+function setFlashcardModule(mod, el) {
+  fcModule = mod;
+  document.querySelectorAll('.module-select-btn').forEach(b => b.classList.remove('active'));
+  if (el) el.classList.add('active');
+  fcCards = mod === 'all' ? [...allCards] : allCards.filter(c => c.mod === mod);
+  fcIndex = 0;
+  fcFlipped = false;
+  document.getElementById('cardInner').classList.remove('flipped');
+  updateCard();
+}
+
+function updateCard() {
+  const card = fcCards[fcIndex];
+  document.getElementById('fcTerm').textContent = card.term;
+  document.getElementById('fcDef').textContent = card.def;
+  document.getElementById('fcCounter').textContent = `Card ${fcIndex+1} of ${fcCards.length}`;
+  const pct = ((fcIndex+1)/fcCards.length)*100;
+  document.getElementById('fcProgress').style.width = pct+'%';
+  fcFlipped = false;
+  document.getElementById('cardInner').classList.remove('flipped');
+}
+
+function flipCard() {
+  fcFlipped = !fcFlipped;
+  document.getElementById('cardInner').classList.toggle('flipped', fcFlipped);
+}
+
+function fcNav(dir) {
+  fcIndex = (fcIndex + dir + fcCards.length) % fcCards.length;
+  updateCard();
+}
+
+// ===== QUIZ DATA =====
+const quizData = {
+  mod7: [
+    { type:'mc', q:'A 25 N box is pushed 3 m along a surface. The applied force makes a 0° angle with displacement. How much work is done?', options:['75 J','25 J','0 J','−75 J'], answer:0, explanation:'W = Fd cosθ = (25)(3) cos0° = 75 J. Maximum work is done when force and displacement are parallel (θ=0°).' },
+    { type:'mc', q:'Which type of energy is stored in a compressed spring?', options:['Kinetic energy','Gravitational potential energy','Elastic potential energy','Thermal energy'], answer:2, explanation:'Elastic potential energy (Uₛ = ½k(Δx)²) is stored in elastic materials like springs due to their deformation or configuration.' },
+    { type:'mc', q:'A 2 kg cart starts from rest and is pushed with 350 N over 4 m. What is its final speed?', options:['37.42 m/s','27.5 m/s','52.9 m/s','18.7 m/s'], answer:0, explanation:'W = Fd = (350)(4) = 1,400 J. Work-Energy Theorem: W = ½mv² → v = √(2W/m) = √(2800/2) = 37.42 m/s.' },
+    { type:'mc', q:'A 1,200 kg car accelerates from 30 m/s to 50 m/s in 10 s. What is the average power delivered?', options:['96 kW','48 kW','192 kW','9.6 kW'], answer:0, explanation:'W = ½(1200)(50²) − ½(1200)(30²) = 1,500,000 − 540,000 = 960,000 J. P = W/t = 960,000/10 = 96,000 W = 96 kW.' },
+    { type:'mc', q:'In an isolated system with no nonconservative forces, which equation correctly states conservation of mechanical energy?', options:['W = Fd cosθ','U₁ + K₁ = U₂ + K₂','P = W/t','F = ma'], answer:1, explanation:'Conservation of mechanical energy in an isolated system: U₁ + K₁ = U₂ + K₂ (total mechanical energy is constant).' },
+    { type:'tf', q:'True or False: The normal force on an object moving horizontally on a flat surface does positive work on the object.', options:['True','False'], answer:1, explanation:'FALSE. The normal force acts perpendicular (θ=90°) to the horizontal displacement. Since cos90° = 0, the normal force does zero work, not positive work.' },
+    { type:'tf', q:'True or False: If the angle between force and displacement is 120°, the work done is negative.', options:['True','False'], answer:0, explanation:'TRUE. When 90° < θ ≤ 180°, cosθ is negative, making W = Fd cosθ negative. At 120°, cos120° = −0.5, so work is negative.' },
+    { type:'tf', q:'True or False: 1 horsepower is equal to 746 watts.', options:['True','False'], answer:0, explanation:'TRUE. The conversion is: 1 hp = 746 W = 0.746 kW. This is a standard power conversion used in engineering.' },
+    { type:'id', q:'IDENTIFICATION: This is the theorem that states the net work done on a body equals the change in its kinetic energy (W = ΔK).', options:['Conservation of Energy','Work-Energy Theorem','Impulse-Momentum Theorem','Newton\'s Second Law'], answer:1, explanation:'The Work-Energy Theorem: W = ΔK = ½mv² − ½mv₀². It is derived by combining Newton\'s 2nd Law (F=ma) with kinematics equations.' },
+    { type:'id', q:'IDENTIFICATION: A 35 kg child climbs a 6 m slide inclined at 30°. What is the gravitational PE gained relative to the bottom?', options:['2,058 J','1,029 J','588 J','735 J'], answer:1, explanation:'h = 6 sin30° = 3 m. Uᴳ = mgh = (35)(9.8)(3) = 1,029 J. The height gained (vertical component) is what determines gravitational PE.' },
+  ],
+  mod6: [
+    { type:'mc', q:'Which quantity is ALWAYS conserved in all types of collisions (elastic, inelastic, and perfectly inelastic)?', options:['Kinetic energy','Total mechanical energy','Linear momentum','Velocity'], answer:2, explanation:'Linear momentum is ALWAYS conserved in all collision types. Kinetic energy is only conserved in elastic collisions. Velocity and total mechanical energy are not always conserved.' },
+    { type:'mc', q:'A 2.1 g bullet travels at 550 m/s. What speed must a 75 kg man have to have the same momentum?', options:['0.0154 m/s','1.54 m/s','15.4 m/s','0.154 m/s'], answer:0, explanation:'p_bullet = (0.0021)(550) = 1.155 kg·m/s. v_man = p/m = 1.155/75 = 0.0154 m/s ≈ 15 mm/s. The heavy man needs very little speed.' },
+    { type:'mc', q:'In an elastic collision between two identical masses where one is initially at rest, what happens after the collision?', options:['Both move at half the initial speed','The moving ball stops; the stationary ball moves at the initial speed','Both stop momentarily','The moving ball reverses direction'], answer:1, explanation:'Classic equal-mass elastic result: the first ball STOPS completely and the second ball moves at the ORIGINAL speed of the first. This is seen in Newton\'s cradle.' },
+    { type:'mc', q:'Three 1.2 kg particles are at positions (0,0), (1,0), and (0,1). Where is the center of mass?', options:['(0.5, 0.5)','(0.33, 0.33)','(1, 1)','(0, 0)'], answer:1, explanation:'xᶜₘ = [0(1.2)+1(1.2)+0(1.2)]/3.6 = 1.2/3.6 = 0.33 m. yᶜₘ = [0+0+1.2]/3.6 = 0.33 m. CM is at (0.33, 0.33).' },
+    { type:'mc', q:'A 3.5 kg rifle fires an 11 g bullet at 575 m/s. What is the rifle\'s recoil velocity?', options:['+1.81 m/s','−1.81 m/s','−0.18 m/s','+0.18 m/s'], answer:1, explanation:'Conservation of momentum: 0 = mRvR + mBvB → vR = −mBvB/mR = −(0.011)(575)/3.5 = −1.81 m/s. Negative sign = opposite direction to bullet.' },
+    { type:'tf', q:'True or False: In a perfectly inelastic collision, the objects stick together and move as one unit after the collision.', options:['True','False'], answer:0, explanation:'TRUE. This is the defining characteristic of a perfectly inelastic collision — the objects combine and move together. This results in the maximum possible loss of kinetic energy.' },
+    { type:'tf', q:'True or False: In a 2D collision, momentum is conserved as a single combined quantity, not separately in each direction.', options:['True','False'], answer:1, explanation:'FALSE. In 2D collisions, momentum is conserved SEPARATELY in EACH direction (x and y components independently). This gives two conservation equations to solve.' },
+    { type:'tf', q:'True or False: The coefficient of restitution (e) for a perfectly elastic collision equals 1.', options:['True','False'], answer:0, explanation:'TRUE. e = −(v_A2 − v_B2)/(v_A1 − v_B1). For a perfectly elastic collision, the relative speed of separation equals the relative speed of approach, giving e = 1.' },
+    { type:'id', q:'IDENTIFICATION: Balls A (3.2 kg, +4.5 m/s) and B (5.6 kg, −7.2 m/s) undergo a perfectly inelastic collision. What is the final velocity?', options:['−1.23 m/s','−2.95 m/s','+2.95 m/s','+1.23 m/s'], answer:1, explanation:'v = (mAvA + mBvB)/(mA+mB) = [(3.2)(4.5)+(5.6)(−7.2)]/(8.8) = [14.4−40.32]/8.8 = −25.92/8.8 = −2.95 m/s (moving left).' },
+    { type:'id', q:'IDENTIFICATION: A single railroad car (2.5×10⁴ kg) at 4 m/s couples with 3 identical cars (each at 2 m/s). What is the combined final speed?', options:['3 m/s','2.5 m/s','2.75 m/s','3.5 m/s'], answer:1, explanation:'m₁v₁+m₂v₂=(m₁+m₂)v: (2.5×10⁴)(4)+(7.5×10⁴)(2)=(10×10⁴)v → 100,000+150,000=100,000v → v = 2.5 m/s.' },
+  ]
+};
+
+// Build combined quiz
+quizData.all = [...quizData.mod7, ...quizData.mod6];
+
+// Add after building initial all
+quizData.mod3 = [
+  { type:'mc', q:'A bicycle wheel makes 12 revolutions in 15 seconds. What is its average angular speed in rad/s?', options:['5.03 rad/s','2.51 rad/s','75.40 rad/s','0.80 rad/s'], answer:0, explanation:'θ = 12 rev × 2π = 75.40 rad. ω = θ/t = 75.40/15 = 5.03 rad/s. Always convert revolutions to radians first by multiplying by 2π.' },
+  { type:'mc', q:'Which formula gives the moment of inertia of a solid sphere rotating about an axis through its center?', options:['I = MR²','I = ½MR²','I = ⅖MR²','I = ⅓MR²'], answer:2, explanation:'For a solid sphere: I = ⅖MR². This is less than MR² (point mass) because the mass is distributed at various distances from the center, not all at radius R.' },
+  { type:'mc', q:'A Ferris wheel (disk, m=825 kg, r=12.5 m) accelerates from rest to 3.5 rad/s in 15 s. What torque is required?', options:['3.01×10⁴ N·m','1.50×10⁴ N·m','6.02×10⁴ N·m','9.03×10³ N·m'], answer:0, explanation:'I = ½mr² = ½(825)(12.5)² = 1.29×10⁵ kg·m². α = 3.5/15 = 0.233 rad/s². τ = Iα = (1.29×10⁵)(0.233) = 3.01×10⁴ N·m.' },
+  { type:'mc', q:'A physics teacher spins on a stool with arms out at ω₁ = 0.75 rev/s. She pulls her arms in and spins at ω₂ = 1.50 rev/s. What is the ratio I₁/I₂?', options:['1/2','2/1','3/1','1/3'], answer:1, explanation:'Conservation of angular momentum: I₁ω₁ = I₂ω₂. I₁/I₂ = ω₂/ω₁ = 1.50/0.75 = 2/1. The moment of inertia with arms out is twice that with arms tucked in.' },
+  { type:'mc', q:'A solid cylinder (m=10 kg) rolls without slipping at v=10 m/s. What is its total kinetic energy?', options:['500 J','250 J','750 J','1000 J'], answer:2, explanation:'Translational KE = ½mv² = ½(10)(100) = 500 J. Rotational KE = ¼mv² = ¼(10)(100) = 250 J (since I = ½mr² and ω = v/r). Total = 500 + 250 = 750 J.' },
+  { type:'tf', q:'True or False: In rotational dynamics, torque is to angular acceleration as force is to linear acceleration. The governing equation is τ = Iα.', options:['True','False'], answer:0, explanation:'TRUE. This is Newton\'s 2nd Law for rotation: τ = Iα. Just as F = ma for linear motion, τ = Iα for rotational motion — torque produces angular acceleration inversely proportional to moment of inertia.' },
+  { type:'tf', q:'True or False: When a spinning figure skater pulls in their arms, their angular speed DECREASES because their moment of inertia decreases.', options:['True','False'], answer:1, explanation:'FALSE. When arms are pulled in, moment of inertia DECREASES. By conservation of angular momentum (I₁ω₁ = I₂ω₂), if I decreases, ω INCREASES. This is why figure skaters spin FASTER when they pull their arms in.' },
+  { type:'tf', q:'True or False: For a rigid body to be in static equilibrium, BOTH the net force AND the net torque about any point must equal zero.', options:['True','False'], answer:0, explanation:'TRUE. Static equilibrium requires TWO conditions: (1) ΣF = 0 (translational equilibrium — no linear acceleration) AND (2) Στ = 0 (rotational equilibrium — no angular acceleration). Both must be satisfied simultaneously.' },
+  { type:'id', q:'IDENTIFICATION: A spin dryer has a retarding torque of 12.5 N·m and stops after 8 revolutions in 4 seconds. What is the work done by the retarding torque?', options:['628.38 J','314.16 J','100 J','50 J'], answer:0, explanation:'W = τθ. First convert: θ = 8 rev × 2π = 50.27 rad. W = (12.5)(50.27) = 628.38 J. This is the rotational work formula analogous to W = Fd for linear motion.' },
+  { type:'id', q:'IDENTIFICATION: The distance from an axis of rotation where the entire mass of a body may be assumed to be concentrated without changing the moment of inertia. Formula: k = √(I/m).', options:['Center of gravity','Moment arm','Radius of gyration','Angular displacement'], answer:2, explanation:'The radius of gyration (k) is defined as k = √(I/m). It represents the equivalent distance from the axis where all mass could be concentrated to give the same moment of inertia. Unit: meters.' },
+];
+quizData.all = [...quizData.mod7, ...quizData.mod6, ...quizData.mod3];
+
+let currentModule = 'all';
+let currentQuestions = [];
+let qIndex = 0;
+let score = 0;
+let answered = false;
+let userAnswers = [];
+
+function setQuizModule(mod, el) {
+  currentModule = mod;
+  document.querySelectorAll('#quizModuleBtns .set-select-btn').forEach(b => b.classList.remove('active'));
+  if (el) el.classList.add('active');
+  const labels = { all: 'All Questions', mod7: '⚡ Module 7: Work & Energy', mod6: '💥 Module 6: Momentum & Collisions', mod3: '🔄 Module 3: Rotational Motion & Gravitation' };
+  document.getElementById('quizStartTitle').textContent = labels[mod];
+  const counts = { all: quizData.all.length, mod7: quizData.mod7.length, mod6: quizData.mod6.length, mod3: quizData.mod3.length };
+  document.getElementById('quizStartDesc').textContent = `${counts[mod]} questions: multiple choice, true/false & identification.`;
+  // Reset quiz UI
+  document.getElementById('quizStart').style.display = 'block';
+  document.getElementById('quizQuestionWrap').classList.remove('active');
+  document.getElementById('quizResults').classList.remove('active');
+}
+
+function startQuiz() {
+  currentQuestions = shuffle([...quizData[currentModule]]);
+  qIndex = 0; score = 0; answered = false; userAnswers = [];
+  document.getElementById('quizStart').style.display = 'none';
+  document.getElementById('quizQuestionWrap').classList.add('active');
+  document.getElementById('quizResults').classList.remove('active');
+  renderQuestion();
+}
+
+function shuffle(arr) {
+  for (let i = arr.length-1; i > 0; i--) {
+    const j = Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]] = [arr[j],arr[i]];
+  }
+  return arr;
+}
+
+function renderQuestion() {
+  const q = currentQuestions[qIndex];
+  answered = false;
+  document.getElementById('qNextBtn').classList.remove('visible');
+  document.getElementById('qFeedback').className = 'feedback-box';
+  document.getElementById('qFeedback').textContent = '';
+
+  const typeMap = { mc:'Multiple Choice', tf:'True or False', id:'Identification' };
+  const typeClass = { mc:'type-mc', tf:'type-tf', id:'type-id' };
+  document.getElementById('qTypeBadge').textContent = typeMap[q.type];
+  document.getElementById('qTypeBadge').className = 'question-type-badge ' + typeClass[q.type];
+  document.getElementById('qText').textContent = q.q;
+
+  const letters = ['A','B','C','D'];
+  const ul = document.getElementById('qOptions');
+  ul.innerHTML = '';
+  q.options.forEach((opt, i) => {
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.innerHTML = `<span class="option-letter">${letters[i]}</span>${opt}`;
+    btn.onclick = () => selectAnswer(i, q.answer, q.explanation, q);
+    li.appendChild(btn);
+    ul.appendChild(li);
+  });
+
+  const total = currentQuestions.length;
+  document.getElementById('qProgress').textContent = `Question ${qIndex+1} / ${total}`;
+  document.getElementById('qScore').textContent = `Score: ${score}`;
+  const pct = ((qIndex+1)/total)*100;
+  document.getElementById('qProgressBar').style.width = pct+'%';
+}
+
+function selectAnswer(chosen, correct, explanation, q) {
+  if (answered) return;
+  answered = true;
+  const btns = document.querySelectorAll('.option-btn');
+  btns.forEach((btn, i) => {
+    btn.disabled = true;
+    if (i === correct) btn.classList.add('correct');
+    if (i === chosen && chosen !== correct) btn.classList.add('wrong');
+  });
+  const fb = document.getElementById('qFeedback');
+  if (chosen === correct) {
+    score++;
+    fb.textContent = '✅ Correct! ' + explanation;
+    fb.className = 'feedback-box correct';
+    userAnswers.push({ q: q.q, correct: true, answer: q.options[correct] });
+  } else {
+    fb.textContent = '❌ Incorrect. ' + explanation;
+    fb.className = 'feedback-box wrong';
+    userAnswers.push({ q: q.q, correct: false, answer: q.options[correct] });
+  }
+  document.getElementById('qScore').textContent = `Score: ${score}`;
+  document.getElementById('qNextBtn').classList.add('visible');
+}
+
+function nextQuestion() {
+  qIndex++;
+  if (qIndex >= currentQuestions.length) {
+    showResults();
+  } else {
+    renderQuestion();
+  }
+}
+
+function showResults() {
+  document.getElementById('quizQuestionWrap').classList.remove('active');
+  document.getElementById('quizResults').classList.add('active');
+  const total = currentQuestions.length;
+  const pct = Math.round((score/total)*100);
+  document.getElementById('resultScore').textContent = `${score}/${total}`;
+  const msgs = [
+    [90,'🌟 Outstanding! You\'ve mastered the material!'],
+    [75,'🎉 Great job! A few more reviews and you\'ll be perfect.'],
+    [60,'👍 Good effort! Review the explanations to improve.'],
+    [0,'📚 Keep studying! Use the reviewer and flashcards to strengthen your understanding.']
+  ];
+  const msg = msgs.find(m => pct >= m[0]);
+  document.getElementById('resultMsg').textContent = `${pct}% — ${msg[1]}`;
+  const rl = document.getElementById('reviewList');
+  rl.innerHTML = '';
+  userAnswers.forEach((a,i) => {
+    const div = document.createElement('div');
+    div.className = 'review-item ' + (a.correct ? 'correct' : 'wrong');
+    div.innerHTML = `<div class="q-text">${i+1}. ${a.q.substring(0,80)}${a.q.length>80?'...':''}</div><div class="a-text">${a.correct ? '✅' : '❌'} Correct answer: ${a.answer}</div>`;
+    rl.appendChild(div);
+  });
+}
+
+function restartQuiz() {
+  document.getElementById('quizResults').classList.remove('active');
+  document.getElementById('quizStart').style.display = 'block';
+}
+
+// Init
+updateCard();
+setQuizModule('all', document.getElementById('quizBtnAll'));
+
+// URL param routing
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const page = params.get('page');
+  const mod = params.get('mod');
+  if (page) {
+    showPage(page, null);
+    if (page === 'flashcards' && mod) setFlashcardModule(mod, document.getElementById('fcBtn' + mod.charAt(0).toUpperCase() + mod.slice(1)));
+    if (page === 'quiz' && mod) {
+      const btn = document.getElementById('quizBtn' + mod.charAt(0).toUpperCase() + mod.slice(1));
+      setQuizModule(mod, btn);
+    }
+  }
+})();
+</script>
+</body>
+</html>
