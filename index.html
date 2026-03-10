@@ -586,6 +586,23 @@
       </div>
     </div>
 
+    <!-- CLASSICAL PHYSICS I -->
+    <div class="subject-card" onclick="goTo('physics.html','home','')">
+      <span class="subject-icon">⚡</span>
+      <h2>Classical Physics I</h2>
+      <p>Work, Energy &amp; Conservation; Center of Mass, Momentum, Impulse &amp; Collisions.</p>
+      <div class="modules-badge">
+        <span class="module-pill">⚡ Module 7</span>
+        <span class="module-pill">💥 Module 6</span>
+      </div>
+      <div class="card-actions">
+        <button class="card-btn primary" onclick="event.stopPropagation(); goTo('physics.html','home','')">📖 Reviewer</button>
+        <button class="card-btn secondary" onclick="event.stopPropagation(); goTo('physics.html','flashcards','mod7')">🃏 Flashcards</button>
+        <button class="card-btn secondary" onclick="event.stopPropagation(); startQuizFor('physics', 'module')">📝 Module Quiz</button>
+        <button class="card-btn secondary" onclick="event.stopPropagation(); startQuizFor('physics', 'mixed')">🎲 Mixed Quiz</button>
+      </div>
+    </div>
+
     <!-- PLACEHOLDER: add more subjects below following this card pattern -->
     <div class="add-subject-card">
       <div class="plus">＋</div>
@@ -636,6 +653,13 @@
           <div class="pick-icon">✍️</div>
           <h4>Academic Reading & Writing</h4>
           <p>5 Lessons • 2 Quiz Sets</p>
+        </div>
+
+        <!-- CLASSICAL PHYSICS I -->
+        <div class="picker-card" onclick="selectSubject('physics', this)">
+          <div class="pick-icon">⚡</div>
+          <h4>Classical Physics I</h4>
+          <p>2 Modules • 3 Quiz Sets</p>
         </div>
 
       </div>
@@ -737,6 +761,14 @@ const subjects = {
       { mod: 'mod3', icon: '💬', label: 'Lesson 3', desc: 'Reaction Paper' },
       { mod: 'mod4', icon: '🔍', label: 'Lesson 4', desc: 'Critique Paper' },
       { mod: 'mod5', icon: '📑', label: 'Lesson 5', desc: 'Citation Styles' },
+    ]
+  },
+  physics: {
+    file: 'physics.html',
+    label: 'Classical Physics I',
+    modules: [
+      { mod: 'mod7', icon: '⚡', label: 'Module 7', desc: 'Work, Energy & Conservation' },
+      { mod: 'mod6', icon: '💥', label: 'Module 6', desc: 'Center of Mass, Momentum & Collisions' },
     ]
   }
   // To add a new subject, copy the block above and change key + values:
