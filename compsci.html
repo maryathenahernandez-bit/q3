@@ -1658,15 +1658,15 @@ const quizData = {
   mixed: {
     set1: [
       { question: "Who coined the term 'Artificial Intelligence'?", options: ["Alan Turing", "John McCarthy", "Herbert Simon", "Allen Newell"], correct: 1 },
-      { question: "What is the Turing Test used for?", options: ["Testing computer speed", "Checking machine's ability to exhibit intelligent behavior", "Measuring processing power", "Testing network connectivity"], correct: 1 },
+      { question: "What is the Turing Test used for?", options: ["Testing computer speed", "Checking machine ability to exhibit intelligent behavior", "Measuring processing power", "Testing connectivity"], correct: 1 },
       { question: "Which AI subfield analyzes, understands, and generates human language?", options: ["Computer Vision", "Machine Learning", "Natural Language Processing", "Deep Learning"], correct: 2 },
       { question: "What is Narrow AI also called?", options: ["Strong AI", "Weak AI", "General AI", "Super AI"], correct: 1 },
       { question: "Who created the Three Laws of Robotics?", options: ["Alan Turing", "John McCarthy", "Isaac Asimov", "Herbert Simon"], correct: 2 },
       { question: "Which AI type doesn't store memories?", options: ["Limited Memory", "Reactive Machines", "Learning Agents", "Goal-Based"], correct: 1 },
-      { question: "What is an agent?", options: ["A program", "Anything that perceives and acts on environment", "A database", "A network"], correct: 1 },
+      { question: "What is an agent?", options: ["A program", "Anything that perceives and acts on its environment", "A database", "A network"], correct: 1 },
       { question: "What do agents use to perceive their environment?", options: ["Displays", "Sensors", "Keyboards", "Speakers"], correct: 1 },
       { question: "What does PEAS stand for?", options: ["Process, Execute, Act, Sense", "Performance, Environment, Actuators, Sensors", "Program, Evaluate, Analyze, Store", "Perceive, Execute, Adapt, Stop"], correct: 1 },
-      { question: "What is a rational agent?", options: ["One that acts randomly", "One that acts with best outcome", "One that stops", "One that waits"], correct: 1 }
+      { question: "What is a rational agent?", options: ["One that acts randomly", "One that acts with the best outcome", "One that stops", "One that waits"], correct: 1 }
     ],
     set2: [
       { question: "What does GPU stand for in AI context?", options: ["General Processing Unit", "Graphical Processing Unit", "Global Processing Unit", "Game Processing Unit"], correct: 1 },
@@ -1675,7 +1675,7 @@ const quizData = {
       { question: "Which AI type is most commonly available today?", options: ["Super AI", "General AI", "Narrow AI", "Self-Aware AI"], correct: 2 },
       { question: "Which framework was developed by Google?", options: ["Caffe", "TensorFlow", "Theano", "PyTorch"], correct: 1 },
       { question: "What do Goal-Based Agents use?", options: ["Only current state", "Goal information", "No planning", "Random actions"], correct: 1 },
-      { question: "What converts energy into motion?", options: ["Sensor", "Display", "Actuator", "Camera"], correct: 2 },
+      { question: "What converts energy into motion in an agent?", options: ["Sensor", "Display", "Actuator", "Camera"], correct: 2 },
       { question: "What does the critic component do in a Learning Agent?", options: ["Learn", "Provide feedback", "Act", "Sense"], correct: 1 },
       { question: "Which AI type can learn from past experiences?", options: ["Simple Reflex", "Reactive", "Learning Agent", "Theory of Mind"], correct: 2 },
       { question: "What is Agent Structure composed of?", options: ["Sensors only", "Architecture + Agent program", "Actuators only", "Data only"], correct: 1 }
@@ -1812,12 +1812,12 @@ function initQuiz() {
   if (p.get('page') === 'quiz') {
     const mod = p.get('mod');
     const set = p.get('set');
-    if (mod && quizData[mod]) currentQuizModule = mod;
-    if (set) currentQuizSet = 'set' + set;
-    setQuizModule(currentQuizModule, null);
+    if (mod && quizData[mod]) {
+      if (set) currentQuizSet = 'set' + set;
+      const btn = (mod !== 'mixed') ? document.getElementById('quizModBtn' + mod.replace('mod','')) : null;
+      setQuizModule(mod, btn);
+    }
     showPage('quiz');
-    // Auto-start if both mod and set are provided
-    if (mod && set) startQuiz();
   }
 }
 window.addEventListener('load', initQuiz);
