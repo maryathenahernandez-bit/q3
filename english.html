@@ -909,27 +909,46 @@
         <button class="pdf-mod-btn" id="pdfBtn3" onclick="showPDF(3)">💬 Lesson 3</button>
         <button class="pdf-mod-btn" id="pdfBtn4" onclick="showPDF(4)">🔍 Lesson 4</button>
         <button class="pdf-mod-btn" id="pdfBtn5" onclick="showPDF(5)">📑 Lesson 5</button>
+        <button class="pdf-mod-btn" id="pdfBtn6" onclick="showPDF(6)" style="border-color:var(--tomato);color:var(--tomato);">📝 Mock Exam</button>
       </div>
+
+      <!-- Labels -->
       <div id="pdfLabel1" class="pdf-label">📄 Lesson 1: The Academic Writing</div>
       <div id="pdfLabel2" class="pdf-label" style="display:none;">📖 Lesson 2: Skills in Reading Academic Texts</div>
       <div id="pdfLabel3" class="pdf-label" style="display:none;">💬 Lesson 3: Reaction Paper</div>
       <div id="pdfLabel4" class="pdf-label" style="display:none;">🔍 Lesson 4: Critique Paper</div>
       <div id="pdfLabel5" class="pdf-label" style="display:none;">📑 Lesson 5: Citation Styles</div>
-      <div class="pdf-frame-wrap">
+      <div id="pdfLabel6" class="pdf-label" style="display:none;">📝 Mock Exam</div>
+
+      <!-- Viewer frame (hidden entirely for Mock Exam tab) -->
+      <div class="pdf-frame-wrap" id="pdfFrameWrap">
         <iframe id="pdfFrame1" class="pdf-frame" src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/LESSON%201THE%20ACADEMIC%20WRITING.pdf&embedded=true" allowfullscreen></iframe>
         <iframe id="pdfFrame2" class="pdf-frame" style="display:none;" src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/LESSON%202%20SKILLS%20IN%20READING%20ACADEMIC%20TEXTS.pdf&embedded=true" allowfullscreen></iframe>
         <iframe id="pdfFrame3" class="pdf-frame" style="display:none;" src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/REACTION-PAPER.pdf&embedded=true" allowfullscreen></iframe>
         <iframe id="pdfFrame4" class="pdf-frame" style="display:none;" src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/CRITIQUE-PAPER.pdf&embedded=true" allowfullscreen></iframe>
         <iframe id="pdfFrame5" class="pdf-frame" style="display:none;" src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/LESSON%205%20CITATION-STYLES.pdf&embedded=true" allowfullscreen></iframe>
+        <iframe id="pdfFrame6" class="pdf-frame" style="display:none;" src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/Academic_Writing_Mock_Exam.docx&embedded=true" allowfullscreen></iframe>
       </div>
-      <div class="pdf-links">
-        <p style="color:#666;font-size:0.85rem;margin-bottom:0.6rem;">If the viewer doesn't load, open the PDF directly:</p>
+
+      <!-- Lesson download links (shown for tabs 1–5) -->
+      <div class="pdf-links" id="pdfLinksLessons">
+        <p style="color:#666;font-size:0.85rem;margin-bottom:0.6rem;">If the viewer doesn't load, open the file directly:</p>
         <a class="pdf-direct-btn" id="pdfDirect1" href="https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/LESSON%201THE%20ACADEMIC%20WRITING.pdf" target="_blank">⬇️ Lesson 1 PDF</a>
         <a class="pdf-direct-btn" id="pdfDirect2" href="https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/LESSON%202%20SKILLS%20IN%20READING%20ACADEMIC%20TEXTS.pdf" target="_blank" style="display:none;">⬇️ Lesson 2 PDF</a>
         <a class="pdf-direct-btn" id="pdfDirect3" href="https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/REACTION-PAPER.pdf" target="_blank" style="display:none;">⬇️ Lesson 3 PDF</a>
         <a class="pdf-direct-btn" id="pdfDirect4" href="https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/CRITIQUE-PAPER.pdf" target="_blank" style="display:none;">⬇️ Lesson 4 PDF</a>
         <a class="pdf-direct-btn" id="pdfDirect5" href="https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/LESSON%205%20CITATION-STYLES.pdf" target="_blank" style="display:none;">⬇️ Lesson 5 PDF</a>
         <a class="pdf-direct-btn" href="https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/Academic_Writing_Reviewer_Updated.docx" target="_blank" style="background:var(--espresso);">⬇️ Full Reviewer (.docx)</a>
+      </div>
+
+      <!-- Mock Exam download panel (shown for tab 6 only) -->
+      <div class="pdf-links" id="pdfLinksMock" style="display:none;">
+        <p style="color:#666;font-size:0.85rem;margin-bottom:0.6rem;">If the viewer doesn't load, download the file directly:</p>
+        <a class="pdf-direct-btn" href="https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/Academic_Writing_Mock_Exam.docx" target="_blank">⬇️ Mock Exam (.docx)</a>
+        <div style="margin-top:1.5rem;padding-top:1.2rem;border-top:2px dashed var(--tan-lt);text-align:center;">
+          <p style="color:#888;font-size:0.82rem;margin-bottom:0.7rem;font-style:italic;">🔒 Answer Key — download only</p>
+          <a class="pdf-direct-btn" href="https://raw.githubusercontent.com/maryathenahernandez-bit/q3/main/pdfs/Academic_Writing_Mock_Exam_ANSWER_KEY.docx" target="_blank" style="background:var(--espresso);">⬇️ Answer Key (.docx)</a>
+        </div>
       </div>
     </div>
   </div>
@@ -1038,12 +1057,17 @@ function setFlashcardModuleBtn(mod) {
 }
 
 function showPDF(num) {
-  [1,2,3,4,5].forEach(n => {
+  [1,2,3,4,5,6].forEach(n => {
     document.getElementById('pdfFrame'+n).style.display = n===num ? 'block' : 'none';
     document.getElementById('pdfLabel'+n).style.display = n===num ? 'block' : 'none';
-    document.getElementById('pdfDirect'+n).style.display = n===num ? 'inline-block' : 'none';
     document.getElementById('pdfBtn'+n).classList.toggle('active', n===num);
   });
+  [1,2,3,4,5].forEach(n => {
+    const el = document.getElementById('pdfDirect'+n);
+    if (el) el.style.display = n===num ? 'inline-block' : 'none';
+  });
+  document.getElementById('pdfLinksLessons').style.display = num <= 5 ? 'block' : 'none';
+  document.getElementById('pdfLinksMock').style.display = num === 6 ? 'block' : 'none';
 }
 
 // ===== FLASHCARD DATA =====
