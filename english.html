@@ -276,6 +276,7 @@
   <button class="nav-btn" onclick="showPage('flashcards')">🃏 Flashcards</button>
   <button class="nav-btn" onclick="showPage('quiz')">📝 Quiz</button>
   <button class="nav-btn" onclick="showPage('slides')">📄 Slides</button>
+  <button class="nav-btn" onclick="showPage('summary')">📋 Summary</button>
   <button class="nav-btn" onclick="window.location.href='index.html'" style="margin-left:auto;">🏠 Back to Hub</button>
 </nav>
 
@@ -804,29 +805,30 @@
     <div class="section-block">
       <div class="section-header">📝 APA Citation Format</div>
       <div class="content-card">
-        <div class="highlight"><strong>APA Formula:</strong> "Who, When, What, and Where" — requires the author's name, publication date, title, and source location. Uses in-text parenthetical citations corresponding to a final References list.</div>
+        <div class="highlight"><strong>APA Formula:</strong> "Who, When, What, and Where" — requires the author's name, publication date, title, and source location. Sources are credited using in-text parenthetical citations that correspond to a final References list. A supplemental Bibliography page lists every resource consulted, even those not directly quoted.</div>
         <h2 class="sub-title">APA Reference List Rules</h2>
         <table class="compare-table">
           <thead><tr><th>Rule</th><th>Details</th></tr></thead>
           <tbody>
             <tr><td><strong>Listing</strong></td><td>Arrange alphabetically by author's surname, followed by initials.</td></tr>
             <tr><td><strong>One author, several works</strong></td><td>Arrange by year of publication, starting with the most recent.</td></tr>
-            <tr><td><strong>Several authors, one publication</strong></td><td>If more than seven authors, list first six, then an ellipsis (…), then the last author's name (no ampersand).</td></tr>
+            <tr><td><strong>Several authors, one publication</strong></td><td>If more than seven authors, list the first six, then an ellipsis (…), then the last author's name (no ampersand).</td></tr>
             <tr><td><strong>Spacing</strong></td><td>Double-space all entries.</td></tr>
             <tr><td><strong>Capitalization</strong></td><td>Capitalize proper names and the first word in each title, and the first word after a colon or dash.</td></tr>
-            <tr><td><strong>Indentation</strong></td><td>Use hanging indent — flush left for the first line, then indent second and succeeding lines five spaces.</td></tr>
+            <tr><td><strong>Indentation</strong></td><td>Use hanging indent — flush left for the first line, then indent second and succeeding lines five spaces from the left.</td></tr>
           </tbody>
         </table>
         <h2 class="sub-title">APA In-Text Citation</h2>
         <div class="highlight">
-          <p>APA in-text citations follow an <strong>author-date-page</strong> sequence. Items in parentheses are separated by commas. Page numbers are preceded by "p." (single) or "pp." (multiple).</p>
+          <p>APA in-text citations follow an <strong>author-date-page</strong> sequence. Items in parentheses are separated by commas. Page numbers are preceded by "p." (single page) or "pp." (multiple pages).</p>
           <p style="margin-top:0.5rem;"><em>Example 1:</em> Marquez (2016, p. 35) cites the advantage of e-books over traditional books.</p>
-          <p style="margin-top:0.3rem;"><em>Example 2:</em> Marquez (2016) claims that "portability and manipulability are key features of e-books" (p. 35).</p>
+          <p style="margin-top:0.3rem;"><em>Example 2:</em> Marquez (2016) cites the advantage of e-books over traditional books, claiming that "portability and manipulability are key features of e-books" (p. 35).</p>
         </div>
         <h2 class="sub-title">Electronic Sources (APA)</h2>
+        <div class="highlight">APA follows a "who, what, when, and where" structure for electronic sources. When a DOI (Digital Object Identifier) is available, it serves as the complete retrieval record — no URL or retrieval date is needed. When no DOI exists, include the URL preceded by "Retrieved from," along with the document title, publication date (or "n.d." if unavailable), and author name. Sources without an author are alphabetized by title.</div>
         <div class="info-grid">
           <div class="info-box"><h4>DOI Available</h4><ul><li>DOI serves as the complete retrieval record</li><li>No URL or retrieval date needed</li></ul></div>
-          <div class="info-box"><h4>No DOI</h4><ul><li>Include URL preceded by "Retrieved from"</li><li>Include document title, publication date (or "n.d.")</li><li>Include author name; no-author sources alphabetized by title</li></ul></div>
+          <div class="info-box"><h4>No DOI</h4><ul><li>Include URL preceded by "Retrieved from"</li><li>Include document title, publication date (or "n.d." if unavailable)</li><li>Include author name; sources without author alphabetized by title</li></ul></div>
         </div>
       </div>
     </div>
@@ -834,7 +836,7 @@
     <div class="section-block">
       <div class="section-header">📝 MLA Citation Format</div>
       <div class="content-card">
-        <div class="highlight"><strong>MLA Formula:</strong> "Who, What, Where, and When" — requires the author's full name (not just initials). All borrowed materials documented in a final list titled <strong>Works Cited</strong>.</div>
+        <div class="highlight"><strong>MLA (Modern Language Association)</strong> style is the standard citation format for Literature, Arts, and Humanities. Unlike APA, it requires the author's full name (not just initials) and follows a "who, what, where, and when" sequence. All borrowed materials must be documented in a final list titled <strong>Works Cited</strong>.</div>
         <h2 class="sub-title">MLA Works Cited Rules</h2>
         <table class="compare-table">
           <thead><tr><th>Rule</th><th>Details</th></tr></thead>
@@ -863,13 +865,31 @@
         <table class="compare-table">
           <thead><tr><th>Feature</th><th>APA</th><th>MLA</th></tr></thead>
           <tbody>
-            <tr><td><strong>Reference list title</strong></td><td>"References"</td><td>"Works Cited"</td></tr>
-            <tr><td><strong>Capitalization</strong></td><td>Only the first letter of the title is capitalized.</td><td>Proper names, first word of title, and first word after a colon are capitalized.</td></tr>
+            <tr><td><strong>Title for reference listing</strong></td><td>"References"</td><td>"Works Cited"</td></tr>
+            <tr><td><strong>Capitalization</strong></td><td>Only the first letter of the title of the work is capitalized.</td><td>Proper names, first word of title, and first word after a colon or semicolon are capitalized.</td></tr>
             <tr><td><strong>Abstract</strong></td><td>Required</td><td>Not required</td></tr>
-            <tr><td><strong>Headings in Main Body</strong></td><td>Has headings to indicate important sections (e.g., "Method" or "Results")</td><td>No such headings.</td></tr>
+            <tr><td><strong>Headings in Main Body</strong></td><td>Has headings to indicate important sections (e.g. "Method" or "Results")</td><td>No such headings.</td></tr>
           </tbody>
         </table>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== QUICK REVIEW SUMMARY ===== -->
+<div id="summary" class="page">
+  <div style="background:white;border-bottom:2px solid var(--tan-lt);padding:0.8rem 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:60px;z-index:50;">
+    <button onclick="showPage('home')" style="background:var(--tomato);color:white;border:none;padding:0.4rem 1rem;border-radius:8px;font-family:'Nunito',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;">← Back</button>
+    <span style="font-weight:800;color:var(--tomato);">📋 Quick Review Summary</span>
+  </div>
+  <div class="reviewer-module">
+    <div class="module-header"><div class="mh-icon">📋</div><div><h1>Quick Review Summary</h1><p>All 5 lessons condensed at a glance</p></div></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;">
+      <div class="approach-card"><h4>📄 Lesson 1: Academic Writing</h4><ul><li>Academic Text: educational + jargons</li><li>Types: Textbooks, Essays, Dissertations, Research Articles, Case Studies, Reports</li><li>Structure: IMRaD</li><li>Tips: search, read fully, reflect, verify</li></ul></div>
+      <div class="approach-card"><h4>📖 Lesson 2: Reading Skills</h4><ul><li>Clarity — clear, organized writing</li><li>Outlining: Alphanumeric &amp; Numeric (Topic &amp; Sentence forms)</li><li>Thesis Statement — one clear sentence</li><li>Condensation: Paraphrase → Précis → Summary → Abstract</li></ul></div>
+      <div class="approach-card"><h4>💬 Lesson 3: Reaction Paper</h4><ul><li>Essay expressing emotions + scholarly analysis</li><li>Parts: Introduction → Body → Conclusion → References</li><li>5 Purposes: Self-Expression, Insight, Skill Demo, Mastery, Personal Input</li><li>5 Principles: Objective, Comprehensive, Constructive, Concise, Correct</li><li>6 Tips: Prepare → Read → Intro → Body → Conclude → Contextualize</li></ul></div>
+      <div class="approach-card"><h4>🔍 Lesson 4: Critique Paper</h4><ul><li>Evaluative analysis of another's work</li><li>8 Characteristics: Comprehensive, Critical, Timely, Objective, Credible, Original, Fair, Decisive</li><li>6 Approaches: Formalist, Feminist, Reader-Response, Biographical, Marxist, Historical</li><li>4 Techniques: Qualifying words, Modal verbs, Tentative verbs, Ideal state</li><li>3 Steps: Decide → Define → Write</li></ul></div>
+      <div class="approach-card"><h4>📑 Lesson 5: Citation Styles</h4><ul><li>Plagiarism = academic misconduct</li><li>5 Styles: APA, MLA, IEEE, AMA, Chicago</li><li>APA: "Who, When, What, Where" — References list</li><li>MLA: "Who, What, Where, When" — Works Cited</li><li>APA in-text: (Author, Year, p. Page)</li><li>MLA in-text: (Author PageNumber) — no comma</li></ul></div>
     </div>
   </div>
 </div>
