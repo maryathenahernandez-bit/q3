@@ -944,7 +944,7 @@
     </section>
 
   </div>
-</div>
+</div></div>
 
 <!-- ===== MODULE 2 PAGE ===== -->
 <div id="mod2" class="page reviewer-page">
@@ -1082,7 +1082,7 @@
     </section>
 
   </div>
-</div>
+</div></div>
 
 <!-- ===== MODULE 3 PAGE ===== -->
 <div id="mod3" class="page reviewer-page">
@@ -1252,7 +1252,7 @@
     </section>
 
   </div>
-</div>
+</div></div>
 
 <!-- ===== FLASHCARDS PAGE ===== -->
 <div id="flashcards" class="page">
@@ -1781,15 +1781,23 @@ function showPDF(num) {
   });
 }
 
-function initQuiz() {
+function initPage() {
   const p = new URLSearchParams(window.location.search);
-  if (p.get('page') === 'quiz') {
-    if (p.get('mod') && quizData[p.get('mod')]) currentQuizModule = p.get('mod');
+  const page = p.get('page');
+  const mod = p.get('mod');
+  if (!page || page === 'home') return;
+  if (page === 'quiz') {
+    if (mod && quizData[mod]) currentQuizModule = mod;
     if (p.get('set')) currentQuizSet = 'set' + p.get('set');
     showPage('quiz');
+  } else if (page === 'flashcards') {
+    showPage('flashcards');
+    if (mod) setFlashcardModuleBtn(mod);
+  } else if (document.getElementById(page)) {
+    showPage(page);
   }
 }
-window.addEventListener('load', initQuiz);
+window.addEventListener('load', initPage);
 </script>
 
 </body>
